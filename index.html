@@ -1,61 +1,271 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elo Bike Araxá</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 40px;
-      background-color: #1E3A8A; /* azul profundo */
-      color: white;
-      margin: 0;
-    }
-    img {
-      width: 140px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-    }
-    h1 {
-      margin-bottom: 40px;
-      font-size: 28px;
-    }
-    .button {
-      display: block;
-      margin: 20px auto;
-      padding: 18px;
-      width: 80%;
-      max-width: 320px;
-      background: #E4BB13; /* amarelo vivo */
-      color: #000;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 25px;
-      box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
-      transition: 0.2s;
-      font-size: 19px;
-    }
-    .button:hover {
-      background: #FFD700;
-      transform: scale(1.03);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Logo - Elo Bike Araxá</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2f6d 0%, #2b4a9e 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin: 20px 0;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #1a2f6d;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        h2 {
+            color: #E4BB13;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E4BB13;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .logo-test {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 25px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border: 1px dashed #1a2f6d;
+        }
+        
+        .logo-img {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 15px 0;
+            border: 2px solid #E4BB13;
+            border-radius: 10px;
+            padding: 5px;
+        }
+        
+        .status {
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .loading {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .steps {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .steps li {
+            margin-bottom: 10px;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #1a2f6d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #E4BB13;
+        }
+        
+        .test-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .test-item {
+            flex: 1;
+            min-width: 250px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .test-image {
+            max-width: 100%;
+            height: 150px;
+            object-fit: contain;
+            margin: 10px 0;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: white;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-  <!-- Logo oficial -->
-  <img src="logotipo.png" alt="Logo Elo Bike">
-  <h1>Elo Bike Araxá</h1>
+    <div class="container">
+        <header>
+            <h1>Verificação de Logo - Elo Bike Araxá</h1>
+            <p>Esta página ajuda a verificar se sua logo está configurada corretamente no GitHub Pages.</p>
+        </header>
+        
+        <section>
+            <h2>Como verificar sua logo</h2>
+            <ol class="steps">
+                <li>Certifique-se de que seu arquivo de logo está no repositório com o nome <code>logotipo.png</code></li>
+                <li>Verifique se o arquivo está na mesma pasta que o arquivo <code>index.html</code></li>
+                <li>No seu código HTML, a tag da imagem deve ser: <code>&lt;img src="logotipo.png" alt="Logo"&gt;</code></li>
+                <li>Se você renomeou o arquivo, atualize o atributo <code>src</code> accordingly</li>
+            </ol>
+            
+            <div class="logo-test">
+                <h2>Teste da Logo</h2>
+                <p>Abaixo está a imagem carregada a partir do caminho <code>logotipo.png</code>:</p>
+                
+                <img id="logoImage" class="logo-img" src="logotipo.png" alt="Logo Elo Bike" onload="imageLoaded()" onerror="imageFailed()">
+                
+                <div id="statusMessage" class="status loading">Verificando se a logo carrega...</div>
+                
+                <p>Se a imagem acima aparecer corretamente, sua logo está configurada corretamente.</p>
+                <p>Se aparecer uma mensagem de erro ou a imagem não carregar, verifique o nome do arquivo e o caminho.</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Possíveis problemas e soluções</h2>
+            
+            <div class="test-area">
+                <div class="test-item">
+                    <h3>Problema: Nome incorreto</h3>
+                    <p>Verifique se o nome do arquivo está exatamente como no código, incluindo maiúsculas e minúsculas.</p>
+                    <p>Exemplo: <code>logotipo.png</code> ≠ <code>Logotipo.PNG</code></p>
+                </div>
+                
+                <div class="test-item">
+                    <h3>Problema: Caminho incorreto</h3>
+                    <p>Se sua logo estiver em uma pasta, inclua o nome da pasta no caminho.</p>
+                    <p>Exemplo: <code>src="imagens/logotipo.png"</code></p>
+                </div>
+                
+                <div class="test-item">
+                    <h3>Problema: Arquivo não enviado</h3>
+                    <p>Certifique-se de que fez upload do arquivo de logo para o repositório do GitHub.</p>
+                </div>
+            </div>
+            
+            <p>Se ainda estiver com problemas, tente estas soluções:</p>
+            <ul class="steps">
+                <li>Renomeie o arquivo para um nome simples, como <code>logo.png</code></li>
+                <li>Atualize o código HTML com o novo nome</li>
+                <li>Faça upload do arquivo novamente</li>
+                <li>Espere alguns minutos após o upload (o GitHub pode levar um tempo para processar)</li>
+                <li>Limpe o cache do navegador (Ctrl+F5) para garantir que está vendo a versão mais recente</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Próximos passos</h2>
+            <p>Depois de verificar que sua logo está funcionando corretamente:</p>
+            <ol class="steps">
+                <li>Atualize seu arquivo <code>index.html</code> principal com o código correto</li>
+                <li>Verifique se o GitHub Pages está ativado nas configurações do repositório</li>
+                <li>Acesse seu site em: <code>https://elobike222-max.github.io/f/</code></li>
+            </ol>
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <a href="https://github.com/elobike222-max/f" class="btn">Ver Repositório no GitHub</a>
+                <a href="https://elobike222-max.github.io/f/" class="btn">Acessar Site Publicado</a>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Elo Bike Araxá &copy; 2023 - Verificação de Configuração</p>
+    </footer>
 
-  <!-- Produtos -->
-  <a class="button" href="#">🛵 Scooters</a>
-  <a class="button" href="#">⛑️ Capacetes</a>
-  <a class="button" href="#">🔋 Baterias</a>
-
-  <!-- Contatos e localização -->
-  <a class="button" href="https://w.app/c8foan">💬 WhatsApp</a>
-  <a class="button" href="https://www.instagram.com/elobikearaxa?igsh=MThjeGJjam50aW1mZQ==">📷 Instagram</a>
-  <a class="button" href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7">📍 Localização</a>
+    <script>
+        function imageLoaded() {
+            document.getElementById('statusMessage').className = 'status success';
+            document.getElementById('statusMessage').textContent = '✅ Sucesso! A logo carregou corretamente.';
+        }
+        
+        function imageFailed() {
+            document.getElementById('statusMessage').className = 'status error';
+            document.getElementById('statusMessage').innerHTML = '❌ Erro! A logo não carregou. <br>Verifique o nome do arquivo e se ele está no repositório.';
+        }
+        
+        // Verificar após 3 segundos também para cobrir alguns casos de carregamento lento
+        setTimeout(function() {
+            if (document.getElementById('statusMessage').className === 'status loading') {
+                const img = document.getElementById('logoImage');
+                if (!img.complete || img.naturalHeight === 0) {
+                    imageFailed();
+                }
+            }
+        }, 3000);
+    </script>
 </body>
 </html>
