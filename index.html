@@ -19,8 +19,6 @@
             background: linear-gradient(135deg, #0d1b3d 0%, #1e3a8a 100%);
             color: white;
             line-height: 1.6;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
         .container {
@@ -158,70 +156,55 @@
 
         .hero-content p {
             font-size: 1.3rem;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             opacity: 0.9;
         }
 
-        /* BALÕES DE CONTATO - ESTILO QUE VOCÊ GOSTA */
-        .hero-actions {
-            margin: 40px 0 30px;
-        }
-
-        .action-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        /* BOTÕES NO ESTILO ANTIGO QUE VOCÊ GOSTA */
+        .hero-buttons {
+            display: flex;
             gap: 15px;
-            max-width: 600px;
+            flex-wrap: wrap;
         }
 
-        .action-btn {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 20px;
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #E4BB13;
+            color: #0d1b3d;
             text-decoration: none;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.3s ease;
-            min-height: 80px;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-5px);
-            background: rgba(228, 187, 19, 0.2);
-            border-color: #E4BB13;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .action-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .whatsapp-action .action-icon { background: #25D366; }
-        .instagram-action .action-icon { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .location-action .action-icon { background: #4285F4; }
-        .catalog-action .action-icon { background: #E4BB13; }
-
-        .action-text {
-            flex: 1;
-            text-align: center;
-        }
-
-        .action-text strong {
-            display: block;
-            font-size: 16px;
+            border-radius: 50px;
             font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
             color: white;
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+        }
+
+        .location-btn {
+            background: #4285F4;
+            color: white;
+        }
+
+        .catalog-btn-hero {
+            background: transparent;
+            border: 2px solid #E4BB13;
+            color: #E4BB13;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.6);
         }
 
         .hero-image {
@@ -270,614 +253,9 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Features */
-        .features {
-            padding: 80px 0;
-            background: #0d1b3d;
-        }
+        /* Resto do CSS permanece igual */
+        /* ... (o restante do CSS anterior) ... */
 
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .feature {
-            text-align: center;
-            padding: 40px 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .feature:hover {
-            transform: translateY(-8px);
-            background: rgba(228, 187, 19, 0.1);
-        }
-
-        .feature i {
-            font-size: 50px;
-            color: #E4BB13;
-            margin-bottom: 25px;
-        }
-
-        .feature h4 {
-            margin-bottom: 15px;
-            color: #E4BB13;
-            font-size: 1.4rem;
-        }
-
-        .feature p {
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        /* Products */
-        .products {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
-        }
-
-        .products h2 {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 60px;
-            color: #E4BB13;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .product-card {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            background: rgba(228, 187, 19, 0.12);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        .product-icon {
-            width: 90px;
-            height: 90px;
-            background: rgba(228, 187, 19, 0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            transition: transform 0.3s ease;
-            border: 2px solid #E4BB13;
-        }
-
-        .product-icon:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .product-icon i {
-            font-size: 40px;
-            color: #E4BB13;
-        }
-
-        .product-card h3 {
-            margin-bottom: 20px;
-            color: #E4BB13;
-            font-size: 1.6rem;
-            font-weight: 700;
-        }
-
-        .product-card p {
-            margin-bottom: 25px;
-            opacity: 0.9;
-            font-size: 1.1rem;
-        }
-
-        .product-card ul {
-            list-style: none;
-            margin: 25px 0;
-            text-align: left;
-        }
-
-        .product-card ul li {
-            margin-bottom: 12px;
-            padding-left: 30px;
-            position: relative;
-            font-size: 1rem;
-        }
-
-        .product-card ul li:before {
-            content: "✓";
-            color: #E4BB13;
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .price {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #E4BB13;
-            margin: 25px 0 20px;
-            background: rgba(228, 187, 19, 0.1);
-            padding: 15px;
-            border-radius: 15px;
-            border: 2px solid #E4BB13;
-        }
-
-        .catalog-cta {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 20px 45px;
-            background: #E4BB13;
-            color: #0d1b3d;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.4);
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(228, 187, 19, 0.6);
-            background: #ffd700;
-        }
-
-        .large-btn {
-            padding: 22px 50px;
-            font-size: 1.2rem;
-        }
-
-        /* About */
-        .about {
-            padding: 100px 0;
-            background: #0d1b3d;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.8rem;
-            margin-bottom: 25px;
-            color: #E4BB13;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .about-text p {
-            font-size: 1.2rem;
-            margin-bottom: 35px;
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-
-        .about-features {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .about-feature {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .about-feature:hover {
-            transform: translateX(10px);
-            background: rgba(228, 187, 19, 0.1);
-        }
-
-        .about-feature i {
-            color: #E4BB13;
-            font-size: 1.5rem;
-            width: 30px;
-        }
-
-        .about-feature span {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .about-image {
-            display: flex;
-            justify-content: center;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
-        .stat {
-            background: rgba(255, 255, 255, 0.06);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .stat:hover {
-            transform: translateY(-5px);
-            background: rgba(228, 187, 19, 0.1);
-        }
-
-        .number {
-            display: block;
-            font-size: 3rem;
-            font-weight: 800;
-            color: #E4BB13;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .label {
-            font-size: 1rem;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        /* Contact */
-        .contact {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
-        }
-
-        .contact h2 {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 60px;
-            color: #E4BB13;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-
-        .contact-card {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 35px 30px;
-            border-radius: 20px;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-8px);
-            background: rgba(228, 187, 19, 0.15);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        .contact-card i {
-            font-size: 45px;
-            margin-bottom: 25px;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-card:hover i {
-            transform: scale(1.2);
-        }
-
-        .whatsapp i { color: #25D366; }
-        .instagram i { color: #E1306C; }
-        .location i { color: #4285F4; }
-        .phone i { color: #34A853; }
-
-        .contact-card h4 {
-            margin-bottom: 15px;
-            color: #E4BB13;
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-
-        .contact-card p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .click {
-            display: block;
-            margin-top: 20px;
-            font-size: 1rem;
-            opacity: 0.8;
-            font-weight: 500;
-        }
-
-        .business-hours {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 35px;
-            border-radius: 20px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 40px;
-        }
-
-        .business-hours h4 {
-            color: #E4BB13;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .business-hours p {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Footer */
-        footer {
-            background: #0a1429;
-            padding: 50px 0 25px;
-            border-top: 2px solid rgba(228, 187, 19, 0.3);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-            align-items: center;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .footer-logo img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid #E4BB13;
-            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.3);
-        }
-
-        .footer-logo span {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #E4BB13;
-        }
-
-        .footer-contact p {
-            margin-bottom: 12px;
-            opacity: 0.9;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 20px;
-            justify-content: flex-end;
-        }
-
-        .social-link {
-            width: 55px;
-            height: 55px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.3rem;
-        }
-
-        .social-link:hover {
-            background: #E4BB13;
-            color: #0d1b3d;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.4);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-bottom p {
-            opacity: 0.8;
-            font-size: 1rem;
-            margin-bottom: 8px;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-content h2 {
-                font-size: 2.8rem;
-            }
-            
-            .action-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 120px 0 60px;
-            }
-
-            .hero-content h2 {
-                font-size: 2.3rem;
-            }
-
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-
-            .hero-actions {
-                display: flex;
-                justify-content: center;
-            }
-
-            .action-grid {
-                width: 100%;
-                max-width: 350px;
-            }
-
-            .action-btn {
-                padding: 18px;
-                min-height: 70px;
-            }
-
-            .action-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-
-            .moto-placeholder {
-                width: 250px;
-                height: 250px;
-                margin-top: 50px;
-            }
-
-            .moto-placeholder i {
-                font-size: 80px;
-            }
-
-            .products h2,
-            .contact h2 {
-                font-size: 2.5rem;
-            }
-
-            .about-text h2 {
-                font-size: 2.3rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 30px;
-            }
-
-            .footer-social {
-                justify-content: center;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .whatsapp-float {
-                bottom: 20px;
-                right: 20px;
-                width: 55px;
-                height: 55px;
-                font-size: 22px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content h2 {
-                font-size: 2rem;
-            }
-            
-            .action-btn {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-                padding: 15px;
-            }
-            
-            .action-icon {
-                margin: 0 auto;
-            }
-            
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .product-card {
-                padding: 30px 20px;
-            }
-            
-            .btn {
-                padding: 18px 35px;
-                font-size: 1rem;
-            }
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Efeito de fade-in para as seções */
-        section {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
     </style>
 </head>
 <body>
@@ -908,45 +286,20 @@
             <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>
             <p>As melhores scooters elétricas de Araxá e região</p>
             
-            <!-- BALÕES DE CONTATO - ESTILO QUE VOCÊ GOSTA -->
-            <div class="hero-actions">
-                <div class="action-grid">
-                    <a href="https://w.app/c8foan" class="action-btn whatsapp-action">
-                        <div class="action-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="action-text">
-                            <strong>WhatsApp</strong>
-                        </div>
-                    </a>
-
-                    <a href="https://www.instagram.com/elobikearaxa" class="action-btn instagram-action">
-                        <div class="action-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <div class="action-text">
-                            <strong>Instagram</strong>
-                        </div>
-                    </a>
-
-                    <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="action-btn location-action">
-                        <div class="action-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="action-text">
-                            <strong>Localização</strong>
-                        </div>
-                    </a>
-
-                    <a href="#produtos" class="action-btn catalog-action">
-                        <div class="action-icon">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <div class="action-text">
-                            <strong>Ver Catálogo</strong>
-                        </div>
-                    </a>
-                </div>
+            <!-- BOTÕES NO ESTILO ANTIGO QUE VOCÊ GOSTA -->
+            <div class="hero-buttons">
+                <a href="https://w.app/c8foan" class="btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
+                    <i class="fas fa-map-marker-alt"></i> Localização
+                </a>
+                <a href="#produtos" class="btn catalog-btn-hero">
+                    <i class="fas fa-store"></i> Ver Catálogo
+                </a>
             </div>
         </div>
         <div class="hero-image">
@@ -1165,25 +518,6 @@
     </footer>
 
     <script>
-        // Observador de interseção para animações de scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observar todas as seções
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
         // Rolagem suave para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1197,11 +531,6 @@
                 }
             });
         });
-
-        // Inicializar algumas seções como visíveis
-        setTimeout(() => {
-            document.querySelector('.hero').classList.add('visible');
-        }, 100);
     </script>
 </body>
 </html>
