@@ -1,1144 +1,1084 @@
-<!DOCTYPE html>  
-<html lang="pt-BR">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>EloBike - Motos Elétricas | Araxá MG</title>  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">  
-    <link rel="icon" href="logo.png" type="image/png">  
-    <style>  
-        * {  
-            margin: 0;  
-            padding: 0;  
-            box-sizing: border-box;  
-            font-family: 'Poppins', sans-serif;  
-        }  
-  
-        body {  
-            background: linear-gradient(135deg, #0d1b3d 0%, #1e3a8a 100%);  
-            color: white;  
-            line-height: 1.6;  
-            overflow-x: hidden;  
-            scroll-behavior: smooth;  
-        }  
-  
-        .container {  
-            max-width: 1200px;  
-            margin: 0 auto;  
-            padding: 0 20px;  
-        }  
-  
-        /* WhatsApp Float */  
-        .whatsapp-float {  
-            position: fixed;  
-            bottom: 25px;  
-            right: 25px;  
-            width: 60px;  
-            height: 60px;  
-            background: #25D366;  
-            color: white;  
-            border-radius: 50%;  
-            display: flex;  
-            align-items: center;  
-            justify-content: center;  
-            font-size: 24px;  
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);  
-            z-index: 1000;  
-            animation: pulse 2s infinite;  
-            text-decoration: none;  
-            transition: all 0.3s;  
-        }  
-  
-        .whatsapp-float:hover {  
-            transform: scale(1.1);  
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);  
-        }  
-  
-        @keyframes pulse {  
-            0% { transform: scale(1); }  
-            50% { transform: scale(1.05); }  
-            100% { transform: scale(1); }  
-        }  
-  
-        /* Header */  
-        header {  
-            background: rgba(13, 27, 61, 0.95);  
-            backdrop-filter: blur(10px);  
-            padding: 15px 0;  
-            position: fixed;  
-            width: 100%;  
-            top: 0;  
-            z-index: 1000;  
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);  
-        }  
-  
-        header .container {  
-            display: flex;  
-            justify-content: space-between;  
-            align-items: center;  
-        }  
-  
-        .logo {  
-            display: flex;  
-            align-items: center;  
-            gap: 10px;  
-        }  
-  
-        .logo img {  
-            width: 45px;  
-            height: 45px;  
-            border-radius: 50%;  
-            border: 2px solid #E4BB13;  
-            object-fit: cover;  
-        }  
-  
-        .logo h1 {  
-            font-size: 24px;  
-            font-weight: 700;  
-            color: #E4BB13;  
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);  
-        }  
-  
-        nav {  
-            display: flex;  
-            gap: 20px;  
-            align-items: center;  
-        }  
-  
-        nav a {  
-            color: white;  
-            text-decoration: none;  
-            font-weight: 600;  
-            transition: color 0.3s;  
-            font-size: 14px;  
-            padding: 8px 15px;  
-            border-radius: 5px;  
-        }  
-  
-        nav a:hover {  
-            color: #E4BB13;  
-            background: rgba(228, 187, 19, 0.1);  
-        }  
-  
-        .catalog-btn {  
-            background: #E4BB13 !important;  
-            color: #0d1b3d !important;  
-            font-weight: 700 !important;  
-            padding: 10px 20px !important;  
-            border-radius: 25px !important;  
-        }  
-  
-        .catalog-btn:hover {  
-            background: #ffd700 !important;  
-            transform: translateY(-2px);  
-        }  
-  
-        /* Hero Section */  
-        .hero {  
-            min-height: 100vh;  
-            display: flex;  
-            align-items: center;  
-            padding: 100px 0 50px;  
-            background: linear-gradient(135deg, rgba(13, 27, 61, 0.9) 0%, rgba(30, 58, 138, 0.8) 100%);  
-        }  
-  
-        .hero-content {  
-            flex: 1;  
-            padding: 0 20px;  
-        }  
-  
-        .hero-content h2 {  
-            font-size: 3.2rem;  
-            margin-bottom: 20px;  
-            color: #E4BB13;  
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  
-            font-weight: 700;  
-        }  
-  
-        .hero-content p {  
-            font-size: 1.3rem;  
-            margin-bottom: 30px;  
-            opacity: 0.9;  
-        }  
-  
-        /* BOTÕES NO ESTILO QUE VOCÊ GOSTA */  
-        .hero-buttons {  
-            display: flex;  
-            gap: 15px;  
-            flex-wrap: wrap;  
-            margin: 40px 0 30px;  
-        }  
-  
-        .btn {  
-            display: inline-flex;  
-            align-items: center;  
-            gap: 10px;  
-            padding: 15px 25px;  
-            background: #E4BB13;  
-            color: #0d1b3d;  
-            text-decoration: none;  
-            border-radius: 50px;  
-            font-weight: 600;  
-            transition: all 0.3s;  
-            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);  
-            border: none;  
-            cursor: pointer;  
-        }  
-  
-        .whatsapp-btn {  
-            background: #25D366;  
-            color: white;  
-        }  
-  
-        .instagram-btn {  
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);  
-            color: white;  
-        }  
-  
-        .location-btn {  
-            background: #4285F4;  
-            color: white;  
-        }  
-  
-        .catalog-btn-hero {  
-            background: transparent;  
-            border: 2px solid #E4BB13;  
-            color: #E4BB13;  
-        }  
-  
-        .btn:hover {  
-            transform: translateY(-3px);  
-            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.6);  
-        }  
-  
-        .hero-image {  
-            flex: 1;  
-            display: flex;  
-            justify-content: center;  
-            align-items: center;  
-            position: relative;  
-        }  
-  
-        .moto-placeholder {  
-            width: 320px;  
-            height: 320px;  
-            background: rgba(228, 187, 19, 0.1);  
-            border-radius: 50%;  
-            display: flex;  
-            align-items: center;  
-            justify-content: center;  
-            border: 4px solid #E4BB13;  
-            position: relative;  
-        }  
-  
-        .moto-placeholder i {  
-            font-size: 120px;  
-            color: #E4BB13;  
-        }  
-  
-        .floating-elements {  
-            position: absolute;  
-            animation: float 3s ease-in-out infinite;  
-        }  
-  
-        .float-element {  
-            background: rgba(255, 255, 255, 0.1);  
-            backdrop-filter: blur(10px);  
-            padding: 12px 18px;  
-            border-radius: 25px;  
-            margin: 10px 0;  
-            border: 1px solid rgba(255, 255, 255, 0.2);  
-            font-weight: 600;  
-            font-size: 14px;  
-        }  
-  
-        @keyframes float {  
-            0%, 100% { transform: translateY(0px); }  
-            50% { transform: translateY(-10px); }  
-        }  
-  
-        /* Features */  
-        .features {  
-            padding: 80px 0;  
-            background: #0d1b3d;  
-        }  
-  
-        .feature-grid {  
-            display: grid;  
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  
-            gap: 30px;  
-        }  
-  
-        .feature {  
-            text-align: center;  
-            padding: 40px 30px;  
-            background: rgba(255, 255, 255, 0.05);  
-            border-radius: 20px;  
-            backdrop-filter: blur(10px);  
-            border: 1px solid rgba(255, 255, 255, 0.1);  
-            transition: transform 0.3s;  
-        }  
-  
-        .feature:hover {  
-            transform: translateY(-8px);  
-            background: rgba(228, 187, 19, 0.1);  
-        }  
-  
-        .feature i {  
-            font-size: 50px;  
-            color: #E4BB13;  
-            margin-bottom: 25px;  
-        }  
-  
-        .feature h4 {  
-            margin-bottom: 15px;  
-            color: #E4BB13;  
-            font-size: 1.2rem; /* reduzido de 1.4rem -> 1.2rem */  
-        }  
-  
-        .feature p {  
-            opacity: 0.9;  
-            line-height: 1.6;  
-        }  
-  
-        /* Products */  
-        .products {  
-            padding: 100px 0;  
-            background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);  
-        }  
-  
-        .products h2 {  
-            text-align: center;  
-            font-size: 3rem;  
-            margin-bottom: 60px;  
-            color: #E4BB13;  
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);  
-        }  
-  
-        .product-grid {  
-            display: grid;  
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));  
-            gap: 40px;  
-            margin-bottom: 50px;  
-        }  
-  
-        .product-card {  
-            background: rgba(255, 255, 255, 0.08);  
-            padding: 40px 30px;  
-            border-radius: 20px;  
-            text-align: center;  
-            transition: all 0.3s ease;  
-            backdrop-filter: blur(10px);  
-            border: 1px solid rgba(255, 255, 255, 0.1);  
-            position: relative;  
-            overflow: hidden;  
-        }  
-  
-        .product-card:hover {  
-            transform: translateY(-10px);  
-            background: rgba(228, 187, 19, 0.12);  
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);  
-        }  
-  
-        .product-icon {  
-            width: 90px;  
-            height: 90px;  
-            background: rgba(228, 187, 19, 0.15);  
-            border-radius: 50%;  
-            display: flex;  
-            align-items: center;  
-            justify-content: center;  
-            margin: 0 auto 25px;  
-            transition: transform 0.3s ease;  
-            border: 2px solid #E4BB13;  
-        }  
-  
-        .product-icon:hover {  
-            transform: scale(1.1) rotate(5deg);  
-        }  
-  
-        .product-icon i {  
-            font-size: 40px;  
-            color: #E4BB13;  
-        }  
-  
-        .product-card h3 {  
-            margin-bottom: 20px;  
-            color: #E4BB13;  
-            font-size: 1.6rem;  
-            font-weight: 700;  
-        }  
-  
-        .product-card p {  
-            margin-bottom: 25px;  
-            opacity: 0.9;  
-            font-size: 1.1rem;  
-        }  
-  
-        .product-card ul {  
-            list-style: none;  
-            margin: 25px 0;  
-            text-align: left;  
-        }  
-  
-        .product-card ul li {  
-            margin-bottom: 12px;  
-            padding-left: 30px;  
-            position: relative;  
-            font-size: 1rem;  
-        }  
-  
-        .product-card ul li:before {  
-            content: "✓";  
-            color: #E4BB13;  
-            position: absolute;  
-            left: 0;  
-            font-weight: bold;  
-            font-size: 1.2rem;  
-        }  
-  
-        .price {  
-            display: block;  
-            font-size: 1.5rem;  
-            font-weight: 700;  
-            color: #E4BB13;  
-            margin: 25px 0 20px;  
-            background: rgba(228, 187, 19, 0.1);  
-            padding: 15px;  
-            border-radius: 15px;  
-            border: 2px solid #E4BB13;  
-        }  
-  
-        .catalog-cta {  
-            text-align: center;  
-            margin-top: 50px;  
-        }  
-  
-        .btn-large {  
-            display: inline-block;  
-            padding: 20px 45px;  
-            background: #E4BB13;  
-            color: #0d1b3d;  
-            text-decoration: none;  
-            border-radius: 50px;  
-            font-weight: 700;  
-            transition: all 0.3s ease;  
-            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.4);  
-            border: none;  
-            cursor: pointer;  
-            font-size: 1.1rem;  
-            letter-spacing: 0.5px;  
-        }  
-  
-        .btn-large:hover {  
-            transform: translateY(-5px) scale(1.05);  
-            box-shadow: 0 12px 30px rgba(228, 187, 19, 0.6);  
-            background: #ffd700;  
-        }  
-  
-        /* About */  
-        .about {  
-            padding: 100px 0;  
-            background: #0d1b3d;  
-        }  
-  
-        .about-content {  
-            display: grid;  
-            grid-template-columns: 1fr 1fr;  
-            gap: 60px;  
-            align-items: center;  
-        }  
-  
-        .about-text h2 {  
-            font-size: 2.8rem;  
-            margin-bottom: 25px;  
-            color: #E4BB13;  
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);  
-        }  
-  
-        .about-text p {  
-            font-size: 1.2rem;  
-            margin-bottom: 35px;  
-            opacity: 0.9;  
-            line-height: 1.8;  
-        }  
-  
-        .about-features {  
-            display: flex;  
-            flex-direction: column;  
-            gap: 20px;  
-        }  
-  
-        .about-feature {  
-            display: flex;  
-            align-items: center;  
-            gap: 15px;  
-            padding: 15px;  
-            background: rgba(255, 255, 255, 0.05);  
-            border-radius: 15px;  
-            transition: transform 0.3s ease;  
-        }  
-  
-        .about-feature:hover {  
-            transform: translateX(10px);  
-            background: rgba(228, 187, 19, 0.1);  
-        }  
-  
-        .about-feature i {  
-            color: #E4BB13;  
-            font-size: 1.5rem;  
-            width: 30px;  
-        }  
-  
-        .about-feature span {  
-            font-size: 1.1rem;  
-            font-weight: 500;  
-        }  
-  
-        .about-image {  
-            display: flex;  
-            justify-content: center;  
-        }  
-  
-        .stats {  
-            display: grid;  
-            grid-template-columns: 1fr;  
-            gap: 25px;  
-        }  
-  
-        .stat {  
-            background: rgba(255, 255, 255, 0.06);  
-            padding: 30px;  
-            border-radius: 20px;  
-            text-align: center;  
-            backdrop-filter: blur(10px);  
-            border: 1px solid rgba(255, 255, 255, 0.1);  
-            transition: transform 0.3s ease;  
-        }  
-  
-        .stat:hover {  
-            transform: translateY(-5px);  
-            background: rgba(228, 187, 19, 0.1);  
-        }  
-  
-        .number {  
-            display: block;  
-            font-size: 3rem;  
-            font-weight: 800;  
-            color: #E4BB13;  
-            margin-bottom: 10px;  
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);  
-        }  
-  
-        .label {  
-            font-size: 1rem;  
-            opacity: 0.9;  
-            font-weight: 500;  
-        }  
-  
-        /* Contact */  
-        .contact {  
-            padding: 100px 0;  
-            background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);  
-        }  
-  
-        .contact h2 {  
-            text-align: center;  
-            font-size: 3rem;  
-            margin-bottom: 60px;  
-            color: #E4BB13;  
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);  
-        }  
-  
-        .contact-grid {  
-            display: grid;  
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  
-            gap: 25px;  
-            margin-bottom: 50px;  
-        }  
-  
-        .contact-card {  
-            background: rgba(255, 255, 255, 0.08);  
-            padding: 35px 30px;  
-            border-radius: 20px;  
-            text-align: center;  
-            text-decoration: none;  
-            color: white;  
-            transition: all 0.3s ease;  
-            backdrop-filter: blur(10px);  
-            border: 1px solid rgba(255, 255, 255, 0.1);  
-            position: relative;  
-            overflow: hidden;  
-        }  
-  
-        .contact-card:hover {  
-            transform: translateY(-8px);  
-            background: rgba(228, 187, 19, 0.15);  
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);  
-        }  
-  
-        .contact-card i {  
-            font-size: 45px;  
-            margin-bottom: 25px;  
-            transition: transform 0.3s ease;  
-        }  
-  
-        .contact-card:hover i {  
-            transform: scale(1.2);  
-        }  
-  
-        .whatsapp i { color: #25D366; }  
-        .instagram i { color: #E1306C; }  
-        .location i { color: #4285F4; }  
-        .phone i { color: #34A853; }  
-  
-        .contact-card h4 {  
-            margin-bottom: 15px;  
-            color: #E4BB13;  
-            font-size: 1.4rem;  
-            font-weight: 700;  
-        }  
-  
-        .contact-card p {  
-            margin-bottom: 15px;  
-            font-size: 1.1rem;  
-            opacity: 0.9;  
-        }  
-  
-        .click {  
-            display: block;  
-            margin-top: 20px;  
-            font-size: 1rem;  
-            opacity: 0.8;  
-            font-weight: 500;  
-        }  
-  
-        .business-hours {  
-            background: rgba(255, 255, 255, 0.08);  
-            padding: 35px;  
-            border-radius: 20px;  
-            text-align: center;  
-            backdrop-filter: blur(10px);  
-            border: 1px solid rgba(255, 255, 255, 0.1);  
-            margin-top: 40px;  
-        }  
-  
-        .business-hours h4 {  
-            color: #E4BB13;  
-            margin-bottom: 20px;  
-            font-size: 1.5rem;  
-            font-weight: 700;  
-        }  
-  
-        .business-hours p {  
-            margin-bottom: 10px;  
-            font-size: 1.1rem;  
-            opacity: 0.9;  
-        }  
-  
-        /* Footer */  
-        footer {  
-            background: #0a1429;  
-            padding: 50px 0 25px;  
-            border-top: 2px solid rgba(228, 187, 19, 0.3);  
-        }  
-  
-        .footer-content {  
-            display: grid;  
-            grid-template-columns: 1fr 1fr 1fr;  
-            gap: 40px;  
-            margin-bottom: 40px;  
-            align-items: center;  
-        }  
-  
-        .footer-logo {  
-            display: flex;  
-            align-items: center;  
-            gap: 15px;  
-        }  
-  
-        .footer-logo img {  
-            width: 50px;  
-            height: 50px;  
-            border-radius: 50%;  
-            border: 2px solid #E4BB13;  
-            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.3);  
-        }  
-  
-        .footer-logo span {  
-            font-size: 1.2rem;  
-            font-weight: 700;  
-            color: #E4BB13;  
-        }  
-  
-        .footer-contact p {  
-            margin-bottom: 12px;  
-            opacity: 0.9;  
-            font-size: 1.1rem;  
-            display: flex;  
-            align-items: center;  
-            gap: 10px;  
-        }  
-  
-        .footer-social {  
-            display: flex;  
-            gap: 20px;  
-            justify-content: flex-end;  
-            margin-top: 20px;  
-        }  
-  
-        .social-link {  
-            width: 55px;  
-            height: 55px;  
-            background: rgba(255, 255, 255, 0.1);  
-            border-radius: 50%;  
-            display: flex;  
-            align-items: center;  
-            justify-content: center;  
-            color: white;  
-            text-decoration: none;  
-            transition: all 0.3s ease;  
-            font-size: 1.3rem;  
-        }  
-  
-        .social-link:hover {  
-            background: #E4BB13;  
-            color: #0d1b3d;  
-            transform: translateY(-3px);  
-            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.4);  
-        }  
-  
-        .footer-bottom {  
-            text-align: center;  
-            padding-top: 30px;  
-            border-top: 1px solid rgba(255, 255, 255, 0.1);  
-        }  
-  
-        .footer-bottom p {  
-            opacity: 0.8;  
-            font-size: 1rem;  
-            margin-bottom: 8px;  
-        }  
-  
-        /* Responsive */  
-        @media (max-width: 1024px) {  
-            .hero-content h2 {  
-                font-size: 2.8rem;  
-            }  
-              
-            .about-content {  
-                grid-template-columns: 1fr;  
-                gap: 40px;  
-            }  
-        }  
-  
-        @media (max-width: 768px) {  
-            .hero {  
-                flex-direction: column;  
-                text-align: center;  
-                padding: 120px 0 60px;  
-            }  
-  
-            .hero-content h2 {  
-                font-size: 2.3rem;  
-            }  
-  
-            .hero-content p {  
-                font-size: 1.1rem;  
-            }  
-  
-            .hero-buttons {  
-                justify-content: center;  
-            }  
-  
-            .moto-placeholder {  
-                width: 250px;  
-                height: 250px;  
-                margin-top: 50px;  
-            }  
-  
-            .moto-placeholder i {  
-                font-size: 80px;  
-            }  
-  
-            .products h2,  
-            .contact h2 {  
-                font-size: 2.5rem;  
-            }  
-  
-            .about-text h2 {  
-                font-size: 2.3rem;  
-            }  
-  
-            .footer-content {  
-                grid-template-columns: 1fr;  
-                text-align: center;  
-                gap: 30px;  
-            }  
-  
-            .footer-social {  
-                justify-content: center;  
-            }  
-  
-            nav {  
-                display: none;  
-            }  
-  
-            .whatsapp-float {  
-                bottom: 20px;  
-                right: 20px;  
-                width: 55px;  
-                height: 55px;  
-                font-size: 22px;  
-            }  
-        }  
-  
-        @media (max-width: 480px) {  
-            .hero-content h2 {  
-                font-size: 2rem;  
-            }  
-              
-            .hero-buttons {  
-                flex-direction: column;  
-                align-items: center;  
-            }  
-              
-            .btn {  
-                width: 100%;  
-                max-width: 280px;  
-                justify-content: center;  
-            }  
-              
-            .product-grid {  
-                grid-template-columns: 1fr;  
-            }  
-              
-            .product-card {  
-                padding: 30px 20px;  
-            }  
-              
-            .btn-large {  
-                padding: 18px 35px;  
-                font-size: 1rem;  
-            }  
-        }  
-  
-        /* Smooth Scroll */  
-        html {  
-            scroll-behavior: smooth;  
-        }  
-  
-        /* Efeito de fade-in para as seções */  
-        section {  
-            opacity: 0;  
-            transform: translateY(50px);  
-            transition: all 0.8s ease-out;  
-        }  
-  
-        section.visible {  
-            opacity: 1;  
-            transform: translateY(0);  
-        }  
-    </style>  
-</head>  
-<body>  
-    <!-- WhatsApp Float -->  
-    <a href="https://w.app/c8foan" class="whatsapp-float">  
-        <i class="fab fa-whatsapp"></i>  
-    </a>  
-  
-    <!-- Header -->  
-    <header>  
-        <div class="container">  
-            <div class="logo">  
-                <img src="logo.png" alt="EloBike">  
-                <h1>ELOBIKE</h1>  
-            </div>  
-            <nav>  
-                <a href="#produtos">Produtos</a>  
-                <a href="#sobre">Sobre</a>  
-                <a href="#contato">Contato</a>  
-                <a href="catalogo.html" class="catalog-btn">Catálogo</a>  
-            </nav>  
-        </div>  
-    </header>  
-  
-    <!-- Hero Section -->  
-    <section class="hero">  
-        <div class="hero-content">  
-            <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>  
-            <p>As melhores scooters elétricas de Araxá e região</p>  
-              
-            <!-- BOTÕES NO ESTILO QUE VOCÊ GOSTA -->  
-            <div class="hero-buttons">  
-                <a href="https://w.app/c8foan" class="btn whatsapp-btn">  
-                    <i class="fab fa-whatsapp"></i> WhatsApp  
-                </a>  
-                <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">  
-                    <i class="fab fa-instagram"></i> Instagram  
-                </a>  
-                <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">  
-                    <i class="fas fa-map-marker-alt"></i> Localização  
-                </a>  
-                <a href="#produtos" class="btn catalog-btn-hero">  
-                    <i class="fas fa-store"></i> Ver Catálogo  
-                </a>  
-            </div>  
-        </div>  
-        <div class="hero-image">  
-            <div class="moto-placeholder">  
-                <i class="fas fa-bolt"></i>  
-                <div class="floating-elements">  
-                    <div class="float-element">⭐ Qualidade</div>  
-                    <div class="float-element">🚀 Entrega</div>  
-                    <div class="float-element">💪 Garantia</div>  
-                </div>  
-            </div>  
-        </div>  
-    </section>  
-  
-    <!-- Features -->  
-    <section class="features">  
-        <div class="container">  
-            <div class="feature-grid">  
-                <div class="feature">  
-                    <i class="fas fa-gas-pump"></i>  
-                    <h4>Zero Gasolina</h4>  
-                    <p>Economize até R$ 300/mês</p>  
-                </div>  
-                <div class="feature">  
-                    <i class="fas fa-leaf"></i>  
-                    <h4>Ecológico</h4>  
-                    <p>Zero emissões de carbono</p>  
-                </div>  
-                <div class="feature">  
-                    <i class="fas fa-tools"></i>  
-                    <h4>Manutenção</h4>  
-                    <p>Assistência técnica especializada</p>  
-                </div>  
-                <div class="feature">  
-                    <i class="fas fa-bolt"></i>  
-                    <h4>Performance</h4>  
-                    <p>Alta tecnologia e potência</p>  
-                </div>  
-            </div>  
-        </div>  
-    </section>  
-  
-    <!-- Products -->  
-    <section id="produtos" class="products">  
-        <div class="container">  
-            <h2>Nossos Modelos</h2>  
-            <div class="product-grid">  
-                <div class="product-card">  
-                    <div class="product-icon">  
-                        <i class="fas fa-biking"></i>  
-                    </div>  
-                    <h3>City Scooter</h3>  
-                    <p>Perfeita para o dia a day</p>  
-                    <ul>  
-                        <li>⏱️ 45 km/h</li>  
-                        <li>🔋 60 km autonomia</li>  
-                        <li>⚡ 1000W</li>  
-                    </ul>  
-                    <span class="price">A partir de R$ 3.499</span>  
-                </div>  
-                  
-                <div class="product-card">  
-                    <div class="product-icon">  
-                        <i class="fas fa-motorcycle"></i>  
-                    </div>  
-                    <h3>Elite Pro</h3>  
-                    <p>Alta performance</p>  
-                    <ul>  
-                        <li>⏱️ 60 km/h</li>  
-                        <li>🔋 80 km autonomia</li>  
-                        <li>⚡ 1500W</li>  
-                    </ul>  
-                    <span class="price">A partir de R$ 4.999</span>  
-                </div>  
-                  
-                <div class="product-card">  
-                    <div class="product-icon">  
-                        <i class="fas fa-scooter"></i>  
-                    </div>  
-                    <h3>Urban Lite</h3>  
-                    <p>Leve e econômica</p>  
-                    <ul>  
-                        <li>⏱️ 35 km/h</li>  
-                        <li>🔋 50 km autonomia</li>  
-                        <li>⚡ 800W</li>  
-                    </ul>  
-                    <span class="price">A partir de R$ 2.899</span>  
-                </div>  
-            </div>  
-              
-            <div class="catalog-cta">  
-                <a href="catalogo.html" class="btn-large">  
-                    <i class="fas fa-store"></i> Ver Catálogo Completo  
-                </a>  
-            </div>  
-        </div>  
-    </section>  
-  
-    <!-- About -->  
-    <section id="sobre" class="about">  
-        <div class="container">  
-            <div class="about-content">  
-                <div class="about-text">  
-                    <h2>EloBike Araxá</h2>  
-                    <p>Especialistas em scooters elétricas com os melhores preços e atendimento personalizado em Araxá e região. Qualidade garantida e satisfação dos nossos clientes.</p>  
-                      
-                    <div class="about-features">  
-                        <div class="about-feature">  
-                            <i class="fas fa-check-circle"></i>  
-                            <span>Produtos de qualidade</span>  
-                        </div>  
-                        <div class="about-feature">  
-                            <i class="fas fa-check-circle"></i>  
-                            <span>Atendimento personalizado</span>  
-                        </div>  
-                        <div class="about-feature">  
-                            <i class="fas fa-piggy-bank"></i>  
-                            <span>Economia Garantida</span>  
-                        </div>  
-                    </div>  
-                </div>  
-                  
-                <div class="about-image">  
-                    <div class="stats">  
-                        <div class="stat">  
-                            <span class="number">100%</span>  
-                            <span class="label">Clientes Satisfeitos</span>  
-                        </div>  
-                        <div class="stat">  
-                            <span class="number">+50</span>  
-                            <span class="label">Scooters Vendidas</span>  
-                        </div>  
-                        <div class="stat">  
-                            <span class="number">✓</span>  
-                            <span class="label">Qualidade Garantida</span>  
-                        </div>  
-                    </div>  
-                </div>  
-            </div>  
-        </div>  
-    </section>  
-  
-    <!-- Contact -->  
-    <section id="contato" class="contact">  
-        <div class="container">  
-            <h2>Fale Conosco</h2>  
-              
-            <div class="contact-grid">  
-                <a href="https://w.app/c8foan" class="contact-card whatsapp">  
-                    <i class="fab fa-whatsapp"></i>  
-                    <h4>WhatsApp</h4>  
-                    <p>(34) 9926-9707</p>  
-                    <span class="click">Clique para conversar</span>  
-                </a>  
-                  
-                <a href="https://www.instagram.com/elobikearaxa" class="contact-card instagram">  
-                    <i class="fab fa-instagram"></i>  
-                    <h4>Instagram</h4>  
-                    <p>@elobikearaxa</p>  
-                    <span class="click">Seguir página</span>  
-                </a>  
-                  
-                <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="contact-card location">  
-                    <i class="fas fa-map-marker-alt"></i>  
-                    <h4>Localização</h4>  
-                    <p>Araxá - MG</p>  
-                    <span class="click">Ver no mapa</span>  
-                </a>  
-                  
-                <div class="contact-card phone">  
-                    <i class="fas fa-phone"></i>  
-                    <h4>Telefone</h4>  
-                    <p>(34) 9926-9707</p>  
-                    <span class="click">Ligar agora</span>  
-                </div>  
-            </div>  
-  
-            <div class="business-hours">  
-                <h4>🕒 Horário de Funcionamento</h4>  
-                <p>Segunda a Sexta: 8h às 17h30</p>  
-                <p>Sábado: 8h às 12h</p>  
-            </div>  
-        </div>  
-    </section>  
-  
-    <!-- Footer -->  
-    <footer>  
-        <div class="container">  
-            <div class="footer-content">  
-                <div class="footer-logo">  
-                    <img src="logo.png" alt="EloBike">  
-                    <span>ELOBIKE ARAXÁ</span>  
-                </div>  
-                  
-                <div class="footer-contact">  
-                    <p>📞 (34) 9926-9707</p>  
-                    <p>📍 Araxá - Minas Gerais</p>  
-                    <p>🕒 Seg-Sex: 8h-17h30 | Sáb: 8h-12h</p>  
-                </div>  
-                  
-                <div class="footer-social">  
-                    <a href="https://www.instagram.com/elobikearaxa" class="social-link">  
-                        <i class="fab fa-instagram"></i>  
-                    </a>  
-                    <a href="https://w.app/c8foan" class="social-link">  
-                        <i class="fab fa-whatsapp"></i>  
-                    </a>  
-                </div>  
-            </div>  
-              
-            <div class="footer-bottom">  
-                <p>&copy; 2023 EloBike Araxá - CNPJ: 57.620.431/0001-78</p>  
-                <p>Todos os direitos reservados</p>  
-            </div>  
-        </div>  
-    </footer>  
-  
-    <script>  
-        // Observador de interseção para animações de scroll  
-        const observerOptions = {  
-            threshold: 0.1,  
-            rootMargin: '0px 0px -50px 0px'  
-        };  
-  
-        const observer = new IntersectionObserver((entries) => {  
-            entries.forEach(entry => {  
-                if (entry.isIntersecting) {  
-                    entry.target.classList.add('visible');  
-                }  
-            });  
-        }, observerOptions);  
-  
-        // Observar todas as seções  
-        document.querySelectorAll('section').forEach(section => {  
-            observer.observe(section);  
-        });  
-  
-        // Rolagem suave para links internos  
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {  
-            anchor.addEventListener('click', function (e) {  
-                e.preventDefault();  
-                const target = document.querySelector(this.getAttribute('href'));  
-                if (target) {  
-                    target.scrollIntoView({  
-                        behavior: 'smooth',  
-                        block: 'start'  
-                    });  
-                }  
-            });  
-        });  
-  
-        // Inicializar algumas seções como visíveis  
-        setTimeout(() => {  
-            document.querySelector('.hero').classList.add('visible');  
-        }, 100);  
-    </script>  
-</body>  
-</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EloBike - Motos Elétricas | Araxá MG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0d1b3d 0%, #1e3a8a 100%);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Header */
+        header {
+            background: rgba(13, 27, 61, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #E4BB13;
+            object-fit: cover;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #E4BB13;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 14px;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            color: #E4BB13;
+            background: rgba(228, 187, 19, 0.1);
+        }
+
+        .catalog-btn {
+            background: #E4BB13 !important;
+            color: #0d1b3d !important;
+            font-weight: 700 !important;
+            padding: 10px 20px !important;
+            border-radius: 25px !important;
+        }
+
+        .catalog-btn:hover {
+            background: #ffd700 !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 50px;
+            background: linear-gradient(135deg, rgba(13, 27, 61, 0.9) 0%, rgba(30, 58, 138, 0.8) 100%);
+        }
+
+        .hero-content {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            color: #E4BB13;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* BOTÕES NO ESTILO QUE VOCÊ GOSTA */
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 40px 0 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            background: #E4BB13;
+            color: #0d1b3d;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+        }
+
+        .location-btn {
+            background: #4285F4;
+            color: white;
+        }
+
+        .catalog-btn-hero {
+            background: transparent;
+            border: 2px solid #E4BB13;
+            color: #E4BB13;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.6);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .moto-placeholder {
+            width: 320px;
+            height: 320px;
+            background: rgba(228, 187, 19, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #E4BB13;
+            position: relative;
+        }
+
+        .moto-placeholder i {
+            font-size: 120px;
+            color: #E4BB13;
+        }
+
+        .floating-elements {
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .float-element {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 12px 18px;
+            border-radius: 25px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Features - MODIFICADO (menor) */
+        .features {
+            padding: 50px 0; /* Reduzido de 80px */
+            background: #0d1b3d;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reduzido de 250px */
+            gap: 20px; /* Reduzido de 30px */
+        }
+
+        .feature {
+            text-align: center;
+            padding: 25px 20px; /* Reduzido de 40px 30px */
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px; /* Reduzido de 20px */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px); /* Reduzido de -8px */
+            background: rgba(228, 187, 19, 0.1);
+        }
+
+        .feature i {
+            font-size: 36px; /* Reduzido de 50px */
+            color: #E4BB13;
+            margin-bottom: 15px; /* Reduzido de 25px */
+        }
+
+        .feature h4 {
+            margin-bottom: 10px; /* Reduzido de 15px */
+            color: #E4BB13;
+            font-size: 1.1rem; /* Reduzido de 1.2rem */
+        }
+
+        .feature p {
+            opacity: 0.9;
+            line-height: 1.5; /* Reduzido de 1.6 */
+            font-size: 0.9rem; /* Adicionado para reduzir texto */
+        }
+
+        /* Products */
+        .products {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            color: #E4BB13;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            background: rgba(228, 187, 19, 0.12);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(228, 187, 19, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: transform 0.3s ease;
+            border: 2px solid #E4BB13;
+        }
+
+        .product-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .product-icon i {
+            font-size: 40px;
+            color: #E4BB13;
+        }
+
+        .product-card h3 {
+            margin-bottom: 20px;
+            color: #E4BB13;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .product-card p {
+            margin-bottom: 25px;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .product-card ul {
+            list-style: none;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .product-card ul li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .product-card ul li:before {
+            content: "✓";
+            color: #E4BB13;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .price {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #E4BB13;
+            margin: 25px 0 20px;
+            background: rgba(228, 187, 19, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px solid #E4BB13;
+        }
+
+        .catalog-cta {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-large {
+            display: inline-block;
+            padding: 20px 45px;
+            background: #E4BB13;
+            color: #0d1b3d;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.4);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-large:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(228, 187, 19, 0.6);
+            background: #ffd700;
+        }
+
+        /* About */
+        .about {
+            padding: 100px 0;
+            background: #0d1b3d;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: #E4BB13;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .about-feature:hover {
+            transform: translateX(10px);
+            background: rgba(228, 187, 19, 0.1);
+        }
+
+        .about-feature i {
+            color: #E4BB13;
+            font-size: 1.5rem;
+            width: 30px;
+        }
+
+        .about-feature span {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+            background: rgba(228, 187, 19, 0.1);
+        }
+
+        .number {
+            display: block;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #E4BB13;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .label {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            color: #E4BB13;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 35px 30px;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            background: rgba(228, 187, 19, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-card i {
+            font-size: 45px;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover i {
+            transform: scale(1.2);
+        }
+
+        .whatsapp i { color: #25D366; }
+        .instagram i { color: #E1306C; }
+        .location i { color: #4285F4; }
+        .phone i { color: #34A853; }
+
+        .contact-card h4 {
+            margin-bottom: 15px;
+            color: #E4BB13;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .contact-card p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .click {
+            display: block;
+            margin-top: 20px;
+            font-size: 1rem;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .business-hours {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+        }
+
+        .business-hours h4 {
+            color: #E4BB13;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .business-hours p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer - MODIFICADO (mais compacto) */
+        footer {
+            background: #0a1429;
+            padding: 30px 0 15px; /* Reduzido de 50px 0 25px */
+            border-top: 2px solid rgba(228, 187, 19, 0.3);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px; /* Reduzido de 40px */
+            margin-bottom: 30px; /* Reduzido de 40px */
+            align-items: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* Reduzido de 15px */
+        }
+
+        .footer-logo img {
+            width: 40px; /* Reduzido de 50px */
+            height: 40px; /* Reduzido de 50px */
+            border-radius: 50%;
+            border: 2px solid #E4BB13;
+            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.3);
+        }
+
+        .footer-logo span {
+            font-size: 1rem; /* Reduzido de 1.2rem */
+            font-weight: 700;
+            color: #E4BB13;
+        }
+
+        .footer-contact p {
+            margin-bottom: 8px; /* Reduzido de 12px */
+            opacity: 0.9;
+            font-size: 0.9rem; /* Reduzido de 1.1rem */
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Reduzido de 10px */
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px; /* Reduzido de 20px */
+            justify-content: flex-end;
+            margin-top: 15px; /* Reduzido de 20px */
+        }
+
+        .social-link {
+            width: 45px; /* Reduzido de 55px */
+            height: 45px; /* Reduzido de 55px */
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem; /* Reduzido de 1.3rem */
+        }
+
+        .social-link:hover {
+            background: #E4BB13;
+            color: #0d1b3d;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px; /* Reduzido de 30px */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+            font-size: 0.9rem; /* Reduzido de 1rem */
+            margin-bottom: 5px; /* Reduzido de 8px */
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 120px 0 60px;
+            }
+
+            .hero-content h2 {
+                font-size: 2.3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .moto-placeholder {
+                width: 250px;
+                height: 250px;
+                margin-top: 50px;
+            }
+
+            .moto-placeholder i {
+                font-size: 80px;
+            }
+
+            .products h2,
+            .contact h2 {
+                font-size: 2.5rem;
+            }
+
+            .about-text h2 {
+                font-size: 2.3rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 25px; /* Ajustado para mobile */
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 22px;
+            }
+
+            /* Ajustes responsivos para as features */
+            .feature-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+            }
+
+            .feature {
+                padding: 20px 15px;
+            }
+
+            .feature i {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-card {
+                padding: 30px 20px;
+            }
+            
+            .btn-large {
+                padding: 18px 35px;
+                font-size: 1rem;
+            }
+
+            /* Ajustes adicionais para mobile */
+            .footer-content {
+                gap: 20px;
+            }
+
+            .footer-contact p {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Efeito de fade-in para as seções */
+        section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float -->
+    <a href="https://w.app/c8foan" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="EloBike">
+                <h1>ELOBIKE</h1>
+            </div>
+            <nav>
+                <a href="#produtos">Produtos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+                <a href="catalogo.html" class="catalog-btn">Catálogo</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>
+            <p>As melhores scooters elétricas de Araxá e região</p>
+            
+            <!-- BOTÕES NO ESTILO QUE VOCÊ GOSTA -->
+            <div class="hero-buttons">
+                <a href="https://w.app/c8foan" class="btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
+                    <i class="fas fa-map-marker-alt"></i> Localização
+                </a>
+                <a href="#produtos" class="btn catalog-btn-hero">
+                    <i class="fas fa-store"></i> Ver Catálogo
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="moto-placeholder">
+                <i class="fas fa-bolt"></i>
+                <div class="floating-elements">
+                    <div class="float-element">⭐ Qualidade</div>
+                    <div class="float-element">🚀 Entrega</div>
+                    <div class="float-element">💪 Garantia</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature">
+                    <i class="fas fa-gas-pump"></i>
+                    <h4>Zero Gasolina</h4>
+                    <p>Economize até R$ 300/mês</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Ecológico</h4>
+                    <p>Zero emissões de carbono</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tools"></i>
+                    <h4>Manutenção</h4>
+                    <p>Assistência técnica especializada</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Performance</h4>
+                    <p>Alta tecnologia e potência</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="produtos" class="products">
+        <div class="container">
+            <h2>Nossos Modelos</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-biking"></i>
+                    </div>
+                    <h3>City Scooter</h3>
+                    <p>Perfeita para o dia a day</p>
+                    <ul>
+                        <li>⏱️ 45 km/h</li>
+                        <li>🔋 60 km autonomia</li>
+                        <li>⚡ 1000W</li>
+                    </ul>
+                    <span class="price">A partir de R$ 3.499</span>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <h3>Elite Pro</h3>
+                    <p>Alta performance</p>
+                    <ul>
+                        <li>⏱️ 60 km/h</li>
+                        <li>🔋 80 km autonomia</li>
+                        <li>⚡ 1500W</li>
+                    </ul>
+                    <span class="price">A partir de R$ 4.999</span>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-scooter"></i>
+                    </div>
+                    <h3>Urban Lite</h3>
+                    <p>Leve e econômica</p>
+                    <ul>
+                        <li>⏱️ 35 km/h</li>
+                        <li>🔋 50 km autonomia</li>
+                        <li>⚡ 800W</li>
+                    </ul>
+                    <span class="price">A partir de R$ 2.899</span>
+                </div>
+            </div>
+            
+            <div class="catalog-cta">
+                <a href="catalogo.html" class="btn-large">
+                    <i class="fas fa-store"></i> Ver Catálogo Completo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="sobre" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>EloBike Araxá</h2>
+                    <p>Especialistas em scooters elétricas com os melhores preços e atendimento personalizado em Araxá e região. Qualidade garantida e satisfação dos nossos clientes.</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Produtos de qualidade</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Atendimento personalizado</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-piggy-bank"></i>
+                            <span>Economia Garantida</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="number">100%</span>
+                            <span class="label">Clientes Satisfeitos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">+50</span>
+                            <span class="label">Scooters Vendidas</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">✓</span>
+                            <span class="label">Qualidade Garantida</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <h2>Fale Conosco</h2>
+            
+            <div class="contact-grid">
+                <a href="https://w.app/c8foan" class="contact-card whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <h4>WhatsApp</h4>
+                    <p>(34) 9926-9707</p>
+                    <span class="click">Clique para conversar</span>
+                </a>
+                
+                <a href="https://www.instagram.com/elobikearaxa" class="contact-card instagram">
+                    <i class="fab fa-instagram"></i>
+                    <h4>Instagram</h4>
+                    <p>@elobikearaxa</p>
+                    <span class="click">Seguir página</span>
+                </a>
+                
+                <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="contact-card location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Localização</h4>
+                    <p>Araxá - MG</p>
+                    <span class="click">Ver no mapa</span>
+                </a>
+                
+                <div class="contact-card phone">
+                    <i class="fas fa-phone"></i>
+                    <h4>Telefone</h4>
+                    <p>(34) 9926-9707</p>
+                    <span class="click
