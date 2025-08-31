@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elo Bike - Motos Elétricas | Araxá MG</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" href="logo.png" type="image/png">
     <style>
         * {
@@ -20,7 +20,6 @@
             color: white;
             line-height: 1.6;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
         .container {
@@ -94,7 +93,7 @@
         }
 
         .logo h1 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: #E4BB13;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
@@ -102,17 +101,17 @@
 
         nav {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             transition: color 0.3s;
             font-size: 14px;
-            padding: 8px 15px;
+            padding: 6px 12px;
             border-radius: 5px;
         }
 
@@ -124,9 +123,10 @@
         .catalog-btn {
             background: #E4BB13 !important;
             color: #0d1b3d !important;
-            font-weight: 700 !important;
-            padding: 10px 20px !important;
-            border-radius: 25px !important;
+            font-weight: 600 !important;
+            padding: 8px 16px !important;
+            border-radius: 20px !important;
+            font-size: 13px !important;
         }
 
         .catalog-btn:hover {
@@ -149,67 +149,82 @@
         }
 
         .hero-content h2 {
-            font-size: 3.2rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             color: #E4BB13;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             font-weight: 700;
+            line-height: 1.2;
         }
 
         .hero-content p {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             margin-bottom: 30px;
             opacity: 0.9;
+            font-weight: 400;
         }
 
-        /* BOTÕES NO ESTILO QUE VOCÊ GOSTA */
+        /* BOTÕES DE CONTATO */
         .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 40px 0 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 500px;
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 25px;
-            background: #E4BB13;
-            color: #0d1b3d;
+        .action-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 16px;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
-            border: none;
-            cursor: pointer;
-        }
-
-        .whatsapp-btn {
-            background: #25D366;
             color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
         }
 
-        .instagram-btn {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            color: white;
-        }
-
-        .location-btn {
-            background: #4285F4;
-            color: white;
-        }
-
-        .catalog-btn-hero {
-            background: transparent;
-            border: 2px solid #E4BB13;
-            color: #E4BB13;
-        }
-
-        .btn:hover {
+        .action-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.6);
+            background: rgba(228, 187, 19, 0.15);
+            border-color: #E4BB13;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .action-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .whatsapp-action .action-icon { background: #25D366; }
+        .instagram-action .action-icon { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .location-action .action-icon { background: #4285F4; }
+        .catalog-action .action-icon { background: #E4BB13; }
+
+        .action-text {
+            flex: 1;
+        }
+
+        .action-text strong {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .action-text span {
+            display: block;
+            font-size: 13px;
+            opacity: 0.8;
+            font-weight: 400;
         }
 
         .hero-image {
@@ -221,19 +236,19 @@
         }
 
         .moto-placeholder {
-            width: 320px;
-            height: 320px;
+            width: 280px;
+            height: 280px;
             background: rgba(228, 187, 19, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 4px solid #E4BB13;
+            border: 3px solid #E4BB13;
             position: relative;
         }
 
         .moto-placeholder i {
-            font-size: 120px;
+            font-size: 100px;
             color: #E4BB13;
         }
 
@@ -245,88 +260,90 @@
         .float-element {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 12px 18px;
-            border-radius: 25px;
-            margin: 10px 0;
+            padding: 8px 14px;
+            border-radius: 20px;
+            margin: 8px 0;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            font-weight: 600;
-            font-size: 14px;
+            font-weight: 500;
+            font-size: 12px;
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
 
         /* Features */
         .features {
-            padding: 80px 0;
+            padding: 70px 0;
             background: #0d1b3d;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #E4BB13;
+            font-weight: 700;
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
         }
 
         .feature {
             text-align: center;
-            padding: 40px 30px;
+            padding: 30px 20px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
+            border-radius: 16px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s;
         }
 
         .feature:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             background: rgba(228, 187, 19, 0.1);
         }
 
         .feature i {
-            font-size: 50px;
+            font-size: 40px;
             color: #E4BB13;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .feature h4 {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #E4BB13;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .feature p {
             opacity: 0.9;
-            line-height: 1.6;
+            line-height: 1.5;
+            font-size: 14px;
         }
 
         /* Products */
         .products {
-            padding: 100px 0;
+            padding: 80px 0;
             background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
-        }
-
-        .products h2 {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 60px;
-            color: #E4BB13;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
         .product-card {
             background: rgba(255, 255, 255, 0.08);
-            padding: 40px 30px;
-            border-radius: 20px;
+            padding: 30px 25px;
+            border-radius: 16px;
             text-align: center;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
@@ -336,20 +353,20 @@
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             background: rgba(228, 187, 19, 0.12);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .product-icon {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             background: rgba(228, 187, 19, 0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
+            margin: 0 auto 20px;
             transition: transform 0.3s ease;
             border: 2px solid #E4BB13;
         }
@@ -359,34 +376,34 @@
         }
 
         .product-icon i {
-            font-size: 40px;
+            font-size: 32px;
             color: #E4BB13;
         }
 
         .product-card h3 {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #E4BB13;
-            font-size: 1.6rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 600;
         }
 
         .product-card p {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             opacity: 0.9;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .product-card ul {
             list-style: none;
-            margin: 25px 0;
+            margin: 20px 0;
             text-align: left;
         }
 
         .product-card ul li {
-            margin-bottom: 12px;
-            padding-left: 30px;
+            margin-bottom: 10px;
+            padding-left: 25px;
             position: relative;
-            font-size: 1rem;
+            font-size: 14px;
         }
 
         .product-card ul li:before {
@@ -395,104 +412,105 @@
             position: absolute;
             left: 0;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .price {
             display: block;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #E4BB13;
-            margin: 25px 0 20px;
+            margin: 20px 0 15px;
             background: rgba(228, 187, 19, 0.1);
-            padding: 15px;
-            border-radius: 15px;
-            border: 2px solid #E4BB13;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #E4BB13;
         }
 
         .catalog-cta {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
-        .btn-large {
-            display: inline-block;
-            padding: 20px 45px;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
             background: #E4BB13;
             color: #0d1b3d;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 700;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.4);
+            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
+            font-size: 15px;
         }
 
-        .btn-large:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(228, 187, 19, 0.6);
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(228, 187, 19, 0.6);
             background: #ffd700;
         }
 
         /* About */
         .about {
-            padding: 100px 0;
+            padding: 80px 0;
             background: #0d1b3d;
         }
 
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             align-items: center;
         }
 
         .about-text h2 {
-            font-size: 2.8rem;
-            margin-bottom: 25px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
             color: #E4BB13;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
         }
 
         .about-text p {
-            font-size: 1.2rem;
-            margin-bottom: 35px;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
             opacity: 0.9;
-            line-height: 1.8;
+            line-height: 1.6;
         }
 
         .about-features {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .about-feature {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 15px;
+            gap: 12px;
+            padding: 12px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
+            border-radius: 12px;
             transition: transform 0.3s ease;
         }
 
         .about-feature:hover {
-            transform: translateX(10px);
+            transform: translateX(8px);
             background: rgba(228, 187, 19, 0.1);
         }
 
         .about-feature i {
             color: #E4BB13;
-            font-size: 1.5rem;
-            width: 30px;
+            font-size: 1.3rem;
+            width: 25px;
         }
 
         .about-feature span {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
         }
 
@@ -504,13 +522,13 @@
         .stats {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 25px;
+            gap: 20px;
         }
 
         .stat {
             background: rgba(255, 255, 255, 0.06);
-            padding: 30px;
-            border-radius: 20px;
+            padding: 25px;
+            border-radius: 16px;
             text-align: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -524,44 +542,35 @@
 
         .number {
             display: block;
-            font-size: 3rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: 700;
             color: #E4BB13;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 8px;
         }
 
         .label {
-            font-size: 1rem;
+            font-size: 14px;
             opacity: 0.9;
             font-weight: 500;
         }
 
         /* Contact */
         .contact {
-            padding: 100px 0;
+            padding: 80px 0;
             background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
-        }
-
-        .contact h2 {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 60px;
-            color: #E4BB13;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
         .contact-card {
             background: rgba(255, 255, 255, 0.08);
-            padding: 35px 30px;
-            border-radius: 20px;
+            padding: 30px 25px;
+            border-radius: 16px;
             text-align: center;
             text-decoration: none;
             color: white;
@@ -573,19 +582,19 @@
         }
 
         .contact-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             background: rgba(228, 187, 19, 0.15);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .contact-card i {
-            font-size: 45px;
-            margin-bottom: 25px;
+            font-size: 36px;
+            margin-bottom: 20px;
             transition: transform 0.3s ease;
         }
 
         .contact-card:hover i {
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
 
         .whatsapp i { color: #25D366; }
@@ -594,103 +603,101 @@
         .phone i { color: #34A853; }
 
         .contact-card h4 {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #E4BB13;
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .contact-card p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-size: 15px;
             opacity: 0.9;
         }
 
         .click {
             display: block;
-            margin-top: 20px;
-            font-size: 1rem;
+            margin-top: 15px;
+            font-size: 13px;
             opacity: 0.8;
             font-weight: 500;
         }
 
         .business-hours {
             background: rgba(255, 255, 255, 0.08);
-            padding: 35px;
-            border-radius: 20px;
+            padding: 30px;
+            border-radius: 16px;
             text-align: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         .business-hours h4 {
             color: #E4BB13;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
         }
 
         .business-hours p {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-size: 15px;
             opacity: 0.9;
         }
 
         /* Footer */
         footer {
             background: #0a1429;
-            padding: 50px 0 25px;
-            border-top: 2px solid rgba(228, 187, 19, 0.3);
+            padding: 40px 0 20px;
+            border-top: 1px solid rgba(228, 187, 19, 0.3);
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 30px;
             align-items: center;
         }
 
         .footer-logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .footer-logo img {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             border: 2px solid #E4BB13;
-            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.3);
         }
 
         .footer-logo span {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #E4BB13;
         }
 
         .footer-contact p {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             opacity: 0.9;
-            font-size: 1.1rem;
+            font-size: 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .footer-social {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: flex-end;
-            margin-top: 20px;
         }
 
         .social-link {
-            width: 55px;
-            height: 55px;
+            width: 45px;
+            height: 45px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
@@ -699,37 +706,37 @@
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
 
         .social-link:hover {
             background: #E4BB13;
             color: #0d1b3d;
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.4);
+            box-shadow: 0 5px 15px rgba(228, 187, 19, 0.4);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-bottom p {
             opacity: 0.8;
-            font-size: 1rem;
-            margin-bottom: 8px;
+            font-size: 13px;
+            margin-bottom: 6px;
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
             .hero-content h2 {
-                font-size: 2.8rem;
+                font-size: 2.2rem;
             }
             
             .about-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 30px;
             }
         }
 
@@ -737,44 +744,50 @@
             .hero {
                 flex-direction: column;
                 text-align: center;
-                padding: 120px 0 60px;
+                padding: 100px 0 50px;
             }
 
             .hero-content h2 {
-                font-size: 2.3rem;
+                font-size: 2rem;
             }
 
             .hero-content p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
 
             .hero-buttons {
-                justify-content: center;
+                grid-template-columns: 1fr;
+                max-width: 350px;
+                margin: 30px auto;
             }
 
             .moto-placeholder {
-                width: 250px;
-                height: 250px;
-                margin-top: 50px;
+                width: 220px;
+                height: 220px;
+                margin-top: 40px;
             }
 
             .moto-placeholder i {
-                font-size: 80px;
+                font-size: 70px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
             }
 
             .products h2,
             .contact h2 {
-                font-size: 2.5rem;
+                font-size: 1.8rem;
             }
 
             .about-text h2 {
-                font-size: 2.3rem;
+                font-size: 1.8rem;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 30px;
+                gap: 25px;
             }
 
             .footer-social {
@@ -784,30 +797,22 @@
             nav {
                 display: none;
             }
-
-            .whatsapp-float {
-                bottom: 20px;
-                right: 20px;
-                width: 55px;
-                height: 55px;
-                font-size: 22px;
-            }
         }
 
         @media (max-width: 480px) {
             .hero-content h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
-            .hero-buttons {
+            .action-btn {
                 flex-direction: column;
-                align-items: center;
+                text-align: center;
+                gap: 10px;
+                padding: 15px;
             }
             
-            .btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
+            .action-icon {
+                margin: 0 auto;
             }
             
             .product-grid {
@@ -815,12 +820,12 @@
             }
             
             .product-card {
-                padding: 30px 20px;
+                padding: 25px 20px;
             }
             
-            .btn-large {
-                padding: 18px 35px;
-                font-size: 1rem;
+            .btn {
+                padding: 12px 24px;
+                font-size: 14px;
             }
         }
 
@@ -832,8 +837,8 @@
         /* Efeito de fade-in para as seções */
         section {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
         }
 
         section.visible {
@@ -870,19 +875,46 @@
             <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>
             <p>As melhores scooters elétricas de Araxá e região</p>
             
-            <!-- BOTÕES NO ESTILO QUE VOCÊ GOSTA -->
+            <!-- BOTÕES DE CONTATO -->
             <div class="hero-buttons">
-                <a href="https://w.app/c8foan" class="btn whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
+                <a href="https://w.app/c8foan" class="action-btn whatsapp-action">
+                    <div class="action-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="action-text">
+                        <strong>WhatsApp</strong>
+                        <span>(34) 9926-9707</span>
+                    </div>
                 </a>
-                <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">
-                    <i class="fab fa-instagram"></i> Instagram
+
+                <a href="https://www.instagram.com/elobikearaxa" class="action-btn instagram-action">
+                    <div class="action-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="action-text">
+                        <strong>Instagram</strong>
+                        <span>@elobikearaxa</span>
+                    </div>
                 </a>
-                <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
-                    <i class="fas fa-map-marker-alt"></i> Localização
+
+                <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="action-btn location-action">
+                    <div class="action-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="action-text">
+                        <strong>Localização</strong>
+                        <span>Araxá - MG</span>
+                    </div>
                 </a>
-                <a href="#produtos" class="btn catalog-btn-hero">
-                    <i class="fas fa-store"></i> Ver Catálogo
+
+                <a href="#produtos" class="action-btn catalog-action">
+                    <div class="action-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="action-text">
+                        <strong>Ver Catálogo</strong>
+                        <span>Modelos disponíveis</span>
+                    </div>
                 </a>
             </div>
         </div>
@@ -901,6 +933,7 @@
     <!-- Features -->
     <section class="features">
         <div class="container">
+            <h2 class="section-title">Vantagens das Nossas Scooters</h2>
             <div class="feature-grid">
                 <div class="feature">
                     <i class="fas fa-gas-pump"></i>
@@ -929,14 +962,14 @@
     <!-- Products -->
     <section id="produtos" class="products">
         <div class="container">
-            <h2>Nossos Modelos</h2>
+            <h2 class="section-title">Nossos Modelos</h2>
             <div class="product-grid">
                 <div class="product-card">
                     <div class="product-icon">
                         <i class="fas fa-biking"></i>
                     </div>
                     <h3>City Scooter</h3>
-                    <p>Perfeita para o dia a day</p>
+                    <p>Perfeita para o dia a dia</p>
                     <ul>
                         <li>⏱️ 45 km/h</li>
                         <li>🔋 60 km autonomia</li>
@@ -975,7 +1008,7 @@
             </div>
             
             <div class="catalog-cta">
-                <a href="catalogo.html" class="btn-large">
+                <a href="catalogo.html" class="btn">
                     <i class="fas fa-store"></i> Ver Catálogo Completo
                 </a>
             </div>
@@ -1018,7 +1051,7 @@
                         </div>
                         <div class="stat">
                             <span class="number">✓</span>
-                            <span class="label>Qualidade Garantida</span>
+                            <span class="label">Qualidade Garantida</span>
                         </div>
                     </div>
                 </div>
@@ -1029,7 +1062,7 @@
     <!-- Contact -->
     <section id="contato" class="contact">
         <div class="container">
-            <h2>Fale Conosco</h2>
+            <h2 class="section-title">Fale Conosco</h2>
             
             <div class="contact-grid">
                 <a href="https://w.app/c8foan" class="contact-card whatsapp">
