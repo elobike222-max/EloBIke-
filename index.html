@@ -9,6 +9,11 @@
     <link rel="icon" href="logo.png" type="image/png">
 </head>
 <body>
+    <!-- WhatsApp Float -->
+    <a href="https://w.app/c8foan" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -20,6 +25,7 @@
                 <a href="#produtos">Produtos</a>
                 <a href="#sobre">Sobre</a>
                 <a href="#contato">Contato</a>
+                <a href="catalogo.html" class="catalog-btn">Catálogo</a>
             </nav>
         </div>
     </header>
@@ -33,7 +39,9 @@
                 <a href="https://w.app/c8foan" class="btn whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> Falar no WhatsApp
                 </a>
-                <a href="#produtos" class="btn outline-btn">Ver Modelos</a>
+                <a href="catalogo.html" class="btn catalog-btn">
+                    <i class="fas fa-store"></i> Ver Catálogo
+                </a>
             </div>
         </div>
         <div class="hero-image">
@@ -68,9 +76,9 @@
                     <p>Assistência técnica especializada</p>
                 </div>
                 <div class="feature">
-                    <i class="fas fa-shield-alt"></i>
-                    <h4>Garantia</h4>
-                    <p>12 meses de garantia</p>
+                    <i class="fas fa-bolt"></i>
+                    <h4>Performance</h4>
+                    <p>Alta tecnologia e potência</p>
                 </div>
             </div>
         </div>
@@ -123,6 +131,12 @@
                     <span class="price">A partir de R$ 2.899</span>
                 </div>
             </div>
+            
+            <div class="catalog-cta">
+                <a href="catalogo.html" class="btn large-btn">
+                    <i class="fas fa-store"></i> Ver Catálogo Completo
+                </a>
+            </div>
         </div>
     </section>
 
@@ -132,16 +146,16 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>Elo Bike Araxá</h2>
-                    <p>Há mais de 2 anos trazendo mobilidade elétrica de qualidade para Araxá e região. Somos especialistas em scooters elétricas com os melhores preços e atendimento personalizado.</p>
+                    <p>Especialistas em scooters elétricas com os melhores preços e atendimento personalizado em Araxá e região. Qualidade garantida e satisfação dos nossos clientes.</p>
                     
                     <div class="about-features">
                         <div class="about-feature">
                             <i class="fas fa-check-circle"></i>
-                            <span>Produtos com garantia</span>
+                            <span>Produtos de qualidade</span>
                         </div>
                         <div class="about-feature">
                             <i class="fas fa-check-circle"></i>
-                            <span>Financiamento disponível</span>
+                            <span>Atendimento personalizado</span>
                         </div>
                         <div class="about-feature">
                             <i class="fas fa-check-circle"></i>
@@ -153,16 +167,16 @@
                 <div class="about-image">
                     <div class="stats">
                         <div class="stat">
-                            <span class="number">200+</span>
+                            <span class="number">100%</span>
                             <span class="label">Clientes Satisfeitos</span>
                         </div>
                         <div class="stat">
-                            <span class="number">2+</span>
-                            <span class="label">Anos no Mercado</span>
+                            <span class="number">+50</span>
+                            <span class="label">Scooters Vendidas</span>
                         </div>
                         <div class="stat">
-                            <span class="number">100%</span>
-                            <span class="label">Peças Originais</span>
+                            <span class="number">✓</span>
+                            <span class="label">Qualidade Garantida</span>
                         </div>
                     </div>
                 </div>
@@ -207,7 +221,7 @@
 
             <div class="business-hours">
                 <h4>🕒 Horário de Funcionamento</h4>
-                <p>Segunda a Sexta: 8h às 18h</p>
+                <p>Segunda a Sexta: 8h às 17h30</p>
                 <p>Sábado: 8h às 12h</p>
             </div>
         </div>
@@ -225,6 +239,7 @@
                 <div class="footer-contact">
                     <p>📞 (34) 9926-9707</p>
                     <p>📍 Araxá - Minas Gerais</p>
+                    <p>🕒 Seg-Sex: 8h-17h30 | Sáb: 8h-12h</p>
                 </div>
                 
                 <div class="footer-social">
@@ -238,8 +253,8 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 Elo Bike Araxá - Todos os direitos reservados</p>
-                <p>CNPJ: 12.345.678/0001-90</p>
+                <p>&copy; 2023 Elo Bike Araxá - CNPJ: 57.620.431/0001-78</p>
+                <p>Todos os direitos reservados</p>
             </div>
         </div>
     </footer>
@@ -263,6 +278,38 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         /* Header */
@@ -306,7 +353,8 @@
 
         nav {
             display: flex;
-            gap: 25px;
+            gap: 20px;
+            align-items: center;
         }
 
         nav a {
@@ -315,10 +363,26 @@
             font-weight: 600;
             transition: color 0.3s;
             font-size: 14px;
+            padding: 8px 15px;
+            border-radius: 5px;
         }
 
         nav a:hover {
             color: #E4BB13;
+            background: rgba(228, 187, 19, 0.1);
+        }
+
+        .catalog-btn {
+            background: #E4BB13 !important;
+            color: #0d1b3d !important;
+            font-weight: 700 !important;
+            padding: 10px 20px !important;
+            border-radius: 25px !important;
+        }
+
+        .catalog-btn:hover {
+            background: #ffd700 !important;
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
@@ -374,7 +438,7 @@
             color: white;
         }
 
-        .outline-btn {
+        .catalog-btn {
             background: transparent;
             border: 2px solid #E4BB13;
             color: #E4BB13;
@@ -484,6 +548,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-bottom: 40px;
         }
 
         .product-card {
@@ -494,8 +559,6 @@
             transition: transform 0.3s;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
         }
 
         .product-card:hover {
@@ -548,6 +611,16 @@
             font-weight: 700;
             color: #E4BB13;
             margin-top: 20px;
+        }
+
+        .catalog-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .large-btn {
+            padding: 18px 40px;
+            font-size: 1.1rem;
         }
 
         /* About */
@@ -654,8 +727,6 @@
             transition: transform 0.3s;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
         }
 
         .contact-card:hover {
@@ -809,6 +880,14 @@
 
             nav {
                 display: none;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
             }
         }
     </style>
