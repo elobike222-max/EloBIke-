@@ -157,72 +157,45 @@
 
         .hero-content p {
             font-size: 1.3rem;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             opacity: 0.9;
         }
 
-        /* BOTÕES ESTRATÉGICOS - TODOS JUNTOS */
-        .hero-actions {
-            margin: 40px 0 30px;
-        }
-
-        .action-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        /* BOTÕES NO ESTILO ANTIGO (QUE VOCÊ GOSTAVA) */
+        .hero-buttons {
+            display: flex;
             gap: 15px;
-            max-width: 600px;
+            flex-wrap: wrap;
         }
 
-        .action-btn {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 15px;
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #E4BB13;
+            color: #0d1b3d;
             text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
             color: white;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-            min-height: 70px;
         }
 
-        .action-btn:hover {
-            transform: translateY(-3px);
-            background: rgba(228, 187, 19, 0.2);
-            border-color: #E4BB13;
-        }
-
-        .action-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-
-        .whatsapp-action .action-icon { background: #25D366; }
-        .instagram-action .action-icon { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .location-action .action-icon { background: #4285F4; }
-        .catalog-action .action-icon { background: #E4BB13; }
-
-        .action-text {
-            flex: 1;
-        }
-
-        .action-text strong {
-            display: block;
-            font-size: 14px;
-            margin-bottom: 4px;
+        .catalog-btn-hero {
+            background: transparent;
+            border: 2px solid #E4BB13;
             color: #E4BB13;
         }
 
-        .action-text span {
-            font-size: 12px;
-            opacity: 0.9;
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.6);
         }
 
         .hero-image {
@@ -353,6 +326,11 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
+            transition: transform 0.3s;
+        }
+
+        .product-icon:hover {
+            transform: scale(1.1);
         }
 
         .product-icon i {
@@ -394,25 +372,6 @@
         .catalog-cta {
             text-align: center;
             margin-top: 40px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background: #E4BB13;
-            color: #0d1b3d;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.6);
         }
 
         .large-btn {
@@ -637,16 +596,6 @@
         }
 
         /* Responsive */
-        @media (max-width: 968px) {
-            .action-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-content h2 {
-                font-size: 2.5rem;
-            }
-        }
-
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
@@ -658,14 +607,8 @@
                 font-size: 2.2rem;
             }
 
-            .hero-actions {
-                display: flex;
+            .hero-buttons {
                 justify-content: center;
-            }
-
-            .action-grid {
-                width: 100%;
-                max-width: 400px;
             }
 
             .moto-placeholder {
@@ -703,22 +646,6 @@
                 font-size: 20px;
             }
         }
-
-        @media (max-width: 480px) {
-            .action-btn {
-                flex-direction: column;
-                text-align: center;
-                padding: 12px;
-            }
-            
-            .action-icon {
-                margin-bottom: 8px;
-            }
-            
-            .hero-content h2 {
-                font-size: 1.8rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -749,49 +676,14 @@
             <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>
             <p>As melhores scooters elétricas de Araxá e região</p>
             
-            <!-- BOTÕES ESTRATÉGICOS - TODOS JUNTOS -->
-            <div class="hero-actions">
-                <div class="action-grid">
-                    <a href="https://w.app/c8foan" class="action-btn whatsapp-action">
-                        <div class="action-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="action-text">
-                            <strong>WhatsApp</strong>
-                            <span>(34) 9926-9707</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.instagram.com/elobikearaxa" class="action-btn instagram-action">
-                        <div class="action-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <div class="action-text">
-                            <strong>Instagram</strong>
-                            <span>@elobikearaxa</span>
-                        </div>
-                    </a>
-
-                    <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="action-btn location-action">
-                        <div class="action-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="action-text">
-                            <strong>Localização</strong>
-                            <span>Araxá - MG</span>
-                        </div>
-                    </a>
-
-                    <a href="catalogo.html" class="action-btn catalog-action">
-                        <div class="action-icon">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <div class="action-text">
-                            <strong>Catálogo</strong>
-                            <span>Ver produtos</span>
-                        </div>
-                    </a>
-                </div>
+            <!-- BOTÕES NO ESTILO ANTIGO -->
+            <div class="hero-buttons">
+                <a href="https://w.app/c8foan" class="btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+                </a>
+                <a href="catalogo.html" class="btn catalog-btn-hero">
+                    <i class="fas fa-store"></i> Ver Catálogo
+                </a>
             </div>
         </div>
         <div class="hero-image">
@@ -908,8 +800,8 @@
                             <span>Atendimento personalizado</span>
                         </div>
                         <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Test-drive gratuito</span>
+                            <i class="fas fa-piggy-bank"></i>
+                            <span>Economia Garantida</span>
                         </div>
                     </div>
                 </div>
@@ -943,7 +835,7 @@
                 <a href="https://w.app/c8foan" class="contact-card whatsapp">
                     <i class="fab fa-whatsapp"></i>
                     <h4>WhatsApp</h4>
-                    <p>(34) 992极-9707</p>
+                    <p>(34) 9926-9707</p>
                     <span class="click">Clique para conversar</span>
                 </a>
                 
@@ -983,7 +875,7 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <img src="logo.png" alt="Elo Bike">
-                    <span>ELO BIKE ARAXá</span>
+                    <span>ELO BIKE ARAXÁ</span>
                 </div>
                 
                 <div class="footer-contact">
