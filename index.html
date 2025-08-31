@@ -34,7 +34,7 @@
             position: fixed;
             bottom: 25px;
             right: 25px;
-            width: 极速加速器
+            width: 60px;
             height: 60px;
             background: #25D366;
             color: white;
@@ -52,7 +52,7 @@
 
         .whatsapp-float:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba极速加速器 211, 102, 0.6);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
 
         @keyframes pulse {
@@ -70,7 +70,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 极速加速器 2px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
         }
 
         header .container {
@@ -125,12 +125,12 @@
             background: #E4BB13 !important;
             color: #0d1b3d !important;
             font-weight: 700 !important;
-            padding: 10px 20px !极速加速器
+            padding: 10px 20px !important;
             border-radius: 25px !important;
         }
 
         .catalog-btn:hover {
-            background: #ff极速加速器 !important;
+            background: #ffd700 !important;
             transform: translateY(-2px);
         }
 
@@ -139,11 +139,11 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 100px 0 50极速加速器
-            background: linear-gradient(135deg, rgba(13, 27, 61, 0.9) 0%, rgba(30, 58, 138, 极速加速器 100%);
+            padding: 100px 0 50px;
+            background: linear-gradient(135deg, rgba(13, 27, 61, 0.9) 0%, rgba(30, 58, 138, 0.8) 100%);
         }
 
-        .hero极速加速器 {
+        .hero-content {
             flex: 1;
             padding: 0 20px;
         }
@@ -228,7 +228,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 4极速加速器 solid #E4BB13;
+            border: 4px solid #E4BB13;
             position: relative;
         }
 
@@ -288,7 +288,7 @@
         .feature i {
             font-size: 36px; /* Reduzido de 50px */
             color: #E4BB13;
-            margin-bottom: 15px; /* Reduzido de 极速加速器 */
+            margin-bottom: 15px; /* Reduzido de 25px */
         }
 
         .feature h4 {
@@ -306,7 +306,7 @@
         /* Products */
         .products {
             padding: 100px 0;
-            background: linear-gradient(135deg, #1e3a8a 0%, #0极速加速器 3d 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
         }
 
         .products h2 {
@@ -342,96 +342,26 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
-        /* CARROSSEL PERSONALIZADO */
-        .product-carousel {
-            position: relative;
-            width: 100%;
-            height: 200px;
-            margin-bottom: 25px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .carousel-container {
-            display: flex;
-            transition: transform 0.5s ease;
-            height: 100%;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            height: 100%;
+        .product-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(228, 187, 19, 0.15);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
+            margin: 0 auto 25px;
+            transition: transform 0.3s ease;
+            border: 2px solid #E4BB13;
         }
 
-        .carousel-slide img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+        .product-icon:hover {
+            transform: scale(1.1) rotate(5deg);
         }
 
-        /* SETAS DISCRETAS SEMPRE VISÍVEIS */
-        .carousel-prev, .carousel-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.4);
-            color: white;
-            border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            transition: all 0.3s;
-            z-index: 10;
-            opacity: 0.7;
-        }
-
-        .carousel-prev:hover, .carousel-next:hover {
-            background: rgba(228, 187, 19, 0.8);
-            opacity: 1;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .carousel-prev {
-            left: 10px;
-        }
-
-        .carousel-next {
-            right: 10px;
-        }
-
-        /* INDICADORES DE POSIÇÃO (BOLINHAS) */
-        .carousel-dots {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .carousel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .carousel-dot.active {
-            background: #E4BB13;
-            transform: scale(1.3);
+        .product-icon i {
+            font-size: 40px;
+            color: #E4BB13;
         }
 
         .product-card h3 {
@@ -481,34 +411,6 @@
             border: 2px solid #E4BB13;
         }
 
-        /* BOTÃO SAIBA MAIS NO SEU ESTILO */
-        .product-cta {
-            margin-top: 20px;
-        }
-
-        .btn-know-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background: #E4BB13;
-            color: #0d1b3d;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-know-more:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.6);
-            background: #ffd700;
-        }
-
         .catalog-cta {
             text-align: center;
             margin-top: 50px;
@@ -531,7 +433,7 @@
         }
 
         .btn-large:hover {
-            transform: translateY(-5极速加速器 scale(1.05);
+            transform: translateY(-5px) scale(1.05);
             box-shadow: 0 12px 30px rgba(228, 187, 19, 0.6);
             background: #ffd700;
         }
@@ -566,7 +468,7 @@
         .about-features {
             display: flex;
             flex-direction: column;
-            gap: 20极速加速器
+            gap: 20px;
         }
 
         .about-feature {
@@ -616,7 +518,7 @@
             transition: transform 0.3s ease;
         }
 
-        .stat极速加速器:hover {
+        .stat:hover {
             transform: translateY(-5px);
             background: rgba(228, 187, 19, 0.1);
         }
@@ -625,7 +527,7 @@
             display: block;
             font-size: 3rem;
             font-weight: 800;
-            color: #极速加速器
+            color: #E4BB13;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -647,7 +549,7 @@
             font-size: 2.5rem; /* Reduzido de 3rem */
             margin-bottom: 40px; /* Reduzido de 60px */
             color: #E4BB13;
-            text-shadow: 2极速加速器 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .contact-grid {
@@ -701,7 +603,7 @@
 
         .contact-card p {
             margin-bottom: 10px; /* Reduzido de 15px */
-            font-size: 0.95rem; /* Reduzido de 极速加速器 */
+            font-size: 0.95rem; /* Reduzido de 1.1rem */
             opacity: 0.9;
         }
 
@@ -726,7 +628,7 @@
         .business-hours h4 {
             color: #E4BB13;
             margin-bottom: 15px; /* Reduzido de 20px */
-            font极速加速器 1.2rem; /* Reduzido de 1.5rem */
+            font-size: 1.2rem; /* Reduzido de 1.5rem */
             font-weight: 600; /* Reduzido de 700 */
         }
 
@@ -759,13 +661,13 @@
 
         .footer-logo img {
             width: 35px; /* Menor */
-            height: 35极速加速器 /* Menor */
+            height: 35px; /* Menor */
             border-radius: 50%;
             border: 2px solid #E4BB13;
             box-shadow: 0 2px 8px rgba(228, 187, 19, 0.3); /* Sombra mais suave */
         }
 
-        .footer极速加速器 span {
+        .footer-logo span {
             font-size: 0.9rem; /* Menor */
             font-weight: 700;
             color: #E4BB13;
@@ -815,13 +717,96 @@
         .footer-bottom {
             text-align: center;
             padding-top: 15px; /* Mais compacto */
-            border-top: 1px solid rgba(255, 255, 255, 0.极速加速器
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-bottom p {
             opacity: 0.8;
             font-size: 0.75rem; /* Menor */
             margin-bottom: 3px; /* Mais compacto */
+        }
+
+        /* Carrossel de Fotos */
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 3px solid #E4BB13;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(228, 187, 19, 0.8);
+            color: #0d1b3d;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .carousel-control:hover {
+            background: #E4BB13;
+        }
+
+        .carousel-control.prev {
+            left: 15px;
+        }
+
+        .carousel-control.next {
+            right: 15px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-indicator.active {
+            background: #E4BB13;
+            transform: scale(1.2);
         }
 
         /* Responsive */
@@ -928,19 +913,8 @@
             
             /* Ajustes para contatos em mobile */
             .contact-grid {
-                grid-template-columns: 1极速加速器
+                grid-template-columns: 1fr;
                 gap: 15px;
-            }
-            
-            /* Ajustes para o carrossel em mobile */
-            .product-carousel {
-                height: 180px;
-            }
-            
-            .carousel-prev, .carousel-next {
-                width: 30px;
-                height: 30px;
-                font-size: 14px;
             }
         }
 
@@ -984,10 +958,6 @@
             
             .contact h2 {
                 font-size: 2rem;
-            }
-            
-            .product-carousel {
-                height: 160px;
             }
         }
 
@@ -1039,7 +1009,7 @@
             
             <!-- BOTÕES NO ESTILO QUE VOCÊ GOSTA -->
             <div class="hero-buttons">
-                <a href="https://w.app/c8foan" class="极速加速器 whatsapp-btn">
+                <a href="https://w.app/c8foan" class="btn whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">
@@ -1047,7 +1017,7 @@
                 </a>
                 <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                     <i class="fas fa-map-marker-alt"></i> Localização
-                </极速加速器
+                </a>
                 <a href="#produtos" class="btn catalog-btn-hero">
                     <i class="fas fa-store"></i> Ver Catálogo
                 </a>
@@ -1072,7 +1042,7 @@
                 <div class="feature">
                     <i class="fas fa-gas-pump"></i>
                     <h4>Zero Gasolina</h4>
-                    <p>Economize até R$ 300/mês</极速加速器
+                    <p>Economize até R$ 300/mês</p>
                 </div>
                 <div class="feature">
                     <i class="fas fa-leaf"></i>
@@ -1098,148 +1068,61 @@
         <div class="container">
             <h2>Nossos Modelos</h2>
             <div class="product-grid">
-                <!-- Modelo R11 -->
                 <div class="product-card">
-                    <div class="product-carousel" id="carousel-r11">
-                        <div class="carousel-container">
-                            <!-- FOTO 1 -->
-                            <div class="carousel-slide">
-                                <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHNjb290ZXIlMjBlbGV0cmljbyUyMHZlcm1lbGhvfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80" alt="R11 Scooter Elétrica - Vermelha">
-                            </div>
-                            <!-- FOTO 2 -->
-                            <div class="carousel-slide">
-                                <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHNjb290ZXIlMjBlbGV0cmljbyUyMHZlcm1lbGhvfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80" alt="R11 Scooter Elétrica - Lateral">
-                            </div>
-                            <!-- FOTO 3 -->
-                            <div class="carousel-slide">
-                                <img src="https://images.unsplash.com/photo-1625472603517-1b0dc72846ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8极速加速器MHxzZWFyY2h8MzR8fHNjb290ZXIlMjBlbGV0cmljbyUyMHZlcm1lbGhvfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80" alt="R11 Scooter Elétrica - Detalhes">
-                            </div>
-                        </div>
-                        <button class="carousel-prev">&#10094;</button>
-                        <button class="carousel-next">&#10095;</button>
-                        <div class="carousel-dots">
-                            <span class="carousel-dot active"></span>
-                            <span class="carousel-dot"></span>
-                            <span class="carousel-dot"></span>
-                        </div>
+                    <div class="product-icon">
+                        <i class="fas fa-motorcycle"></i>
                     </div>
-                    
-                    <h3>R11 Scooter</h3>
-                    <p>Scooter elétrica de alta performance</p>
+                    <h3>Modelo R11</h3>
+                    <p>Alta performance e tecnologia</p>
                     <ul>
                         <li>⚡ 3000W de potência</li>
                         <li>⏱️ Até 70 km/h</li>
                         <li>🔋 45 km de autonomia</li>
                         <li>⏳ 5 horas para carga completa</li>
-                        <li>⚖️ Capacidade: 150kg - 200kg</li>
+                        <li>💪 Capacidade: 150kg a 200kg</li>
                     </ul>
-                    
                     <span class="price">À vista: R$ 12.000,00</span>
-                    <span style="display: block; margin-top: 10px; font-size: 1.1rem;">No cartão: R$ 12.490,00</span>
-                    
-                    <div class="product-cta">
-                        <a href="#contato" class="btn-know-more">
-                            <i class="fas fa-info-circle"></i> Saiba Mais
-                        </a>
-                    </div>
+                    <span class="price">Cartão: R$ 12.490,00</span>
                 </div>
                 
-                <!-- Modelo S2 -->
                 <div class="product-card">
-                    <div class="product-carousel" id="carousel-s2">
-                        <div class="carousel-container">
-                            <!-- FOTO 1 -->
-                            <div class="carousel-slide">
-                                <img src="https://images.unsplash.com/photo-1540259575356-4cd33bfd4c68?ixlib=rb-4.0.3&极速加速器M3wxMjA3fDB8MHxzZWFyY2h8OXx8c2Nvb3RlciUyMGVsZXRyaWNvfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80" alt="S2 Scooter Elétrica - Preta">
-                            </div>
-                            <!-- FOTO 2 -->
-                            <div class="carousel-slide">
-                                <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHNjb290ZXIlMjBlbGV0cmljbyUyMHByZXRhfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80" alt="S2 Scooter Elétrica - Lateral">
-                            </div>
-                            <!-- FOTO 3 -->
-                            <div class="carousel-slide">
-                                <img src="https://images.unsplash.com/photo-1621569643313-5a089312cce7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHNjb290ZXIlMjBlbGV0cmljbyUyMHByZXRhfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80" alt="S2 Scooter Elétrica - Detalhes">
-                            </div>
-                        </div>
-                        <button class="carousel-prev">&#10094;</button>
-                        <button class="carousel-next">&#10095;</button>
-                        <div class="carousel-dots">
-                            <span class="carousel-dot active"></span>
-                            <span class="carousel-dot"></span>
-                            <span class="carousel-dot"></span>
-                        </div>
+                    <div class="product-icon">
+                        <i class="fas fa-biking"></i>
                     </div>
-                    
-                    <h3>S2 Scooter</h3>
-                    <p>Equilíbrio perfeito entre performance e economia</p>
+                    <h3>Modelo S2</h3>
+                    <p>Conforto e eficiência</p>
                     <ul>
                         <li>⚡ 1000W de potência</li>
                         <li>⏱️ Até 40 km/h</li>
                         <li>🔋 45 km de autonomia</li>
                         <li>⏳ 5 horas para carga completa</li>
-                        <li>⚖️ Capacidade: até 200kg</li>
+                        <li>💪 Capacidade: até 200kg</li>
                     </ul>
-                    
                     <span class="price">À vista: R$ 11.490,00</span>
-                    <span style="display: block; margin-top: 10px; font-size: 1.1rem;">No cartão: R$ 11.990,00</span>
-                    
-                    <div class="product-cta">
-                        <a href="#contato" class="btn-know-more">
-                            <i class="fas fa-info-circle"></i> Saiba Mais
-                        </a>
-                    </div>
+                    <span class="price">Cartão: R$ 11.990,00</span>
                 </div>
                 
-                <!-- Modelo V8 -->
                 <div class="product-card">
-                    <div class="product-carousel" id="carousel-v8">
-                        <div class="carousel-container">
-                            <!-- FOTO 1 -->
-                            <div class="carousel-slide">
-                                <img src="https://images.unsplash.com/photo-1599396320629-60ae6f56e5d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHNjb290ZXIlMjBlbGV0cmljbyUyMGJyYW5jYSUyMGF6dWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80" alt="V8 Scooter Elétrica - Azul">
-                            </div>
-                            <!-- FOTO 2 -->
-                            <div class="carousel-slide">
-                                <img src="https://images.unsplash.com/photo-1621569643313-5a089312cce7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzN8fHNjb290ZXIlMjBlbGV0criljbyUyMGJyYW5jYSUyMGF6dWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80" alt="V8 Scooter Elétrica - Lateral">
-                            </div>
-                            <!-- FOTO 3 -->
-                            <div class="carousel-slide">
-                                <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHNjb290ZXIlMjBlbGV0cmljbyUyMGJyYW5jYSUyMGF6dWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80" alt="V8 Scooter Elétrica - Detalhes">
-                            </div>
-                        </div>
-                        <button class="carousel-prev">&#10094;</button>
-                        <button class="carousel-next">&#10095;</button>
-                        <div class="carousel-dots">
-                            <span class="carousel-dot active"></span>
-                            <span class="carousel-dot"></span>
-                            <span class="carousel-dot"></span>
-                        </div>
+                    <div class="product-icon">
+                        <i class="fas fa-scooter"></i>
                     </div>
-                    
-                    <h3>V8 Scooter</h3>
-                    <p>Econômica e eficiente para o dia a dia</p>
+                    <h3>Modelo V8</h3>
+                    <p>Leve e econômica</p>
                     <ul>
                         <li>⚡ 1000W de potência</li>
                         <li>⏱️ Até 50 km/h</li>
                         <li>🔋 45 km de autonomia</li>
                         <li>⏳ 5 horas para carga completa</li>
-                        <li>⚖️ Capacidade: até 150kg</li>
+                        <li>💪 Capacidade: até 150kg</li>
                     </ul>
-                    
                     <span class="price">À vista: R$ 8.490,00</span>
-                    <span style="display: block; margin-top: 10px; font-size: 1.1rem;">No cartão: R$ 8.990,00</span>
-                    
-                    <div class="product-cta">
-                        <a href="#contato" class="btn-know-more">
-                            <i class="fas fa-info-circle"></i> Saiba Mais
-                        </a>
-                    </div>
+                    <span class="price">Cartão: R$ 8.990,00</span>
                 </div>
             </div>
             
             <div class="catalog-cta">
                 <a href="catalogo.html" class="btn-large">
-                    <i class="fas极速加速器 fa-store"></i> Ver Catálogo Completo
+                    <i class="fas fa-store"></i> Ver Catálogo Completo
                 </a>
             </div>
         </div>
@@ -1259,10 +1142,10 @@
                             <span>Produtos de qualidade</span>
                         </div>
                         <div class="about-feature">
-                            <i class="fas极速加速器 fa-check-circle"></i>
+                            <i class="fas fa-check-circle"></i>
                             <span>Atendimento personalizado</span>
                         </div>
-                        <极速加速器 class="about-feature">
+                        <div class="about-feature">
                             <i class="fas fa-piggy-bank"></i>
                             <span>Economia Garantida</span>
                         </div>
@@ -1270,18 +1153,25 @@
                 </div>
                 
                 <div class="about-image">
-                    <div class="stats">
-                        <div class="stat">
-                            <span class="number">100%</span>
-                            <span class="label">Clientes Satisfeitos</span>
+                    <!-- Carrossel de Fotos -->
+                    <div class="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item">
+                                <img src="moto1.jpg" alt="Moto Elétrica EloBike">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="moto2.jpg" alt="Moto Elétrica EloBike">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="moto3.jpg" alt="Moto Elétrica EloBike">
+                            </div>
                         </div>
-                        <div class="stat">
-                            <span class="number">+50</span>
-                            <span class="极速加速器">Scooters Vendidas</span>
-                        </div>
-                        <div class="stat">
-                            <span class="number">✓</span>
-                            <span class="label">Qualidade Garantida</span>
+                        <button class="carousel-control prev">&lt;</button>
+                        <button class="carousel-control next">&gt;</button>
+                        <div class="carousel-indicators">
+                            <div class="carousel-indicator active"></div>
+                            <div class="carousel-indicator"></div>
+                            <div class="carousel-indicator"></div>
                         </div>
                     </div>
                 </div>
@@ -1302,7 +1192,7 @@
                     <span class="click">Clique para conversar</span>
                 </a>
                 
-                <a href="https://www.instagram.com/极速加速器elobikearaxa" class="contact-card instagram">
+                <a href="https://www.instagram.com/elobikearaxa" class="contact-card instagram">
                     <i class="fab fa-instagram"></i>
                     <h4>Instagram</h4>
                     <p>@elobikearaxa</p>
@@ -1327,7 +1217,7 @@
             <div class="business-hours">
                 <h4>🕒 Horário de Funcionamento</h4>
                 <p>Segunda a Sexta: 8h às 17h30</p>
-                <p>Sábado: 8h às 12h</极速加速器
+                <p>Sábado: 8h às 12h</p>
             </div>
         </div>
     </section>
@@ -1403,105 +1293,58 @@
             document.querySelector('.hero').classList.add('visible');
         }, 100);
 
-        // Funcionalidade dos carrosséis
-        document.querySelectorAll('.product-carousel').forEach(carousel => {
-            const container = carousel.querySelector('.carousel-container');
-            const slides = carousel.querySelectorAll('.carousel-slide');
-            const prevBtn = carousel.querySelector('.carousel-prev');
-            const nextBtn = carousel.querySelector('.carousel-next');
-            const dots = carousel.querySelectorAll('.carousel-dot');
+        // Script do Carrossel de Fotos
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const inner = carousel.querySelector('.carousel-inner');
+            const items = carousel.querySelectorAll('.carousel-item');
+            const indicators = carousel.querySelectorAll('.carousel-indicator');
+            const prevBtn = carousel.querySelector('.prev');
+            const nextBtn = carousel.querySelector('.next');
             
             let currentIndex = 0;
-            const totalSlides = slides.length;
-            let startX = 0;
-            let isDragging = false;
+            const totalItems = items.length;
             
             // Função para atualizar o carrossel
             function updateCarousel() {
-                container.style.transform = `translateX(-${currentIndex * 100}%)`;
+                inner.style.transform = `translateX(-${currentIndex * 100}%)`;
                 
-                // Atualizar dots
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
+                // Atualizar indicadores
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
                 });
             }
             
+            // Avançar para o próximo slide
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            }
+            
+            // Voltar para o slide anterior
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                updateCarousel();
+            }
+            
             // Event listeners para os botões
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateCarousel();
-            });
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
             
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                updateCarousel();
-            });
-            
-            // Event listeners para os dots
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
+            // Event listeners para os indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
                     currentIndex = index;
                     updateCarousel();
                 });
             });
             
-            // Funcionalidade de arrastar (touch e mouse)
-            carousel.addEventListener('mousedown', handleDragStart);
-            carousel.addEventListener('touchstart', handleDragStart);
-            
-            carousel.addEventListener('mousemove', handleDragMove);
-            carousel.addEventListener('touchmove', handleDragMove);
-            
-            carousel.addEventListener('mouseup', handleDragEnd);
-            carousel.addEventListener('mouseleave', handleDragEnd);
-            carousel.addEventListener('touchend', handleDragEnd);
-            
-            function handleDragStart(e) {
-                isDragging = true;
-                startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-            }
-            
-            function handleDragMove(e) {
-                if (!isDragging) return;
-                e.preventDefault();
-            }
-            
-            function handleDragEnd(e) {
-                if (!isDragging) return;
-                isDragging = false;
-                
-                const endX = e.type.includes('mouse') ? e.clientX : e.changedTouches[0].clientX;
-                const diffX = startX - endX;
-                
-                // Sensibilidade do arrasto
-                if (diffX > 50) {
-                    // Arrastou para a esquerda (próxima foto)
-                    currentIndex = (currentIndex + 1) % totalSlides;
-                } else if (diffX < -50) {
-                    // Arrastou para a direita (foto anterior)
-                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                }
-                
-                updateCarousel();
-            }
-            
-            // Auto-play (opcional)
-            let autoPlay = setInterval(() => {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateCarousel();
-            }, 5000);
-            
-            // Pausar auto-play ao interagir
-            carousel.addEventListener('mouseenter', () => {
-                clearInterval(autoPlay);
-            });
-            
-            carousel.addEventListener('mouseleave', () => {
-                autoPlay = setInterval(() => {
-                    currentIndex = (currentIndex + 1) % totalSlides;
-                    updateCarousel();
-                }, 5000);
-            });
+            // Auto-play do carrossel
+            setInterval(nextSlide, 5000);
         });
     </script>
 </body>
