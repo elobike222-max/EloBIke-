@@ -304,96 +304,91 @@
             font-size: 0.9rem;
         }
 
-        /* Products - MODIFICADO (quadrados menores) */
+        /* Products - COMPLETAMENTE REFEITO */
         .products {
             padding: 80px 0;
             background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
+            text-align: center;
         }
 
         .products h2 {
-            text-align: center;
             font-size: 2.5rem;
             margin-bottom: 40px;
             color: #E4BB13;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+        .product-carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto 50px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .product-card {
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             background: rgba(255, 255, 255, 0.08);
-            padding: 25px 20px;
+            padding: 30px;
             border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            height: fit-content;
         }
 
-        .product-card:hover {
-            transform: translateY(-5px);
-            background: rgba(228, 187, 19, 0.12);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .product-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(228, 187, 19, 0.15);
-            border-radius: 50%;
+        .carousel-img {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: linear-gradient(45deg, #0d1b3d, #1e3a8a);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
-            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+            overflow: hidden;
             border: 2px solid #E4BB13;
         }
 
-        .product-icon:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .product-icon i {
-            font-size: 30px;
+        .carousel-img i {
+            font-size: 80px;
             color: #E4BB13;
         }
 
-        .product-card h3 {
+        .carousel-content {
+            text-align: center;
+        }
+
+        .carousel-content h3 {
+            font-size: 1.8rem;
             margin-bottom: 15px;
             color: #E4BB13;
-            font-size: 1.4rem;
-            font-weight: 700;
         }
 
-        .product-card p {
-            margin-bottom: 15px;
-            opacity: 0.9;
-            font-size: 1rem;
-        }
-
-        .product-card ul {
+        .carousel-content ul {
             list-style: none;
             margin: 15px 0;
             text-align: left;
             padding: 0 15px;
         }
 
-        .product-card ul li {
+        .carousel-content ul li {
             margin-bottom: 8px;
             padding-left: 25px;
             position: relative;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
-        .product-card ul li:before {
+        .carousel-content ul li:before {
             content: "✓";
             color: #E4BB13;
             position: absolute;
@@ -404,24 +399,115 @@
 
         .price {
             display: block;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #E4BB13;
             margin: 15px 0 10px;
             background: rgba(228, 187, 19, 0.1);
-            padding: 10px;
+            padding: 10px 15px;
             border-radius: 10px;
             border: 2px solid #E4BB13;
         }
 
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .carousel-btn {
+            background: rgba(228, 187, 19, 0.2);
+            border: none;
+            color: #E4BB13;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: #E4BB13;
+            color: #0d1b3d;
+            transform: scale(1.1);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: #E4BB13;
+            transform: scale(1.2);
+        }
+
         .catalog-cta {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 50px;
+            padding: 40px;
+            background: rgba(228, 187, 19, 0.1);
+            border-radius: 15px;
+            border: 2px solid #E4BB13;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .catalog-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(228, 187, 19, 0.1) 0%, transparent 70%);
+            animation: pulse-ring 3s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .catalog-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #E4BB13;
+            position: relative;
+            z-index: 2;
+        }
+
+        .catalog-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
         }
 
         .btn-large {
-            display: inline-block;
-            padding: 15px 35px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
             background: #E4BB13;
             color: #0d1b3d;
             text-decoration: none;
@@ -431,8 +517,10 @@
             box-shadow: 0 6px 20px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem;
             letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
         }
 
         .btn-large:hover {
@@ -505,14 +593,7 @@
         .contact {
             padding: 60px 0 40px;
             background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
-        }
-
-        .contact h2 {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #E4BB13;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .business-hours {
@@ -678,8 +759,7 @@
                 font-size: 80px;
             }
 
-            .products h2,
-            .contact h2 {
+            .products h2 {
                 font-size: 2.2rem;
             }
 
@@ -730,6 +810,14 @@
             .business-hours {
                 max-width: 90%;
             }
+
+            .carousel-img {
+                height: 250px;
+            }
+
+            .carousel-content h3 {
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -748,17 +836,9 @@
                 justify-content: center;
             }
             
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .product-card {
-                padding: 20px 15px;
-            }
-            
             .btn-large {
-                padding: 12px 25px;
-                font-size: 0.9rem;
+                padding: 15px 30px;
+                font-size: 1rem;
             }
 
             .footer-content {
@@ -768,13 +848,29 @@
             .footer-contact p {
                 font-size: 0.75rem;
             }
-            
-            .contact h2 {
-                font-size: 2rem;
-            }
 
             .about-text h2 {
                 font-size: 2rem;
+            }
+
+            .catalog-cta {
+                padding: 25px 15px;
+            }
+
+            .catalog-cta h3 {
+                font-size: 1.6rem;
+            }
+
+            .catalog-cta p {
+                font-size: 1rem;
+            }
+
+            .carousel-img {
+                height: 200px;
+            }
+
+            .carousel-img i {
+                font-size: 60px;
             }
         }
 
@@ -889,60 +985,82 @@
     <section id="produtos" class="products">
         <div class="container">
             <h2>Nossos Modelos</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-motorcycle"></i>
+            
+            <div class="product-carousel">
+                <div class="carousel-container" id="carousel">
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Modelo R11</h3>
+                            <p>Alta performance e tecnologia</p>
+                            <ul>
+                                <li>⚡ 3000W de potência</li>
+                                <li>⏱️ Até 70 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: 150kg a 200kg</li>
+                            </ul>
+                            <span class="price">À vista: R$ 12.000,00</span>
+                            <span class="price">Cartão: R$ 12.490,00</span>
+                        </div>
                     </div>
-                    <h3>Modelo R11</h3>
-                    <p>Alta performance e tecnologia</p>
-                    <ul>
-                        <li>⚡ 3000W de potência</li>
-                        <li>⏱️ Até 70 km/h</li>
-                        <li>🔋 45 km de autonomia</li>
-                        <li>⏳ 5 horas para carga completa</li>
-                        <li>💪 Capacidade: 150kg a 200kg</li>
-                    </ul>
-                    <span class="price">À vista: R$ 12.000,00</span>
-                    <span class="price">Cartão: R$ 12.490,00</span>
+                    
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <i class="fas fa-biking"></i>
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Modelo S2</h3>
+                            <p>Conforto e eficiência</p>
+                            <ul>
+                                <li>⚡ 1000W de potência</li>
+                                <li>⏱️ Até 40 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: até 200kg</li>
+                            </ul>
+                            <span class="price">À vista: R$ 11.490,00</span>
+                            <span class="price">Cartão: R$ 11.990,00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <i class="fas fa-scooter"></i>
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Modelo V8</h3>
+                            <p>Leve e econômica</p>
+                            <ul>
+                                <li>⚡ 1000W de potência</li>
+                                <li>⏱️ Até 50 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: até 150kg</li>
+                            </ul>
+                            <span class="price">À vista: R$ 8.490,00</span>
+                            <span class="price">Cartão: R$ 8.990,00</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-biking"></i>
-                    </div>
-                    <h3>Modelo S2</h3>
-                    <p>Conforto và eficiência</p>
-                    <ul>
-                        <li>⚡ 1000W de potência</li>
-                        <li>⏱️ Até 40 km/h</li>
-                        <li>🔋 45 km de autonomia</li>
-                        <li>⏳ 5 horas para carga completa</li>
-                        <li>💪 Capacidade: até 200kg</li>
-                    </ul>
-                    <span class="price">À vista: R$ 11.490,00</span>
-                    <span class="price">Cartão: R$ 11.990,00</span>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
                 </div>
                 
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-scooter"></i>
-                    </div>
-                    <h3>Modelo V8</h3>
-                    <p>Leve e econômica</p>
-                    <ul>
-                        <li>⚡ 1000W de potência</li>
-                        <li>⏱️ Até 50 km/h</li>
-                        <li>🔋 45 km de autonomia</li>
-                        <li>⏳ 5 horas para carga completa</li>
-                        <li>💪 Capacidade: até 150kg</li>
-                    </ul>
-                    <span class="price">À vista: R$ 8.490,00</span>
-                    <span class="price">Cartão: R$ 8.990,00</span>
+                <div class="carousel-indicators">
+                    <div class="indicator active" data-index="0"></div>
+                    <div class="indicator" data-index="1"></div>
+                    <div class="indicator" data-index="2"></div>
                 </div>
             </div>
             
             <div class="catalog-cta">
+                <h3>Catálogo Completo</h3>
+                <p>Explore nossa linha completa de scooters elétricas, capacetes, acessórios e muito mais. Tudo com a qualidade EloBike!</p>
                 <a href="catalogo.html" class="btn-large">
                     <i class="fas fa-store"></i> Ver Catálogo Completo
                 </a>
@@ -980,9 +1098,6 @@
     <!-- Contact -->
     <section id="contato" class="contact">
         <div class="container">
-            
-            <!-- REMOVIDOS OS CARDS DE CONTATO -->
-            
             <div class="business-hours">
                 <h4><i class="far fa-clock"></i> Horário de Funcionamento</h4>
                 <p>Segunda a Sexta: 8h às 17h30</p>
@@ -1061,6 +1176,54 @@
         setTimeout(() => {
             document.querySelector('.hero').classList.add('visible');
         }, 100);
+
+        // Carrossel de produtos
+        const carousel = document.getElementById('carousel');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        let currentIndex = 0;
+        const slideCount = slides.length;
+        
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Atualizar indicadores
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slideCount;
+            updateCarousel();
+        }
+        
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+            updateCarousel();
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Indicadores clicáveis
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                currentIndex = parseInt(indicator.getAttribute('data-index'));
+                updateCarousel();
+            });
+        });
+        
+        // Auto-avanço do carrossel
+        setInterval(nextSlide, 5000);
     </script>
 </body>
 </html>
