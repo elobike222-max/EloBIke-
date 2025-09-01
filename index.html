@@ -83,6 +83,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            animation: fadeIn 1s ease-in;
         }
 
         .logo img {
@@ -260,47 +261,47 @@
 
         /* Features - MODIFICADO (menor) */
         .features {
-            padding: 50px 0; /* Reduzido de 80px */
+            padding: 50px 0;
             background: #0d1b3d;
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reduzido de 250px */
-            gap: 20px; /* Reduzido de 30px */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
 
         .feature {
             text-align: center;
-            padding: 25px 20px; /* Reduzido de 40px 30px */
+            padding: 25px 20px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px; /* Reduzido de 20px */
+            border-radius: 15px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s;
         }
 
         .feature:hover {
-            transform: translateY(-5px); /* Reduzido de -8px */
+            transform: translateY(-5px);
             background: rgba(228, 187, 19, 0.1);
         }
 
         .feature i {
-            font-size: 36px; /* Reduzido de 50px */
+            font-size: 36px;
             color: #E4BB13;
-            margin-bottom: 15px; /* Reduzido de 25px */
+            margin-bottom: 15px;
         }
 
         .feature h4 {
-            margin-bottom: 10px; /* Reduzido de 15px */
+            margin-bottom: 10px;
             color: #E4BB13;
-            font-size: 1.1rem; /* Reduzido de 1.2rem */
+            font-size: 1.1rem;
         }
 
         .feature p {
             opacity: 0.9;
-            line-height: 1.5; /* Reduzido de 1.6 */
-            font-size: 0.9rem; /* Adicionado para reduzir texto */
+            line-height: 1.5;
+            font-size: 0.9rem;
         }
 
         /* Products */
@@ -381,6 +382,7 @@
             list-style: none;
             margin: 25px 0;
             text-align: left;
+            padding: 0 20px;
         }
 
         .product-card ul li {
@@ -500,69 +502,45 @@
         .about-image {
             display: flex;
             justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 2px dashed rgba(228, 187, 19, 0.3);
         }
 
-        .stats {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
-        .stat {
-            background: rgba(255, 255, 255, 0.06);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .stat:hover {
-            transform: translateY(-5px);
-            background: rgba(228, 187, 19, 0.1);
-        }
-
-        .number {
-            display: block;
-            font-size: 3rem;
-            font-weight: 800;
-            color: #E4BB13;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .label {
-            font-size: 1rem;
-            opacity: 0.9;
-            font-weight: 500;
+        .about-image::before {
+            content: "Área Limpa";
+            color: rgba(228, 187, 19, 0.5);
+            font-size: 1.5rem;
+            font-weight: 600;
         }
 
         /* Contact - MODIFICADO (mais compacto e profissional) */
         .contact {
-            padding: 80px 0 60px; /* Reduzido o padding */
+            padding: 80px 0 60px;
             background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
         }
 
         .contact h2 {
             text-align: center;
-            font-size: 2.5rem; /* Reduzido de 3rem */
-            margin-bottom: 40px; /* Reduzido de 60px */
+            font-size: 2.5rem;
+            margin-bottom: 40px;
             color: #E4BB13;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Reduzido de 280px */
-            gap: 20px; /* Reduzido de 25px */
-            margin-bottom: 40px; /* Reduzido de 50px */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
         .contact-card {
             background: rgba(255, 255, 255, 0.08);
-            padding: 25px 20px; /* Reduzido de 35px 30px */
-            border-radius: 15px; /* Reduzido de 20px */
+            padding: 25px 20px;
+            border-radius: 15px;
             text-align: center;
             text-decoration: none;
             color: white;
@@ -574,19 +552,19 @@
         }
 
         .contact-card:hover {
-            transform: translateY(-5px); /* Reduzido de -8px */
+            transform: translateY(-5px);
             background: rgba(228, 187, 19, 0.15);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Reduzido de 15px 35px */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .contact-card i {
-            font-size: 32px; /* Reduzido de 45px */
-            margin-bottom: 15px; /* Reduzido de 25px */
+            font-size: 32px;
+            margin-bottom: 15px;
             transition: transform 0.3s ease;
         }
 
         .contact-card:hover i {
-            transform: scale(1.1); /* Reduzido de 1.2 */
+            transform: scale(1.1);
         }
 
         .whatsapp i { color: #25D366; }
@@ -595,59 +573,59 @@
         .phone i { color: #34A853; }
 
         .contact-card h4 {
-            margin-bottom: 10px; /* Reduzido de 15px */
+            margin-bottom: 10px;
             color: #E4BB13;
-            font-size: 1.1rem; /* Reduzido de 1.4rem */
-            font-weight: 600; /* Reduzido de 700 */
+            font-size: 1.1rem;
+            font-weight: 600;
         }
 
         .contact-card p {
-            margin-bottom: 10px; /* Reduzido de 15px */
-            font-size: 0.95rem; /* Reduzido de 1.1rem */
+            margin-bottom: 10px;
+            font-size: 0.95rem;
             opacity: 0.9;
         }
 
         .click {
             display: block;
-            margin-top: 12px; /* Reduzido de 20px */
-            font-size: 0.85rem; /* Reduzido de 1rem */
+            margin-top: 12px;
+            font-size: 0.85rem;
             opacity: 0.8;
             font-weight: 500;
         }
 
         .business-hours {
             background: rgba(255, 255, 255, 0.08);
-            padding: 25px; /* Reduzido de 35px */
-            border-radius: 15px; /* Reduzido de 20px */
+            padding: 25px;
+            border-radius: 15px;
             text-align: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 30px; /* Reduzido de 40px */
+            margin-top: 30px;
         }
 
         .business-hours h4 {
             color: #E4BB13;
-            margin-bottom: 15px; /* Reduzido de 20px */
-            font-size: 1.2rem; /* Reduzido de 1.5rem */
-            font-weight: 600; /* Reduzido de 700 */
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .business-hours p {
-            margin-bottom: 8px; /* Reduzido de 10px */
-            font-size: 0.95rem; /* Reduzido de 1.1rem */
+            margin-bottom: 8px;
+            font-size: 0.95rem;
             opacity: 0.9;
         }
 
         /* Footer - MODIFICADO (extremamente compacto e profissional) */
         footer {
             background: #0a1429;
-            padding: 25px 0 15px; /* Mais compacto */
-            border-top: 1px solid rgba(228, 187, 19, 0.2); /* Linha mais sutil */
+            padding: 25px 0 15px;
+            border-top: 1px solid rgba(228, 187, 19, 0.2);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr; /* Layout mais equilibrado */
+            grid-template-columns: 1fr 2fr 1fr;
             gap: 20px;
             margin-bottom: 20px;
             align-items: center;
@@ -660,15 +638,15 @@
         }
 
         .footer-logo img {
-            width: 35px; /* Menor */
-            height: 35px; /* Menor */
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             border: 2px solid #E4BB13;
-            box-shadow: 0 2px 8px rgba(228, 187, 19, 0.3); /* Sombra mais suave */
+            box-shadow: 0 2px 8px rgba(228, 187, 19, 0.3);
         }
 
         .footer-logo span {
-            font-size: 0.9rem; /* Menor */
+            font-size: 0.9rem;
             font-weight: 700;
             color: #E4BB13;
         }
@@ -678,9 +656,9 @@
         }
 
         .footer-contact p {
-            margin-bottom: 5px; /* Muito mais compacto */
+            margin-bottom: 5px;
             opacity: 0.9;
-            font-size: 0.8rem; /* Menor */
+            font-size: 0.8rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -689,13 +667,13 @@
 
         .footer-social {
             display: flex;
-            gap: 12px; /* Mais compacto */
+            gap: 12px;
             justify-content: flex-end;
         }
 
         .social-link {
-            width: 38px; /* Menor */
-            height: 38px; /* Menor */
+            width: 38px;
+            height: 38px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
@@ -704,85 +682,26 @@
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 1rem; /* Menor */
+            font-size: 1rem;
         }
 
         .social-link:hover {
             background: #E4BB13;
             color: #0d1b3d;
-            transform: translateY(-2px); /* Animação mais sutil */
-            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4); /* Sombra mais suave */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 15px; /* Mais compacto */
+            padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-bottom p {
             opacity: 0.8;
-            font-size: 0.75rem; /* Menor */
-            margin-bottom: 3px; /* Mais compacto */
-        }
-
-        /* Carrossel de Fotos */
-        .carousel {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 3px solid #E4BB13;
-        }
-
-        .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-item {
-            min-width: 100%;
-            position: relative;
-        }
-
-        .carousel-item img {
-            width: 100%;
-            display: block;
-            height: auto;
-        }
-
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(228, 187, 19, 0.8);
-            color: #0d1b3d;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            font-size: 18px;
-            transition: all 0.3s;
-        }
-
-        .carousel-control:hover {
-            background: #E4BB13;
-        }
-
-        .carousel-control.prev {
-            left: 15px;
-        }
-
-        .carousel-control.next {
-            right: 15px;
+            font-size: 0.75rem;
+            margin-bottom: 3px;
         }
 
         /* Responsive */
@@ -839,7 +758,7 @@
 
             .products h2,
             .contact h2 {
-                font-size: 2.2rem; /* Ajustado */
+                font-size: 2.2rem;
             }
 
             .about-text h2 {
@@ -873,7 +792,6 @@
                 font-size: 22px;
             }
 
-            /* Ajustes responsivos para as features */
             .feature-grid {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 gap: 15px;
@@ -887,7 +805,6 @@
                 font-size: 30px;
             }
             
-            /* Ajustes para contatos em mobile */
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
@@ -923,7 +840,6 @@
                 font-size: 1rem;
             }
 
-            /* Ajustes adicionais para mobile */
             .footer-content {
                 gap: 15px;
             }
@@ -952,6 +868,11 @@
         section.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -1066,7 +987,7 @@
                         <i class="fas fa-biking"></i>
                     </div>
                     <h3>Modelo S2</h3>
-                    <p>Conforto и eficiência</p>
+                    <p>Conforto e eficiência</p>
                     <ul>
                         <li>⚡ 1000W de potência</li>
                         <li>⏱️ Até 40 km/h</li>
@@ -1129,22 +1050,7 @@
                 </div>
                 
                 <div class="about-image">
-                    <!-- Carrossel de Fotos -->
-                    <div class="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item">
-                                <img src="moto1.jpg" alt="Moto Elétrica EloBike">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="moto2.jpg" alt="Moto Elétrica EloBike">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="moto3.jpg" alt="Moto Elétrica EloBike">
-                            </div>
-                        </div>
-                        <button class="carousel-control prev">&lt;</button>
-                        <button class="carousel-control next">&gt;</button>
-                    </div>
+                    <!-- Área completamente limpa conforme solicitado -->
                 </div>
             </div>
         </div>
@@ -1263,42 +1169,6 @@
         setTimeout(() => {
             document.querySelector('.hero').classList.add('visible');
         }, 100);
-
-        // Script do Carrossel de Fotos
-        document.addEventListener('DOMContentLoaded', function() {
-            const carousel = document.querySelector('.carousel');
-            const inner = carousel.querySelector('.carousel-inner');
-            const items = carousel.querySelectorAll('.carousel-item');
-            const prevBtn = carousel.querySelector('.prev');
-            const nextBtn = carousel.querySelector('.next');
-            
-            let currentIndex = 0;
-            const totalItems = items.length;
-            
-            // Função para atualizar o carrossel
-            function updateCarousel() {
-                inner.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }
-            
-            // Avançar para o próximo slide
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % totalItems;
-                updateCarousel();
-            }
-            
-            // Voltar para o slide anterior
-            function prevSlide() {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-                updateCarousel();
-            }
-            
-            // Event listeners para os botões
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-            
-            // Auto-play do carrossel
-            setInterval(nextSlide, 5000);
-        });
     </script>
 </body>
 </html>
