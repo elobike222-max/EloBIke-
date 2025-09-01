@@ -304,54 +304,55 @@
             font-size: 0.9rem;
         }
 
-        /* Products */
+        /* Products - MODIFICADO (quadrados menores) */
         .products {
-            padding: 100px 0;
+            padding: 80px 0;
             background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
         }
 
         .products h2 {
             text-align: center;
-            font-size: 3rem;
-            margin-bottom: 60px;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
             color: #E4BB13;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
         .product-card {
             background: rgba(255, 255, 255, 0.08);
-            padding: 40px 30px;
-            border-radius: 20px;
+            padding: 25px 20px;
+            border-radius: 15px;
             text-align: center;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
+            height: fit-content;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             background: rgba(228, 187, 19, 0.12);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .product-icon {
-            width: 90px;
-            height: 90px;
+            width: 70px;
+            height: 70px;
             background: rgba(228, 187, 19, 0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
+            margin: 0 auto 15px;
             transition: transform 0.3s ease;
             border: 2px solid #E4BB13;
         }
@@ -361,35 +362,35 @@
         }
 
         .product-icon i {
-            font-size: 40px;
+            font-size: 30px;
             color: #E4BB13;
         }
 
         .product-card h3 {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #E4BB13;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 700;
         }
 
         .product-card p {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             opacity: 0.9;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .product-card ul {
             list-style: none;
-            margin: 25px 0;
+            margin: 15px 0;
             text-align: left;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         .product-card ul li {
-            margin-bottom: 12px;
-            padding-left: 30px;
+            margin-bottom: 8px;
+            padding-left: 25px;
             position: relative;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .product-card ul li:before {
@@ -398,29 +399,29 @@
             position: absolute;
             left: 0;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .price {
             display: block;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #E4BB13;
-            margin: 25px 0 20px;
+            margin: 15px 0 10px;
             background: rgba(228, 187, 19, 0.1);
-            padding: 15px;
-            border-radius: 15px;
+            padding: 10px;
+            border-radius: 10px;
             border: 2px solid #E4BB13;
         }
 
         .catalog-cta {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
         .btn-large {
             display: inline-block;
-            padding: 20px 45px;
+            padding: 15px 35px;
             background: #E4BB13;
             color: #0d1b3d;
             text-decoration: none;
@@ -430,47 +431,47 @@
             box-shadow: 0 6px 20px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: 0.5px;
         }
 
         .btn-large:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(228, 187, 19, 0.6);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(228, 187, 19, 0.6);
             background: #ffd700;
         }
 
-        /* About */
+        /* About - MODIFICADO (área limpa removida) */
         .about {
-            padding: 100px 0;
+            padding: 80px 0;
             background: #0d1b3d;
+            text-align: center;
         }
 
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .about-text h2 {
-            font-size: 2.8rem;
-            margin-bottom: 25px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
             color: #E4BB13;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .about-text p {
-            font-size: 1.2rem;
-            margin-bottom: 35px;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
             opacity: 0.9;
             line-height: 1.8;
         }
 
         .about-features {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
         }
 
         .about-feature {
@@ -481,10 +482,11 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             transition: transform 0.3s ease;
+            text-align: left;
         }
 
         .about-feature:hover {
-            transform: translateX(10px);
+            transform: translateX(5px);
             background: rgba(228, 187, 19, 0.1);
         }
 
@@ -495,25 +497,8 @@
         }
 
         .about-feature span {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
-        }
-
-        .about-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 300px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            border: 2px dashed rgba(228, 187, 19, 0.3);
-        }
-
-        .about-image::before {
-            content: "Área Limpa";
-            color: rgba(228, 187, 19, 0.5);
-            font-size: 1.5rem;
-            font-weight: 600;
         }
 
         /* Contact - MODIFICADO (mais compacto e profissional) */
@@ -608,6 +593,10 @@
             margin-bottom: 15px;
             font-size: 1.2rem;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .business-hours p {
@@ -710,11 +699,6 @@
                 font-size: 2.8rem;
             }
             
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
             .footer-content {
                 grid-template-columns: 1fr 1fr;
                 gap: 25px;
@@ -809,6 +793,10 @@
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -832,12 +820,12 @@
             }
             
             .product-card {
-                padding: 30px 20px;
+                padding: 20px 15px;
             }
             
             .btn-large {
-                padding: 18px 35px;
-                font-size: 1rem;
+                padding: 12px 25px;
+                font-size: 0.9rem;
             }
 
             .footer-content {
@@ -849,6 +837,10 @@
             }
             
             .contact h2 {
+                font-size: 2rem;
+            }
+
+            .about-text h2 {
                 font-size: 2rem;
             }
         }
@@ -1048,10 +1040,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="about-image">
-                    <!-- Área completamente limpa conforme solicitado -->
-                </div>
             </div>
         </div>
     </section>
@@ -1092,7 +1080,7 @@
             </div>
 
             <div class="business-hours">
-                <h4>🕒 Horário de Funcionamento</h4>
+                <h4><i class="far fa-clock"></i> Horário de Funcionamento</h4>
                 <p>Segunda a Sexta: 8h às 17h30</p>
                 <p>Sábado: 8h às 12h</p>
             </div>
