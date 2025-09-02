@@ -304,7 +304,7 @@
             font-size: 0.9rem;
         }
 
-        /* Products - COMPLETAMENTE REFEITO */
+        /* Products - COMPLETAMENTE REFEITO E MELHORADO */
         .products {
             padding: 80px 0;
             background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
@@ -321,7 +321,7 @@
         .product-carousel {
             position: relative;
             max-width: 900px;
-            margin: 0 auto 30px;
+            margin: 0 auto;
             overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -344,7 +344,7 @@
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.08);
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -353,20 +353,20 @@
 
         .carousel-img {
             width: 100%;
-            max-width: 500px;
-            height: 300px;
+            max-width: 450px;
+            height: 250px;
             background: linear-gradient(45deg, #0d1b3d, #1e3a8a);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             overflow: hidden;
             border: 2px solid #E4BB13;
         }
 
         .carousel-img i {
-            font-size: 80px;
+            font-size: 70px;
             color: #E4BB13;
         }
 
@@ -375,9 +375,15 @@
         }
 
         .carousel-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 1.6rem;
+            margin-bottom: 12px;
             color: #E4BB13;
+        }
+
+        .carousel-content p {
+            color: white;
+            margin-bottom: 15px;
+            opacity: 0.9;
         }
 
         .carousel-content ul {
@@ -391,7 +397,8 @@
             margin-bottom: 8px;
             padding-left: 25px;
             position: relative;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            color: white;
         }
 
         .carousel-content ul li:before {
@@ -405,12 +412,12 @@
 
         .price {
             display: block;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #E4BB13;
             margin: 15px 0 10px;
             background: rgba(228, 187, 19, 0.1);
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 10px;
             border: 2px solid #E4BB13;
         }
@@ -418,23 +425,25 @@
         .carousel-controls {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0 15px;
         }
 
         .carousel-btn {
             background: rgba(228, 187, 19, 0.2);
             border: none;
             color: #E4BB13;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            font-size: 18px;
+            font-size: 16px;
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .carousel-btn:hover {
@@ -447,12 +456,12 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
 
         .indicator {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
@@ -466,54 +475,33 @@
 
         .catalog-cta {
             text-align: center;
-            margin-top: 30px;
-            padding: 30px;
+            margin-top: 20px;
+            padding: 20px;
             background: rgba(228, 187, 19, 0.1);
             border-radius: 15px;
             border: 2px solid #E4BB13;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .catalog-cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(228, 187, 19, 0.1) 0%, transparent 70%);
-            animation: pulse-ring 3s infinite;
-        }
-
-        @keyframes pulse-ring {
-            0% { transform: scale(0.8); opacity: 1; }
-            100% { transform: scale(1.5); opacity: 0; }
         }
 
         .catalog-cta h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
             color: #E4BB13;
-            position: relative;
-            z-index: 2;
         }
 
         .catalog-cta p {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
+            font-size: 1rem;
+            margin-bottom: 20px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            position: relative;
-            z-index: 2;
+            color: white;
         }
 
         .btn-large {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 18px 40px;
+            padding: 15px 30px;
             background: #E4BB13;
             color: #0d1b3d;
             text-decoration: none;
@@ -523,10 +511,7 @@
             box-shadow: 0 6px 20px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            position: relative;
-            z-index: 2;
+            font-size: 1rem;
         }
 
         .btn-large:hover {
@@ -593,6 +578,7 @@
         .about-feature span {
             font-size: 1rem;
             font-weight: 500;
+            color: white;
         }
 
         /* Contact - MODIFICADO (apenas horário de funcionamento) */
@@ -628,6 +614,7 @@
             margin-bottom: 8px;
             font-size: 0.95rem;
             opacity: 0.9;
+            color: white;
         }
 
         /* Footer - MODIFICADO (extremamente compacto e profissional) */
@@ -677,6 +664,7 @@
             justify-content: center;
             align-items: center;
             gap: 5px;
+            color: white;
         }
 
         .footer-social {
@@ -716,6 +704,7 @@
             opacity: 0.8;
             font-size: 0.75rem;
             margin-bottom: 3px;
+            color: white;
         }
 
         /* Responsive */
@@ -818,7 +807,7 @@
             }
 
             .carousel-img {
-                height: 250px;
+                height: 220px;
             }
 
             .carousel-content h3 {
@@ -843,8 +832,8 @@
             }
             
             .btn-large {
-                padding: 15px 30px;
-                font-size: 1rem;
+                padding: 12px 25px;
+                font-size: 0.9rem;
             }
 
             .footer-content {
@@ -860,23 +849,33 @@
             }
 
             .catalog-cta {
-                padding: 25px 15px;
+                padding: 20px 15px;
             }
 
             .catalog-cta h3 {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
             }
 
             .catalog-cta p {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
 
             .carousel-img {
-                height: 200px;
+                height: 180px;
             }
 
             .carousel-img i {
-                font-size: 60px;
+                font-size: 50px;
+            }
+            
+            .carousel-controls {
+                gap: 15px;
+            }
+            
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
             }
         }
 
@@ -1018,7 +1017,7 @@
                             <i class="fas fa-biking"></i>
                         </div>
                         <div class="carousel-content">
-                            <h3>Modelo S2</3>
+                            <h3>Modelo S2</h3>
                             <p>Conforto e eficiência</p>
                             <ul>
                                 <li>⚡ 1000W de potência</li>
@@ -1051,19 +1050,20 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="carousel-controls">
-                    <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-                </div>
+            </div>
+            
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
                 
                 <div class="carousel-indicators">
                     <div class="indicator active" data-index="0"></div>
                     <div class="indicator" data-index="1"></div>
                     <div class="indicator" data-index="2"></div>
                 </div>
+                
+                <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
             </div>
-            
+
             <div class="catalog-cta">
                 <h3>Catálogo Completo</h3>
                 <p>Explore nossa linha completa de scooters elétricas, capacetes, acessórios e muito mais. Tudo com a qualidade EloBike!</p>
@@ -1164,7 +1164,7 @@
             observer.observe(section);
         });
 
-        // Rolagem suave para links internos - AJUSTADO
+        // Rolagem suave para links internos - AJUSTADO PARA MOSTRAR SETAS
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1172,10 +1172,10 @@
                 const target = document.querySelector(targetId);
                 
                 if (target) {
-                    // Cálculo especial para a seção de produtos
+                    // Cálculo especial para a seção de produtos - MOSTRAR SETAS
                     let offset = 0;
                     if (targetId === '#produtos') {
-                        offset = 120; // Ajuste para garantir que as setas fiquem visíveis
+                        offset = 100; // Ajuste preciso para garantir que as setas fiquem visíveis
                     }
                     
                     const targetPosition = target.offsetTop - offset;
@@ -1193,7 +1193,7 @@
             document.querySelector('.hero').classList.add('visible');
         }, 100);
 
-        // Carrossel de produtos - MELHORADO
+        // Carrossel de produtos - MELHORADO COM CONTROLE DE 26 SEGUNDOS
         const carousel = document.getElementById('carousel');
         const slides = document.querySelectorAll('.carousel-slide');
         const indicators = document.querySelectorAll('.indicator');
@@ -1204,8 +1204,9 @@
         let currentIndex = 0;
         const slideCount = slides.length;
         let autoSlideInterval;
-        let startX = 0;
+        let userInteractionTimeout;
         let isDragging = false;
+        let startX = 0;
         
         function updateCarousel() {
             carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
@@ -1244,15 +1245,30 @@
             clearInterval(autoSlideInterval);
         }
         
-        // Reiniciar slides automáticos
+        // Reiniciar slides automáticos após 26 segundos de inatividade
         function resetAutoSlide() {
+            // Limpar timeout existente
+            clearTimeout(userInteractionTimeout);
+            
+            // Parar slides automáticos
             stopAutoSlide();
-            startAutoSlide();
+            
+            // Reiniciar após 26 segundos
+            userInteractionTimeout = setTimeout(() => {
+                startAutoSlide();
+            }, 26000); // 26 segundos
         }
         
         // Event listeners para os botões
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoSlide();
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoSlide();
+        });
         
         // Indicadores clicáveis
         indicators.forEach(indicator => {
@@ -1276,7 +1292,9 @@
         
         // Pausar auto slide quando o mouse estiver sobre o carrossel
         carouselContainer.addEventListener('mouseenter', stopAutoSlide);
-        carouselContainer.addEventListener('mouseleave', startAutoSlide);
+        carouselContainer.addEventListener('mouseleave', () => {
+            resetAutoSlide(); // Reinicia a contagem ao sair
+        });
         
         function dragStart(e) {
             isDragging = true;
@@ -1303,7 +1321,7 @@
         
         function dragEnd() {
             isDragging = false;
-            // Não reinicia automaticamente, apenas quando o usuário para de interagir
+            resetAutoSlide(); // Reinicia a contagem ao terminar de arrastar
         }
         
         // Iniciar o slideshow automaticamente
