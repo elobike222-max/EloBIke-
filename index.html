@@ -427,45 +427,27 @@
             border: 2px solid #E4BB13;
         }
 
-        /* Indicadores - MOVIDOS para abaixo do preço */
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 15px 0 5px;
-        }
-
-        .indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .indicator.active {
-            background: #E4BB13;
-            transform: scale(1.2);
-        }
-
-        /* Controles - BOTÃO NO MEIO das setas */
+        /* Controles - BOTÃO NO MEIO das setas - MAIOR E GRUDADO */
         .carousel-controls {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 15px;
-            margin: 25px 0 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .carousel-btn {
             background: rgba(228, 187, 19, 0.2);
             border: none;
             color: #E4BB13;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
@@ -480,26 +462,49 @@
             transform: scale(1.1);
         }
 
-        /* Botão central - NO MEIO das setas */
+        /* Botão central - NO MEIO das setas - MAIOR */
         .catalog-central-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
+            gap: 10px;
+            padding: 12px 25px;
             background: #E4BB13;
             color: #0d1b3d;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
-            margin: 0 10px;
+            margin: 0 15px;
+            font-size: 1.1rem;
         }
 
         .catalog-central-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(228, 187, 19, 0.6);
             background: #ffd700;
+        }
+
+        /* Indicadores - FIXOS (fora do carrossel) */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 15px 0 5px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: #E4BB13;
+            transform: scale(1.3);
         }
 
         /* About - MODIFICADO (área limpa removida) */
@@ -799,11 +804,14 @@
             .carousel-controls {
                 flex-wrap: wrap;
                 gap: 10px;
+                padding: 12px;
             }
             
             .catalog-central-btn {
                 order: 3;
                 margin-top: 10px;
+                padding: 10px 20px;
+                font-size: 1rem;
             }
         }
 
@@ -845,22 +853,28 @@
             
             .carousel-controls {
                 gap: 8px;
+                padding: 10px;
             }
             
             .carousel-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 14px;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
             }
             
             .catalog-central-btn {
-                padding: 8px 15px;
+                padding: 8px 16px;
                 font-size: 0.9rem;
             }
             
             .price {
                 font-size: 1.1rem;
                 padding: 6px 10px;
+            }
+            
+            .indicator {
+                width: 10px;
+                height: 10px;
             }
         }
 
@@ -996,12 +1010,6 @@
                                 <span class="price">À vista: R$ 12.000,00</span>
                                 <span class="price">Cartão: R$ 12.490,00</span>
                             </div>
-                            <!-- INDICADORES ABAIXO DO PREÇO -->
-                            <div class="carousel-indicators">
-                                <div class="indicator active" data-index="0"></div>
-                                <div class="indicator" data-index="1"></div>
-                                <div class="indicator" data-index="2"></div>
-                            </div>
                         </div>
                     </div>
                     
@@ -1022,12 +1030,6 @@
                             <div class="price-container">
                                 <span class="price">À vista: R$ 11.490,00</span>
                                 <span class="price">Cartão: R$ 11.990,00</span>
-                            </div>
-                            <!-- INDICADORES ABAIXO DO PREÇO -->
-                            <div class="carousel-indicators">
-                                <div class="indicator active" data-index="0"></div>
-                                <div class="indicator" data-index="1"></div>
-                                <div class="indicator" data-index="2"></div>
                             </div>
                         </div>
                     </div>
@@ -1050,18 +1052,19 @@
                                 <span class="price">À vista: R$ 8.490,00</span>
                                 <span class="price">Cartão: R$ 8.990,00</span>
                             </div>
-                            <!-- INDICADORES ABAIXO DO PREÇO -->
-                            <div class="carousel-indicators">
-                                <div class="indicator active" data-index="0"></div>
-                                <div class="indicator" data-index="1"></div>
-                                <div class="indicator" data-index="2"></div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- CONTROLES COM BOTÃO NO MEIO -->
+            <!-- INDICADORES FIXOS (fora do carrossel) -->
+            <div class="carousel-indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+            
+            <!-- CONTROLES COM BOTÃO NO MEIO - MAIOR E GRUDADO -->
             <div class="carousel-controls">
                 <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
                 
@@ -1134,14 +1137,6 @@
                     <a href="https://w.app/c8foan" class="social-link">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2023 EloBike Araxá - CNPJ: 57.620.431/0001-78</p>
-                <p>Todos os direitos reservados</p>
-            </div>
-        </div>
     </footer>
 
     <script>
@@ -1169,21 +1164,30 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
                 
-                if (target) {
-                    // Cálculo especial para a seção de produtos - MOSTRAR SETAS E BOTÃO
-                    let offset = 0;
-                    if (targetId === '#produtos') {
-                        offset = 120; // Ajuste preciso para garantir visibilidade total
+                if (targetId === '#produtos') {
+                    // Cálculo preciso para mostrar setas e botão central
+                    const targetSection = document.querySelector(targetId);
+                    const controls = document.querySelector('.carousel-controls');
+                    
+                    if (targetSection && controls) {
+                        const targetPosition = targetSection.offsetTop - 100;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
                     }
-                    
-                    const targetPosition = target.offsetTop - offset;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                } else {
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        const targetPosition = target.offsetTop - 80;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             });
         });
@@ -1193,7 +1197,7 @@
             document.querySelector('.hero').classList.add('visible');
         }, 100);
 
-        // Carrossel de produtos - MELHORADO COM CONTROLE DE 26 SEGUNDOS
+        // Carrossel de produtos - MELHORADO
         const carousel = document.getElementById('carousel');
         const slides = document.querySelectorAll('.carousel-slide');
         const indicators = document.querySelectorAll('.indicator');
