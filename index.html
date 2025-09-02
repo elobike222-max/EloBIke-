@@ -304,105 +304,96 @@
             font-size: 0.9rem;
         }
 
-        /* Products - AJUSTADO CONFORME SOLICITADO */
+        /* Products - MODIFICADO (quadrados menores) */
         .products {
             padding: 80px 0;
             background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
-            text-align: center;
         }
 
         .products h2 {
+            text-align: center;
             font-size: 2.5rem;
             margin-bottom: 40px;
             color: #E4BB13;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .product-carousel {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            cursor: grab;
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
-        .product-carousel:active {
-            cursor: grabbing;
-        }
-
-        .carousel-container {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .product-card {
             background: rgba(255, 255, 255, 0.08);
-            padding: 25px;
+            padding: 25px 20px;
             border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            user-select: none;
+            position: relative;
+            overflow: hidden;
+            height: fit-content;
         }
 
-        .carousel-img {
-            width: 100%;
-            max-width: 450px;
-            height: 250px;
-            background: linear-gradient(45deg, #0d1b3d, #1e3a8a);
-            border-radius: 10px;
+        .product-card:hover {
+            transform: translateY(-5px);
+            background: rgba(228, 187, 19, 0.12);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(228, 187, 19, 0.15);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
-            overflow: hidden;
+            margin: 0 auto 15px;
+            transition: transform 0.3s ease;
             border: 2px solid #E4BB13;
         }
 
-        .carousel-img i {
-            font-size: 70px;
+        .product-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .product-icon i {
+            font-size: 30px;
             color: #E4BB13;
         }
 
-        .carousel-content {
-            text-align: center;
-            width: 100%;
-        }
-
-        .carousel-content h3 {
-            font-size: 1.6rem;
-            margin-bottom: 12px;
+        .product-card h3 {
+            margin-bottom: 15px;
             color: #E4BB13;
+            font-size: 1.4rem;
+            font-weight: 700;
         }
 
-        .carousel-content p {
-            color: white;
+        .product-card p {
             margin-bottom: 15px;
             opacity: 0.9;
+            font-size: 1rem;
         }
 
-        .carousel-content ul {
+        .product-card ul {
             list-style: none;
             margin: 15px 0;
             text-align: left;
             padding: 0 15px;
         }
 
-        .carousel-content ul li {
+        .product-card ul li {
             margin-bottom: 8px;
             padding-left: 25px;
             position: relative;
             font-size: 0.9rem;
-            color: white;
         }
 
-        .carousel-content ul li:before {
+        .product-card ul li:before {
             content: "✓";
             color: #E4BB13;
             position: absolute;
@@ -411,100 +402,43 @@
             font-size: 1rem;
         }
 
-        .price-container {
-            margin: 15px 0;
-        }
-
         .price {
             display: block;
             font-size: 1.2rem;
             font-weight: 700;
             color: #E4BB13;
-            margin: 10px 0;
+            margin: 15px 0 10px;
             background: rgba(228, 187, 19, 0.1);
-            padding: 8px 12px;
+            padding: 10px;
             border-radius: 10px;
             border: 2px solid #E4BB13;
         }
 
-        /* Controles - BOTÃO NO MEIO das setas - MAIOR E GRUDADO */
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .catalog-cta {
+            text-align: center;
+            margin-top: 40px;
         }
 
-        .carousel-btn {
-            background: rgba(228, 187, 19, 0.2);
-            border: none;
-            color: #E4BB13;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .carousel-btn:hover {
-            background: #E4BB13;
-            color: #0d1b3d;
-            transform: scale(1.1);
-        }
-
-        /* Botão central - NO MEIO das setas - MAIOR */
-        .catalog-central-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 25px;
+        .btn-large {
+            display: inline-block;
+            padding: 15px 35px;
             background: #E4BB13;
             color: #0d1b3d;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
-            margin: 0 15px;
-            font-size: 1.1rem;
-        }
-
-        .catalog-central-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.6);
-            background: #ffd700;
-        }
-
-        /* Indicadores - FIXOS (fora do carrossel) */
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin: 15px 0 5px;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 6px 20px rgba(228, 187, 19, 0.4);
+            border: none;
             cursor: pointer;
-            transition: all 0.3s;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
         }
 
-        .indicator.active {
-            background: #E4BB13;
-            transform: scale(1.3);
+        .btn-large:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(228, 187, 19, 0.6);
+            background: #ffd700;
         }
 
         /* About - MODIFICADO (área limpa removida) */
@@ -565,14 +499,20 @@
         .about-feature span {
             font-size: 1rem;
             font-weight: 500;
-            color: white;
         }
 
         /* Contact - MODIFICADO (apenas horário de funcionamento) */
         .contact {
             padding: 60px 0 40px;
             background: linear-gradient(135deg, #1e3a8a 0%, #0d1b3d 100%);
+        }
+
+        .contact h2 {
             text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #E4BB13;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .business-hours {
@@ -601,7 +541,6 @@
             margin-bottom: 8px;
             font-size: 0.95rem;
             opacity: 0.9;
-            color: white;
         }
 
         /* Footer - MODIFICADO (extremamente compacto e profissional) */
@@ -651,7 +590,6 @@
             justify-content: center;
             align-items: center;
             gap: 5px;
-            color: white;
         }
 
         .footer-social {
@@ -691,7 +629,6 @@
             opacity: 0.8;
             font-size: 0.75rem;
             margin-bottom: 3px;
-            color: white;
         }
 
         /* Responsive */
@@ -741,7 +678,8 @@
                 font-size: 80px;
             }
 
-            .products h2 {
+            .products h2,
+            .contact h2 {
                 font-size: 2.2rem;
             }
 
@@ -792,27 +730,6 @@
             .business-hours {
                 max-width: 90%;
             }
-
-            .carousel-img {
-                height: 220px;
-            }
-
-            .carousel-content h3 {
-                font-size: 1.5rem;
-            }
-            
-            .carousel-controls {
-                flex-wrap: wrap;
-                gap: 10px;
-                padding: 12px;
-            }
-            
-            .catalog-central-btn {
-                order: 3;
-                margin-top: 10px;
-                padding: 10px 20px;
-                font-size: 1rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -831,6 +748,19 @@
                 justify-content: center;
             }
             
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-card {
+                padding: 20px 15px;
+            }
+            
+            .btn-large {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+
             .footer-content {
                 gap: 15px;
             }
@@ -838,43 +768,13 @@
             .footer-contact p {
                 font-size: 0.75rem;
             }
-
-            .about-text h2 {
+            
+            .contact h2 {
                 font-size: 2rem;
             }
 
-            .carousel-img {
-                height: 180px;
-            }
-
-            .carousel-img i {
-                font-size: 50px;
-            }
-            
-            .carousel-controls {
-                gap: 8px;
-                padding: 10px;
-            }
-            
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-            
-            .catalog-central-btn {
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            }
-            
-            .price {
-                font-size: 1.1rem;
-                padding: 6px 10px;
-            }
-            
-            .indicator {
-                width: 10px;
-                height: 10px;
+            .about-text h2 {
+                font-size: 2rem;
             }
         }
 
@@ -989,90 +889,63 @@
     <section id="produtos" class="products">
         <div class="container">
             <h2>Nossos Modelos</h2>
-            
-            <div class="product-carousel">
-                <div class="carousel-container" id="carousel">
-                    <div class="carousel-slide">
-                        <div class="carousel-img">
-                            <i class="fas fa-motorcycle"></i>
-                        </div>
-                        <div class="carousel-content">
-                            <h3>Modelo R11</h3>
-                            <p>Alta performance e tecnologia</p>
-                            <ul>
-                                <li>⚡ 3000W de potência</li>
-                                <li>⏱️ Até 70 km/h</li>
-                                <li>🔋 45 km de autonomia</li>
-                                <li>⏳ 5 horas para carga completa</li>
-                                <li>💪 Capacidade: 150kg a 200kg</li>
-                            </ul>
-                            <div class="price-container">
-                                <span class="price">À vista: R$ 12.000,00</span>
-                                <span class="price">Cartão: R$ 12.490,00</span>
-                            </div>
-                        </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-motorcycle"></i>
                     </div>
-                    
-                    <div class="carousel-slide">
-                        <div class="carousel-img">
-                            <i class="fas fa-biking"></i>
-                        </div>
-                        <div class="carousel-content">
-                            <h3>Modelo S2</h3>
-                            <p>Conforto e eficiência</p>
-                            <ul>
-                                <li>⚡ 1000W de potência</li>
-                                <li>⏱️ Até 40 km/h</li>
-                                <li>🔋 45 km de autonomia</li>
-                                <li>⏳ 5 horas para carga completa</li>
-                                <li>💪 Capacidade: até 200kg</li>
-                            </ul>
-                            <div class="price-container">
-                                <span class="price">À vista: R$ 11.490,00</span>
-                                <span class="price">Cartão: R$ 11.990,00</span>
-                            </div>
-                        </div>
+                    <h3>Modelo R11</h3>
+                    <p>Alta performance e tecnologia</p>
+                    <ul>
+                        <li>⚡ 3000W de potência</li>
+                        <li>⏱️ Até 70 km/h</li>
+                        <li>🔋 45 km de autonomia</li>
+                        <li>⏳ 5 horas para carga completa</li>
+                        <li>💪 Capacidade: 150kg a 200kg</li>
+                    </ul>
+                    <span class="price">À vista: R$ 12.000,00</span>
+                    <span class="price">Cartão: R$ 12.490,00</span>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-biking"></i>
                     </div>
-                    
-                    <div class="carousel-slide">
-                        <div class="carousel-img">
-                            <i class="fas fa-scooter"></i>
-                        </div>
-                        <div class="carousel-content">
-                            <h3>Modelo V8</h3>
-                            <p>Leve e econômica</p>
-                            <ul>
-                                <li>⚡ 1000W de potência</li>
-                                <li>⏱️ Até 50 km/h</li>
-                                <li>🔋 45 km de autonomia</li>
-                                <li>⏳ 5 horas para carga completa</li>
-                                <li>💪 Capacidade: até 150kg</li>
-                            </ul>
-                            <div class="price-container">
-                                <span class="price">À vista: R$ 8.490,00</span>
-                                <span class="price">Cartão: R$ 8.990,00</span>
-                            </div>
-                        </div>
+                    <h3>Modelo S2</h3>
+                    <p>Conforto và eficiência</p>
+                    <ul>
+                        <li>⚡ 1000W de potência</li>
+                        <li>⏱️ Até 40 km/h</li>
+                        <li>🔋 45 km de autonomia</li>
+                        <li>⏳ 5 horas para carga completa</li>
+                        <li>💪 Capacidade: até 200kg</li>
+                    </ul>
+                    <span class="price">À vista: R$ 11.490,00</span>
+                    <span class="price">Cartão: R$ 11.990,00</span>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-scooter"></i>
                     </div>
+                    <h3>Modelo V8</h3>
+                    <p>Leve e econômica</p>
+                    <ul>
+                        <li>⚡ 1000W de potência</li>
+                        <li>⏱️ Até 50 km/h</li>
+                        <li>🔋 45 km de autonomia</li>
+                        <li>⏳ 5 horas para carga completa</li>
+                        <li>💪 Capacidade: até 150kg</li>
+                    </ul>
+                    <span class="price">À vista: R$ 8.490,00</span>
+                    <span class="price">Cartão: R$ 8.990,00</span>
                 </div>
             </div>
             
-            <!-- INDICADORES FIXOS (fora do carrossel) -->
-            <div class="carousel-indicators">
-                <div class="indicator active" data-index="0"></div>
-                <div class="indicator" data-index="1"></div>
-                <div class="indicator" data-index="2"></div>
-            </div>
-            
-            <!-- CONTROLES COM BOTÃO NO MEIO - MAIOR E GRUDADO -->
-            <div class="carousel-controls">
-                <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-                
-                <a href="catalogo.html" class="catalog-central-btn">
+            <div class="catalog-cta">
+                <a href="catalogo.html" class="btn-large">
                     <i class="fas fa-store"></i> Ver Catálogo Completo
                 </a>
-                
-                <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -1107,6 +980,10 @@
     <!-- Contact -->
     <section id="contato" class="contact">
         <div class="container">
+            <h2>Fale Conosco</h2>
+            
+            <!-- REMOVIDOS OS CARDS DE CONTATO -->
+            
             <div class="business-hours">
                 <h4><i class="far fa-clock"></i> Horário de Funcionamento</h4>
                 <p>Segunda a Sexta: 8h às 17h30</p>
@@ -1137,6 +1014,14 @@
                     <a href="https://w.app/c8foan" class="social-link">
                         <i class="fab fa-whatsapp"></i>
                     </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 EloBike Araxá - CNPJ: 57.620.431/0001-78</p>
+                <p>Todos os direitos reservados</p>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -1159,35 +1044,16 @@
             observer.observe(section);
         });
 
-        // Rolagem suave para links internos - AJUSTE PRECISO PARA MOSTRAR SETAS
+        // Rolagem suave para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                
-                if (targetId === '#produtos') {
-                    // Cálculo preciso para mostrar setas e botão central
-                    const targetSection = document.querySelector(targetId);
-                    const controls = document.querySelector('.carousel-controls');
-                    
-                    if (targetSection && controls) {
-                        const targetPosition = targetSection.offsetTop - 100;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                } else {
-                    const target = document.querySelector(targetId);
-                    if (target) {
-                        const targetPosition = target.offsetTop - 80;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
@@ -1196,134 +1062,6 @@
         setTimeout(() => {
             document.querySelector('.hero').classList.add('visible');
         }, 100);
-
-        // Carrossel de produtos - MELHORADO
-        const carousel = document.getElementById('carousel');
-        const slides = document.querySelectorAll('.carousel-slide');
-        const indicators = document.querySelectorAll('.indicator');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const carouselContainer = document.querySelector('.product-carousel');
-        
-        let currentIndex = 0;
-        const slideCount = slides.length;
-        let autoSlideInterval;
-        let userInteractionTimeout;
-        let isDragging = false;
-        let startX = 0;
-        
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            // Atualizar indicadores
-            indicators.forEach((indicator, index) => {
-                if (index === currentIndex) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
-                }
-            });
-        }
-        
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slideCount;
-            updateCarousel();
-            resetAutoSlide();
-        }
-        
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-            updateCarousel();
-            resetAutoSlide();
-        }
-        
-        // Iniciar slides automáticos
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(() => {
-                nextSlide();
-            }, 5000);
-        }
-        
-        // Parar slides automáticos
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-        }
-        
-        // Reiniciar slides automáticos após 26 segundos de inatividade
-        function resetAutoSlide() {
-            clearTimeout(userInteractionTimeout);
-            stopAutoSlide();
-            
-            userInteractionTimeout = setTimeout(() => {
-                startAutoSlide();
-            }, 26000);
-        }
-        
-        // Event listeners para os botões
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            resetAutoSlide();
-        });
-        
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            resetAutoSlide();
-        });
-        
-        // Indicadores clicáveis
-        indicators.forEach(indicator => {
-            indicator.addEventListener('click', () => {
-                currentIndex = parseInt(indicator.getAttribute('data-index'));
-                updateCarousel();
-                resetAutoSlide();
-            });
-        });
-        
-        // Funcionalidade de arrastar
-        carouselContainer.addEventListener('mousedown', dragStart);
-        carouselContainer.addEventListener('touchstart', dragStart);
-        
-        carouselContainer.addEventListener('mousemove', drag);
-        carouselContainer.addEventListener('touchmove', drag);
-        
-        carouselContainer.addEventListener('mouseup', dragEnd);
-        carouselContainer.addEventListener('mouseleave', dragEnd);
-        carouselContainer.addEventListener('touchend', dragEnd);
-        
-        // Pausar auto slide quando o mouse estiver sobre o carrossel
-        carouselContainer.addEventListener('mouseenter', stopAutoSlide);
-        carouselContainer.addEventListener('mouseleave', () => {
-            resetAutoSlide();
-        });
-        
-        function dragStart(e) {
-            isDragging = true;
-            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-            stopAutoSlide();
-        }
-        
-        function drag(e) {
-            if (!isDragging) return;
-            
-            const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-            const walk = (x - startX) * 2;
-            
-            if (walk > 50) {
-                prevSlide();
-                isDragging = false;
-            } else if (walk < -50) {
-                nextSlide();
-                isDragging = false;
-            }
-        }
-        
-        function dragEnd() {
-            isDragging = false;
-            resetAutoSlide();
-        }
-        
-        // Iniciar o slideshow automaticamente
-        startAutoSlide();
     </script>
 </body>
 </html>
