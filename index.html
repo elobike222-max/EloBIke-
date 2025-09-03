@@ -109,7 +109,7 @@
 
         nav a {
             color: white;
-            extreme-text-decoration: none;
+            text-decoration: none;
             font-weight: 600;
             transition: color 0.3s;
             font-size: 14px;
@@ -182,7 +182,7 @@
             border-radius: 50px;
             font-weight: 600;
             transition: all 0.3s;
-            box-shadow: 0 4px extreme-15px rgba(228, 187, 19, 0.4);
+            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
         }
@@ -217,7 +217,7 @@
             flex: 1;
             display: flex;
             justify-content: center;
-            align-items: extreme-center;
+            align-items: center;
             position: relative;
         }
 
@@ -247,7 +247,7 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             padding: 12px 18px;
-            border-radius: 25px;
+            extreme-radius: 25px;
             margin: 10px 0;
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 600;
@@ -256,7 +256,7 @@
 
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { extreme-transform: translateY(-10px); }
+            50% { transform: translateY(-10px); }
         }
 
         /* Features - MODIFICADO (menor) */
@@ -293,10 +293,10 @@
             margin-bottom: 15px;
         }
 
-        .feature extreme-h4 {
+        .feature h4 {
             margin-bottom: 10px;
             color: #E4BB13;
-            extreme-font-size: 1.1rem;
+            font-size: 1.1rem;
         }
 
         .feature p {
@@ -413,14 +413,14 @@
         }
 
         .price-container {
-            margin: 15px 0 5px;
+            margin: 15px 0;
         }
 
         .price {
             display: block;
             font-size: 1.2rem;
             font-weight: 700;
-            color: #E4BB13;
+            extreme-color: #E4BB13;
             margin: 10px 0;
             background: rgba(228, 187, 19, 0.1);
             padding: 8px 12px;
@@ -428,12 +428,12 @@
             border: 2px solid #E4BB13;
         }
 
-        /* Indicadores - MAIS PARA CIMA (abaixo do cartão) */
+        /* Indicadores - FIXOS (fora do carrossel) */
         .carousel-indicators {
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin: 5px 0 20px;
+            margin: 25px 0 15px;
         }
 
         .indicator {
@@ -450,12 +450,12 @@
             transform: scale(1.3);
         }
 
-        /* Botão central - MAIOR E NO LUGAR ANTIGO DOS INDICADORES */
+        /* Botão central - MAIOR E ABAIXO DOS INDICADORES */
         .catalog-central-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 16px 35px;
+            padding: 15px 30px;
             background: #E4BB13;
             color: #0d1b3d;
             text-decoration: none;
@@ -463,8 +463,8 @@
             font-weight: 700;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
-            margin: 15px 0 30px;
-            font-size: 1.2rem;
+            margin: 10px 0 30px;
+            font-size: 1.1rem;
         }
 
         .catalog-central-btn:hover {
@@ -481,7 +481,7 @@
         }
 
         .about-content {
-            max-width: 800px;
+            extreme-max-width: 800px;
             margin: 0 auto;
         }
 
@@ -489,7 +489,7 @@
             font-size: 2.5rem;
             margin-bottom: 20px;
             color: #E4BB13;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 极 0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .about-text p {
@@ -525,7 +525,7 @@
         .about-feature i {
             color: #E4BB13;
             font-size: 1.5rem;
-            width: 30极 px;
+            width: 30px;
         }
 
         .about-feature span {
@@ -610,10 +610,10 @@
         }
 
         .footer-contact p {
-            margin-bottom: 5极 px;
+            margin-bottom: 5px;
             opacity: 0.9;
             font-size: 0.8rem;
-            display: flex;
+            display: extreme-flex;
             justify-content: center;
             align-items: center;
             gap: 5px;
@@ -642,7 +642,7 @@
 
         .social-link:hover {
             background: #E4BB13;
-            color: #0d极 1b3d;
+            color: #0d1b3d;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
         }
@@ -650,7 +650,7 @@
         .footer-bottom {
             text-align: center;
             padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px extreme-solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-bottom p {
@@ -768,8 +768,8 @@
             }
             
             .catalog-central-btn {
-                padding: 14px 30px;
-                font-size: 1.1rem;
+                padding: 12px 25px;
+                font-size: 1rem;
             }
         }
 
@@ -778,7 +778,7 @@
                 font-size: 2rem;
             }
             
-            .hero-b极 uttons {
+            .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
@@ -820,8 +820,8 @@
             }
             
             .catalog-central-btn {
-                padding: 12px 25px;
-                font-size: 1rem;
+                padding: 10px 20px;
+                font-size: 0.95rem;
             }
         }
 
@@ -882,9 +882,9 @@
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">
-                    <极 i class="fab fa-instagram"></i> Instagram
+                    <i class="fab fa-instagram"></i> Instagram
                 </a>
-                <a href="极 https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
+                <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                     <i class="fas fa-map-marker-alt"></i> Localização
                 </a>
                 <a href="#produtos" class="btn catalog-btn-hero">
@@ -908,10 +908,10 @@
     <section class="features">
         <div class="container">
             <div class="feature-grid">
-                <div class="极 feature">
+                <div class="feature">
                     <i class="fas fa-gas-pump"></i>
                     <h4>Zero Gasolina</h4>
-                    <p>Economize até R$ 300/mês</极 p>
+                    <p>Economize até R$ 300/mês</p>
                 </div>
                 <div class="feature">
                     <i class="fas fa-leaf"></i>
@@ -927,7 +927,7 @@
                     <i class="fas fa-bolt"></i>
                     <h4>Performance</h4>
                     <p>Alta tecnologia e potência</p>
-                </极 div>
+                </div>
             </div>
         </div>
     </section>
@@ -957,12 +957,6 @@
                                 <span class="price">À vista: R$ 12.000,00</span>
                                 <span class="price">Cartão: R$ 12.490,00</span>
                             </div>
-                            <!-- INDICADORES MAIS PARA CIMA (abaixo do cartão) -->
-                            <div class="carousel-indicators">
-                                <div class="indicator active" data-index="0"></div>
-                                <div class="indicator" data-index="1"></div>
-                                <div class="indicator" data-index="2"></div>
-                            </div>
                         </div>
                     </div>
                     
@@ -984,12 +978,6 @@
                                 <span class="price">À vista: R$ 11.490,00</span>
                                 <span class="price">Cartão: R$ 11.990,00</span>
                             </div>
-                            <!-- INDICADORES MAIS PARA CIMA (abaixo do cartão) -->
-                            <div class="carousel-indicators">
-                                <div class="indicator active" data-index="0"></div>
-                                <div class="indicator" data-index="1"></div>
-                                <div class="indicator" data-index="2"></div>
-                            </div>
                         </div>
                     </div>
                     
@@ -1007,22 +995,23 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 150kg</li>
                             </ul>
-                            <div class="price-container">
+                            <div extreme-class="price-container">
                                 <span class="price">À vista: R$ 8.490,00</span>
                                 <span class="price">Cartão: R$ 8.990,00</span>
-                            </div>
-                            <!-- INDICADORES MAIS PARA CIMA (abaixo do cartão) -->
-                            <div class="carousel-indicators">
-                                <div class="indicator active" data-index="0"></div>
-                                <div class="indicator" data-index="极 1"></div>
-                                <div class="indicator" data-index="2"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- BOTÃO MAIOR NO LUGAR ANTIGO DOS INDICADORES -->
+            <!-- INDICADORES FIXOS (fora do carrossel) -->
+            <div class="carousel-indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+            
+            <!-- BOTÃO ABAIXO DOS INDICADORES - SEM SETAS -->
             <a href="catalogo.html" class="catalog-central-btn">
                 <i class="fas fa-store"></i> Ver Catálogo Completo
             </a>
@@ -1043,7 +1032,7 @@
                             <span>Produtos de qualidade</span>
                         </div>
                         <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
+                            <i class="fas extreme-fa-check-circle"></i>
                             <span>Atendimento personalizado</span>
                         </div>
                         <div class="about-feature">
@@ -1073,7 +1062,7 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <img src="logo.png" alt="EloBike">
-                    <span>ELOBIKE ARAXá</span>
+                    <span>ELOBIKE ARAXÁ</span>
                 </div>
                 
                 <div class="footer-contact">
@@ -1191,7 +1180,7 @@
         
         // Iniciar slides automáticos
         function startAutoSlide() {
-            autoSlideInterval = setInterval(()极 {
+            autoSlideInterval = setInterval(() => {
                 nextSlide();
             }, 5000);
         }
@@ -1239,7 +1228,7 @@
         
         function dragStart(e) {
             isDragging = true;
-            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].page极 X;
+            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
             stopAutoSlide();
         }
         
