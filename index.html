@@ -231,6 +231,27 @@
             color: #E4BB13;
         }
 
+        .floating-elements {
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .float-element {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 12px 18px;
+            border-radius: 25px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
         /* Features */
         .features {
             padding: 40px 0;
@@ -288,13 +309,16 @@
             text-align: center;
         }
 
-        .product-carousel {
+        .product-carousel-container {
             position: relative;
             max-width: 800px;
             margin: 0 auto;
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .carousel-container {
@@ -308,10 +332,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
         }
 
         .carousel-img {
@@ -388,13 +409,12 @@
             border: 2px solid #E4BB13;
         }
 
-        /* Carousel Controls */
+        /* Carousel Controls INSIDE the box */
         .carousel-controls {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            margin: 15px 0;
-            gap: 10px;
+            margin: 15px 0 5px;
         }
 
         .carousel-arrow {
@@ -420,7 +440,6 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin: 15px 0;
         }
 
         .indicator {
@@ -437,11 +456,11 @@
             transform: scale(1.2);
         }
 
-        .catalog-central-btn {
+        .catalog-button-inside {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 24px;
+            padding: 10px 20px;
             background: #E4BB13;
             color: #0d1b3d;
             text-decoration: none;
@@ -449,66 +468,68 @@
             font-weight: 700;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(228, 187, 19, 0.3);
-            margin: 10px 0 20px;
-            font-size: 1rem;
+            margin-top: 15px;
+            font-size: 0.9rem;
         }
 
-        .catalog-central-btn:hover {
+        .catalog-button-inside:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(228, 187, 19, 0.4);
             background: #ffd700;
         }
 
-        /* Services - Mais compacta e visível */
+        /* Services - Estilo do screenshot */
         .services {
             padding: 50px 0;
             background: #0d1b3d;
         }
 
         .services-container {
-            display: flex;
-            align-items: center;
-            gap: 30px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .services-content {
-            flex: 1;
-        }
-
-        .services-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .services-icon {
-            font-size: 80px;
+        .services-title {
+            text-align: center;
             color: #E4BB13;
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .services-subtitle {
+            text-align: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 600;
         }
 
         .services-content h3 {
             color: #E4BB13;
             margin-bottom: 15px;
             font-size: 1.5rem;
+            text-align: center;
         }
 
         .services-content p {
             margin-bottom: 20px;
             opacity: 0.9;
+            text-align: center;
         }
 
         .service-features {
-            margin-top: 15px;
+            margin: 25px 0;
         }
 
         .service-features li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             padding-left: 25px;
             position: relative;
+            font-size: 1rem;
         }
 
         .service-features li:before {
@@ -516,8 +537,28 @@
             color: #E4BB13;
             font-weight: bold;
             position: absolute;
-            left: 0;
+            left: 10px;
             font-size: 1.2rem;
+        }
+
+        .services-button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto 0;
+            padding: 12px 25px;
+            background: #E4BB13;
+            color: #0d1b3d;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(228, 187, 19, 0.3);
+        }
+
+        .services-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(228, 187, 19, 0.4);
+            background: #ffd700;
         }
 
         /* About */
@@ -743,17 +784,15 @@
             }
 
             .services-container {
-                flex-direction: column;
-                text-align: center;
+                padding: 20px;
             }
 
-            .services-icon {
-                font-size: 60px;
-                margin-bottom: 15px;
+            .services-title {
+                font-size: 1.8rem;
             }
-
-            .service-features {
-                text-align: left;
+            
+            .services-subtitle {
+                font-size: 1.3rem;
             }
 
             nav {
@@ -831,16 +870,24 @@
             }
             
             .services-container {
-                padding: 20px;
+                padding: 15px;
             }
             
-            .services-icon {
-                font-size: 50px;
+            .services-title {
+                font-size: 1.6rem;
             }
             
-            .catalog-central-btn {
-                padding: 10px 20px;
+            .services-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .service-features li {
                 font-size: 0.9rem;
+            }
+            
+            .catalog-button-inside {
+                padding: 8px 16px;
+                font-size: 0.85rem;
             }
         }
 
@@ -902,11 +949,19 @@
                     <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                         <i class="fas fa-map-marker-alt"></i> Localização
                     </a>
+                    <a href="#produtos" class="btn catalog-btn-hero">
+                        <i class="fas fa-store"></i> Ver Catálogo
+                    </a>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="moto-placeholder">
                     <i class="fas fa-bolt"></i>
+                    <div class="floating-elements">
+                        <div class="float-element">⭐ Qualidade</div>
+                        <div class="float-element">🚀 Entrega</div>
+                        <div class="float-element">💪 Garantia</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -945,7 +1000,7 @@
         <div class="container">
             <h2 class="section-title">Nossos Modelos</h2>
             
-            <div class="product-carousel">
+            <div class="product-carousel-container">
                 <div class="carousel-container" id="carousel">
                     <div class="carousel-slide">
                         <div class="carousel-img">
@@ -1010,38 +1065,39 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Controles do carrossel -->
-            <div class="carousel-controls">
-                <div class="carousel-arrow prev">
-                    <i class="fas fa-chevron-left"></i>
+                
+                <!-- Controles do carrossel DENTRO da caixa -->
+                <div class="carousel-controls">
+                    <div class="carousel-arrow prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    
+                    <!-- Indicadores -->
+                    <div class="carousel-indicators">
+                        <div class="indicator active" data-index="0"></div>
+                        <div class="indicator" data-index="1"></div>
+                        <div class="indicator" data-index="2"></div>
+                    </div>
+                    
+                    <div class="carousel-arrow next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
                 </div>
                 
-                <!-- Indicadores -->
-                <div class="carousel-indicators">
-                    <div class="indicator active" data-index="0"></div>
-                    <div class="indicator" data-index="1"></div>
-                    <div class="indicator" data-index="2"></div>
-                </div>
-                
-                <div class="carousel-arrow next">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
+                <a href="catalogo.html" class="catalog-button-inside">
+                    <i class="fas fa-store"></i> Ver Catálogo Completo
+                </a>
             </div>
-            
-            <a href="catalogo.html" class="catalog-central-btn">
-                <i class="fas fa-store"></i> Ver Catálogo Completo
-            </a>
         </div>
     </section>
 
-    <!-- Services - Seção mais compacta e visível -->
+    <!-- Services - Estilo do screenshot -->
     <section id="servicos" class="services">
         <div class="container">
-            <h2 class="section-title">Serviços de Reparo</h2>
-            
             <div class="services-container">
+                <h2 class="services-title">ELOBIKE</h2>
+                <h3 class="services-subtitle">serviços de Reparo</h3>
+                
                 <div class="services-content">
                     <h3>Manutenção Especializada</h3>
                     <p>Além de vendas, oferecemos serviços especializados em manutenção e reparo de scooters elétricas com técnicos qualificados e peças originais.</p>
@@ -1053,13 +1109,9 @@
                         <li>Troca de peças e acessórios</li>
                     </ul>
                     
-                    <a href="https://w.app/c8foan" class="btn" style="margin-top: 15px;">
-                        <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+                    <a href="https://w.app/c8foan" class="services-button">
+                        Solicitar Orçamento
                     </a>
-                </div>
-                
-                <div class="services-image">
-                    <i class="fas fa-tools services-icon"></i>
                 </div>
             </div>
         </div>
@@ -1113,7 +1165,7 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <img src="logo.png" alt="EloBike">
-                    <span>ELOBIKE ARAXÁ</span>
+                    <span>ELOBIKE ARAXá</span>
                 </div>
                 
                 <div class="footer-contact">
