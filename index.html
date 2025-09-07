@@ -836,6 +836,138 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
         }
 
+        /* CATÁLOGO INTEGRADO */
+        .catalog-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .catalog-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .catalog-tab {
+            padding: 12px 25px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .catalog-tab.active {
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .catalog-tab:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .catalog-category {
+            display: none;
+        }
+
+        .catalog-category.active {
+            display: block;
+        }
+
+        /* Galeria de imagens para cada produto */
+        .product-gallery {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            height: 250px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 2px solid var(--accent);
+        }
+
+        .gallery-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transform: translateY(-50%);
+            padding: 0 15px;
+            pointer-events: none;
+        }
+
+        .gallery-arrow {
+            background: rgba(255, 255, 255, 0.7);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 16px;
+            color: var(--primary);
+            pointer-events: auto;
+        }
+
+        .gallery-arrow:hover {
+            background: rgba(228, 187, 19, 0.9);
+            transform: scale(1.1);
+        }
+
+        .gallery-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .gallery-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .gallery-indicator.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .hero-content h2 {
@@ -926,7 +1058,6 @@
             nav.active {
                 transform: translateY(0);
                 opacity: 1;
-                visibility: visible;
             }
 
             .feature-grid {
@@ -981,6 +1112,16 @@
                 width: 140px;
                 font-size: 14px;
                 padding: 12px 18px;
+            }
+
+            .catalog-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .catalog-tab {
+                width: 200px;
+                text-align: center;
             }
         }
 
@@ -1061,6 +1202,12 @@
             .carousel-content ul li {
                 font-size: 0.9rem;
             }
+            
+            .gallery-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+            }
         }
 
         /* Smooth Scroll */
@@ -1114,7 +1261,7 @@
                 <a href="#servicos">Serviços</a>
                 <a href="#sobre">Sobre</a>
                 <a href="#contato">Contato</a>
-                <a href="catalogo.html" class="catalog-btn">Catálogo</a>
+                <a href="#catalogo" class="catalog-btn">Catálogo</a>
             </nav>
         </div>
     </header>
@@ -1123,7 +1270,7 @@
     <section class="hero">
         <div class="hero-content">
             <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>
-            <p>As melhores scooters elétricas de Araxá и região</p>
+            <p>As melhores scooters elétricas de Araxá e região</p>
             
             <div class="hero-buttons">
                 <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="btn whatsapp-btn">
@@ -1135,7 +1282,7 @@
                 <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                     <i class="fas fa-map-marker-alt"></i> Localização
                 </a>
-                <a href="#produtos" class="btn catalog-btn-hero">
+                <a href="#catalogo" class="btn catalog-btn-hero">
                     <i class="fas fa-store"></i> Ver Catálogo
                 </a>
                 <a href="#servicos" class="btn maintenance-btn">
@@ -1206,7 +1353,7 @@
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn">
+                            <a href="#catalogo" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1227,7 +1374,7 @@
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn">
+                            <a href="#catalogo" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1248,7 +1395,7 @@
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn">
+                            <a href="#catalogo" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1269,7 +1416,7 @@
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn">
+                            <a href="#catalogo" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1290,7 +1437,7 @@
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn">
+                            <a href="#catalogo" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1315,6 +1462,416 @@
                 <div class="indicator" data-index="2"></div>
                 <div class="indicator" data-index="3"></div>
                 <div class="indicator" data-index="4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO INTEGRADO -->
+    <section id="catalogo" class="catalog-section">
+        <div class="container">
+            <h2 class="section-title">Catálogo Completo</h2>
+            
+            <div class="catalog-tabs">
+                <div class="catalog-tab active" data-category="scooters">Scooters</div>
+                <div class="catalog-tab" data-category="helmets">Capacetes</div>
+                <div class="catalog-tab" data-category="batteries">Baterias</div>
+            </div>
+            
+            <!-- Seção de Scooters -->
+            <div class="catalog-category active" id="scooters">
+                <h3 style="text-align: center; margin-bottom: 30px; color: var(--accent);">Scooters Elétricas</h3>
+                
+                <div class="product-carousel">
+                    <div class="carousel-container" id="scooter-carousel">
+                        <!-- Scooter 1 -->
+                        <div class="carousel-slide">
+                            <div class="product-gallery">
+                                <div class="gallery-container" id="gallery-r11">
+                                    <div class="gallery-slide">
+                                        <img src="r11e.png" alt="Modelo R11 - Vista frontal">
+                                    </div>
+                                    <div class="gallery-slide">
+                                        <img src="R11.png" alt="Modelo R11 - Vista lateral">
+                                    </div>
+                                    <div class="gallery-slide">
+                                        <img src="r112.png" alt="Modelo R11 - Detalhes">
+                                    </div>
+                                    <div class="gallery-slide">
+                                        <img src="r113.png" alt="Modelo R11 - Painel">
+                                    </div>
+                                    <div class="gallery-slide">
+                                        <img src="r114.png" alt="Modelo R11 - Rodas">
+                                    </div>
+                                </div>
+                                <div class="gallery-controls">
+                                    <div class="gallery-arrow prev-gallery" data-gallery="r11">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </div>
+                                    <div class="gallery-arrow next-gallery" data-gallery="r11">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-indicators" id="indicators-r11">
+                                    <div class="gallery-indicator active" data-index="0"></div>
+                                    <div class="gallery-indicator" data-index="1"></div>
+                                    <div class="gallery-indicator" data-index="2"></div>
+                                    <div class="gallery-indicator" data-index="3"></div>
+                                    <div class="gallery-indicator" data-index="4"></div>
+                                </div>
+                            </div>
+                            <div class="carousel-content">
+                                <h3>Modelo R11</h3>
+                                <p>Scooter elétrica de alta performance com design moderno e tecnologia avançada.</p>
+                                <ul>
+                                    <li>⚡ 3.000W de potência</li>
+                                    <li>⏱️ Até 70 km/h</li>
+                                    <li>🔋 45 km de autonomia</li>
+                                    <li>⏳ 5 horas para carga completa</li>
+                                    <li>💪 Capacidade: 150kg a 200kg</li>
+                                </ul>
+                                <div class="product-price" style="font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 15px 0;">
+                                    R$ 8.499,00 <span style="font-size: 1rem; text-decoration: line-through; color: var(--text-muted);">R$ 9.299,00</span>
+                                </div>
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="btn whatsapp-btn" style="width: 100%; max-width: 280px; margin: 0 auto;">
+                                    <i class="fab fa-whatsapp"></i> Comprar
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Scooter 2 -->
+                        <div class="carousel-slide">
+                            <div class="product-gallery">
+                                <div class="gallery-container" id="gallery-r11sport">
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-motorcycle" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-bolt" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-tachometer-alt" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-controls">
+                                    <div class="gallery-arrow prev-gallery" data-gallery="r11sport">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </div>
+                                    <div class="gallery-arrow next-gallery" data-gallery="r11sport">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-indicators" id="indicators-r11sport">
+                                    <div class="gallery-indicator active" data-index="0"></div>
+                                    <div class="gallery-indicator" data-index="1"></div>
+                                    <div class="gallery-indicator" data-index="2"></div>
+                                </div>
+                            </div>
+                            <div class="carousel-content">
+                                <h3>Modelo R11 Sport</h3>
+                                <p>Versão esportiva com design agressivo e performance superior.</p>
+                                <ul>
+                                    <li>⚡ 3.500W de potência</li>
+                                    <li>⏱️ Até 75 km/h</li>
+                                    <li>🔋 40 km de autonomia</li>
+                                    <li>⏳ 6 horas para carga completa</li>
+                                    <li>💪 Capacidade: 150kg a 200kg</li>
+                                </ul>
+                                <div class="product-price" style="font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 15px 0;">
+                                    R$ 9.299,00
+                                </div>
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 Sport 🛵" class="btn whatsapp-btn" style="width: 100%; max-width: 280px; margin: 0 auto;">
+                                    <i class="fab fa-whatsapp"></i> Comprar
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Scooter 3 -->
+                        <div class="carousel-slide">
+                            <div class="product-gallery">
+                                <div class="gallery-container" id="gallery-r11comfort">
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-motorcycle" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-couch" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-road" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-controls">
+                                    <div class="gallery-arrow prev-gallery" data-gallery="r11comfort">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </div>
+                                    <div class="gallery-arrow next-gallery" data-gallery="r11comfort">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-indicators" id="indicators-r11comfort">
+                                    <div class="gallery-indicator active" data-index="0"></div>
+                                    <div class="gallery-indicator" data-index="1"></div>
+                                    <div class="gallery-indicator" data-index="2"></div>
+                                </div>
+                            </div>
+                            <div class="carousel-content">
+                                <h3>Modelo R11 Comfort</h3>
+                                <p>Focada no conforto do piloto, com assento amplo e suspensão especial.</p>
+                                <ul>
+                                    <li>⚡ 2.500W de potência</li>
+                                    <li>⏱️ Até 60 km/h</li>
+                                    <li>🔋 50 km de autonomia</li>
+                                    <li>⏳ 5 horas para carga completa</li>
+                                    <li>💪 Capacidade: 150kg a 200kg</li>
+                                </ul>
+                                <div class="product-price" style="font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 15px 0;">
+                                    R$ 8.199,00 <span style="font-size: 1rem; text-decoration: line-through; color: var(--text-muted);">R$ 8.799,00</span>
+                                </div>
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 Comfort 🛵" class="btn whatsapp-btn" style="width: 100%; max-width: 280px; margin: 0 auto;">
+                                    <i class="fab fa-whatsapp"></i> Comprar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Controles do carrossel de scooters -->
+                    <div class="carousel-controls">
+                        <div class="carousel-arrow prev-scooter">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="carousel-arrow next-scooter">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Indicadores do carrossel de scooters -->
+                <div class="carousel-indicators">
+                    <div class="indicator active" data-index="0"></div>
+                    <div class="indicator" data-index="1"></div>
+                    <div class="indicator" data-index="2"></div>
+                </div>
+            </div>
+            
+            <!-- Seção de Capacetes -->
+            <div class="catalog-category" id="helmets">
+                <h3 style="text-align: center; margin-bottom: 30px; color: var(--accent);">Capacetes</h3>
+                
+                <div class="product-carousel">
+                    <div class="carousel-container" id="helmet-carousel">
+                        <!-- Capacete 1 -->
+                        <div class="carousel-slide">
+                            <div class="product-gallery">
+                                <div class="gallery-container" id="gallery-jet">
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-helmet-safety" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-shield-alt" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-controls">
+                                    <div class="gallery-arrow prev-gallery" data-gallery="jet">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </div>
+                                    <div class="gallery-arrow next-gallery" data-gallery="jet">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-indicators" id="indicators-jet">
+                                    <div class="gallery-indicator active" data-index="0"></div>
+                                    <div class="gallery-indicator" data-index="1"></div>
+                                </div>
+                            </div>
+                            <div class="carousel-content">
+                                <h3>Capacete Jet</h3>
+                                <p>Capacete estilo jet com design moderno e proteção certificada.</p>
+                                <ul>
+                                    <li>🛡️ Proteção certificada</li>
+                                    <li>🎨 Design moderno</li>
+                                    <li>🔄 Fácil de ajustar</li>
+                                    <li>💨 Ventilação eficiente</li>
+                                    <li>⚖️ Leve e confortável</li>
+                                </ul>
+                                <div class="product-price" style="font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 15px 0;">
+                                    R$ 199,00 <span style="font-size: 1rem; text-decoration: line-through; color: var(--text-muted);">R$ 249,00</span>
+                                </div>
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Jet" class="btn whatsapp-btn" style="width: 100%; max-width: 280px; margin: 0 auto;">
+                                    <i class="fab fa-whatsapp"></i> Comprar
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Capacete 2 -->
+                        <div class="carousel-slide">
+                            <div class="product-gallery">
+                                <div class="gallery-container" id="gallery-integral">
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-helmet-safety" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-shield-alt" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-controls">
+                                    <div class="gallery-arrow prev-gallery" data-gallery="integral">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </div>
+                                    <div class="gallery-arrow next-gallery" data-gallery="integral">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-indicators" id="indicators-integral">
+                                    <div class="gallery-indicator active" data-index="0"></div>
+                                    <div class="gallery-indicator" data-index="1"></div>
+                                </div>
+                            </div>
+                            <div class="carousel-content">
+                                <h3>Capacete Integral</h3>
+                                <p>Capacete integral com proteção total e visor anti-riscos.</p>
+                                <ul>
+                                    <li>🛡️ Proteção total</li>
+                                    <li>👁️ Visor anti-riscos</li>
+                                    <li>💨 Ventilação ajustável</li>
+                                    <li>🔇 Redução de ruído</li>
+                                    <li>🎯 Design aerodinâmico</li>
+                                </ul>
+                                <div class="product-price" style="font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 15px 0;">
+                                    R$ 349,00
+                                </div>
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Integral" class="btn whatsapp-btn" style="width: 100%; max-width: 280px; margin: 0 auto;">
+                                    <i class="fab fa-whatsapp"></i> Comprar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Controles do carrossel de capacetes -->
+                    <div class="carousel-controls">
+                        <div class="carousel-arrow prev-helmet">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="carousel-arrow next-helmet">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Indicadores do carrossel de capacetes -->
+                <div class="carousel-indicators">
+                    <div class="indicator active" data-index="0"></div>
+                    <div class="indicator" data-index="1"></div>
+                </div>
+            </div>
+            
+            <!-- Seção de Baterias -->
+            <div class="catalog-category" id="batteries">
+                <h3 style="text-align: center; margin-bottom: 30px; color: var(--accent);">Baterias</h3>
+                
+                <div class="product-carousel">
+                    <div class="carousel-container" id="battery-carousel">
+                        <!-- Bateria 1 -->
+                        <div class="carousel-slide">
+                            <div class="product-gallery">
+                                <div class="gallery-container" id="gallery-battery1">
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-battery-full" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-bolt" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-controls">
+                                    <div class="gallery-arrow prev-gallery" data-gallery="battery1">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </div>
+                                    <div class="gallery-arrow next-gallery" data-gallery="battery1">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-indicators" id="indicators-battery1">
+                                    <div class="gallery-indicator active" data-index="0"></div>
+                                    <div class="gallery-indicator" data-index="1"></div>
+                                </div>
+                            </div>
+                            <div class="carousel-content">
+                                <h3>Bateria Lithium 60V 20Ah</h3>
+                                <p>Bateria de lítio de alta performance para scooters elétricas.</p>
+                                <ul>
+                                    <li>🔋 60V 20Ah</li>
+                                    <li>⚡ Alta performance</li>
+                                    <li>🔄 +1000 ciclos</li>
+                                    <li>⚖️ Leve e compacta</li>
+                                    <li>🔒 Sistema de segurança</li>
+                                </ul>
+                                <div class="product-price" style="font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 15px 0;">
+                                    R$ 1.899,00 <span style="font-size: 1rem; text-decoration: line-through; color: var(--text-muted);">R$ 2.199,00</span>
+                                </div>
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 60V 20Ah" class="btn whatsapp-btn" style="width: 100%; max-width: 280px; margin: 0 auto;">
+                                    <i class="fab fa-whatsapp"></i> Comprar
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Bateria 2 -->
+                        <div class="carousel-slide">
+                            <div class="product-gallery">
+                                <div class="gallery-container" id="gallery-battery2">
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-battery-full" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                    <div class="gallery-slide">
+                                        <i class="fas fa-road" style="font-size: 80px; color: var(--accent);"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-controls">
+                                    <div class="gallery-arrow prev-gallery" data-gallery="battery2">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </div>
+                                    <div class="gallery-arrow next-gallery" data-gallery="battery2">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-indicators" id="indicators-battery2">
+                                    <div class="gallery-indicator active" data-index="0"></div>
+                                    <div class="gallery-indicator" data-index="1"></div>
+                                </div>
+                            </div>
+                            <div class="carousel-content">
+                                <h3>Bateria Lithium 60V 26Ah</h3>
+                                <p>Bateria de lítio com maior capacidade para mais autonomia.</p>
+                                <ul>
+                                    <li>🔋 60V 26Ah</li>
+                                    <li>🚀 Maior autonomia</li>
+                                    <li>🔄 +1200 ciclos</li>
+                                    <li>⏳ Carregamento rápido</li>
+                                    <li>🌡️ Resistente a variações térmicas</li>
+                                </ul>
+                                <div class="product-price" style="font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 15px 0;">
+                                    R$ 2.399,00
+                                </div>
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 60V 26Ah" class="btn whatsapp-btn" style="width: 100%; max-width: 280px; margin: 0 auto;">
+                                    <i class="fab fa-whatsapp"></i> Comprar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Controles do carrossel de baterias -->
+                    <div class="carousel-controls">
+                        <div class="carousel-arrow prev-battery">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="carousel-arrow next-battery">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Indicadores do carrossel de baterias -->
+                <div class="carousel-indicators">
+                    <div class="indicator active" data-index="0"></div>
+                    <div class="indicator" data-index="1"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -1522,7 +2079,7 @@
         
         // Iniciar slides automáticos
         function startAutoSlide() {
-                        autoSlideInterval = setInterval(() => {
+            autoSlideInterval = setInterval(() => {
                 nextSlide();
             }, 5000);
         }
@@ -1645,6 +2202,154 @@
                 behavior: 'smooth'
             });
         });
+
+        // CATÁLOGO INTEGRADO - Funcionalidades
+        // Alternar entre categorias
+        document.querySelectorAll('.catalog-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remover classe active de todas as abas
+                document.querySelectorAll('.catalog-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Adicionar classe active à aba clicada
+                tab.classList.add('active');
+                
+                // Esconder todas as seções
+                document.querySelectorAll('.catalog-category').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Mostrar a seção correspondente
+                const categoryId = tab.getAttribute('data-category');
+                document.getElementById(categoryId).classList.add('active');
+            });
+        });
+
+        // Inicializar todas as galerias de produtos
+        function initGalleries() {
+            document.querySelectorAll('.gallery-container').forEach(gallery => {
+                const galleryId = gallery.id;
+                const gallerySlides = gallery.querySelectorAll('.gallery-slide');
+                const indicators = document.querySelectorAll(`#indicators-${galleryId.split('-')[1]} .gallery-indicator`);
+                
+                let currentGalleryIndex = 0;
+                
+                function updateGallery() {
+                    gallery.style.transform = `translateX(-${currentGalleryIndex * 100}%)`;
+                    
+                    // Atualizar indicadores
+                    indicators.forEach((indicator, index) => {
+                        if (index === currentGalleryIndex) {
+                            indicator.classList.add('active');
+                        } else {
+                            indicator.classList.remove('active');
+                        }
+                    });
+                }
+                
+                // Adicionar eventos aos indicadores
+                indicators.forEach(indicator => {
+                    indicator.addEventListener('click', () => {
+                        currentGalleryIndex = parseInt(indicator.getAttribute('data-index'));
+                        updateGallery();
+                    });
+                });
+                
+                // Adicionar eventos às setas de navegação
+                document.querySelectorAll(`.prev-gallery[data-gallery="${galleryId.split('-')[1]}"]`).forEach(arrow => {
+                    arrow.addEventListener('click', () => {
+                        currentGalleryIndex = (currentGalleryIndex - 1 + gallerySlides.length) % gallerySlides.length;
+                        updateGallery();
+                    });
+                });
+                
+                document.querySelectorAll(`.next-gallery[data-gallery="${galleryId.split('-')[1]}"]`).forEach(arrow => {
+                    arrow.addEventListener('click', () => {
+                        currentGalleryIndex = (currentGalleryIndex + 1) % gallerySlides.length;
+                        updateGallery();
+                    });
+                });
+                
+                // Adicionar funcionalidade de arrastar para a galeria
+                let isGalleryDragging = false;
+                let galleryStartX = 0;
+                
+                gallery.addEventListener('mousedown', (e) => {
+                    isGalleryDragging = true;
+                    galleryStartX = e.pageX;
+                    gallery.style.cursor = 'grabbing';
+                    gallery.style.transition = 'none';
+                });
+                
+                gallery.addEventListener('touchstart', (e) => {
+                    isGalleryDragging = true;
+                    galleryStartX = e.touches[0].pageX;
+                    gallery.style.transition = 'none';
+                }, { passive: true });
+                
+                gallery.addEventListener('mousemove', (e) => {
+                    if (!isGalleryDragging) return;
+                    
+                    e.preventDefault();
+                    const x = e.pageX;
+                    const walk = (x - galleryStartX) * 2;
+                    
+                    if (walk > 50) {
+                        currentGalleryIndex = (currentGalleryIndex - 1 + gallerySlides.length) % gallerySlides.length;
+                        updateGallery();
+                        isGalleryDragging = false;
+                        gallery.style.cursor = 'grab';
+                        gallery.style.transition = 'transform 0.5s ease';
+                    } else if (walk < -50) {
+                        currentGalleryIndex = (currentGalleryIndex + 1) % gallerySlides.length;
+                        updateGallery();
+                        isGalleryDragging = false;
+                        gallery.style.cursor = 'grab';
+                        gallery.style.transition = 'transform 0.5s ease';
+                    }
+                });
+                
+                gallery.addEventListener('touchmove', (e) => {
+                    if (!isGalleryDragging) return;
+                    
+                    const x = e.touches[0].pageX;
+                    const walk = (x - galleryStartX) * 2;
+                    
+                    if (walk > 50) {
+                        currentGalleryIndex = (currentGalleryIndex - 1 + gallerySlides.length) % gallerySlides.length;
+                        updateGallery();
+                        isGalleryDragging = false;
+                        gallery.style.transition = 'transform 0.5s ease';
+                    } else if (walk < -50) {
+                        currentGalleryIndex = (currentGalleryIndex + 1) % gallerySlides.length;
+                        updateGallery();
+                        isGalleryDragging = false;
+                        gallery.style.transition = 'transform 0.5s ease';
+                    }
+                }, { passive: true });
+                
+                gallery.addEventListener('mouseup', () => {
+                    isGalleryDragging = false;
+                    gallery.style.cursor = 'grab';
+                    gallery.style.transition = 'transform 0.5s ease';
+                });
+                
+                gallery.addEventListener('mouseleave', () => {
+                    isGalleryDragging = false;
+                    gallery.style.cursor = 'grab';
+                    gallery.style.transition = 'transform 0.5s ease';
+                });
+                
+                gallery.addEventListener('touchend', () => {
+                    isGalleryDragging = false;
+                    gallery.style.transition = 'transform 0.5s ease';
+                });
+            });
+        }
+
+        // Inicializar as galerias quando o documento estiver carregado
+        document.addEventListener('DOMContentLoaded', initGalleries);
     </script>
 </body>
 </html>
