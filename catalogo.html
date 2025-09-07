@@ -16,9 +16,9 @@
             --text-muted: #adb5bd;
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
-            --scooter-color: #FF6B35;
-            --helmet-color: #4ECDC4;
-            --battery-color: #6A0572;
+            --scooter-color: #E4BB13;
+            --helmet-color: #1e90ff;
+            --battery-color: #32CD32;
         }
         
         * {
@@ -55,7 +55,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* Botões de categoria maiores e coloridos */
+        /* Botões de categoria com cores harmônicas */
         .category-buttons {
             display: flex;
             justify-content: center;
@@ -163,7 +163,8 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .product-image {
+        /* Carrossel de imagens do produto */
+        .product-image-carousel {
             width: 100%;
             height: 220px;
             overflow: hidden;
@@ -172,6 +173,21 @@
             align-items: center;
             justify-content: center;
             background: rgba(0, 0, 0, 0.1);
+        }
+
+        .image-carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 100%;
+        }
+
+        .product-image {
+            flex: 0 0 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .product-image i {
@@ -189,6 +205,36 @@
 
         .batteries-section .product-image i {
             color: var(--battery-color);
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .carousel-control {
+            pointer-events: all;
+            background: rgba(0, 0, 0, 0.5);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .carousel-control:hover {
+            background: rgba(0, 0, 0, 0.8);
         }
 
         .product-badge {
@@ -413,7 +459,7 @@
             <h1>Catálogo EloBike</h1>
         </div>
 
-        <!-- Botões de categoria com cores variadas -->
+        <!-- Botões de categoria com cores harmônicas -->
         <div class="category-buttons">
             <a href="#scooters" class="category-btn scooters-btn">
                 <i class="fas fa-motorcycle"></i> Scooters
@@ -433,8 +479,26 @@
             <div class="products-grid">
                 <!-- Scooter 1 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-motorcycle"></i>
+                    <div class="product-image-carousel">
+                        <div class="image-carousel-container">
+                            <div class="product-image">
+                                <i class="fas fa-motorcycle"></i>
+                            </div>
+                            <div class="product-image">
+                                <i class="fas fa-motorcycle" style="color: #1e90ff;"></i>
+                            </div>
+                            <div class="product-image">
+                                <i class="fas fa-motorcycle" style="color: #ff4500;"></i>
+                            </div>
+                        </div>
+                        <div class="carousel-controls">
+                            <div class="carousel-control prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="carousel-control next">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
                         <div class="product-badge">Mais Vendido</div>
                     </div>
                     <div class="product-info">
@@ -451,7 +515,7 @@
                         </div>
                         <div class="product-actions">
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Comprar
+                                <i class="fab fa-whatsapp"></i> Ver Modelo
                             </a>
                         </div>
                     </div>
@@ -459,8 +523,23 @@
                 
                 <!-- Scooter 2 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-motorcycle"></i>
+                    <div class="product-image-carousel">
+                        <div class="image-carousel-container">
+                            <div class="product-image">
+                                <i class="fas fa-motorcycle"></i>
+                            </div>
+                            <div class="product-image">
+                                <i class="fas fa-motorcycle" style="color: #1e90ff;"></i>
+                            </div>
+                        </div>
+                        <div class="carousel-controls">
+                            <div class="carousel-control prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="carousel-control next">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
                         <div class="product-badge">Lançamento</div>
                     </div>
                     <div class="product-info">
@@ -476,7 +555,7 @@
                         </div>
                         <div class="product-actions">
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 Sport 🛵" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Comprar
+                                <i class="fab fa-whatsapp"></i> Ver Modelo
                             </a>
                         </div>
                     </div>
@@ -484,8 +563,23 @@
                 
                 <!-- Scooter 3 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-motorcycle"></i>
+                    <div class="product-image-carousel">
+                        <div class="image-carousel-container">
+                            <div class="product-image">
+                                <i class="fas fa-motorcycle"></i>
+                            </div>
+                            <div class="product-image">
+                                <i class="fas fa-motorcycle" style="color: #32cd32;"></i>
+                            </div>
+                        </div>
+                        <div class="carousel-controls">
+                            <div class="carousel-control prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="carousel-control next">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Modelo R11 Comfort</h3>
@@ -501,7 +595,7 @@
                         </div>
                         <div class="product-actions">
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 Comfort 🛵" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Comprar
+                                <i class="fab fa-whatsapp"></i> Ver Modelo
                             </a>
                         </div>
                     </div>
@@ -516,8 +610,26 @@
             <div class="products-grid">
                 <!-- Capacete 1 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-helmet-safety"></i>
+                    <div class="product-image-carousel">
+                        <div class="image-carousel-container">
+                            <div class="product-image">
+                                <i class="fas fa-helmet-safety"></i>
+                            </div>
+                            <div class="product-image">
+                                <i class="fas fa-helmet-safety" style="color: #ff0000;"></i>
+                            </div>
+                            <div class="product-image">
+                                <i class="fas fa-helmet-safety" style="color: #0000ff;"></i>
+                            </div>
+                        </div>
+                        <div class="carousel-controls">
+                            <div class="carousel-control prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="carousel-control next">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
                         <div class="product-badge">Popular</div>
                     </div>
                     <div class="product-info">
@@ -534,7 +646,7 @@
                         </div>
                         <div class="product-actions">
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Jet" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Comprar
+                                <i class="fab fa-whatsapp"></i> Ver Modelo
                             </a>
                         </div>
                     </div>
@@ -542,8 +654,23 @@
                 
                 <!-- Capacete 2 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-helmet-safety"></i>
+                    <div class="product-image-carousel">
+                        <div class="image-carousel-container">
+                            <div class="product-image">
+                                <i class="fas fa-helmet-safety"></i>
+                            </div>
+                            <div class="product-image">
+                                <i class="fas fa-helmet-safety" style="color: #000000;"></i>
+                            </div>
+                        </div>
+                        <div class="carousel-controls">
+                            <div class="carousel-control prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="carousel-control next">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Capacete Integral</h3>
@@ -558,7 +685,7 @@
                         </div>
                         <div class="product-actions">
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Integral" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Comprar
+                                <i class="fab fa-whatsapp"></i> Ver Modelo
                             </a>
                         </div>
                     </div>
@@ -566,8 +693,23 @@
                 
                 <!-- Capacete 3 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-helmet-safety"></i>
+                    <div class="product-image-carousel">
+                        <div class="image-carousel-container">
+                            <div class="product-image">
+                                <i class="fas fa-helmet-safety"></i>
+                            </div>
+                            <div class="product-image">
+                                <i class="fas fa-helmet-safety" style="color: #ffd700;"></i>
+                            </div>
+                        </div>
+                        <div class="carousel-controls">
+                            <div class="carousel-control prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="carousel-control next">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
                         <div class="product-badge">Novidade</div>
                     </div>
                     <div class="product-info">
@@ -583,7 +725,7 @@
                         </div>
                         <div class="product-actions">
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Modular" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Comprar
+                                <i class="fab fa-whatsapp"></i> Ver Modelo
                             </a>
                         </div>
                     </div>
@@ -598,8 +740,23 @@
             <div class="products-grid">
                 <!-- Bateria 1 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-battery-full"></i>
+                    <div class="product-image-carousel">
+                        <div class="image-carousel-container">
+                            <div class="product-image">
+                                <i class="fas fa-battery-full"></i>
+                            </div>
+                            <div class="product-image">
+                                <i class="fas fa-battery-full" style="color: #00ff00;"></i>
+                            </div>
+                        </div>
+                        <div class="carousel-controls">
+                            <div class="carousel-control prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="carousel-control next">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
                         <div class="product-badge">Mais Vendida</div>
                     </div>
                     <div class="product-info">
@@ -616,7 +773,7 @@
                         </div>
                         <div class="product-actions">
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 60V 20Ah" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Comprar
+                                <i class="fab fa-whatsapp"></i> Ver Modelo
                             </a>
                         </div>
                     </div>
@@ -624,8 +781,23 @@
                 
                 <!-- Bateria 2 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-battery-full"></i>
+                    <div class="product-image-carousel">
+                        <div class="image-carousel-container">
+                            <div class="product-image">
+                                <i class="fas fa-battery-full"></i>
+                            </div>
+                            <div class="product-image">
+                                <i class="fas fa-battery-full" style="color: #00ff00;"></i>
+                            </div>
+                        </div>
+                        <div class="carousel-controls">
+                            <div class="carousel-control prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="carousel-control next">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Bateria Lithium 60V 26Ah</h3>
@@ -640,7 +812,7 @@
                         </div>
                         <div class="product-actions">
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 60V 26Ah" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Comprar
+                                <i class="fab fa-whatsapp"></i> Ver Modelo
                             </a>
                         </div>
                     </div>
@@ -648,8 +820,23 @@
                 
                 <!-- Bateria 3 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-battery-full"></i>
+                    <div class="product-image-carousel">
+                        <div class="image-carousel-container">
+                            <div class="product-image">
+                                <i class="fas fa-battery-full"></i>
+                            </div>
+                            <div class="product-image">
+                                <i class="fas fa-battery-full" style="color: #00ff00;"></i>
+                            </div>
+                        </div>
+                        <div class="carousel-controls">
+                            <div class="carousel-control prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="carousel-control next">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
                         <div class="product-badge">Promoção</div>
                     </div>
                     <div class="product-info">
@@ -666,7 +853,7 @@
                         </div>
                         <div class="product-actions">
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 72V 20Ah" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Comprar
+                                <i class="fab fa-whatsapp"></i> Ver Modelo
                             </a>
                         </div>
                     </div>
@@ -696,25 +883,84 @@
             });
         });
 
-        // Adicionar classe ativa ao botão quando a seção estiver visível
-        const sections = document.querySelectorAll('.category-section');
-        const navLinks = document.querySelectorAll('.category-btn');
-        
-        function highlightMenu() {
-            let scrollPosition = window.scrollY;
+        // Inicializar carrosséis de imagens
+        function initImageCarousels() {
+            const imageCarousels = document.querySelectorAll('.image-carousel-container');
             
-            sections.forEach((section, index) => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionBottom = sectionTop + section.offsetHeight;
+            imageCarousels.forEach(carousel => {
+                const images = carousel.querySelectorAll('.product-image');
+                const parent = carousel.closest('.product-image-carousel');
+                const prevBtn = parent.querySelector('.carousel-control.prev');
+                const nextBtn = parent.querySelector('.carousel-control.next');
                 
-                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    navLinks[index].classList.add('active');
+                let currentIndex = 0;
+                
+                function updateImageCarousel() {
+                    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                }
+                
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    updateImageCarousel();
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    updateImageCarousel();
+                });
+                
+                // Adicionar navegação por arrasto para imagens
+                let isDraggingImg = false;
+                let startXImg = 0;
+                let startTranslateX = 0;
+                
+                carousel.addEventListener('mousedown', dragStartImg);
+                carousel.addEventListener('touchstart', dragStartImg);
+                
+                carousel.addEventListener('mousemove', dragImg);
+                carousel.addEventListener('touchmove', dragImg);
+                
+                carousel.addEventListener('mouseup', dragEndImg);
+                carousel.addEventListener('mouseleave', dragEndImg);
+                carousel.addEventListener('touchend', dragEndImg);
+                
+                function dragStartImg(e) {
+                    isDraggingImg = true;
+                    startXImg = e.clientX || e.touches[0].clientX;
+                    startTranslateX = -currentIndex * 100;
+                    carousel.style.transition = 'none';
+                }
+                
+                function dragImg(e) {
+                    if (!isDraggingImg) return;
+                    
+                    const x = e.clientX || e.touches[0].clientX;
+                    const walk = (x - startXImg) / carousel.offsetWidth * 100;
+                    const newTranslate = startTranslateX + walk;
+                    
+                    carousel.style.transform = `translateX(${newTranslate}%)`;
+                }
+                
+                function dragEndImg() {
+                    isDraggingImg = false;
+                    carousel.style.transition = 'transform 0.5s ease';
+                    
+                    const x = event.clientX || event.changedTouches[0].clientX;
+                    const walk = (x - startXImg) / carousel.offsetWidth;
+                    
+                    if (walk < -0.1) {
+                        currentIndex = (currentIndex + 1) % images.length;
+                    } else if (walk > 0.1) {
+                        currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    }
+                    
+                    updateImageCarousel();
                 }
             });
         }
         
-        window.addEventListener('scroll', highlightMenu);
+        // Inicializar carrosséis quando a página carregar
+        window.addEventListener('load', initImageCarousels);
     </script>
 </body>
 </html>
