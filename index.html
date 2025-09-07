@@ -333,14 +333,14 @@
         .float-element {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 16px 22px; /* Aumentado o padding */
-            border-radius: 25px; /* Bordas mais arredondadas */
-            margin: 10px 0; /* Mais espaço entre os balões */
+            padding: 16px 22px;
+            border-radius: 25px;
+            margin: 10px 0;
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 600;
-            font-size: 16px; /* Fonte maior */
+            font-size: 16px;
             text-align: center;
-            width: 160px; /* Largura aumentada */
+            width: 160px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
@@ -445,8 +445,8 @@
 
         .carousel-img {
             width: 100%;
-            max-width: 450px; /* Largura aumentada */
-            height: 250px; /* Altura aumentada */
+            max-width: 450px;
+            height: 250px;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             border-radius: 10px;
             display: flex;
@@ -455,12 +455,14 @@
             margin-bottom: 12px;
             overflow: hidden;
             border: 2px solid var(--accent);
+            position: relative;
         }
 
         .carousel-img img {
-            width: 100%;
+            width: auto;
             height: 100%;
-            object-fit: contain; /* Alterado de 'cover' para 'contain' para mostrar imagem completa */
+            max-width: 100%;
+            object-fit: contain;
         }
 
         .carousel-img i {
@@ -474,31 +476,33 @@
         }
 
         .carousel-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
             color: var(--accent);
         }
 
         .carousel-content p {
             color: var(--text);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             opacity: 0.9;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            font-weight: 500;
         }
 
         .carousel-content ul {
             list-style: none;
-            margin: 12px 0;
+            margin: 15px 0;
             text-align: left;
-            padding: 0 12px;
+            padding: 0 15px;
         }
 
         .carousel-content ul li {
-            margin-bottom: 6px;
-            padding-left: 20px;
+            margin-bottom: 8px;
+            padding-left: 25px;
             position: relative;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             color: var(--text);
+            line-height: 1.5;
         }
 
         .carousel-content ul li:before {
@@ -507,7 +511,7 @@
             position: absolute;
             left: 0;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
         }
 
         /* Carousel Controls */
@@ -944,7 +948,7 @@
             }
 
             .carousel-content h3 {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
             
             .catalog-central-btn {
@@ -1048,6 +1052,10 @@
                 width: 130px;
                 font-size: 13px;
                 padding: 10px 15px;
+            }
+            
+            .carousel-content ul li {
+                font-size: 0.9rem;
             }
         }
 
@@ -1187,7 +1195,7 @@
                             <h3>Modelo R11</h3>
                             <p>Alta performance e tecnologia</p>
                             <ul>
-                                <li>⚡ 3000W de potência</li>
+                                <li>⚡ 3.000W de potência</li>
                                 <li>⏱️ Até 70 km/h</li>
                                 <li>🔋 45 km de autonomia</li>
                                 <li>⏳ 5 horas para carga completa</li>
@@ -1208,7 +1216,7 @@
                             <h3>Modelo R11</h3>
                             <p>Design moderno e elegante</p>
                             <ul>
-                                <li>⚡ 3000W de potência</li>
+                                <li>⚡ 3.000W de potência</li>
                                 <li>⏱️ Até 70 km/h</li>
                                 <li>🔋 45 km de autonomia</li>
                                 <li>⏳ 5 horas para carga completa</li>
@@ -1229,7 +1237,7 @@
                             <h3>Modelo R11</h3>
                             <p>Conforto e segurança</p>
                             <ul>
-                                <li>⚡ 3000W de potência</li>
+                                <li>⚡ 3.000W de potência</li>
                                 <li>⏱️ Até 70 km/h</li>
                                 <li>🔋 45 km de autonomia</li>
                                 <li>⏳ 5 horas para carga completa</li>
@@ -1250,7 +1258,7 @@
                             <h3>Modelo R11</h3>
                             <p>Inovação e tecnologia</p>
                             <ul>
-                                <li>⚡ 3000W de potência</li>
+                                <li>⚡ 3.000W de potência</li>
                                 <li>⏱️ Até 70 km/h</li>
                                 <li>🔋 45 km de autonomia</li>
                                 <li>⏳ 5 horas para carga completa</li>
@@ -1271,7 +1279,7 @@
                             <h3>Modelo R11</h3>
                             <p>Performance e estilo</p>
                             <ul>
-                                <li>⚡ 3000W de potência</li>
+                                <li>⚡ 3.000W de potência</li>
                                 <li>⏱️ Até 70 km/h</li>
                                 <li>🔋 45 km de autonomia</li>
                                 <li>⏳ 5 horas para carga completa</li>
