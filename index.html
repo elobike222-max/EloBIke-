@@ -32,7 +32,7 @@
             line-height: 1.5;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            font-size: 16px; /* Aumentei a fonte base */
+            font-size: 16px;
         }
 
         .container {
@@ -154,7 +154,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
-            font-size: 14px; /* Aumentei a fonte */
+            font-size: 14px;
             padding: 6px 12px;
             border-radius: 5px;
         }
@@ -238,7 +238,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 20px;
+            padding: 14px 22px; /* Aumentado o tamanho dos botões */
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -248,7 +248,7 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 15px; /* Aumentei a fonte */
+            font-size: 16px; /* Aumentado o tamanho da fonte */
         }
 
         .whatsapp-btn {
@@ -288,6 +288,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            flex-direction: column; /* Alterado para coluna */
         }
 
         .moto-placeholder {
@@ -300,7 +301,7 @@
             justify-content: center;
             border: 3px solid var(--accent);
             position: relative;
-            margin-top: -30px; /* Reduzi o espaço azul */
+            margin-top: 20px; /* Ajustado para posicionar abaixo dos botões */
         }
 
         .moto-placeholder i {
@@ -311,6 +312,7 @@
         .floating-elements {
             position: absolute;
             animation: float 3s ease-in-out infinite;
+            bottom: -100px; /* Reposicionado para baixo do círculo */
         }
 
         .float-element {
@@ -484,15 +486,18 @@
             font-size: 0.9rem;
         }
 
-        /* Removi o container de preços conforme solicitado */
-
-        /* Carousel Controls */
+        /* Carousel Controls - MODIFICADO */
         .carousel-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            margin-top: 15px;
-            gap: 12px;
+            transform: translateY(-50%);
+            padding: 0 15px;
+            pointer-events: none;
         }
 
         .carousel-arrow {
@@ -508,6 +513,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-size: 16px;
             color: var(--accent);
+            pointer-events: auto;
         }
 
         .carousel-arrow:hover {
@@ -540,7 +546,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 14px 28px; /* Aumentei o tamanho */
+            padding: 16px 32px; /* Aumentado o tamanho */
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -549,10 +555,10 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             margin: 8px 0 25px;
-            font-size: 1rem; /* Aumentei a fonte */
-            width: 100%; /* Ocupe toda a largura */
-            max-width: 300px; /* Largura máxima */
-            justify-content: center; /* Centralizar texto */
+            font-size: 1.1rem; /* Aumentado o tamanho da fonte */
+            width: 100%;
+            max-width: 320px; /* Aumentado a largura máxima */
+            justify-content: center;
         }
 
         .catalog-central-btn:hover {
@@ -561,7 +567,7 @@
             background: var(--accent-hover);
         }
 
-        /* Services - NOVA VERSÃO SIMPLIFICADA */
+        /* Services */
         .services {
             padding: 60px 0;
             background: var(--primary);
@@ -851,7 +857,7 @@
             .moto-placeholder {
                 width: 220px;
                 height: 220px;
-                margin-top: 20px; /* Reduzi ainda mais o espaço */
+                margin-top: 20px;
             }
 
             .moto-placeholder i {
@@ -930,12 +936,21 @@
             }
             
             .catalog-central-btn {
-                padding: 12px 24px;
-                font-size: 0.95rem;
+                padding: 14px 28px;
+                font-size: 1rem;
             }
 
             .services-simple {
                 padding: 20px;
+            }
+            
+            .carousel-controls {
+                padding: 0 5px;
+            }
+            
+            .carousel-arrow {
+                width: 35px;
+                height: 35px;
             }
         }
 
@@ -951,9 +966,9 @@
             
             .btn {
                 width: 100%;
-                max-width: 260px;
+                max-width: 280px; /* Aumentado para mobile */
                 justify-content: center;
-                font-size: 14px; /* Ajuste para mobile */
+                font-size: 15px; /* Aumentado para mobile */
             }
             
             .footer-content {
@@ -982,13 +997,19 @@
             }
             
             .catalog-central-btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
+                padding: 12px 24px;
+                font-size: 0.95rem;
             }
             
             .service-btn {
                 padding: 12px 24px;
                 font-size: 0.9rem;
+            }
+            
+            .carousel-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
             }
         }
 
@@ -1073,13 +1094,14 @@
             </div>
         </div>
         <div class="hero-image">
+            <!-- Os balões flutuantes foram movidos para abaixo do círculo -->
             <div class="moto-placeholder">
                 <i class="fas fa-bolt"></i>
-                <div class="floating-elements">
-                    <div class="float-element">⭐ Qualidade</div>
-                    <div class="float-element">🚀 Entrega</div>
-                    <div class="float-element">💪 Garantia</div>
-                </div>
+            </div>
+            <div class="floating-elements">
+                <div class="float-element">⭐ Qualidade</div>
+                <div class="float-element">🚀 Entrega</div>
+                <div class="float-element">💪 Garantia</div>
             </div>
         </div>
     </section>
@@ -1133,7 +1155,10 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
-                            <!-- Removi os preços conforme solicitado -->
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
                     </div>
                     
@@ -1151,7 +1176,10 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 200kg</li>
                             </ul>
-                            <!-- Removi os preços conforme solicitado -->
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
                     </div>
                     
@@ -1169,40 +1197,35 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 150kg</li>
                             </ul>
-                            <!-- Removi os preços conforme solicitado -->
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
+                    </div>
+                </div>
+                
+                <!-- Controles do carrossel posicionados nas laterais -->
+                <div class="carousel-controls">
+                    <div class="carousel-arrow prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-arrow next">
+                        <i class="fas fa-chevron-right"></i>
                     </div>
                 </div>
             </div>
             
-            <!-- Controles do carrossel -->
-            <div class="carousel-controls">
-                <div class="carousel-arrow prev">
-                    <i class="fas fa-chevron-left"></i>
-                </div>
-                
-                <!-- INDICADORES FIXOS (fora do carrossel) -->
-                <div class="carousel-indicators">
-                    <div class="indicator active" data-index="0"></div>
-                    <div class="indicator" data-index="1"></div>
-                    <div class="indicator" data-index="2"></div>
-                </div>
-                
-                <div class="carousel-arrow next">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div>
-            
-            <!-- BOTÃO ABAIXO DOS INDICADORES - SEM SETAS -->
-            <div style="display: flex; justify-content: center; width: 100%;">
-                <a href="catalogo.html" class="catalog-central-btn">
-                    <i class="fas fa-store"></i> Ver Catálogo Completo
-                </a>
+            <!-- Indicadores abaixo do botão (agora dentro do carrossel) -->
+            <div class="carousel-indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
             </div>
         </div>
     </section>
 
-    <!-- Services - NOVA SEÇÃO SIMPLIFICADA -->
+    <!-- Services -->
     <section id="servicos" class="services">
         <div class="container">
             <h2 class="section-title">Serviços de Reparo</h2>
