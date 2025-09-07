@@ -878,7 +878,7 @@
                 
                 // Atualizar dots
                 function updateDots() {
-                    const activeDot = Math.floor(Math.abs(currentPosition) / (maxPosition / (dots.length - 1)));
+                    const activeDot = Math.floor(Math.abs(currentPosition) / cardWidth);
                     dots.forEach((dot, idx) => {
                         dot.classList.toggle('active', idx === activeDot);
                     });
@@ -896,7 +896,13 @@
                 // Navegação por dots
                 dots.forEach((dot, index) => {
                     dot.addEventListener('click', () => {
-                        currentPosition = index * -maxPosition;
+                        currentPosition = -index * cardWidth * 3;
+                        if (window.innerWidth <= 1024) {
+                            currentPosition = -index * cardWidth * 2;
+                        }
+                        if (window.innerWidth <= 768) {
+                            currentPosition = -index * cardWidth;
+                        }
                         updateCarousel();
                     });
                 });
@@ -974,7 +980,16 @@
                     }
                     
                     let nextPosition = currentPosition - cardWidth * 3;
-                    const maxPosition = (cards.length - 3) * cardWidth;
+                    let maxPosition = (cards.length - 3) * cardWidth;
+                    
+                    if (window.innerWidth <= 1024) {
+                        nextPosition = currentPosition - cardWidth * 2;
+                        maxPosition = (cards.length - 2) * cardWidth;
+                    }
+                    if (window.innerWidth <= 768) {
+                        nextPosition = currentPosition - cardWidth;
+                        maxPosition = (cards.length - 1) * cardWidth;
+                    }
                     
                     if (nextPosition < -maxPosition) {
                         nextPosition = 0;
@@ -983,7 +998,7 @@
                     container.style.transform = `translateX(${nextPosition}px)`;
                     
                     // Atualizar dots
-                    const activeDot = Math.floor(Math.abs(nextPosition) / (maxPosition / (dots.length - 1)));
+                    const activeDot = Math.floor(Math.abs(nextPosition) / cardWidth);
                     dots.forEach((dot, idx) => {
                         dot.classList.toggle('active', idx === activeDot);
                     });
@@ -991,9 +1006,23 @@
             }, MODEL_CHANGE_DELAY);
         }
 
+        // Pausar automatização quando o mouse estiver sobre o carrossel
+        document.querySelectorAll('.products-carousel').forEach((carousel, index) => {
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(modelChangeIntervals[index]);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                startModelAutomation(index);
+            });
+        });
+
         // Inicializar quando a página carregar
         window.addEventListener('load', initAllCarousels);
-        window.addEventListener('resize', initProductCarousels);
+        window.addEventListener('resize', function() {
+            initProductCarousels();
+            startAllModelAutomations();
+        });
     </script>
 </body>
 </html>
