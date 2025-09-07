@@ -33,24 +33,24 @@
             color: var(--text);
             line-height: 1.5;
             overflow-x: hidden;
-            font-size: 18px; /* Aumentei a fonte base */
-            padding: 15px;
+            font-size: 16px;
+            padding: 20px;
             min-height: 100vh;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 10px;
+            padding: 0 15px;
         }
 
         .catalog-header {
             text-align: center;
-            margin: 15px 0;
+            margin: 20px 0;
         }
 
         .catalog-header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--accent);
             margin-bottom: 5px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
@@ -60,22 +60,22 @@
         .category-buttons {
             display: flex;
             justify-content: center;
-            margin: 20px 0;
+            margin: 30px 0;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 15px;
         }
 
         .category-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 14px 25px;
+            gap: 10px;
+            padding: 16px 32px;
             color: white;
             text-decoration: none;
-            border-radius: 8px; /* Mais quadrado */
+            border-radius: 10px;
             font-weight: 600;
             transition: all 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             border: none;
             cursor: pointer;
             font-size: 17px;
@@ -95,45 +95,59 @@
         }
 
         .category-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
         }
 
         .category-btn i {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
 
-        /* Seções de produtos - REDUZIDO o espaçamento */
+        /* Seções de produtos */
         .category-section {
-            margin: 30px 0;
-            padding: 15px 0;
+            margin: 40px 0;
+            padding: 20px 0;
         }
 
         .category-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
             color: var(--accent);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .category-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
         }
 
         /* Carrossel de produtos */
         .products-carousel {
             position: relative;
             overflow: hidden;
-            margin: 20px 0;
-            padding: 5px;
+            margin: 30px 0;
+            padding: 10px;
         }
 
         .carousel-container {
             display: flex;
             transition: transform 0.5s ease;
-            gap: 15px;
+            gap: 20px;
         }
 
         .product-card {
-            flex: 0 0 calc(33.333% - 10px);
+            flex: 0 0 calc(33.333% - 14px);
             background: var(--card-bg);
-            border-radius: 6px; /* Mais quadrado */
+            border-radius: 8px;
             overflow: hidden;
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
@@ -143,14 +157,14 @@
         }
 
         .product-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         /* Carrossel de imagens do produto */
         .product-image-carousel {
             width: 100%;
-            height: 180px;
+            height: 200px;
             overflow: hidden;
             position: relative;
             display: flex;
@@ -175,7 +189,7 @@
         }
 
         .product-image i {
-            font-size: 70px;
+            font-size: 80px;
             color: var(--accent);
         }
 
@@ -186,7 +200,7 @@
             right: 0;
             display: flex;
             justify-content: space-between;
-            padding: 0 8px;
+            padding: 0 10px;
             transform: translateY(-50%);
             pointer-events: none;
         }
@@ -194,8 +208,8 @@
         .carousel-control {
             pointer-events: all;
             background: rgba(0, 0, 0, 0.5);
-            width: 28px;
-            height: 28px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -211,42 +225,42 @@
 
         .product-badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 15px;
+            right: 15px;
             background: var(--accent);
             color: var(--primary);
-            padding: 5px 10px;
-            border-radius: 12px;
+            padding: 6px 12px;
+            border-radius: 16px;
             font-size: 0.9rem;
             font-weight: 600;
             z-index: 10;
         }
 
         .product-info {
-            padding: 18px;
+            padding: 20px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .product-title {
-            font-size: 1.4rem; /* Aumentado */
-            margin-bottom: 12px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             color: var(--accent);
             text-align: center;
         }
 
         .product-features {
             list-style: none;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             flex-grow: 1;
         }
 
         .product-features li {
-            margin-bottom: 8px;
-            padding-left: 25px;
+            margin-bottom: 10px;
+            padding-left: 28px;
             position: relative;
-            font-size: 1rem; /* Aumentado */
+            font-size: 1rem;
             color: var(--text);
         }
 
@@ -260,18 +274,18 @@
         }
 
         .product-price {
-            font-size: 1.5rem; /* Aumentado */
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--accent);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             justify-content: center;
         }
 
         .product-price .original {
-            font-size: 1.1rem; /* Aumentado */
+            font-size: 1.2rem;
             text-decoration: line-through;
             color: var(--text-muted);
         }
@@ -284,14 +298,14 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 18px;
+            padding: 14px 20px;
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
-            border-radius: 6px; /* Mais quadrado */
+            border-radius: 8px;
             font-weight: 600;
             transition: all 0.3s;
-            box-shadow: 0 4px 8px rgba(228, 187, 19, 0.4);
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
             font-size: 16px;
@@ -306,26 +320,26 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(228, 187, 19, 0.6);
+            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
         }
 
         .whatsapp-btn:hover {
-            box-shadow: 0 6px 12px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.6);
         }
 
         .back-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 16px;
+            padding: 12px 20px;
             background: var(--card-bg);
             color: var(--text);
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 500;
             transition: all 0.3s;
             border: 1px solid var(--card-border);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .back-btn:hover {
@@ -336,8 +350,8 @@
         .carousel-nav {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .carousel-dot {
@@ -356,16 +370,11 @@
 
         @media (max-width: 1024px) {
             .product-card {
-                flex: 0 0 calc(50% - 8px);
+                flex: 0 0 calc(50% - 10px);
             }
         }
 
         @media (max-width: 768px) {
-            body {
-                font-size: 16px;
-                padding: 10px;
-            }
-            
             .product-card {
                 flex: 0 0 100%;
             }
@@ -376,34 +385,29 @@
             }
             
             .catalog-header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .category-btn {
                 width: 100%;
-                max-width: 250px;
+                max-width: 280px;
                 justify-content: center;
-                padding: 12px 20px;
             }
             
             .category-title {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
             
             .product-image-carousel {
-                height: 160px;
+                height: 180px;
             }
             
             .product-image i {
-                font-size: 60px;
+                font-size: 70px;
             }
             
             .product-features li {
                 font-size: 0.95rem;
-            }
-            
-            .category-section {
-                margin: 20px 0;
             }
         }
     </style>
@@ -859,7 +863,7 @@
                 
                 if (targetSection) {
                     // Calcular a posição com offset para o cabeçalho fixo
-                    const offsetTop = targetSection.offsetTop - 20;
+                    const offsetTop = targetSection.offsetTop - 30;
                     
                     window.scrollTo({
                         top: offsetTop,
@@ -909,6 +913,50 @@
                     dots.forEach((dot, idx) => {
                         dot.classList.toggle('active', idx === activeDot);
                     });
+                }
+                
+                // Adicionar navegação por arrasto
+                let isDragging = false;
+                let startPosition = 0;
+                let startX = 0;
+                
+                carousel.addEventListener('mousedown', dragStart);
+                carousel.addEventListener('touchstart', dragStart);
+                
+                carousel.addEventListener('mousemove', drag);
+                carousel.addEventListener('touchmove', drag);
+                
+                carousel.addEventListener('mouseup', dragEnd);
+                carousel.addEventListener('mouseleave', dragEnd);
+                carousel.addEventListener('touchend', dragEnd);
+                
+                function dragStart(e) {
+                    isDragging = true;
+                    startX = e.clientX || e.touches[0].clientX;
+                    startPosition = currentPosition;
+                    container.style.transition = 'none';
+                }
+                
+                function drag(e) {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    
+                    const x = e.clientX || e.touches[0].clientX;
+                    const walk = (x - startX) * 2;
+                    currentPosition = startPosition + walk;
+                    
+                    updateCarousel();
+                }
+                
+                function dragEnd() {
+                    isDragging = false;
+                    container.style.transition = 'transform 0.5s ease';
+                    
+                    // Ajustar para o ponto mais próximo
+                    const itemIndex = Math.round(Math.abs(currentPosition) / cardWidth);
+                    currentPosition = -itemIndex * cardWidth;
+                    
+                    updateCarousel();
                 }
             });
         }
