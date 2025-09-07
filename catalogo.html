@@ -60,25 +60,25 @@
         .category-buttons {
             display: flex;
             justify-content: center;
-            margin: 20px 0;
+            margin: 25px 0;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
         }
 
         .category-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 16px 30px;
+            gap: 12px;
+            padding: 20px 40px;
             color: white;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 600;
             transition: all 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             border: none;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 20px;
         }
 
         .scooters-btn {
@@ -95,12 +95,12 @@
         }
 
         .category-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .category-btn i {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
 
         /* Seções de produtos */
@@ -172,6 +172,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .product-image i {
@@ -356,39 +362,6 @@
             transform: scale(1.3);
         }
 
-        /* Setas para navegar entre modelos */
-        .model-controls {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 15px;
-            transform: translateY(-50%);
-            pointer-events: none;
-            z-index: 25;
-        }
-
-        .model-control {
-            pointer-events: all;
-            background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-size: 18px;
-        }
-
-        .model-control:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
         @media (max-width: 1024px) {
             .product-card {
                 flex: 0 0 calc(50% - 8px);
@@ -416,10 +389,10 @@
             
             .category-btn {
                 width: 100%;
-                max-width: 280px;
+                max-width: 300px;
                 justify-content: center;
-                padding: 14px 25px;
-                font-size: 16px;
+                padding: 18px 30px;
+                font-size: 18px;
             }
             
             .category-title {
@@ -442,7 +415,7 @@
                 margin: 25px 0;
             }
             
-            .carousel-control, .model-control {
+            .carousel-control {
                 width: 32px;
                 height: 32px;
             }
@@ -478,18 +451,24 @@
             
             <div class="products-carousel">
                 <div class="carousel-container">
-                    <!-- Scooter 1 -->
+                    <!-- Scooter 1 - Modelo R11 com imagens reais -->
                     <div class="product-card">
                         <div class="product-image-carousel">
                             <div class="image-carousel-container">
                                 <div class="product-image">
-                                    <i class="fas fa-motorcycle"></i>
+                                    <img src="r11e.png" alt="Modelo R11 Cor 1">
                                 </div>
                                 <div class="product-image">
-                                    <i class="fas fa-motorcycle" style="color: #1e90ff;"></i>
+                                    <img src="R11.png" alt="Modelo R11 Cor 2">
                                 </div>
                                 <div class="product-image">
-                                    <i class="fas fa-motorcycle" style="color: #ff4500;"></i>
+                                    <img src="r112.png" alt="Modelo R11 Cor 3">
+                                </div>
+                                <div class="product-image">
+                                    <img src="r113.png" alt="Modelo R11 Cor 4">
+                                </div>
+                                <div class="product-image">
+                                    <img src="r114.png" alt="Modelo R11 Cor 5">
                                 </div>
                             </div>
                             <div class="carousel-controls">
@@ -606,15 +585,7 @@
                     </div>
                 </div>
                 
-                <!-- Setas para navegar entre modelos -->
-                <div class="model-controls">
-                    <div class="model-control prev-model">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="model-control next-model">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
+                <!-- REMOVIDAS as setas de navegação entre modelos -->
                 
                 <div class="carousel-nav">
                     <div class="carousel-dot active" data-index="0"></div>
@@ -757,15 +728,7 @@
                     </div>
                 </div>
                 
-                <!-- Setas para navegar entre modelos -->
-                <div class="model-controls">
-                    <div class="model-control prev-model">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="model-control next-model">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
+                <!-- REMOVIDAS as setas de navegação entre modelos -->
                 
                 <div class="carousel-nav">
                     <div class="carousel-dot active" data-index="0"></div>
@@ -906,15 +869,7 @@
                     </div>
                 </div>
                 
-                <!-- Setas para navegar entre modelos -->
-                <div class="model-controls">
-                    <div class="model-control prev-model">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="model-control next-model">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
+                <!-- REMOVIDAS as setas de navegação entre modelos -->
                 
                 <div class="carousel-nav">
                     <div class="carousel-dot active" data-index="0"></div>
@@ -928,11 +883,7 @@
     <script>
         // Variáveis para controle das automatizações
         let colorChangeIntervals = {};
-        let modelChangeIntervals = {};
-        let userInteractionTimeouts = {};
         const COLOR_CHANGE_DELAY = 7000; // 7 segundos
-        const MODEL_CHANGE_DELAY = 15000; // 15 segundos
-        const INTERACTION_PAUSE = 30000; // 30 segundos
 
         // Função para rolagem suave ao clicar nos botões
         document.querySelectorAll('.category-btn').forEach(btn => {
@@ -957,7 +908,7 @@
         function initAllCarousels() {
             initProductCarousels();
             initImageCarousels();
-            startAllAutomations();
+            startAllColorAutomations();
         }
 
         // Inicializar carrosséis de produtos
@@ -968,8 +919,6 @@
                 const container = carousel.querySelector('.carousel-container');
                 const cards = carousel.querySelectorAll('.product-card');
                 const dots = carousel.querySelectorAll('.carousel-dot');
-                const prevModelBtn = carousel.querySelector('.prev-model');
-                const nextModelBtn = carousel.querySelector('.next-model');
                 const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(container).gap);
                 
                 let currentPosition = 0;
@@ -1002,23 +951,9 @@
                 // Navegação por dots
                 dots.forEach((dot, index) => {
                     dot.addEventListener('click', () => {
-                        pauseAutomation('model', carouselIndex);
                         currentPosition = index * -maxPosition;
                         updateCarousel();
                     });
-                });
-                
-                // Navegação por setas
-                prevModelBtn.addEventListener('click', () => {
-                    pauseAutomation('model', carouselIndex);
-                    currentPosition = Math.min(currentPosition + cardWidth * 3, 0);
-                    updateCarousel();
-                });
-                
-                nextModelBtn.addEventListener('click', () => {
-                    pauseAutomation('model', carouselIndex);
-                    currentPosition = Math.max(currentPosition - cardWidth * 3, -maxPosition);
-                    updateCarousel();
                 });
                 
                 // Navegação por arrasto
@@ -1027,7 +962,6 @@
                 let startX = 0;
                 
                 const startDrag = (e) => {
-                    pauseAutomation('model', carouselIndex);
                     isDragging = true;
                     startX = e.clientX || e.touches[0].clientX;
                     startPosition = currentPosition;
@@ -1085,7 +1019,6 @@
                 }
                 
                 const navigate = (direction) => {
-                    pauseAutomation('color', carouselIndex);
                     if (direction === 'next') {
                         currentIndex = (currentIndex + 1) % images.length;
                     } else {
@@ -1103,7 +1036,6 @@
                 let startTranslateX = 0;
                 
                 const startDragImg = (e) => {
-                    pauseAutomation('color', carouselIndex);
                     isDraggingImg = true;
                     startXImg = e.clientX || e.touches[0].clientX;
                     startTranslateX = -currentIndex * 100;
@@ -1148,18 +1080,11 @@
             });
         }
 
-        // Funções para automatização
-        function startAllAutomations() {
-            // Iniciar automatização de cores
+        // Funções para automatização de cores
+        function startAllColorAutomations() {
             const colorCarousels = document.querySelectorAll('.image-carousel-container');
             colorCarousels.forEach((carousel, index) => {
                 startColorAutomation(index);
-            });
-            
-            // Iniciar automatização de modelos
-            const modelCarousels = document.querySelectorAll('.products-carousel');
-            modelCarousels.forEach((carousel, index) => {
-                startModelAutomation(index);
             });
         }
 
@@ -1170,60 +1095,18 @@
                 const carousels = document.querySelectorAll('.image-carousel-container');
                 if (carousels[index]) {
                     const images = carousels[index].querySelectorAll('.product-image');
-                    const currentIndex = parseInt(carousels[index].style.transform.split('-')[1]) / 100 || 0;
+                    const currentTranslate = carousels[index].style.transform;
+                    let currentIndex = 0;
+                    
+                    if (currentTranslate) {
+                        currentIndex = parseInt(currentTranslate.split('-')[1]) / 100 || 0;
+                    }
+                    
                     const nextIndex = (currentIndex + 1) % images.length;
                     
                     carousels[index].style.transform = `translateX(-${nextIndex * 100}%)`;
                 }
             }, COLOR_CHANGE_DELAY);
-        }
-
-        function startModelAutomation(index) {
-            clearInterval(modelChangeIntervals[index]);
-            
-            modelChangeIntervals[index] = setInterval(() => {
-                const carousels = document.querySelectorAll('.products-carousel');
-                if (carousels[index]) {
-                    const container = carousels[index].querySelector('.carousel-container');
-                    const cards = carousels[index].querySelectorAll('.product-card');
-                    const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(container).gap);
-                    const maxPosition = (cards.length - 3) * cardWidth;
-                    
-                    let currentPosition = parseInt(container.style.transform.split('(')[1]) || 0;
-                    let nextPosition = currentPosition - cardWidth * 3;
-                    
-                    if (nextPosition < -maxPosition) {
-                        nextPosition = 0;
-                    }
-                    
-                    container.style.transform = `translateX(${nextPosition}px)`;
-                    
-                    // Atualizar dots
-                    const dots = carousels[index].querySelectorAll('.carousel-dot');
-                    const activeDot = Math.floor(Math.abs(nextPosition) / (maxPosition / (dots.length - 1)));
-                    dots.forEach((dot, idx) => {
-                        dot.classList.toggle('active', idx === activeDot);
-                    });
-                }
-            }, MODEL_CHANGE_DELAY);
-        }
-
-        function pauseAutomation(type, index) {
-            if (type === 'color') {
-                clearInterval(colorChangeIntervals[index]);
-                // Reiniciar após 30 segundos
-                clearTimeout(userInteractionTimeouts[`color-${index}`]);
-                userInteractionTimeouts[`color-${index}`] = setTimeout(() => {
-                    startColorAutomation(index);
-                }, INTERACTION_PAUSE);
-            } else if (type === 'model') {
-                clearInterval(modelChangeIntervals[index]);
-                // Reiniciar após 30 segundos
-                clearTimeout(userInteractionTimeouts[`model-${index}`]);
-                userInteractionTimeouts[`model-${index}`] = setTimeout(() => {
-                    startModelAutomation(index);
-                }, INTERACTION_PAUSE);
-            }
         }
 
         // Inicializar quando a página carregar
