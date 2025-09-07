@@ -829,7 +829,7 @@
     <script>
         // Variáveis para controle das automatizações
         let modelChangeIntervals = {};
-        const MODEL_CHANGE_DELAY = 7000; // 7 segundos
+        const MODEL_CHANGE_DELAY = 3000; // Alterado para 3 segundos conforme solicitado
 
         // Função para rolagem suave ao clicar nos botões
         document.querySelectorAll('.category-btn').forEach(btn => {
@@ -896,14 +896,21 @@
                 // Navegação por dots
                 dots.forEach((dot, index) => {
                     dot.addEventListener('click', () => {
-                        currentPosition = -index * cardWidth * 3;
-                        if (window.innerWidth <= 1024) {
-                            currentPosition = -index * cardWidth * 2;
-                        }
+                        // Pausar a automatização quando o usuário interagir
+                        pauseAllAutomations();
+                        
                         if (window.innerWidth <= 768) {
                             currentPosition = -index * cardWidth;
+                        } else if (window.innerWidth <= 1024) {
+                            currentPosition = -index * cardWidth * 2;
+                        } else {
+                            currentPosition = -index * cardWidth * 3;
                         }
+                        
                         updateCarousel();
+                        
+                        // Reiniciar automatização após um tempo
+                        setTimeout(startAllModelAutomations, 10000);
                     });
                 });
                 
@@ -913,6 +920,9 @@
                 let startX = 0;
                 
                 const startDrag = (e) => {
+                    // Pausar a automatização quando o usuário interagir
+                    pauseAllAutomations();
+                    
                     isDragging = true;
                     startX = e.clientX || e.touches[0].clientX;
                     startPosition = currentPosition;
@@ -937,6 +947,9 @@
                     currentPosition = -itemIndex * cardWidth;
                     
                     updateCarousel();
+                    
+                    // Reiniciar automatização após um tempo
+                    setTimeout(startAllModelAutomations, 10000);
                 };
                 
                 carousel.addEventListener('mousedown', startDrag);
@@ -958,6 +971,13 @@
             const modelCarousels = document.querySelectorAll('.products-carousel');
             modelCarousels.forEach((carousel, index) => {
                 startModelAutomation(index);
+            });
+        }
+
+        function pauseAllAutomations() {
+            const modelCarousels = document.querySelectorAll('.products-carousel');
+            modelCarousels.forEach((carousel, index) => {
+                clearInterval(modelChangeIntervals[index]);
             });
         }
 
