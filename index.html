@@ -333,14 +333,15 @@
         .float-element {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 12px 18px;
-            border-radius: 20px;
-            margin: 8px 0;
+            padding: 16px 22px; /* Aumentado o padding */
+            border-radius: 25px; /* Bordas mais arredondadas */
+            margin: 10px 0; /* Mais espaço entre os balões */
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 600;
-            font-size: 14px;
+            font-size: 16px; /* Fonte maior */
             text-align: center;
-            width: 140px;
+            width: 160px; /* Largura aumentada */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes float {
@@ -444,8 +445,8 @@
 
         .carousel-img {
             width: 100%;
-            max-width: 420px;
-            height: 220px;
+            max-width: 450px; /* Largura aumentada */
+            height: 250px; /* Altura aumentada */
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             border-radius: 10px;
             display: flex;
@@ -459,7 +460,7 @@
         .carousel-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Alterado de 'cover' para 'contain' para mostrar imagem completa */
         }
 
         .carousel-img i {
@@ -827,19 +828,6 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
         }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-bottom p {
-            opacity: 0.8;
-            font-size: 0.7rem;
-            margin-bottom: 2px;
-            color: var(--text);
-        }
-
         /* Responsive */
         @media (max-width: 1024px) {
             .hero-content h2 {
@@ -951,7 +939,8 @@
             }
 
             .carousel-img {
-                height: 200px;
+                height: 220px;
+                max-width: 400px;
             }
 
             .carousel-content h3 {
@@ -981,9 +970,9 @@
             }
             
             .float-element {
-                width: 120px;
-                font-size: 13px;
-                padding: 10px 15px;
+                width: 140px;
+                font-size: 14px;
+                padding: 12px 18px;
             }
         }
 
@@ -1017,7 +1006,8 @@
             }
 
             .carousel-img {
-                height: 180px;
+                height: 200px;
+                max-width: 320px;
             }
 
             .carousel-img i {
@@ -1055,9 +1045,9 @@
             }
             
             .float-element {
-                width: 110px;
-                font-size: 12px;
-                padding: 8px 12px;
+                width: 130px;
+                font-size: 13px;
+                padding: 10px 15px;
             }
         }
 
