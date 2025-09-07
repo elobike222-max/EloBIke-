@@ -292,8 +292,8 @@
         }
 
         .moto-placeholder {
-            width: 350px; /* Aumentado o tamanho do círculo */
-            height: 350px; /* Aumentado o tamanho do círculo */
+            width: 350px;
+            height: 350px;
             background: rgba(228, 187, 19, 0.1);
             border-radius: 50%;
             display: flex;
@@ -302,7 +302,7 @@
             border: 3px solid var(--accent);
             position: relative;
             margin-top: -20px;
-            overflow: hidden; /* Para as imagens não saírem do círculo */
+            overflow: hidden;
         }
 
         .moto-placeholder img {
@@ -313,7 +313,7 @@
         }
 
         .moto-placeholder i {
-            font-size: 120px; /* Aumentado o ícone */
+            font-size: 120px;
             color: var(--accent);
         }
 
@@ -333,14 +333,14 @@
         .float-element {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 12px 18px; /* Aumentado o padding */
+            padding: 12px 18px;
             border-radius: 20px;
             margin: 8px 0;
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 600;
-            font-size: 14px; /* Aumentado a fonte */
+            font-size: 14px;
             text-align: center;
-            width: 140px; /* Aumentado a largura */
+            width: 140px;
         }
 
         @keyframes float {
@@ -509,7 +509,7 @@
             font-size: 0.9rem;
         }
 
-        /* Carousel Controls - MODIFICADO */
+        /* Carousel Controls */
         .carousel-controls {
             position: absolute;
             top: 50%;
@@ -1464,7 +1464,7 @@
                     }
                 }
                 
-                // Fechar menu mobile após clicar em um link
+                // Fechar menu mobile após clicar em a link
                 if (window.innerWidth <= 768) {
                     document.querySelector('nav').classList.remove('active');
                     document.body.style.overflow = 'auto';
@@ -1600,7 +1600,7 @@
                 nextSlide();
                 isDragging = false;
                 carousel.style.cursor = 'grab';
-                carousel.style.transition: 'transform 0.5s ease';
+                carousel.style.transition = 'transform 0.5s ease';
             }
         }
         
