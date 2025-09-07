@@ -238,7 +238,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 14px 22px; /* Aumentado o tamanho dos botões */
+            padding: 14px 22px;
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -248,7 +248,7 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 16px; /* Aumentado o tamanho da fonte */
+            font-size: 16px;
         }
 
         .whatsapp-btn {
@@ -288,7 +288,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            flex-direction: column; /* Alterado para coluna */
+            flex-direction: column;
         }
 
         .moto-placeholder {
@@ -301,7 +301,7 @@
             justify-content: center;
             border: 3px solid var(--accent);
             position: relative;
-            margin-top: 20px; /* Ajustado para posicionar abaixo dos botões */
+            margin-top: -20px; /* Movido mais para cima */
         }
 
         .moto-placeholder i {
@@ -312,7 +312,14 @@
         .floating-elements {
             position: absolute;
             animation: float 3s ease-in-out infinite;
-            bottom: -100px; /* Reposicionado para baixo do círculo */
+            top: 50%; /* Centralizado verticalmente dentro do círculo */
+            left: 50%; /* Centralizado horizontalmente dentro do círculo */
+            transform: translate(-50%, -50%); /* Centralização perfeita */
+            width: 100%; /* Ocupa toda a largura do círculo */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .float-element {
@@ -324,11 +331,13 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 600;
             font-size: 13px;
+            text-align: center;
+            width: 120px;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+            0%, 100% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, -60%); } /* Animação vertical */
         }
 
         /* Features */
@@ -546,7 +555,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 16px 32px; /* Aumentado o tamanho */
+            padding: 16px 32px;
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -555,9 +564,9 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             margin: 8px 0 25px;
-            font-size: 1.1rem; /* Aumentado o tamanho da fonte */
+            font-size: 1.1rem;
             width: 100%;
-            max-width: 320px; /* Aumentado a largura máxima */
+            max-width: 320px;
             justify-content: center;
         }
 
@@ -952,6 +961,16 @@
                 width: 35px;
                 height: 35px;
             }
+            
+            .floating-elements {
+                width: 90%;
+            }
+            
+            .float-element {
+                width: 100px;
+                font-size: 12px;
+                padding: 8px 12px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -966,9 +985,9 @@
             
             .btn {
                 width: 100%;
-                max-width: 280px; /* Aumentado para mobile */
+                max-width: 280px;
                 justify-content: center;
-                font-size: 15px; /* Aumentado para mobile */
+                font-size: 15px;
             }
             
             .footer-content {
@@ -1011,6 +1030,21 @@
                 height: 30px;
                 font-size: 14px;
             }
+            
+            .moto-placeholder {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .moto-placeholder i {
+                font-size: 60px;
+            }
+            
+            .float-element {
+                width: 90px;
+                font-size: 11px;
+                padding: 6px 10px;
+            }
         }
 
         /* Smooth Scroll */
@@ -1038,7 +1072,7 @@
 </head>
 <body>
     <!-- WhatsApp Float -->
-    <a href="https://w.app/c8foan" class="whatsapp-float">
+    <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1076,7 +1110,7 @@
             <p>As melhores scooters elétricas de Araxá e região</p>
             
             <div class="hero-buttons">
-                <a href="https://w.app/c8foan" class="btn whatsapp-btn">
+                <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="btn whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">
@@ -1094,14 +1128,14 @@
             </div>
         </div>
         <div class="hero-image">
-            <!-- Os balões flutuantes foram movidos para abaixo do círculo -->
+            <!-- Círculo com os balões flutuantes DENTRO -->
             <div class="moto-placeholder">
                 <i class="fas fa-bolt"></i>
-            </div>
-            <div class="floating-elements">
-                <div class="float-element">⭐ Qualidade</div>
-                <div class="float-element">🚀 Entrega</div>
-                <div class="float-element">💪 Garantia</div>
+                <div class="floating-elements">
+                    <div class="float-element">⭐ Qualidade</div>
+                    <div class="float-element">🚀 Entrega</div>
+                    <div class="float-element">💪 Garantia</div>
+                </div>
             </div>
         </div>
     </section>
@@ -1236,11 +1270,12 @@
                     <li>Manutenção preventiva e corretiva</li>
                     <li>Substituição de baterias</li>
                     <li>Reparo de controladoras e motores</li>
+                    <li>Troca de peças</li> <!-- Item adicionado -->
                     <li>Diagnóstico completo com equipamentos especializados</li>
                     <li>Assistência técnica especializada</li>
                 </ul>
                 
-                <a href="https://w.app/c8foan" class="service-btn">
+                <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵" class="service-btn">
                     <i class="fab fa-whatsapp"></i> Agendar Serviço
                 </a>
             </div>
@@ -1308,7 +1343,7 @@
                     <a href="https://www.instagram.com/elobikearaxa" class="social-link">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://w.app/c8foan" class="social-link">
+                    <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="social-link">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
