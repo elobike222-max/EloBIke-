@@ -32,7 +32,7 @@
             line-height: 1.5;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            font-size: 16px; /* Aumentei a fonte base */
+            font-size: 16px;
         }
 
         .container {
@@ -154,7 +154,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
-            font-size: 14px; /* Aumentei a fonte */
+            font-size: 14px;
             padding: 6px 12px;
             border-radius: 5px;
         }
@@ -231,14 +231,14 @@
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
-            margin: 30px 0 25px;
+            margin: 30px 0 15px; /* Reduzi a margem inferior */
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 20px;
+            padding: 14px 22px; /* Aumentei a altura e largura */
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -248,7 +248,8 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 15px; /* Aumentei a fonte */
+            font-size: 15px;
+            min-height: 48px; /* Altura mínima aumentada */
         }
 
         .whatsapp-btn {
@@ -273,7 +274,7 @@
         }
 
         .maintenance-btn {
-            background: #6c757d;
+            background: #8B5E3C; /* Mudei para um marrom que combina melhor */
             color: white;
         }
 
@@ -288,6 +289,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            margin-top: -20px; /* Reduzi o espaço azul */
         }
 
         .moto-placeholder {
@@ -300,7 +302,6 @@
             justify-content: center;
             border: 3px solid var(--accent);
             position: relative;
-            margin-top: -30px; /* Reduzi o espaço azul */
         }
 
         .moto-placeholder i {
@@ -421,6 +422,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
             user-select: none;
+            position: relative;
         }
 
         .carousel-img {
@@ -484,15 +486,17 @@
             font-size: 0.9rem;
         }
 
-        /* Removi o container de preços conforme solicitado */
-
-        /* Carousel Controls */
-        .carousel-controls {
+        /* Carousel Controls DENTRO do slide */
+        .carousel-controls-inside {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 15px;
-            gap: 12px;
+            justify-content: space-between;
+            padding: 0 15px;
+            transform: translateY(-50%);
+            z-index: 10;
         }
 
         .carousel-arrow {
@@ -515,11 +519,12 @@
             transform: scale(1.1);
         }
 
-        .carousel-indicators {
+        /* Indicadores abaixo do botão */
+        .carousel-indicators-outside {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin: 20px 0 10px;
+            margin: 15px 0;
         }
 
         .indicator {
@@ -536,11 +541,12 @@
             transform: scale(1.2);
         }
 
-        .catalog-central-btn {
+        /* Botão dentro do retângulo */
+        .catalog-inside-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 14px 28px; /* Aumentei o tamanho */
+            padding: 14px 28px;
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -548,14 +554,12 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
-            margin: 8px 0 25px;
-            font-size: 1rem; /* Aumentei a fonte */
-            width: 100%; /* Ocupe toda a largura */
-            max-width: 300px; /* Largura máxima */
-            justify-content: center; /* Centralizar texto */
+            margin: 15px 0;
+            font-size: 1rem;
+            min-height: 50px; /* Mais "gordinho" */
         }
 
-        .catalog-central-btn:hover {
+        .catalog-inside-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
             background: var(--accent-hover);
@@ -622,6 +626,7 @@
             font-size: 1rem;
             border: none;
             cursor: pointer;
+            min-height: 50px; /* Mais "gordinho" */
         }
 
         .service-btn:hover {
@@ -851,7 +856,7 @@
             .moto-placeholder {
                 width: 220px;
                 height: 220px;
-                margin-top: 20px; /* Reduzi ainda mais o espaço */
+                margin-top: 10px; /* Reduzi ainda mais o espaço */
             }
 
             .moto-placeholder i {
@@ -929,13 +934,18 @@
                 font-size: 1.3rem;
             }
             
-            .catalog-central-btn {
+            .catalog-inside-btn {
                 padding: 12px 24px;
                 font-size: 0.95rem;
             }
 
             .services-simple {
                 padding: 20px;
+            }
+            
+            .btn {
+                padding: 12px 18px;
+                font-size: 14px;
             }
         }
 
@@ -951,9 +961,9 @@
             
             .btn {
                 width: 100%;
-                max-width: 260px;
+                max-width: 280px; /* Largura máxima aumentada */
                 justify-content: center;
-                font-size: 14px; /* Ajuste para mobile */
+                font-size: 14px;
             }
             
             .footer-content {
@@ -981,7 +991,7 @@
                 height: 8px;
             }
             
-            .catalog-central-btn {
+            .catalog-inside-btn {
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
@@ -1120,6 +1130,15 @@
             <div class="product-carousel">
                 <div class="carousel-container" id="carousel">
                     <div class="carousel-slide">
+                        <div class="carousel-controls-inside">
+                            <div class="carousel-arrow prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="carousel-arrow next">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        
                         <div class="carousel-img">
                             <i class="fas fa-motorcycle"></i>
                         </div>
@@ -1133,11 +1152,23 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
-                            <!-- Removi os preços conforme solicitado -->
+                            
+                            <a href="catalogo.html" class="catalog-inside-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
                     </div>
                     
                     <div class="carousel-slide">
+                        <div class="carousel-controls-inside">
+                            <div class="carousel-arrow prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="carousel-arrow next">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        
                         <div class="carousel-img">
                             <i class="fas fa-biking"></i>
                         </div>
@@ -1151,11 +1182,23 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 200kg</li>
                             </ul>
-                            <!-- Removi os preços conforme solicitado -->
+                            
+                            <a href="catalogo.html" class="catalog-inside-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
                     </div>
                     
                     <div class="carousel-slide">
+                        <div class="carousel-controls-inside">
+                            <div class="carousel-arrow prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="carousel-arrow next">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        
                         <div class="carousel-img">
                             <i class="fas fa-scooter"></i>
                         </div>
@@ -1169,35 +1212,20 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 150kg</li>
                             </ul>
-                            <!-- Removi os preços conforme solicitado -->
+                            
+                            <a href="catalogo.html" class="catalog-inside-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Controles do carrossel -->
-            <div class="carousel-controls">
-                <div class="carousel-arrow prev">
-                    <i class="fas fa-chevron-left"></i>
-                </div>
-                
-                <!-- INDICADORES FIXOS (fora do carrossel) -->
-                <div class="carousel-indicators">
-                    <div class="indicator active" data-index="0"></div>
-                    <div class="indicator" data-index="1"></div>
-                    <div class="indicator" data-index="2"></div>
-                </div>
-                
-                <div class="carousel-arrow next">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div>
-            
-            <!-- BOTÃO ABAIXO DOS INDICADORES - SEM SETAS -->
-            <div style="display: flex; justify-content: center; width: 100%;">
-                <a href="catalogo.html" class="catalog-central-btn">
-                    <i class="fas fa-store"></i> Ver Catálogo Completo
-                </a>
+            <!-- Indicadores abaixo do botão -->
+            <div class="carousel-indicators-outside">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
             </div>
         </div>
     </section>
@@ -1297,236 +1325,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Observador de interseção para animações de scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observar todas as seções
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Rolagem suave para links internos
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                
-                if (targetId === '#produtos') {
-                    const targetSection = document.querySelector(targetId);
-                    const catalogButton = document.querySelector('.catalog-central-btn');
-                    
-                    if (targetSection && catalogButton) {
-                        const targetPosition = targetSection.offsetTop - 70;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                } else {
-                    const target = document.querySelector(targetId);
-                    if (target) {
-                        const targetPosition = target.offsetTop - 70;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-                
-                // Fechar menu mobile após clicar em um link
-                if (window.innerWidth <= 768) {
-                    document.querySelector('nav').classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        });
-
-        // Inicializar algumas seções como visíveis
-        setTimeout(() => {
-            document.querySelector('.hero').classList.add('visible');
-        }, 100);
-
-        // Carrossel de produtos
-        const carousel = document.getElementById('carousel');
-        const slides = document.querySelectorAll('.carousel-slide');
-        const indicators = document.querySelectorAll('.indicator');
-        const carouselContainer = document.querySelector('.product-carousel');
-        const prevButton = document.querySelector('.carousel-arrow.prev');
-        const nextButton = document.querySelector('.carousel-arrow.next');
-        
-        let currentIndex = 0;
-        const slideCount = slides.length;
-        let autoSlideInterval;
-        let userInteractionTimeout;
-        let isDragging = false;
-        let startX = 0;
-        let startScrollLeft = 0;
-        
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            // Atualizar indicadores
-            indicators.forEach((indicator, index) => {
-                if (index === currentIndex) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
-                }
-            });
-        }
-        
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slideCount;
-            updateCarousel();
-            resetAutoSlide();
-        }
-        
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-            updateCarousel();
-            resetAutoSlide();
-        }
-        
-        // Iniciar slides automáticos
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(() => {
-                nextSlide();
-            }, 5000);
-        }
-        
-        // Parar slides automáticos
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-        }
-        
-        // Reiniciar slides automáticos após 26 segundos de inatividade
-        function resetAutoSlide() {
-            clearTimeout(userInteractionTimeout);
-            stopAutoSlide();
-            
-            userInteractionTimeout = setTimeout(() => {
-                startAutoSlide();
-            }, 26000);
-        }
-        
-        // Indicadores clicáveis
-        indicators.forEach(indicator => {
-            indicator.addEventListener('click', () => {
-                currentIndex = parseInt(indicator.getAttribute('data-index'));
-                updateCarousel();
-                resetAutoSlide();
-            });
-        });
-        
-        // Botões de navegação
-        nextButton.addEventListener('click', () => {
-            nextSlide();
-        });
-        
-        prevButton.addEventListener('click', () => {
-            prevSlide();
-        });
-        
-        // Funcionalidade de arrastar
-        carouselContainer.addEventListener('mousedown', dragStart);
-        carouselContainer.addEventListener('touchstart', dragStart, { passive: true });
-        
-        carouselContainer.addEventListener('mousemove', drag);
-        carouselContainer.addEventListener('touchmove', drag, { passive: true });
-        
-        carouselContainer.addEventListener('mouseup', dragEnd);
-        carouselContainer.addEventListener('mouseleave', dragEnd);
-        carouselContainer.addEventListener('touchend', dragEnd);
-        
-        // Pausar auto slide quando o mouse estiver sobre o carrossel
-        carouselContainer.addEventListener('mouseenter', stopAutoSlide);
-        carouselContainer.addEventListener('mouseleave', () => {
-            resetAutoSlide();
-        });
-        
-        function dragStart(e) {
-            isDragging = true;
-            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-            startScrollLeft = carousel.scrollLeft;
-            stopAutoSlide();
-            carousel.style.cursor = 'grabbing';
-            carousel.style.transition = 'none';
-        }
-        
-        function drag(e) {
-            if (!isDragging) return;
-            
-            e.preventDefault();
-            const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-            const walk = (x - startX) * 2;
-            
-            if (walk > 50) {
-                prevSlide();
-                isDragging = false;
-                carousel.style.cursor = 'grab';
-                carousel.style.transition = 'transform 0.5s ease';
-            } else if (walk < -50) {
-                nextSlide();
-                isDragging = false;
-                carousel.style.cursor = 'grab';
-                carousel.style.transition = 'transform 0.5s ease';
-            }
-        }
-        
-        function dragEnd() {
-            isDragging = false;
-            carousel.style.cursor = 'grab';
-            carousel.style.transition = 'transform 0.5s ease';
-            resetAutoSlide();
-        }
-        
-        // Iniciar o slideshow automaticamente
-        startAutoSlide();
-
-        // Menu mobile toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav');
-        
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
-            
-            // Animação do hamburger menu
-            menuToggle.classList.toggle('active');
-        });
-
-        // Back to top button
-        const backToTopButton = document.querySelector('.back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
 </body>
 </html>
