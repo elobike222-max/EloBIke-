@@ -6,7 +6,6 @@
     <title>EloBike - Motos Elétricas | Araxá MG</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="logo.png" type="image/png">
     <style>
         :root {
             --primary: #0d1b3d;
@@ -135,6 +134,7 @@
             border-radius: 50%;
             border: 2px solid var(--accent);
             object-fit: cover;
+            background: white;
         }
 
         .logo h1 {
@@ -231,14 +231,14 @@
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
-            margin: 30px 0 15px; /* Reduzi a margem inferior */
+            margin: 30px 0 15px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 14px 22px; /* Aumentei a altura e largura */
+            padding: 14px 22px;
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -249,7 +249,7 @@
             border: none;
             cursor: pointer;
             font-size: 15px;
-            min-height: 48px; /* Altura mínima aumentada */
+            min-height: 48px;
         }
 
         .whatsapp-btn {
@@ -274,7 +274,7 @@
         }
 
         .maintenance-btn {
-            background: #8B5E3C; /* Mudei para um marrom que combina melhor */
+            background: #8B5E3C;
             color: white;
         }
 
@@ -289,7 +289,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            margin-top: -20px; /* Reduzi o espaço azul */
+            margin-top: -20px;
         }
 
         .moto-placeholder {
@@ -556,7 +556,7 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             margin: 15px 0;
             font-size: 1rem;
-            min-height: 50px; /* Mais "gordinho" */
+            min-height: 50px;
         }
 
         .catalog-inside-btn:hover {
@@ -626,7 +626,7 @@
             font-size: 1rem;
             border: none;
             cursor: pointer;
-            min-height: 50px; /* Mais "gordinho" */
+            min-height: 50px;
         }
 
         .service-btn:hover {
@@ -753,6 +753,7 @@
             border-radius: 50%;
             border: 2px solid var(--accent);
             box-shadow: 0 2px 8px rgba(228, 187, 19, 0.3);
+            background: white;
         }
 
         .footer-logo span {
@@ -856,7 +857,7 @@
             .moto-placeholder {
                 width: 220px;
                 height: 220px;
-                margin-top: 10px; /* Reduzi ainda mais o espaço */
+                margin-top: 10px;
             }
 
             .moto-placeholder i {
@@ -961,7 +962,7 @@
             
             .btn {
                 width: 100%;
-                max-width: 280px; /* Largura máxima aumentada */
+                max-width: 280px;
                 justify-content: center;
                 font-size: 14px;
             }
@@ -1040,7 +1041,9 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="logo.png" alt="EloBike">
+                <div style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--accent); background: white; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-weight: bold; color: var(--primary);">EB</span>
+                </div>
                 <h1>ELOBIKE</h1>
             </div>
             <button class="menu-toggle">
@@ -1053,7 +1056,7 @@
                 <a href="#servicos">Serviços</a>
                 <a href="#sobre">Sobre</a>
                 <a href="#contato">Contato</a>
-                <a href="catalogo.html" class="catalog-btn">Catálogo</a>
+                <a href="#servicos" class="catalog-btn">Manutenção</a>
             </nav>
         </div>
     </header>
@@ -1299,7 +1302,9 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="EloBike">
+                    <div style="width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--accent); background: white; display: flex; align-items: center; justify-content: center;">
+                        <span style="font-weight: bold; color: var(--primary); font-size: 12px;">EB</span>
+                    </div>
                     <span>ELOBIKE ARAXá</span>
                 </div>
                 
@@ -1325,5 +1330,65 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Menu mobile toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Rolagem suave para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const targetPosition = target.offsetTop - 70;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Inicializar algumas seções como visíveis
+        document.querySelector('.hero').classList.add('visible');
+    </script>
 </body>
 </html>
