@@ -292,8 +292,8 @@
         }
 
         .moto-placeholder {
-            width: 280px;
-            height: 280px;
+            width: 350px; /* Aumentado o tamanho do círculo */
+            height: 350px; /* Aumentado o tamanho do círculo */
             background: rgba(228, 187, 19, 0.1);
             border-radius: 50%;
             display: flex;
@@ -301,21 +301,29 @@
             justify-content: center;
             border: 3px solid var(--accent);
             position: relative;
-            margin-top: -20px; /* Movido mais para cima */
+            margin-top: -20px;
+            overflow: hidden; /* Para as imagens não saírem do círculo */
+        }
+
+        .moto-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .moto-placeholder i {
-            font-size: 100px;
+            font-size: 120px; /* Aumentado o ícone */
             color: var(--accent);
         }
 
         .floating-elements {
             position: absolute;
             animation: float 3s ease-in-out infinite;
-            top: 50%; /* Centralizado verticalmente dentro do círculo */
-            left: 50%; /* Centralizado horizontalmente dentro do círculo */
-            transform: translate(-50%, -50%); /* Centralização perfeita */
-            width: 100%; /* Ocupa toda a largura do círculo */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -325,19 +333,19 @@
         .float-element {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 10px 15px;
+            padding: 12px 18px; /* Aumentado o padding */
             border-radius: 20px;
             margin: 8px 0;
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 600;
-            font-size: 13px;
+            font-size: 14px; /* Aumentado a fonte */
             text-align: center;
-            width: 120px;
+            width: 140px; /* Aumentado a largura */
         }
 
         @keyframes float {
             0%, 100% { transform: translate(-50%, -50%); }
-            50% { transform: translate(-50%, -60%); } /* Animação vertical */
+            50% { transform: translate(-50%, -60%); }
         }
 
         /* Features */
@@ -446,6 +454,12 @@
             margin-bottom: 12px;
             overflow: hidden;
             border: 2px solid var(--accent);
+        }
+
+        .carousel-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .carousel-img i {
@@ -864,13 +878,13 @@
             }
 
             .moto-placeholder {
-                width: 220px;
-                height: 220px;
+                width: 280px;
+                height: 280px;
                 margin-top: 20px;
             }
 
             .moto-placeholder i {
-                font-size: 70px;
+                font-size: 90px;
             }
 
             .section-title {
@@ -967,9 +981,9 @@
             }
             
             .float-element {
-                width: 100px;
-                font-size: 12px;
-                padding: 8px 12px;
+                width: 120px;
+                font-size: 13px;
+                padding: 10px 15px;
             }
         }
 
@@ -1032,18 +1046,18 @@
             }
             
             .moto-placeholder {
-                width: 200px;
-                height: 200px;
+                width: 240px;
+                height: 240px;
             }
             
             .moto-placeholder i {
-                font-size: 60px;
+                font-size: 70px;
             }
             
             .float-element {
-                width: 90px;
-                font-size: 11px;
-                padding: 6px 10px;
+                width: 110px;
+                font-size: 12px;
+                padding: 8px 12px;
             }
         }
 
@@ -1177,7 +1191,7 @@
                 <div class="carousel-container" id="carousel">
                     <div class="carousel-slide">
                         <div class="carousel-img">
-                            <i class="fas fa-motorcycle"></i>
+                            <img src="r11e.png" alt="Modelo R11">
                         </div>
                         <div class="carousel-content">
                             <h3>Modelo R11</h3>
@@ -1198,17 +1212,17 @@
                     
                     <div class="carousel-slide">
                         <div class="carousel-img">
-                            <i class="fas fa-biking"></i>
+                            <img src="R11.png" alt="Modelo R11">
                         </div>
                         <div class="carousel-content">
-                            <h3>Modelo S2</h3>
-                            <p>Conforto e eficiência</p>
+                            <h3>Modelo R11</h3>
+                            <p>Design moderno e elegante</p>
                             <ul>
-                                <li>⚡ 1000W de potência</li>
-                                <li>⏱️ Até 40 km/h</li>
+                                <li>⚡ 3000W de potência</li>
+                                <li>⏱️ Até 70 km/h</li>
                                 <li>🔋 45 km de autonomia</li>
                                 <li>⏳ 5 horas para carga completa</li>
-                                <li>💪 Capacidade: até 200kg</li>
+                                <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
                             <a href="catalogo.html" class="catalog-central-btn">
@@ -1219,17 +1233,59 @@
                     
                     <div class="carousel-slide">
                         <div class="carousel-img">
-                            <i class="fas fa-scooter"></i>
+                            <img src="r112.png" alt="Modelo R11">
                         </div>
                         <div class="carousel-content">
-                            <h3>Modelo V8</h3>
-                            <p>Leve e econômica</p>
+                            <h3>Modelo R11</h3>
+                            <p>Conforto e segurança</p>
                             <ul>
-                                <li>⚡ 1000W de potência</li>
-                                <li>⏱️ Até 50 km/h</li>
+                                <li>⚡ 3000W de potência</li>
+                                <li>⏱️ Até 70 km/h</li>
                                 <li>🔋 45 km de autonomia</li>
                                 <li>⏳ 5 horas para carga completa</li>
-                                <li>💪 Capacidade: até 150kg</li>
+                                <li>💪 Capacidade: 150kg a 200kg</li>
+                            </ul>
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <img src="r113.png" alt="Modelo R11">
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Modelo R11</h3>
+                            <p>Inovação e tecnologia</p>
+                            <ul>
+                                <li>⚡ 3000W de potência</li>
+                                <li>⏱️ Até 70 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: 150kg a 200kg</li>
+                            </ul>
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <img src="r114.png" alt="Modelo R11">
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Modelo R11</h3>
+                            <p>Performance e estilo</p>
+                            <ul>
+                                <li>⚡ 3000W de potência</li>
+                                <li>⏱️ Até 70 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
                             <a href="catalogo.html" class="catalog-central-btn">
@@ -1255,6 +1311,8 @@
                 <div class="indicator active" data-index="0"></div>
                 <div class="indicator" data-index="1"></div>
                 <div class="indicator" data-index="2"></div>
+                <div class="indicator" data-index="3"></div>
+                <div class="indicator" data-index="4"></div>
             </div>
         </div>
     </section>
@@ -1270,7 +1328,7 @@
                     <li>Manutenção preventiva e corretiva</li>
                     <li>Substituição de baterias</li>
                     <li>Reparo de controladoras e motores</li>
-                    <li>Troca de peças</li> <!-- Item adicionado -->
+                    <li>Troca de peças</li>
                     <li>Diagnóstico completo com equipamentos especializados</li>
                     <li>Assistência técnica especializada</li>
                 </ul>
@@ -1542,7 +1600,7 @@
                 nextSlide();
                 isDragging = false;
                 carousel.style.cursor = 'grab';
-                carousel.style.transition = 'transform 0.5s ease';
+                carousel.style.transition: 'transform 0.5s ease';
             }
         }
         
