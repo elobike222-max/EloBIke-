@@ -32,6 +32,7 @@
             line-height: 1.5;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            font-size: 16px; /* Aumentei a fonte base */
         }
 
         .container {
@@ -153,7 +154,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
-            font-size: 13px;
+            font-size: 14px; /* Aumentei a fonte */
             padding: 6px 12px;
             border-radius: 5px;
         }
@@ -247,7 +248,7 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px; /* Aumentei a fonte */
         }
 
         .whatsapp-btn {
@@ -269,6 +270,11 @@
             background: transparent;
             border: 2px solid var(--accent);
             color: var(--accent);
+        }
+
+        .maintenance-btn {
+            background: #6c757d;
+            color: white;
         }
 
         .btn:hover {
@@ -294,6 +300,7 @@
             justify-content: center;
             border: 3px solid var(--accent);
             position: relative;
+            margin-top: -30px; /* Reduzi o espaço azul */
         }
 
         .moto-placeholder i {
@@ -477,21 +484,7 @@
             font-size: 0.9rem;
         }
 
-        .price-container {
-            margin: 12px 0;
-        }
-
-        .price {
-            display: block;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin: 8px 0;
-            background: rgba(228, 187, 19, 0.1);
-            padding: 6px 10px;
-            border-radius: 8px;
-            border: 2px solid var(--accent);
-        }
+        /* Removi o container de preços conforme solicitado */
 
         /* Carousel Controls */
         .carousel-controls {
@@ -547,7 +540,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 24px;
+            padding: 14px 28px; /* Aumentei o tamanho */
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -556,7 +549,10 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             margin: 8px 0 25px;
-            font-size: 0.95rem;
+            font-size: 1rem; /* Aumentei a fonte */
+            width: 100%; /* Ocupe toda a largura */
+            max-width: 300px; /* Largura máxima */
+            justify-content: center; /* Centralizar texto */
         }
 
         .catalog-central-btn:hover {
@@ -565,74 +561,73 @@
             background: var(--accent-hover);
         }
 
-        /* Services */
+        /* Services - NOVA VERSÃO SIMPLIFICADA */
         .services {
             padding: 60px 0;
             background: var(--primary);
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .service-card {
+        .services-simple {
+            max-width: 800px;
+            margin: 0 auto;
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 25px;
+            padding: 30px;
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
-            transition: all 0.3s ease;
             text-align: center;
         }
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            background: rgba(228, 187, 19, 0.1);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .service-icon {
-            font-size: 36px;
+        .services-simple h3 {
             color: var(--accent);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
         }
 
-        .service-card h3 {
-            color: var(--accent);
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-        }
-
-        .service-card p {
-            margin-bottom: 15px;
-            opacity: 0.9;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .service-features {
+        .services-list {
+            list-style: none;
+            margin-bottom: 25px;
             text-align: left;
-            margin-top: 15px;
         }
 
-        .service-features li {
-            margin-bottom: 8px;
-            padding-left: 20px;
+        .services-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
             position: relative;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text);
         }
 
-        .service-features li:before {
-            content: "•";
+        .services-list li:before {
+            content: "✓";
             color: var(--accent);
-            font-weight: bold;
             position: absolute;
             left: 0;
-            font-size: 1.1rem;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .service-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .service-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
+            background: var(--accent-hover);
         }
 
         /* About */
@@ -856,7 +851,7 @@
             .moto-placeholder {
                 width: 220px;
                 height: 220px;
-                margin-top: 30px;
+                margin-top: 20px; /* Reduzi ainda mais o espaço */
             }
 
             .moto-placeholder i {
@@ -935,12 +930,12 @@
             }
             
             .catalog-central-btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
+                padding: 12px 24px;
+                font-size: 0.95rem;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr;
+            .services-simple {
+                padding: 20px;
             }
         }
 
@@ -958,6 +953,7 @@
                 width: 100%;
                 max-width: 260px;
                 justify-content: center;
+                font-size: 14px; /* Ajuste para mobile */
             }
             
             .footer-content {
@@ -980,19 +976,19 @@
                 font-size: 50px;
             }
             
-            .price {
-                font-size: 1rem;
-                padding: 5px 8px;
-            }
-            
             .indicator {
                 width: 8px;
                 height: 8px;
             }
             
             .catalog-central-btn {
-                padding: 8px 16px;
-                font-size: 0.85rem;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .service-btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
             }
         }
 
@@ -1071,6 +1067,9 @@
                 <a href="#produtos" class="btn catalog-btn-hero">
                     <i class="fas fa-store"></i> Ver Catálogo
                 </a>
+                <a href="#servicos" class="btn maintenance-btn">
+                    <i class="fas fa-tools"></i> Manutenção
+                </a>
             </div>
         </div>
         <div class="hero-image">
@@ -1134,10 +1133,7 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
-                            <div class="price-container">
-                                <span class="price">À vista: R$ 12.000,00</span>
-                                <span class="price">Cartão: R$ 12.490,00</span>
-                            </div>
+                            <!-- Removi os preços conforme solicitado -->
                         </div>
                     </div>
                     
@@ -1155,10 +1151,7 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 200kg</li>
                             </ul>
-                            <div class="price-container">
-                                <span class="price">À vista: R$ 11.490,00</span>
-                                <span class="price">Cartão: R$ 11.990,00</span>
-                            </div>
+                            <!-- Removi os preços conforme solicitado -->
                         </div>
                     </div>
                     
@@ -1176,10 +1169,7 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 150kg</li>
                             </ul>
-                            <div class="price-container">
-                                <span class="price">À vista: R$ 8.490,00</span>
-                                <span class="price">Cartão: R$ 8.990,00</span>
-                            </div>
+                            <!-- Removi os preços conforme solicitado -->
                         </div>
                     </div>
                 </div>
@@ -1204,64 +1194,30 @@
             </div>
             
             <!-- BOTÃO ABAIXO DOS INDICADORES - SEM SETAS -->
-            <a href="catalogo.html" class="catalog-central-btn">
-                <i class="fas fa-store"></i> Ver Catálogo Completo
-            </a>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <a href="catalogo.html" class="catalog-central-btn">
+                    <i class="fas fa-store"></i> Ver Catálogo Completo
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Services - NOVA SEÇÃO -->
+    <!-- Services - NOVA SEÇÃO SIMPLIFICADA -->
     <section id="servicos" class="services">
         <div class="container">
             <h2 class="section-title">Serviços de Reparo</h2>
-            <p class="about-text" style="text-align: center; margin-bottom: 30px; color: var(--text-muted);">Além de vendas, oferecemos serviços especializados em manutenção e reparo de scooters elétricas</p>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Manutenção Preventiva</h3>
-                    <p>Serviços regulares para manter sua scooter em perfeito estado</p>
-                    <ul class="service-features">
-                        <li>Troca de óleo e filtros</li>
-                        <li>Ajuste de freios e suspensão</li>
-                        <li>Verificação do sistema elétrico</li>
-                        <li>Calibragem de pneus</li>
-                    </ul>
-                </div>
+            <div class="services-simple">
+                <h3>Manutenção Especializada</h3>
+                <ul class="services-list">
+                    <li>Manutenção preventiva e corretiva</li>
+                    <li>Substituição de baterias</li>
+                    <li>Reparo de controladoras e motores</li>
+                    <li>Diagnóstico completo com equipamentos especializados</li>
+                    <li>Assistência técnica especializada</li>
+                </ul>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-wrench"></i>
-                    </div>
-                    <h3>Reparos Especializados</h3>
-                    <p>Conserto de problemas técnicos e substituição de peças</p>
-                    <ul class="service-features">
-                        <li>Reparo no sistema de transmissão</li>
-                        <li>Substituição de baterias</li>
-                        <li>Conserto de controladoras</li>
-                        <li>Reparo de motores elétricos</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Diagnóstico Completo</h3>
-                    <p>Identificamos e solucionamos problemas com equipamentos especializados</p>
-                    <ul class="service-features">
-                        <li>Teste de performance do motor</li>
-                        <li>Análise do sistema de carga</li>
-                        <li>Verificação de software</li>
-                        <li>Diagnóstico de problemas elétricos</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="https://w.app/c8foan" class="catalog-central-btn">
+                <a href="https://w.app/c8foan" class="service-btn">
                     <i class="fab fa-whatsapp"></i> Agendar Serviço
                 </a>
             </div>
