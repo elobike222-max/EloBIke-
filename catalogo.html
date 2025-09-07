@@ -16,9 +16,6 @@
             --text-muted: #adb5bd;
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
-            --scooter-color: #E4BB13;
-            --helmet-color: #1e90ff;
-            --battery-color: #32CD32;
         }
         
         * {
@@ -55,50 +52,40 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* Botões de categoria com cores harmônicas */
+        /* Botões de categoria no estilo da página principal */
         .category-buttons {
             display: flex;
             justify-content: center;
             margin: 40px 0;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
         }
 
         .category-btn {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 18px 35px;
-            color: white;
+            gap: 10px;
+            padding: 16px 32px;
+            background: var(--accent);
+            color: var(--primary);
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 700;
+            font-weight: 600;
             transition: all 0.3s;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 18px;
-        }
-
-        .scooters-btn {
-            background: var(--scooter-color);
-        }
-
-        .helmets-btn {
-            background: var(--helmet-color);
-        }
-
-        .batteries-btn {
-            background: var(--battery-color);
+            font-size: 16px;
         }
 
         .category-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
+            background: var(--accent-hover);
         }
 
         .category-btn i {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
 
         /* Seções de produtos */
@@ -130,28 +117,24 @@
             border-radius: 2px;
         }
 
-        .scooters-section .category-title {
-            color: var(--scooter-color);
-        }
-
-        .helmets-section .category-title {
-            color: var(--helmet-color);
-        }
-
-        .batteries-section .category-title {
-            color: var(--battery-color);
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+        /* Carrossel de produtos */
+        .products-carousel {
+            position: relative;
+            overflow: hidden;
             margin: 40px 0;
+            padding: 10px;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 25px;
         }
 
         .product-card {
+            flex: 0 0 calc(33.333% - 17px);
             background: var(--card-bg);
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
@@ -160,7 +143,7 @@
 
         .product-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
         }
 
         /* Carrossel de imagens do produto */
@@ -193,18 +176,6 @@
         .product-image i {
             font-size: 90px;
             color: var(--accent);
-        }
-
-        .scooters-section .product-image i {
-            color: var(--scooter-color);
-        }
-
-        .helmets-section .product-image i {
-            color: var(--helmet-color);
-        }
-
-        .batteries-section .product-image i {
-            color: var(--battery-color);
         }
 
         .carousel-controls {
@@ -250,45 +221,15 @@
             z-index: 10;
         }
 
-        .scooters-section .product-badge {
-            background: var(--scooter-color);
-        }
-
-        .helmets-section .product-badge {
-            background: var(--helmet-color);
-        }
-
-        .batteries-section .product-badge {
-            background: var(--battery-color);
-        }
-
         .product-info {
             padding: 25px;
         }
 
         .product-title {
             font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: var(--accent);
-        }
-
-        .scooters-section .product-title {
-            color: var(--scooter-color);
-        }
-
-        .helmets-section .product-title {
-            color: var(--helmet-color);
-        }
-
-        .batteries-section .product-title {
-            color: var(--battery-color);
-        }
-
-        .product-description {
-            color: var(--text-muted);
             margin-bottom: 15px;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: var(--accent);
+            text-align: center;
         }
 
         .product-features {
@@ -313,18 +254,6 @@
             font-size: 1.1rem;
         }
 
-        .scooters-section .product-features li:before {
-            color: var(--scooter-color);
-        }
-
-        .helmets-section .product-features li:before {
-            color: var(--helmet-color);
-        }
-
-        .batteries-section .product-features li:before {
-            color: var(--battery-color);
-        }
-
         .product-price {
             font-size: 1.6rem;
             font-weight: 700;
@@ -333,18 +262,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .scooters-section .product-price {
-            color: var(--scooter-color);
-        }
-
-        .helmets-section .product-price {
-            color: var(--helmet-color);
-        }
-
-        .batteries-section .product-price {
-            color: var(--battery-color);
+            justify-content: center;
         }
 
         .product-price .original {
@@ -375,18 +293,6 @@
             font-size: 15px;
             flex: 1;
             justify-content: center;
-        }
-
-        .scooters-section .btn {
-            background: var(--scooter-color);
-        }
-
-        .helmets-section .btn {
-            background: var(--helmet-color);
-        }
-
-        .batteries-section .btn {
-            background: var(--battery-color);
         }
 
         .whatsapp-btn {
@@ -423,9 +329,36 @@
             color: var(--primary);
         }
 
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 1024px) {
+            .product-card {
+                flex: 0 0 calc(50% - 13px);
+            }
+        }
+
         @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: 1fr;
+            .product-card {
+                flex: 0 0 100%;
             }
             
             .category-buttons {
@@ -439,7 +372,7 @@
             
             .category-btn {
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
                 justify-content: center;
             }
             
@@ -459,404 +392,431 @@
             <h1>Catálogo EloBike</h1>
         </div>
 
-        <!-- Botões de categoria com cores harmônicas -->
+        <!-- Botões de categoria no estilo da página principal -->
         <div class="category-buttons">
-            <a href="#scooters" class="category-btn scooters-btn">
+            <a href="#scooters" class="category-btn">
                 <i class="fas fa-motorcycle"></i> Scooters
             </a>
-            <a href="#helmets" class="category-btn helmets-btn">
+            <a href="#helmets" class="category-btn">
                 <i class="fas fa-helmet-safety"></i> Capacetes
             </a>
-            <a href="#batteries" class="category-btn batteries-btn">
+            <a href="#batteries" class="category-btn">
                 <i class="fas fa-battery-full"></i> Baterias
             </a>
         </div>
 
         <!-- Seção de Scooters -->
-        <section id="scooters" class="category-section scooters-section">
+        <section id="scooters" class="category-section">
             <h2 class="category-title">Scooters Elétricas</h2>
             
-            <div class="products-grid">
-                <!-- Scooter 1 -->
-                <div class="product-card">
-                    <div class="product-image-carousel">
-                        <div class="image-carousel-container">
-                            <div class="product-image">
-                                <i class="fas fa-motorcycle"></i>
+            <div class="products-carousel">
+                <div class="carousel-container">
+                    <!-- Scooter 1 -->
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <div class="image-carousel-container">
+                                <div class="product-image">
+                                    <i class="fas fa-motorcycle"></i>
+                                </div>
+                                <div class="product-image">
+                                    <i class="fas fa-motorcycle" style="color: #1e90ff;"></i>
+                                </div>
+                                <div class="product-image">
+                                    <i class="fas fa-motorcycle" style="color: #ff4500;"></i>
+                                </div>
                             </div>
-                            <div class="product-image">
-                                <i class="fas fa-motorcycle" style="color: #1e90ff;"></i>
+                            <div class="carousel-controls">
+                                <div class="carousel-control prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="carousel-control next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
                             </div>
-                            <div class="product-image">
-                                <i class="fas fa-motorcycle" style="color: #ff4500;"></i>
+                            <div class="product-badge">Mais Vendido</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Modelo R11</h3>
+                            <ul class="product-features">
+                                <li>⚡ 3.000W de potência</li>
+                                <li>⏱️ Até 70 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: 150kg a 200kg</li>
+                            </ul>
+                            <div class="product-price">
+                                R$ 8.499,00
+                                <span class="original">R$ 9.299,00</span>
+                            </div>
+                            <div class="product-actions">
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                </a>
                             </div>
                         </div>
-                        <div class="carousel-controls">
-                            <div class="carousel-control prev">
-                                <i class="fas fa-chevron-left"></i>
-                            </div>
-                            <div class="carousel-control next">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                        <div class="product-badge">Mais Vendido</div>
                     </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Modelo R11</h3>
-                        <p class="product-description">Scooter elétrica de alta performance com design moderno e tecnologia avançada.</p>
-                        <ul class="product-features">
-                            <li>⚡ 3.000W de potência</li>
-                            <li>⏱️ Até 70 km/h</li>
-                            <li>🔋 45 km de autonomia</li>
-                        </ul>
-                        <div class="product-price">
-                            R$ 8.499,00
-                            <span class="original">R$ 9.299,00</span>
+                    
+                    <!-- Scooter 2 -->
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <div class="image-carousel-container">
+                                <div class="product-image">
+                                    <i class="fas fa-motorcycle"></i>
+                                </div>
+                                <div class="product-image">
+                                    <i class="fas fa-motorcycle" style="color: #1e90ff;"></i>
+                                </div>
+                            </div>
+                            <div class="carousel-controls">
+                                <div class="carousel-control prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="carousel-control next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="product-badge">Lançamento</div>
                         </div>
-                        <div class="product-actions">
-                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Modelo
-                            </a>
+                        <div class="product-info">
+                            <h3 class="product-title">Modelo R11 Sport</h3>
+                            <ul class="product-features">
+                                <li>⚡ 3.500W de potência</li>
+                                <li>⏱️ Até 75 km/h</li>
+                                <li>🔋 40 km de autonomia</li>
+                                <li>⏳ 4 horas para carga completa</li>
+                                <li>💪 Capacidade: 150kg a 200kg</li>
+                            </ul>
+                            <div class="product-price">
+                                R$ 9.299,00
+                            </div>
+                            <div class="product-actions">
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 Sport 🛵" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Scooter 3 -->
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <div class="image-carousel-container">
+                                <div class="product-image">
+                                    <i class="fas fa-motorcycle"></i>
+                                </div>
+                                <div class="product-image">
+                                    <i class="fas fa-motorcycle" style="color: #32cd32;"></i>
+                                </div>
+                            </div>
+                            <div class="carousel-controls">
+                                <div class="carousel-control prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="carousel-control next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Modelo R11 Comfort</h3>
+                            <ul class="product-features">
+                                <li>⚡ 2.500W de potência</li>
+                                <li>⏱️ Até 60 km/h</li>
+                                <li>🔋 50 km de autonomia</li>
+                                <li>⏳ 6 horas para carga completa</li>
+                                <li>💪 Capacidade: 150kg a 200kg</li>
+                            </ul>
+                            <div class="product-price">
+                                R$ 8.199,00
+                                <span class="original">R$ 8.799,00</span>
+                            </div>
+                            <div class="product-actions">
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 Comfort 🛵" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Scooter 2 -->
-                <div class="product-card">
-                    <div class="product-image-carousel">
-                        <div class="image-carousel-container">
-                            <div class="product-image">
-                                <i class="fas fa-motorcycle"></i>
-                            </div>
-                            <div class="product-image">
-                                <i class="fas fa-motorcycle" style="color: #1e90ff;"></i>
-                            </div>
-                        </div>
-                        <div class="carousel-controls">
-                            <div class="carousel-control prev">
-                                <i class="fas fa-chevron-left"></i>
-                            </div>
-                            <div class="carousel-control next">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                        <div class="product-badge">Lançamento</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Modelo R11 Sport</h3>
-                        <p class="product-description">Versão esportiva com design agressivo e performance superior.</p>
-                        <ul class="product-features">
-                            <li>⚡ 3.500W de potência</li>
-                            <li>⏱️ Até 75 km/h</li>
-                            <li>🔋 40 km de autonomia</li>
-                        </ul>
-                        <div class="product-price">
-                            R$ 9.299,00
-                        </div>
-                        <div class="product-actions">
-                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 Sport 🛵" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Modelo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Scooter 3 -->
-                <div class="product-card">
-                    <div class="product-image-carousel">
-                        <div class="image-carousel-container">
-                            <div class="product-image">
-                                <i class="fas fa-motorcycle"></i>
-                            </div>
-                            <div class="product-image">
-                                <i class="fas fa-motorcycle" style="color: #32cd32;"></i>
-                            </div>
-                        </div>
-                        <div class="carousel-controls">
-                            <div class="carousel-control prev">
-                                <i class="fas fa-chevron-left"></i>
-                            </div>
-                            <div class="carousel-control next">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Modelo R11 Comfort</h3>
-                        <p class="product-description">Focada no conforto do piloto, com assento amplo e suspensão especial.</p>
-                        <ul class="product-features">
-                            <li>⚡ 2.500W de potência</li>
-                            <li>⏱️ Até 60 km/h</li>
-                            <li>🔋 50 km de autonomia</li>
-                        </ul>
-                        <div class="product-price">
-                            R$ 8.199,00
-                            <span class="original">R$ 8.799,00</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 Comfort 🛵" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Modelo
-                            </a>
-                        </div>
-                    </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
                 </div>
             </div>
         </section>
 
         <!-- Seção de Capacetes -->
-        <section id="helmets" class="category-section helmets-section">
+        <section id="helmets" class="category-section">
             <h2 class="category-title">Capacetes</h2>
             
-            <div class="products-grid">
-                <!-- Capacete 1 -->
-                <div class="product-card">
-                    <div class="product-image-carousel">
-                        <div class="image-carousel-container">
-                            <div class="product-image">
-                                <i class="fas fa-helmet-safety"></i>
+            <div class="products-carousel">
+                <div class="carousel-container">
+                    <!-- Capacete 1 -->
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <div class="image-carousel-container">
+                                <div class="product-image">
+                                    <i class="fas fa-helmet-safety"></i>
+                                </div>
+                                <div class="product-image">
+                                    <i class="fas fa-helmet-safety" style="color: #ff0000;"></i>
+                                </div>
+                                <div class="product-image">
+                                    <i class="fas fa-helmet-safety" style="color: #0000ff;"></i>
+                                </div>
                             </div>
-                            <div class="product-image">
-                                <i class="fas fa-helmet-safety" style="color: #ff0000;"></i>
+                            <div class="carousel-controls">
+                                <div class="carousel-control prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="carousel-control next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
                             </div>
-                            <div class="product-image">
-                                <i class="fas fa-helmet-safety" style="color: #0000ff;"></i>
+                            <div class="product-badge">Popular</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Capacete Jet</h3>
+                            <ul class="product-features">
+                                <li>🛡️ Proteção certificada</li>
+                                <li>🎨 Design moderno</li>
+                                <li>🔄 Fácil de ajustar</li>
+                                <li>🌬️ Sistema de ventilação</li>
+                                <li>👓 Compatível com óculos</li>
+                            </ul>
+                            <div class="product-price">
+                                R$ 199,00
+                                <span class="original">R$ 249,00</span>
+                            </div>
+                            <div class="product-actions">
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Jet" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                </a>
                             </div>
                         </div>
-                        <div class="carousel-controls">
-                            <div class="carousel-control prev">
-                                <i class="fas fa-chevron-left"></i>
-                            </div>
-                            <div class="carousel-control next">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                        <div class="product-badge">Popular</div>
                     </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Capacete Jet</h3>
-                        <p class="product-description">Capacete estilo jet com design moderno e proteção certificada.</p>
-                        <ul class="product-features">
-                            <li>🛡️ Proteção certificada</li>
-                            <li>🎨 Design moderno</li>
-                            <li>🔄 Fácil de ajustar</li>
-                        </ul>
-                        <div class="product-price">
-                            R$ 199,00
-                            <span class="original">R$ 249,00</span>
+                    
+                    <!-- Capacete 2 -->
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <div class="image-carousel-container">
+                                <div class="product-image">
+                                    <i class="fas fa-helmet-safety"></i>
+                                </div>
+                                <div class="product-image">
+                                    <i class="fas fa-helmet-safety" style="color: #000000;"></i>
+                                </div>
+                            </div>
+                            <div class="carousel-controls">
+                                <div class="carousel-control prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="carousel-control next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="product-actions">
-                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Jet" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Modelo
-                            </a>
+                        <div class="product-info">
+                            <h3 class="product-title">Capacete Integral</h3>
+                            <ul class="product-features">
+                                <li>🛡️ Proteção total</li>
+                                <li>👁️ Visor anti-riscos</li>
+                                <li>💨 Ventilação ajustável</li>
+                                <li>🔒 Fechamento de segurança</li>
+                                <li>🎧 Espaço para headphones</li>
+                            </ul>
+                            <div class="product-price">
+                                R$ 349,00
+                            </div>
+                            <div class="product-actions">
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Integral" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Capacete 3 -->
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <div class="image-carousel-container">
+                                <div class="product-image">
+                                    <i class="fas fa-helmet-safety"></i>
+                                </div>
+                                <div class="product-image">
+                                    <i class="fas fa-helmet-safety" style="color: #ffd700;"></i>
+                                </div>
+                            </div>
+                            <div class="carousel-controls">
+                                <div class="carousel-control prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="carousel-control next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="product-badge">Novidade</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Capacete Modular</h3>
+                            <ul class="product-features">
+                                <li>🔄 Conversível jet/integral</li>
+                                <li>🎤 Sistema de comunicação ready</li>
+                                <li>🛡️ Certificação dupla</li>
+                                <li>🌧️ Resistente à água</li>
+                                <li>🔇 Sistema anti-ruído</li>
+                            </ul>
+                            <div class="product-price">
+                                R$ 459,00
+                            </div>
+                            <div class="product-actions">
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Modular" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Capacete 2 -->
-                <div class="product-card">
-                    <div class="product-image-carousel">
-                        <div class="image-carousel-container">
-                            <div class="product-image">
-                                <i class="fas fa-helmet-safety"></i>
-                            </div>
-                            <div class="product-image">
-                                <i class="fas fa-helmet-safety" style="color: #000000;"></i>
-                            </div>
-                        </div>
-                        <div class="carousel-controls">
-                            <div class="carousel-control prev">
-                                <i class="fas fa-chevron-left"></i>
-                            </div>
-                            <div class="carousel-control next">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Capacete Integral</h3>
-                        <p class="product-description">Capacete integral com proteção total e visor anti-riscos.</p>
-                        <ul class="product-features">
-                            <li>🛡️ Proteção total</li>
-                            <li>👁️ Visor anti-riscos</li>
-                            <li>💨 Ventilação ajustável</li>
-                        </ul>
-                        <div class="product-price">
-                            R$ 349,00
-                        </div>
-                        <div class="product-actions">
-                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Integral" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Modelo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Capacete 3 -->
-                <div class="product-card">
-                    <div class="product-image-carousel">
-                        <div class="image-carousel-container">
-                            <div class="product-image">
-                                <i class="fas fa-helmet-safety"></i>
-                            </div>
-                            <div class="product-image">
-                                <i class="fas fa-helmet-safety" style="color: #ffd700;"></i>
-                            </div>
-                        </div>
-                        <div class="carousel-controls">
-                            <div class="carousel-control prev">
-                                <i class="fas fa-chevron-left"></i>
-                            </div>
-                            <div class="carousel-control next">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                        <div class="product-badge">Novidade</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Capacete Modular</h3>
-                        <p class="product-description">Capacete modular que pode ser usado como jet ou integral.</p>
-                        <ul class="product-features">
-                            <li>🔄 Conversível jet/integral</li>
-                            <li>🎤 Sistema de comunicação ready</li>
-                            <li>🛡️ Certificação dupla</li>
-                        </ul>
-                        <div class="product-price">
-                            R$ 459,00
-                        </div>
-                        <div class="product-actions">
-                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Modular" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Modelo
-                            </a>
-                        </div>
-                    </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
                 </div>
             </div>
         </section>
 
         <!-- Seção de Baterias -->
-        <section id="batteries" class="category-section batteries-section">
+        <section id="batteries" class="category-section">
             <h2 class="category-title">Baterias</h2>
             
-            <div class="products-grid">
-                <!-- Bateria 1 -->
-                <div class="product-card">
-                    <div class="product-image-carousel">
-                        <div class="image-carousel-container">
-                            <div class="product-image">
-                                <i class="fas fa-battery-full"></i>
+            <div class="products-carousel">
+                <div class="carousel-container">
+                    <!-- Bateria 1 -->
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <div class="image-carousel-container">
+                                <div class="product-image">
+                                    <i class="fas fa-battery-full"></i>
+                                </div>
+                                <div class="product-image">
+                                    <i class="fas fa-battery-full" style="color: #00ff00;"></i>
+                                </div>
                             </div>
-                            <div class="product-image">
-                                <i class="fas fa-battery-full" style="color: #00ff00;"></i>
+                            <div class="carousel-controls">
+                                <div class="carousel-control prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="carousel-control next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="product-badge">Mais Vendida</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bateria Lithium 60V 20Ah</h3>
+                            <ul class="product-features">
+                                <li>🔋 60V 20Ah</li>
+                                <li>⚡ Alta performance</li>
+                                <li>🔄 +1000 ciclos</li>
+                                <li>⏳ 4h de carregamento</li>
+                                <li>🔌 Conector seguro</li>
+                            </ul>
+                            <div class="product-price">
+                                R$ 1.899,00
+                                <span class="original">R$ 2.199,00</span>
+                            </div>
+                            <div class="product-actions">
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 60V 20Ah" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                </a>
                             </div>
                         </div>
-                        <div class="carousel-controls">
-                            <div class="carousel-control prev">
-                                <i class="fas fa-chevron-left"></i>
-                            </div>
-                            <div class="carousel-control next">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                        <div class="product-badge">Mais Vendida</div>
                     </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Bateria Lithium 60V 20Ah</h3>
-                        <p class="product-description">Bateria de lítio de alta performance para scooters elétricas.</p>
-                        <ul class="product-features">
-                            <li>🔋 60V 20Ah</li>
-                            <li>⚡ Alta performance</li>
-                            <li>🔄 +1000 ciclos</li>
-                        </ul>
-                        <div class="product-price">
-                            R$ 1.899,00
-                            <span class="original">R$ 2.199,00</span>
+                    
+                    <!-- Bateria 2 -->
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <div class="image-carousel-container">
+                                <div class="product-image">
+                                    <i class="fas fa-battery-full"></i>
+                                </div>
+                                <div class="product-image">
+                                    <i class="fas fa-battery-full" style="color: #00ff00;"></i>
+                                </div>
+                            </div>
+                            <div class="carousel-controls">
+                                <div class="carousel-control prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="carousel-control next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="product-actions">
-                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 60V 20Ah" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Modelo
-                            </a>
+                        <div class="product-info">
+                            <h3 class="product-title">Bateria Lithium 60V 26Ah</h3>
+                            <ul class="product-features">
+                                <li>🔋 60V 26Ah</li>
+                                <li>🚀 Maior autonomia</li>
+                                <li>🔄 +1200 ciclos</li>
+                                <li>⏳ 5h de carregamento</li>
+                                <li>🔌 Conector seguro</li>
+                            </ul>
+                            <div class="product-price">
+                                R$ 2.399,00
+                            </div>
+                            <div class="product-actions">
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 60V 26Ah" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bateria 3 -->
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <div class="image-carousel-container">
+                                <div class="product-image">
+                                    <i class="fas fa-battery-full"></i>
+                                </div>
+                                <div class="product-image">
+                                    <i class="fas fa-battery-full" style="color: #00ff00;"></i>
+                                </div>
+                            </div>
+                            <div class="carousel-controls">
+                                <div class="carousel-control prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="carousel-control next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="product-badge">Promoção</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bateria Lithium 72V 20Ah</h3>
+                            <ul class="product-features">
+                                <li>🔋 72V 20Ah</li>
+                                <li>⚡ Alta voltagem</li>
+                                <li>🔄 +1000 ciclos</li>
+                                <li>⏳ 6h de carregamento</li>
+                                <li>🔌 Conector seguro</li>
+                            </ul>
+                            <div class="product-price">
+                                R$ 2.199,00
+                                <span class="original">R$ 2.599,00</span>
+                            </div>
+                            <div class="product-actions">
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 72V 20Ah" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Bateria 2 -->
-                <div class="product-card">
-                    <div class="product-image-carousel">
-                        <div class="image-carousel-container">
-                            <div class="product-image">
-                                <i class="fas fa-battery-full"></i>
-                            </div>
-                            <div class="product-image">
-                                <i class="fas fa-battery-full" style="color: #00ff00;"></i>
-                            </div>
-                        </div>
-                        <div class="carousel-controls">
-                            <div class="carousel-control prev">
-                                <i class="fas fa-chevron-left"></i>
-                            </div>
-                            <div class="carousel-control next">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Bateria Lithium 60V 26Ah</h3>
-                        <p class="product-description">Bateria de lítio com maior capacidade para mais autonomia.</p>
-                        <ul class="product-features">
-                            <li>🔋 60V 26Ah</li>
-                            <li>🚀 Maior autonomia</li>
-                            <li>🔄 +1200 ciclos</li>
-                        </ul>
-                        <div class="product-price">
-                            R$ 2.399,00
-                        </div>
-                        <div class="product-actions">
-                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 60V 26Ah" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Modelo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Bateria 3 -->
-                <div class="product-card">
-                    <div class="product-image-carousel">
-                        <div class="image-carousel-container">
-                            <div class="product-image">
-                                <i class="fas fa-battery-full"></i>
-                            </div>
-                            <div class="product-image">
-                                <i class="fas fa-battery-full" style="color: #00ff00;"></i>
-                            </div>
-                        </div>
-                        <div class="carousel-controls">
-                            <div class="carousel-control prev">
-                                <i class="fas fa-chevron-left"></i>
-                            </div>
-                            <div class="carousel-control next">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                        <div class="product-badge">Promoção</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Bateria Lithium 72V 20Ah</h3>
-                        <p class="product-description">Bateria de alta voltagem para scooters de maior potência.</p>
-                        <ul class="product-features">
-                            <li>🔋 72V 20Ah</li>
-                            <li>⚡ Alta voltagem</li>
-                            <li>🔄 +1000 ciclos</li>
-                        </ul>
-                        <div class="product-price">
-                            R$ 2.199,00
-                            <span class="original">R$ 2.599,00</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 72V 20Ah" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Modelo
-                            </a>
-                        </div>
-                    </div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
                 </div>
             </div>
         </section>
@@ -883,6 +843,94 @@
             });
         });
 
+        // Inicializar carrosséis de produtos
+        function initProductCarousels() {
+            const productCarousels = document.querySelectorAll('.products-carousel');
+            
+            productCarousels.forEach(carousel => {
+                const container = carousel.querySelector('.carousel-container');
+                const cards = carousel.querySelectorAll('.product-card');
+                const dots = carousel.querySelectorAll('.carousel-dot');
+                const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(container).gap);
+                
+                let currentPosition = 0;
+                let maxPosition = (cards.length - 3) * cardWidth;
+                
+                // Ajustar para dispositivos móveis
+                if (window.innerWidth <= 1024) {
+                    maxPosition = (cards.length - 2) * cardWidth;
+                }
+                if (window.innerWidth <= 768) {
+                    maxPosition = (cards.length - 1) * cardWidth;
+                }
+                
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        currentPosition = index * -maxPosition;
+                        updateCarousel();
+                    });
+                });
+                
+                function updateCarousel() {
+                    // Limitar a posição dentro dos limites
+                    if (currentPosition > 0) currentPosition = 0;
+                    if (currentPosition < -maxPosition) currentPosition = -maxPosition;
+                    
+                    container.style.transform = `translateX(${currentPosition}px)`;
+                    
+                    // Atualizar dots ativos
+                    const activeDot = Math.floor(Math.abs(currentPosition) / (maxPosition / (dots.length - 1)));
+                    dots.forEach((dot, idx) => {
+                        dot.classList.toggle('active', idx === activeDot);
+                    });
+                }
+                
+                // Adicionar navegação por arrasto
+                let isDragging = false;
+                let startPosition = 0;
+                let startX = 0;
+                
+                carousel.addEventListener('mousedown', dragStart);
+                carousel.addEventListener('touchstart', dragStart);
+                
+                carousel.addEventListener('mousemove', drag);
+                carousel.addEventListener('touchmove', drag);
+                
+                carousel.addEventListener('mouseup', dragEnd);
+                carousel.addEventListener('mouseleave', dragEnd);
+                carousel.addEventListener('touchend', dragEnd);
+                
+                function dragStart(e) {
+                    isDragging = true;
+                    startX = e.clientX || e.touches[0].clientX;
+                    startPosition = currentPosition;
+                    container.style.transition = 'none';
+                }
+                
+                function drag(e) {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    
+                    const x = e.clientX || e.touches[0].clientX;
+                    const walk = (x - startX) * 2;
+                    currentPosition = startPosition + walk;
+                    
+                    updateCarousel();
+                }
+                
+                function dragEnd() {
+                    isDragging = false;
+                    container.style.transition = 'transform 0.5s ease';
+                    
+                    // Ajustar para o ponto mais próximo
+                    const itemIndex = Math.round(Math.abs(currentPosition) / cardWidth);
+                    currentPosition = -itemIndex * cardWidth;
+                    
+                    updateCarousel();
+                }
+            });
+        }
+        
         // Inicializar carrosséis de imagens
         function initImageCarousels() {
             const imageCarousels = document.querySelectorAll('.image-carousel-container');
@@ -960,7 +1008,11 @@
         }
         
         // Inicializar carrosséis quando a página carregar
-        window.addEventListener('load', initImageCarousels);
+        window.addEventListener('load', () => {
+            initProductCarousels();
+            initImageCarousels();
+        });
+        window.addEventListener('resize', initProductCarousels);
     </script>
 </body>
 </html>
