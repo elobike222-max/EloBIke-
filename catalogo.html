@@ -36,7 +36,7 @@
             font-size: 18px;
             padding: 10px;
             min-height: 100vh;
-            -webkit-overflow-scrolling: touch; /* Rolagem suave em dispositivos móveis */
+            -webkit-overflow-scrolling: touch;
         }
 
         .container {
@@ -56,20 +56,20 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* Botões de categoria */
+        /* Botões de categoria - AUMENTADOS */
         .category-buttons {
             display: flex;
             justify-content: center;
-            margin: 15px 0;
+            margin: 20px 0;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
 
         .category-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 20px;
+            gap: 10px;
+            padding: 16px 30px;
             color: white;
             text-decoration: none;
             border-radius: 8px;
@@ -78,7 +78,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border: none;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .scooters-btn {
@@ -100,19 +100,19 @@
         }
 
         .category-btn i {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
 
-        /* Seções de produtos - ESPAÇO REDUZIDO */
+        /* Seções de produtos */
         .category-section {
-            margin: 20px 0;
-            padding: 10px 0;
+            margin: 30px 0;
+            padding: 15px 0;
         }
 
         .category-title {
             text-align: center;
             font-size: 1.8rem;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: var(--accent);
         }
 
@@ -120,7 +120,7 @@
         .products-carousel {
             position: relative;
             overflow: hidden;
-            margin: 15px 0;
+            margin: 20px 0;
             padding: 5px;
         }
 
@@ -150,7 +150,7 @@
         /* Carrossel de imagens do produto */
         .product-image-carousel {
             width: 100%;
-            height: 180px;
+            height: 200px;
             overflow: hidden;
             position: relative;
             display: flex;
@@ -175,7 +175,7 @@
         }
 
         .product-image i {
-            font-size: 70px;
+            font-size: 80px;
             color: var(--accent);
         }
 
@@ -186,7 +186,7 @@
             right: 0;
             display: flex;
             justify-content: space-between;
-            padding: 0 8px;
+            padding: 0 10px;
             transform: translateY(-50%);
             pointer-events: none;
             z-index: 20;
@@ -195,8 +195,8 @@
         .carousel-control {
             pointer-events: all;
             background: rgba(0, 0, 0, 0.5);
-            width: 32px;
-            height: 32px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -204,7 +204,7 @@
             color: white;
             cursor: pointer;
             transition: background 0.3s;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .carousel-control:hover {
@@ -217,7 +217,7 @@
             right: 10px;
             background: var(--accent);
             color: var(--primary);
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 12px;
             font-size: 0.9rem;
             font-weight: 600;
@@ -225,30 +225,30 @@
         }
 
         .product-info {
-            padding: 15px;
+            padding: 18px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .product-title {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             color: var(--accent);
             text-align: center;
         }
 
         .product-features {
             list-style: none;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             flex-grow: 1;
         }
 
         .product-features li {
             margin-bottom: 10px;
-            padding-left: 28px;
+            padding-left: 30px;
             position: relative;
-            font-size: 1.05rem; /* FONTE AUMENTADA */
+            font-size: 1.1rem;
             color: var(--text);
         }
 
@@ -258,22 +258,22 @@
             position: absolute;
             left: 0;
             font-weight: bold;
-            font-size: 1.2rem; /* FONTE AUMENTADA */
+            font-size: 1.3rem;
         }
 
         .product-price {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--accent);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             justify-content: center;
         }
 
         .product-price .original {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             text-decoration: line-through;
             color: var(--text-muted);
         }
@@ -286,7 +286,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 18px;
+            padding: 14px 20px;
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -319,7 +319,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 16px;
+            padding: 12px 20px;
             background: var(--card-bg);
             color: var(--text);
             text-decoration: none;
@@ -338,13 +338,13 @@
         .carousel-nav {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .carousel-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
@@ -353,7 +353,40 @@
 
         .carousel-dot.active {
             background: var(--accent);
-            transform: scale(1.2);
+            transform: scale(1.3);
+        }
+
+        /* Setas para navegar entre modelos */
+        .model-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            transform: translateY(-50%);
+            pointer-events: none;
+            z-index: 25;
+        }
+
+        .model-control {
+            pointer-events: all;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+
+        .model-control:hover {
+            background: rgba(0, 0, 0, 0.8);
         }
 
         @media (max-width: 1024px) {
@@ -383,21 +416,22 @@
             
             .category-btn {
                 width: 100%;
-                max-width: 250px;
+                max-width: 280px;
                 justify-content: center;
-                padding: 10px 16px;
+                padding: 14px 25px;
+                font-size: 16px;
             }
             
             .category-title {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
             
             .product-image-carousel {
-                height: 160px;
+                height: 180px;
             }
             
             .product-image i {
-                font-size: 60px;
+                font-size: 70px;
             }
             
             .product-features li {
@@ -405,12 +439,12 @@
             }
             
             .category-section {
-                margin: 15px 0;
+                margin: 25px 0;
             }
             
-            .carousel-control {
-                width: 28px;
-                height: 28px;
+            .carousel-control, .model-control {
+                width: 32px;
+                height: 32px;
             }
         }
     </style>
@@ -425,7 +459,7 @@
             <h1>Catálogo EloBike</h1>
         </div>
 
-        <!-- Botões de categoria -->
+        <!-- Botões de categoria - AUMENTADOS -->
         <div class="category-buttons">
             <a href="#scooters" class="category-btn scooters-btn">
                 <i class="fas fa-motorcycle"></i> Scooters
@@ -571,9 +605,21 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Setas para navegar entre modelos -->
+                <div class="model-controls">
+                    <div class="model-control prev-model">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="model-control next-model">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
                 <div class="carousel-nav">
-                    <div class="carousel-dot active"></div>
-                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot active" data-index="0"></div>
+                    <div class="carousel-dot" data-index="1"></div>
+                    <div class="carousel-dot" data-index="2"></div>
                 </div>
             </div>
         </section>
@@ -710,9 +756,21 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Setas para navegar entre modelos -->
+                <div class="model-controls">
+                    <div class="model-control prev-model">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="model-control next-model">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
                 <div class="carousel-nav">
-                    <div class="carousel-dot active"></div>
-                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot active" data-index="0"></div>
+                    <div class="carousel-dot" data-index="1"></div>
+                    <div class="carousel-dot" data-index="2"></div>
                 </div>
             </div>
         </section>
@@ -847,15 +905,35 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Setas para navegar entre modelos -->
+                <div class="model-controls">
+                    <div class="model-control prev-model">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="model-control next-model">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
                 <div class="carousel-nav">
-                    <div class="carousel-dot active"></div>
-                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot active" data-index="0"></div>
+                    <div class="carousel-dot" data-index="1"></div>
+                    <div class="carousel-dot" data-index="2"></div>
                 </div>
             </div>
         </section>
     </div>
 
     <script>
+        // Variáveis para controle das automatizações
+        let colorChangeIntervals = {};
+        let modelChangeIntervals = {};
+        let userInteractionTimeouts = {};
+        const COLOR_CHANGE_DELAY = 7000; // 7 segundos
+        const MODEL_CHANGE_DELAY = 15000; // 15 segundos
+        const INTERACTION_PAUSE = 30000; // 30 segundos
+
         // Função para rolagem suave ao clicar nos botões
         document.querySelectorAll('.category-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -875,14 +953,23 @@
             });
         });
 
+        // Inicializar todos os carrosséis
+        function initAllCarousels() {
+            initProductCarousels();
+            initImageCarousels();
+            startAllAutomations();
+        }
+
         // Inicializar carrosséis de produtos
         function initProductCarousels() {
             const productCarousels = document.querySelectorAll('.products-carousel');
             
-            productCarousels.forEach(carousel => {
+            productCarousels.forEach((carousel, carouselIndex) => {
                 const container = carousel.querySelector('.carousel-container');
                 const cards = carousel.querySelectorAll('.product-card');
                 const dots = carousel.querySelectorAll('.carousel-dot');
+                const prevModelBtn = carousel.querySelector('.prev-model');
+                const nextModelBtn = carousel.querySelector('.next-model');
                 const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(container).gap);
                 
                 let currentPosition = 0;
@@ -895,48 +982,59 @@
                     maxPosition = (cards.length - 1) * cardWidth;
                 }
                 
-                dots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        currentPosition = index * -maxPosition;
-                        updateCarousel();
-                    });
-                });
-                
-                function updateCarousel() {
-                    if (currentPosition > 0) currentPosition = 0;
-                    if (currentPosition < -maxPosition) currentPosition = -maxPosition;
-                    
-                    container.style.transform = `translateX(${currentPosition}px)`;
-                    
+                // Atualizar dots
+                function updateDots() {
                     const activeDot = Math.floor(Math.abs(currentPosition) / (maxPosition / (dots.length - 1)));
                     dots.forEach((dot, idx) => {
                         dot.classList.toggle('active', idx === activeDot);
                     });
                 }
                 
-                // Navegação por arrasto para produtos
+                // Atualizar carrossel
+                function updateCarousel() {
+                    if (currentPosition > 0) currentPosition = 0;
+                    if (currentPosition < -maxPosition) currentPosition = -maxPosition;
+                    
+                    container.style.transform = `translateX(${currentPosition}px)`;
+                    updateDots();
+                }
+                
+                // Navegação por dots
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        pauseAutomation('model', carouselIndex);
+                        currentPosition = index * -maxPosition;
+                        updateCarousel();
+                    });
+                });
+                
+                // Navegação por setas
+                prevModelBtn.addEventListener('click', () => {
+                    pauseAutomation('model', carouselIndex);
+                    currentPosition = Math.min(currentPosition + cardWidth * 3, 0);
+                    updateCarousel();
+                });
+                
+                nextModelBtn.addEventListener('click', () => {
+                    pauseAutomation('model', carouselIndex);
+                    currentPosition = Math.max(currentPosition - cardWidth * 3, -maxPosition);
+                    updateCarousel();
+                });
+                
+                // Navegação por arrasto
                 let isDragging = false;
                 let startPosition = 0;
                 let startX = 0;
                 
-                carousel.addEventListener('mousedown', dragStart);
-                carousel.addEventListener('touchstart', dragStart, { passive: true });
-                
-                carousel.addEventListener('mousemove', drag);
-                carousel.addEventListener('touchmove', drag, { passive: true });
-                
-                carousel.addEventListener('mouseup', dragEnd);
-                carousel.addEventListener('mouseleave', dragEnd);
-                carousel.addEventListener('touchend', dragEnd);
-                
-                function dragStart(e) {
+                const startDrag = (e) => {
+                    pauseAutomation('model', carouselIndex);
                     isDragging = true;
                     startX = e.clientX || e.touches[0].clientX;
                     startPosition = currentPosition;
                     container.style.transition = 'none';
-                }
+                };
                 
-                function drag(e) {
+                const drag = (e) => {
                     if (!isDragging) return;
                     
                     const x = e.clientX || e.touches[0].clientX;
@@ -944,9 +1042,9 @@
                     currentPosition = startPosition + walk;
                     
                     updateCarousel();
-                }
+                };
                 
-                function dragEnd() {
+                const endDrag = () => {
                     isDragging = false;
                     container.style.transition = 'transform 0.5s ease';
                     
@@ -954,7 +1052,19 @@
                     currentPosition = -itemIndex * cardWidth;
                     
                     updateCarousel();
-                }
+                };
+                
+                carousel.addEventListener('mousedown', startDrag);
+                carousel.addEventListener('touchstart', startDrag, { passive: true });
+                
+                carousel.addEventListener('mousemove', drag);
+                carousel.addEventListener('touchmove', drag, { passive: true });
+                
+                carousel.addEventListener('mouseup', endDrag);
+                carousel.addEventListener('mouseleave', endDrag);
+                carousel.addEventListener('touchend', endDrag);
+                
+                updateDots();
             });
         }
         
@@ -962,7 +1072,7 @@
         function initImageCarousels() {
             const imageCarousels = document.querySelectorAll('.image-carousel-container');
             
-            imageCarousels.forEach(carousel => {
+            imageCarousels.forEach((carousel, carouselIndex) => {
                 const images = carousel.querySelectorAll('.product-image');
                 const parent = carousel.closest('.product-image-carousel');
                 const prevBtn = parent.querySelector('.carousel-control.prev');
@@ -974,39 +1084,33 @@
                     carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
                 }
                 
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                const navigate = (direction) => {
+                    pauseAutomation('color', carouselIndex);
+                    if (direction === 'next') {
+                        currentIndex = (currentIndex + 1) % images.length;
+                    } else {
+                        currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    }
                     updateImageCarousel();
-                });
+                };
                 
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % images.length;
-                    updateImageCarousel();
-                });
+                prevBtn.addEventListener('click', () => navigate('prev'));
+                nextBtn.addEventListener('click', () => navigate('next'));
                 
-                // Navegação por arrasto para imagens
+                // Navegação por arrasto
                 let isDraggingImg = false;
                 let startXImg = 0;
                 let startTranslateX = 0;
                 
-                carousel.addEventListener('mousedown', dragStartImg);
-                carousel.addEventListener('touchstart', dragStartImg, { passive: true });
-                
-                carousel.addEventListener('mousemove', dragImg);
-                carousel.addEventListener('touchmove', dragImg, { passive: true });
-                
-                carousel.addEventListener('mouseup', dragEndImg);
-                carousel.addEventListener('mouseleave', dragEndImg);
-                carousel.addEventListener('touchend', dragEndImg);
-                
-                function dragStartImg(e) {
+                const startDragImg = (e) => {
+                    pauseAutomation('color', carouselIndex);
                     isDraggingImg = true;
                     startXImg = e.clientX || e.touches[0].clientX;
                     startTranslateX = -currentIndex * 100;
                     carousel.style.transition = 'none';
-                }
+                };
                 
-                function dragImg(e) {
+                const dragImg = (e) => {
                     if (!isDraggingImg) return;
                     
                     const x = e.clientX || e.touches[0].clientX;
@@ -1014,9 +1118,9 @@
                     const newTranslate = startTranslateX + walk;
                     
                     carousel.style.transform = `translateX(${newTranslate}%)`;
-                }
+                };
                 
-                function dragEndImg() {
+                const endDragImg = () => {
                     isDraggingImg = false;
                     carousel.style.transition = 'transform 0.5s ease';
                     
@@ -1030,15 +1134,100 @@
                     }
                     
                     updateImageCarousel();
-                }
+                };
+                
+                carousel.addEventListener('mousedown', startDragImg);
+                carousel.addEventListener('touchstart', startDragImg, { passive: true });
+                
+                carousel.addEventListener('mousemove', dragImg);
+                carousel.addEventListener('touchmove', dragImg, { passive: true });
+                
+                carousel.addEventListener('mouseup', endDragImg);
+                carousel.addEventListener('mouseleave', endDragImg);
+                carousel.addEventListener('touchend', endDragImg);
             });
         }
-        
-        // Inicializar carrosséis quando a página carregar
-        window.addEventListener('load', () => {
-            initProductCarousels();
-            initImageCarousels();
-        });
+
+        // Funções para automatização
+        function startAllAutomations() {
+            // Iniciar automatização de cores
+            const colorCarousels = document.querySelectorAll('.image-carousel-container');
+            colorCarousels.forEach((carousel, index) => {
+                startColorAutomation(index);
+            });
+            
+            // Iniciar automatização de modelos
+            const modelCarousels = document.querySelectorAll('.products-carousel');
+            modelCarousels.forEach((carousel, index) => {
+                startModelAutomation(index);
+            });
+        }
+
+        function startColorAutomation(index) {
+            clearInterval(colorChangeIntervals[index]);
+            
+            colorChangeIntervals[index] = setInterval(() => {
+                const carousels = document.querySelectorAll('.image-carousel-container');
+                if (carousels[index]) {
+                    const images = carousels[index].querySelectorAll('.product-image');
+                    const currentIndex = parseInt(carousels[index].style.transform.split('-')[1]) / 100 || 0;
+                    const nextIndex = (currentIndex + 1) % images.length;
+                    
+                    carousels[index].style.transform = `translateX(-${nextIndex * 100}%)`;
+                }
+            }, COLOR_CHANGE_DELAY);
+        }
+
+        function startModelAutomation(index) {
+            clearInterval(modelChangeIntervals[index]);
+            
+            modelChangeIntervals[index] = setInterval(() => {
+                const carousels = document.querySelectorAll('.products-carousel');
+                if (carousels[index]) {
+                    const container = carousels[index].querySelector('.carousel-container');
+                    const cards = carousels[index].querySelectorAll('.product-card');
+                    const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(container).gap);
+                    const maxPosition = (cards.length - 3) * cardWidth;
+                    
+                    let currentPosition = parseInt(container.style.transform.split('(')[1]) || 0;
+                    let nextPosition = currentPosition - cardWidth * 3;
+                    
+                    if (nextPosition < -maxPosition) {
+                        nextPosition = 0;
+                    }
+                    
+                    container.style.transform = `translateX(${nextPosition}px)`;
+                    
+                    // Atualizar dots
+                    const dots = carousels[index].querySelectorAll('.carousel-dot');
+                    const activeDot = Math.floor(Math.abs(nextPosition) / (maxPosition / (dots.length - 1)));
+                    dots.forEach((dot, idx) => {
+                        dot.classList.toggle('active', idx === activeDot);
+                    });
+                }
+            }, MODEL_CHANGE_DELAY);
+        }
+
+        function pauseAutomation(type, index) {
+            if (type === 'color') {
+                clearInterval(colorChangeIntervals[index]);
+                // Reiniciar após 30 segundos
+                clearTimeout(userInteractionTimeouts[`color-${index}`]);
+                userInteractionTimeouts[`color-${index}`] = setTimeout(() => {
+                    startColorAutomation(index);
+                }, INTERACTION_PAUSE);
+            } else if (type === 'model') {
+                clearInterval(modelChangeIntervals[index]);
+                // Reiniciar após 30 segundos
+                clearTimeout(userInteractionTimeouts[`model-${index}`]);
+                userInteractionTimeouts[`model-${index}`] = setTimeout(() => {
+                    startModelAutomation(index);
+                }, INTERACTION_PAUSE);
+            }
+        }
+
+        // Inicializar quando a página carregar
+        window.addEventListener('load', initAllCarousels);
         window.addEventListener('resize', initProductCarousels);
     </script>
 </body>
