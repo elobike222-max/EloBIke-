@@ -268,9 +268,18 @@
             color: var(--accent);
             margin-bottom: 15px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
-            justify-content: center;
+            gap: 5px;
+        }
+
+        .price-avista {
+            font-size: 1.4rem;
+        }
+
+        .price-parcelado {
+            font-size: 1rem;
+            color: var(--text-muted);
         }
 
         .product-price .original {
@@ -281,6 +290,7 @@
 
         .product-actions {
             display: flex;
+            gap: 10px;
         }
 
         .btn {
@@ -305,6 +315,7 @@
         .whatsapp-btn {
             background: #25D366;
             color: white;
+            box-shadow: 0 4px 8px rgba(37, 211, 102, 0.4);
         }
 
         .btn:hover {
@@ -314,6 +325,7 @@
 
         .whatsapp-btn:hover {
             box-shadow: 0 6px 12px rgba(37, 211, 102, 0.6);
+            transform: translateY(-2px);
         }
 
         .back-btn {
@@ -410,6 +422,10 @@
                 width: 32px;
                 height: 32px;
             }
+            
+            .product-actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -470,23 +486,23 @@
                                 <li>💪 150kg a 200kg</li>
                             </ul>
                             <div class="product-price">
-                                R$ 8.499,00
-                                <span class="original">R$ 9.299,00</span>
+                                <span class="price-avista">💵 R$ 12.000,00 à vista</span>
+                                <span class="price-parcelado">ou 18x de R$ 759,73 no cartão</span>
                             </div>
                             <div class="product-actions">
                                 <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                    <i class="fab fa-whatsapp"></i> Comprar agora
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Scooter 2 -->
+                    <!-- Scooter 2 - Modelo S2 -->
                     <div class="product-card">
                         <div class="product-image-carousel">
                             <div class="image-carousel-container">
                                 <div class="product-image">
-                                    <i class="fas fa-motorcycle"></i>
+                                    <img src="S2.png" alt="Modelo S2">
                                 </div>
                             </div>
                             <div class="carousel-controls">
@@ -497,34 +513,35 @@
                                     <i class="fas fa-chevron-right"></i>
                                 </div>
                             </div>
-                            <div class="product-badge">Lançamento</div>
+                            <div class="product-badge">Econômico</div>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title">Modelo R11 Sport</h3>
+                            <h3 class="product-title">Modelo S2</h3>
                             <ul class="product-features">
-                                <li>⚡ 3.500W de potência</li>
-                                <li>⏱️ Até 75 km/h</li>
-                                <li>🔋 40 km de autonomia</li>
-                                <li>⏳ 4h de carregamento</li>
-                                <li>💪 150kg a 200kg</li>
+                                <li>⚡ 1.000W de potência</li>
+                                <li>⏱️ Até 40 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5h de carregamento</li>
+                                <li>💪 Até 200 kg</li>
                             </ul>
                             <div class="product-price">
-                                R$ 9.299,00
+                                <span class="price-avista">💵 R$ 11.490,00 à vista</span>
+                                <span class="price-parcelado">ou 18x de R$ 759,00 no cartão</span>
                             </div>
                             <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 Sport 🛵" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo S2 🛵" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Comprar agora
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Scooter 3 -->
+                    <!-- Scooter 3 - Modelo V8 -->
                     <div class="product-card">
                         <div class="product-image-carousel">
                             <div class="image-carousel-container">
                                 <div class="product-image">
-                                    <i class="fas fa-motorcycle"></i>
+                                    <img src="V8.png" alt="Modelo V8">
                                 </div>
                             </div>
                             <div class="carousel-controls">
@@ -535,23 +552,24 @@
                                     <i class="fas fa-chevron-right"></i>
                                 </div>
                             </div>
+                            <div class="product-badge">Compacto</div>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title">Modelo R11 Comfort</h3>
+                            <h3 class="product-title">Modelo V8</h3>
                             <ul class="product-features">
-                                <li>⚡ 2.500W de potência</li>
-                                <li>⏱️ Até 60 km/h</li>
-                                <li>🔋 50 km de autonomia</li>
-                                <li>⏳ 6h de carregamento</li>
-                                <li>💪 150kg a 200kg</li>
+                                <li>⚡ 1.000W de potência</li>
+                                <li>⏱️ Até 50 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5h de carregamento</li>
+                                <li>💪 Até 150 kg</li>
                             </ul>
                             <div class="product-price">
-                                R$ 8.199,00
-                                <span class="original">R$ 8.799,00</span>
+                                <span class="price-avista">💵 R$ 8.490,00 à vista</span>
+                                <span class="price-parcelado">ou 18x de R$ 537,51 no cartão</span>
                             </div>
                             <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 Comfort 🛵" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo V8 🛵" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Comprar agora
                                 </a>
                             </div>
                         </div>
@@ -605,7 +623,7 @@
                             </div>
                             <div class="product-actions">
                                 <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Jet" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                    <i class="fab fa-whatsapp"></i> Comprar agora
                                 </a>
                             </div>
                         </div>
@@ -642,7 +660,7 @@
                             </div>
                             <div class="product-actions">
                                 <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Integral" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                    <i class="fab fa-whatsapp"></i> Comprar agora
                                 </a>
                             </div>
                         </div>
@@ -680,7 +698,7 @@
                             </div>
                             <div class="product-actions">
                                 <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Modular" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                    <i class="fab fa-whatsapp"></i> Comprar agora
                                 </a>
                             </div>
                         </div>
@@ -734,7 +752,7 @@
                             </div>
                             <div class="product-actions">
                                 <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 60V 20Ah" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                    <i class="fab fa-whatsapp"></i> Comprar agora
                                 </a>
                             </div>
                         </div>
@@ -771,7 +789,7 @@
                             </div>
                             <div class="product-actions">
                                 <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 60V 26Ah" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                    <i class="fab fa-whatsapp"></i> Comprar agora
                                 </a>
                             </div>
                         </div>
@@ -810,7 +828,7 @@
                             </div>
                             <div class="product-actions">
                                 <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 72V 20Ah" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Ver Modelo
+                                    <i class="fab fa-whatsapp"></i> Comprar agora
                                 </a>
                             </div>
                         </div>
@@ -829,7 +847,7 @@
     <script>
         // Variáveis para controle das automatizações
         let modelChangeIntervals = {};
-        const MODEL_CHANGE_DELAY = 3000; // Alterado para 3 segundos conforme solicitado
+        const MODEL_CHANGE_DELAY = 3000; // 3 segundos
 
         // Função para rolagem suave ao clicar nos botões
         document.querySelectorAll('.category-btn').forEach(btn => {
