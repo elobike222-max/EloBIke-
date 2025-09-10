@@ -142,7 +142,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Carrossel de imagens do produto */
+        /* Carrossel de imagens do produto - MULTIPLAS FOTOS */
         .product-image-carousel {
             width: 100%;
             height: 200px;
@@ -364,6 +364,28 @@
             transform: scale(1.3);
         }
 
+        /* Indicadores para o carrossel interno de imagens */
+        .image-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .image-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .image-indicator.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
         @media (max-width: 1024px) {
             .product-card {
                 flex: 0 0 calc(50% - 8px);
@@ -455,16 +477,16 @@
                         <div class="product-image-carousel">
                             <div class="image-carousel-container">
                                 <div class="product-image">
-                                    <img src="R11-01.png" alt="Modelo R11">
+                                    <img src="R11-01.png" alt="Modelo R11 Cor 1">
                                 </div>
                                 <div class="product-image">
-                                    <img src="R11-02.png" alt="Modelo R11">
+                                    <img src="R11-02.png" alt="Modelo R11 Cor 2">
                                 </div>
                                 <div class="product-image">
-                                    <img src="R11-03.png" alt="Modelo R11">
+                                    <img src="R11-03.png" alt="Modelo R11 Cor 3">
                                 </div>
                                 <div class="product-image">
-                                    <img src="R11-04.png" alt="Modelo R11">
+                                    <img src="R11-04.png" alt="Modelo R11 Cor 4">
                                 </div>
                             </div>
                             <div class="carousel-controls">
@@ -476,6 +498,12 @@
                                 </div>
                             </div>
                             <div class="product-badge">Mais Vendido</div>
+                        </div>
+                        <div class="image-indicators">
+                            <div class="image-indicator active" data-index="0"></div>
+                            <div class="image-indicator" data-index="1"></div>
+                            <div class="image-indicator" data-index="2"></div>
+                            <div class="image-indicator" data-index="3"></div>
                         </div>
                         <div class="product-info">
                             <h3 class="product-title">Modelo R11</h3>
@@ -503,13 +531,13 @@
                         <div class="product-image-carousel">
                             <div class="image-carousel-container">
                                 <div class="product-image">
-                                    <img src="S2-01.png" alt="Modelo S2">
+                                    <img src="S2-01.png" alt="Modelo S2 Cor 1">
                                 </div>
                                 <div class="product-image">
-                                    <img src="S2-02.png" alt="Modelo S2">
+                                    <img src="S2-02.png" alt="Modelo S2 Cor 2">
                                 </div>
                                 <div class="product-image">
-                                    <img src="S2-03.png" alt="Modelo S2">
+                                    <img src="S2-03.png" alt="Modelo S2 Cor 3">
                                 </div>
                             </div>
                             <div class="carousel-controls">
@@ -521,6 +549,11 @@
                                 </div>
                             </div>
                             <div class="product-badge">Econômico</div>
+                        </div>
+                        <div class="image-indicators">
+                            <div class="image-indicator active" data-index="0"></div>
+                            <div class="image-indicator" data-index="1"></div>
+                            <div class="image-indicator" data-index="2"></div>
                         </div>
                         <div class="product-info">
                             <h3 class="product-title">Modelo S2</h3>
@@ -548,22 +581,22 @@
                         <div class="product-image-carousel">
                             <div class="image-carousel-container">
                                 <div class="product-image">
-                                    <img src="V8-01.png" alt="Modelo V8">
+                                    <img src="V8-01.png" alt="Modelo V8 Cor 1">
                                 </div>
                                 <div class="product-image">
-                                    <img src="V8-02.png" alt="Modelo V8">
+                                    <img src="V8-02.png" alt="Modelo V8 Cor 2">
                                 </div>
                                 <div class="product-image">
-                                    <img src="V8-03.png" alt="Modelo V8">
+                                    <img src="V8-03.png" alt="Modelo V8 Cor 3">
                                 </div>
                                 <div class="product-image">
-                                    <img src="V8-04.png" alt="Modelo V8">
+                                    <img src="V8-04.png" alt="Modelo V8 Cor 4">
                                 </div>
                                 <div class="product-image">
-                                    <img src="V8-05.png" alt="Modelo V8">
+                                    <img src="V8-05.png" alt="Modelo V8 Cor 5">
                                 </div>
                                 <div class="product-image">
-                                    <img src="V8-06.png" alt="Modelo V8">
+                                    <img src="V8-06.png" alt="Modelo V8 Cor 6">
                                 </div>
                             </div>
                             <div class="carousel-controls">
@@ -575,6 +608,14 @@
                                 </div>
                             </div>
                             <div class="product-badge">Compacto</div>
+                        </div>
+                        <div class="image-indicators">
+                            <div class="image-indicator active" data-index="0"></div>
+                            <div class="image-indicator" data-index="1"></div>
+                            <div class="image-indicator" data-index="2"></div>
+                            <div class="image-indicator" data-index="3"></div>
+                            <div class="image-indicator" data-index="4"></div>
+                            <div class="image-indicator" data-index="5"></div>
                         </div>
                         <div class="product-info">
                             <h3 class="product-title">Modelo V8</h3>
@@ -596,174 +637,12 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Modelo A3 -->
-                    <div class="product-card">
-                        <div class="product-image-carousel">
-                            <div class="image-carousel-container">
-                                <div class="product-image">
-                                    <img src="A3-01.png" alt="Modelo A3">
-                                </div>
-                                <div class="product-image">
-                                    <img src="A3-02.png" alt="Modelo A3">
-                                </div>
-                                <div class="product-image">
-                                    <img src="A3-03.png" alt="Modelo A3">
-                                </div>
-                                <div class="product-image">
-                                    <img src="A3-04.png" alt="Modelo A3">
-                                </div>
-                                <div class="product-image">
-                                    <img src="A3-05.png" alt="Modelo A3">
-                                </div>
-                            </div>
-                            <div class="carousel-controls">
-                                <div class="carousel-control prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="carousel-control next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                            <div class="product-badge">Novidade</div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Modelo A3</h3>
-                            <ul class="product-features">
-                                <li>⚡ 2.500W de potência</li>
-                                <li>⏱️ Até 65 km/h</li>
-                                <li>🔋 50 km de autonomia</li>
-                                <li>⏳ 6h de carregamento</li>
-                                <li>💪 Até 180 kg</li>
-                            </ul>
-                            <div class="product-price">
-                                <span class="price-avista">💵 R$ 10.990,00 à vista</span>
-                                <span class="price-parcelado">ou 18x de R$ 695,42 no cartão</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo A3 🛵" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Comprar agora
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modelo Chopper -->
-                    <div class="product-card">
-                        <div class="product-image-carousel">
-                            <div class="image-carousel-container">
-                                <div class="product-image">
-                                    <img src="Chopper-01.png" alt="Modelo Chopper">
-                                </div>
-                                <div class="product-image">
-                                    <img src="Chopper-02.png" alt="Modelo Chopper">
-                                </div>
-                                <div class="product-image">
-                                    <img src="Chopper-03.png" alt="Modelo Chopper">
-                                </div>
-                                <div class="product-image">
-                                    <img src="Chopper-04.png" alt="Modelo Chopper">
-                                </div>
-                                <div class="product-image">
-                                    <img src="Chopper-05.png" alt="Modelo Chopper">
-                                </div>
-                                <div class="product-image">
-                                    <img src="Chopper-06.png" alt="Modelo Chopper">
-                                </div>
-                                <div class="product-image">
-                                    <img src="Chopper-07.png" alt="Modelo Chopper">
-                                </div>
-                            </div>
-                            <div class="carousel-controls">
-                                <div class="carousel-control prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="carousel-control next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                            <div class="product-badge">Estilo</div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Modelo Chopper</h3>
-                            <ul class="product-features">
-                                <li>⚡ 3.500W de potência</li>
-                                <li>⏱️ Até 75 km/h</li>
-                                <li>🔋 40 km de autonomia</li>
-                                <li>⏳ 4h de carregamento</li>
-                                <li>💪 Até 220 kg</li>
-                            </ul>
-                            <div class="product-price">
-                                <span class="price-avista">💵 R$ 13.499,00 à vista</span>
-                                <span class="price-parcelado">ou 18x de R$ 854,12 no cartão</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo Chopper 🛵" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Comprar agora
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modelo R13 -->
-                    <div class="product-card">
-                        <div class="product-image-carousel">
-                            <div class="image-carousel-container">
-                                <div class="product-image">
-                                    <img src="R13-01.png" alt="Modelo R13">
-                                </div>
-                                <div class="product-image">
-                                    <img src="R13-02.png" alt="Modelo R13">
-                                </div>
-                                <div class="product-image">
-                                    <img src="R13-03.png" alt="Modelo R13">
-                                </div>
-                                <div class="product-image">
-                                    <img src="R13-04.png" alt="Modelo R13">
-                                </div>
-                                <div class="product-image">
-                                    <img src="R13-05.png" alt="Modelo R13">
-                                </div>
-                            </div>
-                            <div class="carousel-controls">
-                                <div class="carousel-control prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="carousel-control next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                            <div class="product-badge">Premium</div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Modelo R13</h3>
-                            <ul class="product-features">
-                                <li>⚡ 4.000W de potência</li>
-                                <li>⏱️ Até 80 km/h</li>
-                                <li>🔋 55 km de autonomia</li>
-                                <li>⏳ 5h de carregamento</li>
-                                <li>💪 Até 250 kg</li>
-                            </ul>
-                            <div class="product-price">
-                                <span class="price-avista">💵 R$ 14.999,00 à vista</span>
-                                <span class="price-parcelado">ou 18x de R$ 948,92 no cartão</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R13 🛵" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Comprar agora
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 
                 <div class="carousel-nav">
                     <div class="carousel-dot active" data-index="0"></div>
                     <div class="carousel-dot" data-index="1"></div>
                     <div class="carousel-dot" data-index="2"></div>
-                    <div class="carousel-dot" data-index="3"></div>
-                    <div class="carousel-dot" data-index="4"></div>
-                    <div class="carousel-dot" data-index="5"></div>
                 </div>
             </div>
         </section>
@@ -791,6 +670,9 @@
                                 </div>
                             </div>
                             <div class="product-badge">Popular</div>
+                        </div>
+                        <div class="image-indicators">
+                            <div class="image-indicator active" data-index="0"></div>
                         </div>
                         <div class="product-info">
                             <h3 class="product-title">Capacete Jet</h3>
@@ -830,6 +712,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="image-indicators">
+                            <div class="image-indicator active" data-index="0"></div>
+                        </div>
                         <div class="product-info">
                             <h3 class="product-title">Capacete Integral</h3>
                             <ul class="product-features">
@@ -867,6 +752,9 @@
                                 </div>
                             </div>
                             <div class="product-badge">Novidade</div>
+                        </div>
+                        <div class="image-indicators">
+                            <div class="image-indicator active" data-index="0"></div>
                         </div>
                         <div class="product-info">
                             <h3 class="product-title">Capacete Modular</h3>
@@ -928,10 +816,11 @@
         // Inicializar todos os carrosséis
         function initAllCarousels() {
             initProductCarousels();
+            initImageCarousels();
             startInitialAutoPlay();
         }
 
-        // Inicializar carrosséis de produtos
+        // Inicializar carrosséis de produtos principais
         function initProductCarousels() {
             const productCarousels = document.querySelectorAll('.products-carousel');
             
@@ -1034,6 +923,110 @@
                 carousel.addEventListener('touchend', endDrag);
                 
                 updateDots();
+            });
+        }
+
+        // Inicializar carrosséis de imagens internos
+        function initImageCarousels() {
+            const imageCarousels = document.querySelectorAll('.product-image-carousel');
+            
+            imageCarousels.forEach((carousel, index) => {
+                const container = carousel.querySelector('.image-carousel-container');
+                const images = carousel.querySelectorAll('.product-image');
+                const prevBtn = carousel.querySelector('.carousel-control.prev');
+                const nextBtn = carousel.querySelector('.carousel-control.next');
+                const indicators = carousel.parentElement.querySelectorAll('.image-indicator');
+                
+                let currentIndex = 0;
+                
+                // Atualizar indicadores
+                function updateIndicators() {
+                    if (indicators.length > 0) {
+                        indicators.forEach((indicator, idx) => {
+                            indicator.classList.toggle('active', idx === currentIndex);
+                        });
+                    }
+                }
+                
+                // Atualizar carrossel
+                function updateCarousel() {
+                    container.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    updateIndicators();
+                }
+                
+                // Navegação por botões
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        currentIndex = (currentIndex - 1 + images.length) % images.length;
+                        updateCarousel();
+                    });
+                }
+                
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        currentIndex = (currentIndex + 1) % images.length;
+                        updateCarousel();
+                    });
+                }
+                
+                // Navegação por indicadores
+                if (indicators.length > 0) {
+                    indicators.forEach((indicator, index) => {
+                        indicator.addEventListener('click', () => {
+                            currentIndex = index;
+                            updateCarousel();
+                        });
+                    });
+                }
+                
+                // Navegação por arrasto
+                let isDragging = false;
+                let startX = 0;
+                let startScrollLeft = 0;
+                
+                const startDrag = (e) => {
+                    isDragging = true;
+                    startX = e.clientX || e.touches[0].clientX;
+                    startScrollLeft = container.scrollLeft;
+                    container.style.transition = 'none';
+                };
+                
+                const drag = (e) => {
+                    if (!isDragging) return;
+                    
+                    e.preventDefault();
+                    const x = e.clientX || e.touches[0].clientX;
+                    const walk = (x - startX) * 2;
+                    
+                    if (walk > 50) {
+                        currentIndex = (currentIndex - 1 + images.length) % images.length;
+                        updateCarousel();
+                        isDragging = false;
+                        container.style.transition = 'transform 0.5s ease';
+                    } else if (walk < -50) {
+                        currentIndex = (currentIndex + 1) % images.length;
+                        updateCarousel();
+                        isDragging = false;
+                        container.style.transition = 'transform 0.5s ease';
+                    }
+                };
+                
+                const endDrag = () => {
+                    isDragging = false;
+                    container.style.transition = 'transform 0.5s ease';
+                };
+                
+                carousel.addEventListener('mousedown', startDrag);
+                carousel.addEventListener('touchstart', startDrag, { passive: true });
+                
+                carousel.addEventListener('mousemove', drag);
+                carousel.addEventListener('touchmove', drag, { passive: true });
+                
+                carousel.addEventListener('mouseup', endDrag);
+                carousel.addEventListener('mouseleave', endDrag);
+                carousel.addEventListener('touchend', endDrag);
+                
+                updateIndicators();
             });
         }
 
@@ -1168,34 +1161,33 @@
                     
                     // Atualizar dots
                     const activeDot = Math.floor(Math.abs(nextPosition) / cardWidth);
-                    dots.forEach((dot, idx) => {
-                        dot.classList.toggle('active', idx === activeDot);
-                    });
-                }
-            }, MODEL_CHANGE_DELAY);
-        }
+                                    dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === activeDot);
+                });
+            }
+        }, MODEL_CHANGE_DELAY);
+    }
 
-        // Pausar automatização quando o mouse estiver sobre o carrossel
-        document.querySelectorAll('.products-carousel').forEach((carousel, index) => {
-            carousel.addEventListener('mouseenter', () => {
-                clearInterval(modelChangeIntervals[index]);
-            });
-            
-            carousel.addEventListener('mouseleave', () => {
-                if (!userHasInteracted) {
-                    startModelAutomation(index);
-                }
-            });
+    // Pausar automatização quando o mouse estiver sobre o carrossel
+    document.querySelectorAll('.products-carousel').forEach((carousel, index) => {
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(modelChangeIntervals[index]);
         });
-
-        // Inicializar quando a página carregar
-        window.addEventListener('load', initAllCarousels);
-        window.addEventListener('resize', function() {
-            initProductCarousels();
+        
+        carousel.addEventListener('mouseleave', () => {
             if (!userHasInteracted) {
-                startAllModelAutomations();
+                startModelAutomation(index);
             }
         });
-    </script>
-</body>
-</html>
+    });
+
+    // Inicializar quando a página carregar
+    window.addEventListener('load', initAllCarousels);
+    window.addEventListener('resize', function() {
+        initProductCarousels();
+        initImageCarousels();
+        if (!userHasInteracted) {
+            startAllModelAutomations();
+        }
+    });
+</script>
