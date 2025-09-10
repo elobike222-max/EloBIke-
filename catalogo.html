@@ -18,7 +18,6 @@
             --card-border: rgba(255, 255, 255, 0.1);
             --scooter-color: #2563eb;
             --helmet-color: #E4BB13;
-            --battery-color: #16a34a;
         }
         
         * {
@@ -56,7 +55,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* Botões de categoria - AUMENTADOS */
+        /* Botões de categoria */
         .category-buttons {
             display: flex;
             justify-content: center;
@@ -88,10 +87,6 @@
         .helmets-btn {
             background: var(--helmet-color);
             color: var(--primary);
-        }
-
-        .batteries-btn {
-            background: var(--battery-color);
         }
 
         .category-btn:hover {
@@ -126,7 +121,7 @@
 
         .carousel-container {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.8s ease;
             gap: 15px;
         }
 
@@ -147,7 +142,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Carrossel de imagens do produto - AJUSTADO para 800x600 */
+        /* Carrossel de imagens do produto */
         .product-image-carousel {
             width: 100%;
             height: 200px;
@@ -177,7 +172,7 @@
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Alterado para CONTAIN para mostrar imagem completa */
+            object-fit: contain;
         }
 
         .carousel-controls {
@@ -439,16 +434,13 @@
             <h1>Catálogo EloBike</h1>
         </div>
 
-        <!-- Botões de categoria - AUMENTADOS -->
+        <!-- Botões de categoria -->
         <div class="category-buttons">
             <a href="#scooters" class="category-btn scooters-btn">
                 <i class="fas fa-motorcycle"></i> Scooters
             </a>
             <a href="#helmets" class="category-btn helmets-btn">
                 <i class="fas fa-helmet-safety"></i> Capacetes
-            </a>
-            <a href="#batteries" class="category-btn batteries-btn">
-                <i class="fas fa-battery-full"></i> Baterias
             </a>
         </div>
 
@@ -458,12 +450,21 @@
             
             <div class="products-carousel">
                 <div class="carousel-container">
-                    <!-- Scooter 1 - Modelo R11 com imagem real -->
+                    <!-- Modelo R11 -->
                     <div class="product-card">
                         <div class="product-image-carousel">
                             <div class="image-carousel-container">
                                 <div class="product-image">
-                                    <img src="R11.png" alt="Modelo R11">
+                                    <img src="R11-01.png" alt="Modelo R11">
+                                </div>
+                                <div class="product-image">
+                                    <img src="R11-02.png" alt="Modelo R11">
+                                </div>
+                                <div class="product-image">
+                                    <img src="R11-03.png" alt="Modelo R11">
+                                </div>
+                                <div class="product-image">
+                                    <img src="R11-04.png" alt="Modelo R11">
                                 </div>
                             </div>
                             <div class="carousel-controls">
@@ -497,12 +498,18 @@
                         </div>
                     </div>
                     
-                    <!-- Scooter 2 - Modelo S2 -->
+                    <!-- Modelo S2 -->
                     <div class="product-card">
                         <div class="product-image-carousel">
                             <div class="image-carousel-container">
                                 <div class="product-image">
-                                    <img src="S2.png" alt="Modelo S2">
+                                    <img src="S2-01.png" alt="Modelo S2">
+                                </div>
+                                <div class="product-image">
+                                    <img src="S2-02.png" alt="Modelo S2">
+                                </div>
+                                <div class="product-image">
+                                    <img src="S2-03.png" alt="Modelo S2">
                                 </div>
                             </div>
                             <div class="carousel-controls">
@@ -536,12 +543,27 @@
                         </div>
                     </div>
                     
-                    <!-- Scooter 3 - Modelo V8 -->
+                    <!-- Modelo V8 -->
                     <div class="product-card">
                         <div class="product-image-carousel">
                             <div class="image-carousel-container">
                                 <div class="product-image">
-                                    <img src="V8.png" alt="Modelo V8">
+                                    <img src="V8-01.png" alt="Modelo V8">
+                                </div>
+                                <div class="product-image">
+                                    <img src="V8-02.png" alt="Modelo V8">
+                                </div>
+                                <div class="product-image">
+                                    <img src="V8-03.png" alt="Modelo V8">
+                                </div>
+                                <div class="product-image">
+                                    <img src="V8-04.png" alt="Modelo V8">
+                                </div>
+                                <div class="product-image">
+                                    <img src="V8-05.png" alt="Modelo V8">
+                                </div>
+                                <div class="product-image">
+                                    <img src="V8-06.png" alt="Modelo V8">
                                 </div>
                             </div>
                             <div class="carousel-controls">
@@ -574,12 +596,174 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Modelo A3 -->
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <div class="image-carousel-container">
+                                <div class="product-image">
+                                    <img src="A3-01.png" alt="Modelo A3">
+                                </div>
+                                <div class="product-image">
+                                    <img src="A3-02.png" alt="Modelo A3">
+                                </div>
+                                <div class="product-image">
+                                    <img src="A3-03.png" alt="Modelo A3">
+                                </div>
+                                <div class="product-image">
+                                    <img src="A3-04.png" alt="Modelo A3">
+                                </div>
+                                <div class="product-image">
+                                    <img src="A3-05.png" alt="Modelo A3">
+                                </div>
+                            </div>
+                            <div class="carousel-controls">
+                                <div class="carousel-control prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="carousel-control next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="product-badge">Novidade</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Modelo A3</h3>
+                            <ul class="product-features">
+                                <li>⚡ 2.500W de potência</li>
+                                <li>⏱️ Até 65 km/h</li>
+                                <li>🔋 50 km de autonomia</li>
+                                <li>⏳ 6h de carregamento</li>
+                                <li>💪 Até 180 kg</li>
+                            </ul>
+                            <div class="product-price">
+                                <span class="price-avista">💵 R$ 10.990,00 à vista</span>
+                                <span class="price-parcelado">ou 18x de R$ 695,42 no cartão</span>
+                            </div>
+                            <div class="product-actions">
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo A3 🛵" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Comprar agora
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modelo Chopper -->
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <div class="image-carousel-container">
+                                <div class="product-image">
+                                    <img src="Chopper-01.png" alt="Modelo Chopper">
+                                </div>
+                                <div class="product-image">
+                                    <img src="Chopper-02.png" alt="Modelo Chopper">
+                                </div>
+                                <div class="product-image">
+                                    <img src="Chopper-03.png" alt="Modelo Chopper">
+                                </div>
+                                <div class="product-image">
+                                    <img src="Chopper-04.png" alt="Modelo Chopper">
+                                </div>
+                                <div class="product-image">
+                                    <img src="Chopper-05.png" alt="Modelo Chopper">
+                                </div>
+                                <div class="product-image">
+                                    <img src="Chopper-06.png" alt="Modelo Chopper">
+                                </div>
+                                <div class="product-image">
+                                    <img src="Chopper-07.png" alt="Modelo Chopper">
+                                </div>
+                            </div>
+                            <div class="carousel-controls">
+                                <div class="carousel-control prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="carousel-control next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="product-badge">Estilo</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Modelo Chopper</h3>
+                            <ul class="product-features">
+                                <li>⚡ 3.500W de potência</li>
+                                <li>⏱️ Até 75 km/h</li>
+                                <li>🔋 40 km de autonomia</li>
+                                <li>⏳ 4h de carregamento</li>
+                                <li>💪 Até 220 kg</li>
+                            </ul>
+                            <div class="product-price">
+                                <span class="price-avista">💵 R$ 13.499,00 à vista</span>
+                                <span class="price-parcelado">ou 18x de R$ 854,12 no cartão</span>
+                            </div>
+                            <div class="product-actions">
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo Chopper 🛵" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Comprar agora
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modelo R13 -->
+                    <div class="product-card">
+                        <div class="product-image-carousel">
+                            <div class="image-carousel-container">
+                                <div class="product-image">
+                                    <img src="R13-01.png" alt="Modelo R13">
+                                </div>
+                                <div class="product-image">
+                                    <img src="R13-02.png" alt="Modelo R13">
+                                </div>
+                                <div class="product-image">
+                                    <img src="R13-03.png" alt="Modelo R13">
+                                </div>
+                                <div class="product-image">
+                                    <img src="R13-04.png" alt="Modelo R13">
+                                </div>
+                                <div class="product-image">
+                                    <img src="R13-05.png" alt="Modelo R13">
+                                </div>
+                            </div>
+                            <div class="carousel-controls">
+                                <div class="carousel-control prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="carousel-control next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="product-badge">Premium</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Modelo R13</h3>
+                            <ul class="product-features">
+                                <li>⚡ 4.000W de potência</li>
+                                <li>⏱️ Até 80 km/h</li>
+                                <li>🔋 55 km de autonomia</li>
+                                <li>⏳ 5h de carregamento</li>
+                                <li>💪 Até 250 kg</li>
+                            </ul>
+                            <div class="product-price">
+                                <span class="price-avista">💵 R$ 14.999,00 à vista</span>
+                                <span class="price-parcelado">ou 18x de R$ 948,92 no cartão</span>
+                            </div>
+                            <div class="product-actions">
+                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R13 🛵" class="btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> Comprar agora
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="carousel-nav">
                     <div class="carousel-dot active" data-index="0"></div>
                     <div class="carousel-dot" data-index="1"></div>
                     <div class="carousel-dot" data-index="2"></div>
+                    <div class="carousel-dot" data-index="3"></div>
+                    <div class="carousel-dot" data-index="4"></div>
+                    <div class="carousel-dot" data-index="5"></div>
                 </div>
             </div>
         </section>
@@ -712,142 +896,15 @@
                 </div>
             </div>
         </section>
-
-        <!-- Seção de Baterias -->
-        <section id="batteries" class="category-section">
-            <h2 class="category-title">Baterias</h2>
-            
-            <div class="products-carousel">
-                <div class="carousel-container">
-                    <!-- Bateria 1 -->
-                    <div class="product-card">
-                        <div class="product-image-carousel">
-                            <div class="image-carousel-container">
-                                <div class="product-image">
-                                    <i class="fas fa-battery-full"></i>
-                                </div>
-                            </div>
-                            <div class="carousel-controls">
-                                <div class="carousel-control prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="carousel-control next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                            <div class="product-badge">Mais Vendida</div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bateria Lithium 60V 20Ah</h3>
-                            <ul class="product-features">
-                                <li>🔋 60V 20Ah</li>
-                                <li>⚡ Alta performance</li>
-                                <li>🔄 +1000 ciclos</li>
-                                <li>⏳ 4h carregamento</li>
-                                <li>🔌 Conector seguro</li>
-                            </ul>
-                            <div class="product-price">
-                                R$ 1.899,00
-                                <span class="original">R$ 2.199,00</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 60V 20Ah" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Comprar agora
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Bateria 2 -->
-                    <div class="product-card">
-                        <div class="product-image-carousel">
-                            <div class="image-carousel-container">
-                                <div class="product-image">
-                                    <i class="fas fa-battery-full"></i>
-                                </div>
-                            </div>
-                            <div class="carousel-controls">
-                                <div class="carousel-control prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="carousel-control next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bateria Lithium 60V 26Ah</h3>
-                            <ul class="product-features">
-                                <li>🔋 60V 26Ah</li>
-                                <li>🚀 Maior autonomia</li>
-                                <li>🔄 +1200 ciclos</li>
-                                <li>⏳ 5h carregamento</li>
-                                <li>🔌 Conector seguro</li>
-                            </ul>
-                            <div class="product-price">
-                                R$ 2.399,00
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 60V 26Ah" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Comprar agora
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Bateria 3 -->
-                    <div class="product-card">
-                        <div class="product-image-carousel">
-                            <div class="image-carousel-container">
-                                <div class="product-image">
-                                    <i class="fas fa-battery-full"></i>
-                                </div>
-                            </div>
-                            <div class="carousel-controls">
-                                <div class="carousel-control prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="carousel-control next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                            <div class="product-badge">Promoção</div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bateria Lithium 72V 20Ah</h3>
-                            <ul class="product-features">
-                                <li>🔋 72V 20Ah</li>
-                                <li>⚡ Alta voltagem</li>
-                                <li>🔄 +1000 ciclos</li>
-                                <li>⏳ 6h carregamento</li>
-                                <li>🔌 Conector seguro</li>
-                            </ul>
-                            <div class="product-price">
-                                R$ 2.199,00
-                                <span class="original">R$ 2.599,00</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse na Bateria Lithium 72V 20Ah" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Comprar agora
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="carousel-nav">
-                    <div class="carousel-dot active" data-index="0"></div>
-                    <div class="carousel-dot" data-index="1"></div>
-                    <div class="carousel-dot" data-index="2"></div>
-                </div>
-            </div>
-        </section>
     </div>
 
     <script>
         // Variáveis para controle das automatizações
         let modelChangeIntervals = {};
         const MODEL_CHANGE_DELAY = 3000; // 3 segundos
+        let autoPlayCount = 0;
+        const MAX_AUTO_PLAYS = 5; // Número máximo de transições automáticas
+        let userHasInteracted = false;
 
         // Função para rolagem suave ao clicar nos botões
         document.querySelectorAll('.category-btn').forEach(btn => {
@@ -871,7 +928,7 @@
         // Inicializar todos os carrosséis
         function initAllCarousels() {
             initProductCarousels();
-            startAllModelAutomations();
+            startInitialAutoPlay();
         }
 
         // Inicializar carrosséis de produtos
@@ -915,6 +972,7 @@
                 dots.forEach((dot, index) => {
                     dot.addEventListener('click', () => {
                         // Pausar a automatização quando o usuário interagir
+                        userHasInteracted = true;
                         pauseAllAutomations();
                         
                         if (window.innerWidth <= 768) {
@@ -926,9 +984,6 @@
                         }
                         
                         updateCarousel();
-                        
-                        // Reiniciar automatização após um tempo
-                        setTimeout(startAllModelAutomations, 10000);
                     });
                 });
                 
@@ -939,6 +994,7 @@
                 
                 const startDrag = (e) => {
                     // Pausar a automatização quando o usuário interagir
+                    userHasInteracted = true;
                     pauseAllAutomations();
                     
                     isDragging = true;
@@ -965,9 +1021,6 @@
                     currentPosition = -itemIndex * cardWidth;
                     
                     updateCarousel();
-                    
-                    // Reiniciar automatização após um tempo
-                    setTimeout(startAllModelAutomations, 10000);
                 };
                 
                 carousel.addEventListener('mousedown', startDrag);
@@ -984,8 +1037,81 @@
             });
         }
 
+        // Função para a reprodução automática inicial
+        function startInitialAutoPlay() {
+            const productCarousels = document.querySelectorAll('.products-carousel');
+            
+            productCarousels.forEach((carousel, index) => {
+                startInitialAutoPlayForCarousel(index);
+            });
+        }
+
+        function startInitialAutoPlayForCarousel(index) {
+            const carousels = document.querySelectorAll('.products-carousel');
+            if (!carousels[index]) return;
+            
+            const container = carousels[index].querySelector('.carousel-container');
+            const cards = carousels[index].querySelectorAll('.product-card');
+            const dots = carousels[index].querySelectorAll('.carousel-dot');
+            const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(container).gap);
+            
+            let maxPosition = (cards.length - 3) * cardWidth;
+            
+            if (window.innerWidth <= 1024) {
+                maxPosition = (cards.length - 2) * cardWidth;
+            }
+            if (window.innerWidth <= 768) {
+                maxPosition = (cards.length - 1) * cardWidth;
+            }
+            
+            let autoPlayInterval = setInterval(() => {
+                if (userHasInteracted) {
+                    clearInterval(autoPlayInterval);
+                    return;
+                }
+                
+                if (autoPlayCount >= MAX_AUTO_PLAYS) {
+                    clearInterval(autoPlayInterval);
+                    return;
+                }
+                
+                const currentTranslate = container.style.transform;
+                let currentPosition = 0;
+                
+                if (currentTranslate) {
+                    currentPosition = parseInt(currentTranslate.split('(')[1]) || 0;
+                }
+                
+                let nextPosition = currentPosition - cardWidth * 3;
+                
+                if (window.innerWidth <= 1024) {
+                    nextPosition = currentPosition - cardWidth * 2;
+                }
+                if (window.innerWidth <= 768) {
+                    nextPosition = currentPosition - cardWidth;
+                }
+                
+                if (nextPosition < -maxPosition) {
+                    nextPosition = 0;
+                }
+                
+                container.style.transform = `translateX(${nextPosition}px)`;
+                
+                // Atualizar dots
+                const activeDot = Math.floor(Math.abs(nextPosition) / cardWidth);
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === activeDot);
+                });
+                
+                autoPlayCount++;
+                
+            }, 2500); // 2.5 segundos entre cada transição
+        }
+
         // Funções para automatização de MODELOS
         function startAllModelAutomations() {
+            if (userHasInteracted) return;
+            
             const modelCarousels = document.querySelectorAll('.products-carousel');
             modelCarousels.forEach((carousel, index) => {
                 startModelAutomation(index);
@@ -1003,6 +1129,11 @@
             clearInterval(modelChangeIntervals[index]);
             
             modelChangeIntervals[index] = setInterval(() => {
+                if (userHasInteracted) {
+                    clearInterval(modelChangeIntervals[index]);
+                    return;
+                }
+                
                 const carousels = document.querySelectorAll('.products-carousel');
                 if (carousels[index]) {
                     const container = carousels[index].querySelector('.carousel-container');
@@ -1051,7 +1182,9 @@
             });
             
             carousel.addEventListener('mouseleave', () => {
-                startModelAutomation(index);
+                if (!userHasInteracted) {
+                    startModelAutomation(index);
+                }
             });
         });
 
@@ -1059,7 +1192,9 @@
         window.addEventListener('load', initAllCarousels);
         window.addEventListener('resize', function() {
             initProductCarousels();
-            startAllModelAutomations();
+            if (!userHasInteracted) {
+                startAllModelAutomations();
+            }
         });
     </script>
 </body>
