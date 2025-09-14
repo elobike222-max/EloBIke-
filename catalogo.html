@@ -207,7 +207,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 24px;
+            padding: 14px 28px;
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -217,7 +217,7 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         .btn:hover {
@@ -451,14 +451,16 @@
 
         .product-actions-detailed {
             display: flex;
-            gap: 15px;
             justify-content: center;
+            margin-top: 20px;
         }
 
         .whatsapp-btn {
             background: #25D366;
             color: white;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            padding: 16px 32px;
+            font-size: 1.1rem;
         }
 
         .whatsapp-btn:hover {
@@ -509,8 +511,8 @@
             }
             
             .btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
+                padding: 12px 24px;
+                font-size: 0.95rem;
             }
             
             .gallery-image {
@@ -520,6 +522,11 @@
             .product-actions-detailed {
                 flex-direction: column;
                 align-items: center;
+            }
+            
+            .whatsapp-btn {
+                padding: 14px 28px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -538,56 +545,10 @@
         <!-- Catálogo de Scooters -->
         <div class="scooter-catalog">
             <div class="catalog-container">
-                <!-- Modelo Mini X11 1000W -->
-                <div class="scooter-model">
-                    <div class="model-image">
-                        <img src="mini-x11.png" alt="Mini X11 1000W">
-                    </div>
-                    <div class="model-info">
-                        <h2 class="model-name">Mini X11 1000W</h2>
-                        <div class="model-price">A partir de R$ 11.900,00</div>
-                        <div class="price-subtitle">Preços especiais para pagamento à vista</div>
-                        
-                        <div class="price-details">
-                            <div class="price-card">
-                                <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 11.067,00</div>
-                                <div class="price-description">PIX/Transferência</div>
-                            </div>
-                            <div class="price-card">
-                                <div class="price-title">Parcelado</div>
-                                <div class="price-value">8x R$ 1.487,50</div>
-                                <div class="price-description">Cartão de Crédito</div>
-                            </div>
-                        </div>
-                        
-                        <div class="model-specs">
-                            <div class="spec-card">
-                                <div class="spec-value">40 KM</div>
-                                <div class="spec-label">Autonomia</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">32 KM/H</div>
-                                <div class="spec-label">Velocidade</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">1000W</div>
-                                <div class="spec-label">Motor</div>
-                            </div>
-                        </div>
-                        
-                        <div class="product-actions">
-                            <button class="btn view-details-btn" data-product="mini-x11">
-                                <i class="fas fa-eye"></i> Ver Detalhes
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
                 <!-- Modelo R11 -->
                 <div class="scooter-model">
                     <div class="model-image">
-                        <img src="r11.png" alt="Modelo R11">
+                        <img src="R11-01.jpg" alt="Modelo R11">
                     </div>
                     <div class="model-info">
                         <h2 class="model-name">Modelo R11</h2>
@@ -629,6 +590,236 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Modelo A3 -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="A3-01.png" alt="Modelo A3">
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo A3</h2>
+                        <div class="model-price">A partir de R$ 10.500,00</div>
+                        <div class="price-subtitle">Design moderno e eficiente</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">À Vista</div>
+                                <div class="price-value">R$ 9.765,00</div>
+                                <div class="price-description">PIX/Transferência</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.312,50</div>
+                                <div class="price-description">Cartão de Crédito</div>
+                            </div>
+                        </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">40 KM</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">45 KM/H</div>
+                                <div class="spec-label">Velocidade</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">1200W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn view-details-btn" data-product="a3">
+                                <i class="fas fa-eye"></i> Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modelo S2 -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="S2-01.png" alt="Modelo S2">
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo S2</h2>
+                        <div class="model-price">A partir de R$ 11.490,00</div>
+                        <div class="price-subtitle">Design moderno e econômico</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">À Vista</div>
+                                <div class="price-value">R$ 10.685,70</div>
+                                <div class="price-description">PIX/Transferência</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.436,25</div>
+                                <div class="price-description">Cartão de Crédito</div>
+                            </div>
+                        </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">45 KM</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">40 KM/H</div>
+                                <div class="spec-label">Velocidade</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">1000W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn view-details-btn" data-product="s2">
+                                <i class="fas fa-eye"></i> Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modelo V8 -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="V8-01.png" alt="Modelo V8">
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo V8</h2>
+                        <div class="model-price">A partir de R$ 8.490,00</div>
+                        <div class="price-subtitle">Compacto e eficiente</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">À Vista</div>
+                                <div class="price-value">R$ 7.895,70</div>
+                                <div class="price-description">PIX/Transferência</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.061,25</div>
+                                <div class="price-description">Cartão de Crédito</div>
+                            </div>
+                        </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">45 KM</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">50 KM/H</div>
+                                <div class="spec-label">Velocidade</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">1000W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn view-details-btn" data-product="v8">
+                                <i class="fas fa-eye"></i> Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modelo Chopper -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="Chooper-01.png" alt="Modelo Chopper">
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo Chopper</h2>
+                        <div class="model-price">A partir de R$ 13.500,00</div>
+                        <div class="price-subtitle">Estilo clássico e potente</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">À Vista</div>
+                                <div class="price-value">R$ 12.555,00</div>
+                                <div class="price-description">PIX/Transferência</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.687,50</div>
+                                <div class="price-description">Cartão de Crédito</div>
+                            </div>
+                        </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">50 KM</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">60 KM/H</div>
+                                <div class="spec-label">Velocidade</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">2000W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn view-details-btn" data-product="chopper">
+                                <i class="fas fa-eye"></i> Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modelo R13 -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="R13-01.png" alt="Modelo R13">
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo R13</h2>
+                        <div class="model-price">A partir de R$ 14.200,00</div>
+                        <div class="price-subtitle">Ultra performance e tecnologia</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">À Vista</div>
+                                <div class="price-value">R$ 13.206,00</div>
+                                <div class="price-description">PIX/Transferência</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.775,00</div>
+                                <div class="price-description">Cartão de Crédito</div>
+                            </div>
+                        </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">55 KM</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">75 KM/H</div>
+                                <div class="spec-label">Velocidade</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">3500W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn view-details-btn" data-product="r13">
+                                <i class="fas fa-eye"></i> Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!-- Controles de navegação -->
@@ -645,109 +836,14 @@
             <div class="catalog-indicators">
                 <div class="catalog-indicator active" data-index="0"></div>
                 <div class="catalog-indicator" data-index="1"></div>
+                <div class="catalog-indicator" data-index="2"></div>
+                <div class="catalog-indicator" data-index="3"></div>
+                <div class="catalog-indicator" data-index="4"></div>
+                <div class="catalog-indicator" data-index="5"></div>
             </div>
         </div>
 
         <!-- Páginas individuais dos produtos -->
-        <!-- Mini X11 -->
-        <div id="product-mini-x11" class="product-page">
-            <div class="product-header">
-                <h2 class="product-title">Mini X11 1000W</h2>
-                <button class="back-btn back-to-catalog">
-                    <i class="fas fa-arrow-left"></i> Voltar
-                </button>
-            </div>
-            
-            <div class="product-gallery">
-                <div class="gallery-container">
-                    <div class="gallery-image">
-                        <img src="mini-x11.png" alt="Mini X11 1000W">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="mini-x11-2.png" alt="Mini X11 1000W - Vista 2">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="mini-x11-3.png" alt="Mini X11 1000W - Vista 3">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="mini-x11-4.png" alt="Mini X11 1000W - Vista 4">
-                    </div>
-                </div>
-                
-                <div class="gallery-controls">
-                    <div class="gallery-arrow gallery-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="gallery-arrow gallery-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-                
-                <div class="gallery-indicators">
-                    <div class="gallery-indicator active" data-index="0"></div>
-                    <div class="gallery-indicator" data-index="1"></div>
-                    <div class="gallery-indicator" data-index="2"></div>
-                    <div class="gallery-indicator" data-index="3"></div>
-                </div>
-            </div>
-            
-            <div class="product-details">
-                <div class="price-details">
-                    <div class="price-card">
-                        <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 11.067,00</div>
-                        <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
-                    </div>
-                    <div class="price-card">
-                        <div class="price-title">Parcelado</div>
-                        <div class="price-value">8x R$ 1.487,50</div>
-                        <div class="price-description">NO CARTÃO</div>
-                    </div>
-                </div>
-                
-                <div class="model-specs">
-                    <div class="spec-card">
-                        <div class="spec-value">40 KM</div>
-                        <div class="spec-label">Autonomia</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">32 KM/H</div>
-                        <div class="spec-label">Velocidade Máxima</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">1000W</div>
-                        <div class="spec-label">Motor</div>
-                    </div>
-                </div>
-                
-                <div class="product-description">
-                    <p>O Mini X11 1000W é a scooter elétrica perfeita para mobilidade urbana. Com design compacto e potente motor de 1000W, oferece agilidade e economia para seu dia a dia.</p>
-                </div>
-                
-                <div class="product-features">
-                    <h3 class="features-title">Características</h3>
-                    <ul class="features-list">
-                        <li>Motor brushless de 1000W de potência</li>
-                        <li>Bateria de lítio de 48V/12Ah</li>
-                        <li>Autonomia de até 40km por carga</li>
-                        <li>Velocidade máxima de 32km/h</li>
-                        <li>Pneus antifaturo de 10 polegadas</li>
-                        <li>Sistema de iluminação LED</li>
-                        <li>Display digital com informações de velocidade e bateria</li>
-                        <li>Freio a disco dianteiro e traseiro</li>
-                        <li>Tempo de carga: 4-6 horas</li>
-                        <li>Capacidade de carga: 120kg</li>
-                    </ul>
-                </div>
-                
-                <div class="product-actions-detailed">
-                    <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Mini X11 1000W 🛵" class="btn whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Comprar agora
-                    </a>
-                </div>
-            </div>
-        </div>
-        
         <!-- Modelo R11 -->
         <div id="product-r11" class="product-page">
             <div class="product-header">
@@ -760,16 +856,19 @@
             <div class="product-gallery">
                 <div class="gallery-container">
                     <div class="gallery-image">
-                        <img src="r11.png" alt="Modelo R11">
+                        <img src="R11-01.jpg" alt="Modelo R11">
                     </div>
                     <div class="gallery-image">
-                        <img src="r11-2.png" alt="Modelo R11 - Vista 2">
+                        <img src="R11-02.png" alt="Modelo R11 - Vista 2">
                     </div>
                     <div class="gallery-image">
-                        <img src="r11-3.png" alt="Modelo R11 - Vista 3">
+                        <img src="R11-03.png" alt="Modelo R11 - Vista 3">
                     </div>
                     <div class="gallery-image">
-                        <img src="r11-4.png" alt="Modelo R11 - Vista 4">
+                        <img src="R11-04.png" alt="Modelo R11 - Vista 4">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="R11-05.png" alt="Modelo R11 - Vista 5">
                     </div>
                 </div>
                 
@@ -787,7 +886,15 @@
                     <div class="gallery-indicator" data-index="1"></div>
                     <div class="gallery-indicator" data-index="2"></div>
                     <div class="gallery-indicator" data-index="3"></div>
+                    <div class="gallery-indicator" data-index="4"></div>
                 </div>
+            </div>
+            
+            <!-- Botão de compra abaixo das fotos -->
+            <div class="product-actions-detailed">
+                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Comprar agora
+                </a>
             </div>
             
             <div class="product-details">
@@ -839,14 +946,10 @@
                         <li>Capacidade de carga: 150kg</li>
                     </ul>
                 </div>
-                
-                <div class="product-actions-detailed">
-                    <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="btn whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Comprar agora
-                    </a>
-                </div>
             </div>
         </div>
+        
+        <!-- Adicione páginas semelhantes para os outros modelos seguindo o mesmo padrão -->
         
     </div>
 
