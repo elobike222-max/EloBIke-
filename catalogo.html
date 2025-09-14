@@ -122,7 +122,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 14px 40px;
+            padding: 16px 50px;
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -132,15 +132,16 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem;
             width: auto;
-            min-width: 200px;
+            min-width: 250px;
             justify-content: center;
         }
 
         .view-details-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(228, 187, 19, 0.6);
+            background: var(--accent-hover);
         }
 
         .model-info {
@@ -331,16 +332,18 @@
             margin-bottom: 15px;
             border-radius: 10px;
             overflow: hidden;
+            height: 220px;
         }
 
         .gallery-container {
             display: flex;
             transition: transform 0.5s ease;
+            height: 100%;
         }
 
         .gallery-image {
             min-width: 100%;
-            height: 250px;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -465,8 +468,8 @@
             background: #25D366;
             color: white;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-            padding: 14px 28px;
-            font-size: 1rem;
+            padding: 16px 40px;
+            font-size: 1.1rem;
             text-decoration: none;
             border-radius: 50px;
             display: inline-flex;
@@ -474,6 +477,8 @@
             gap: 8px;
             font-weight: 600;
             transition: all 0.3s;
+            min-width: 220px;
+            justify-content: center;
         }
 
         .whatsapp-btn:hover {
@@ -529,13 +534,13 @@
             }
             
             .view-details-btn {
-                padding: 12px 30px;
-                font-size: 0.95rem;
-                min-width: 180px;
+                padding: 14px 40px;
+                font-size: 1rem;
+                min-width: 220px;
             }
             
-            .gallery-image {
-                height: 200px;
+            .product-gallery {
+                height: 180px;
             }
             
             .product-actions-detailed {
@@ -544,8 +549,9 @@
             }
             
             .whatsapp-btn {
-                padding: 12px 24px;
-                font-size: 0.95rem;
+                padding: 14px 35px;
+                font-size: 1rem;
+                min-width: 200px;
             }
         }
     </style>
@@ -667,7 +673,7 @@
                     <div class="model-info">
                         <h2 class="model-name">Modelo S2</h2>
                         <div class="model-price">A partir de R$ 11.490,00</div>
-                        <div class="price-subtitle">Design moderno e econômico</div>
+                        <div class="price-subtitle">Design moderno and econômico</div>
                         
                         <div class="price-details">
                             <div class="price-card">
@@ -1045,13 +1051,25 @@
             viewDetailsButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const productId = this.getAttribute('data-product');
-                    catalogElement.style.display = 'none';
-                    document.getElementById(`product-${productId}`).style.display = 'block';
+                    e.stopPropagation();
                     
-                    // Inicializar a galeria do produto
-                    initProductGallery(productId);
-                }, false); // Usando false para evitar problemas de propagação de evento
+                    const productId = this.getAttribute('data-product');
+                    
+                    // Esconder todos os elementos de produto primeiro
+                    productPages.forEach(page => {
+                        page.style.display = 'none';
+                    });
+                    
+                    // Mostrar o produto específico
+                    const productPage = document.getElementById(`product-${productId}`);
+                    if (productPage) {
+                        productPage.style.display = 'block';
+                        catalogElement.style.display = 'none';
+                        
+                        // Inicializar a galeria do produto
+                        initProductGallery(productId);
+                    }
+                });
             });
             
             // Voltar para o catálogo
@@ -1077,16 +1095,18 @@
                 
                 // Atualizar galeria
                 function updateGallery() {
-                    galleryContainer.style.transform = `translateX(-${galleryIndex * 100}%)`;
-                    
-                    // Atualizar indicadores
-                    galleryIndicators.forEach((indicator, index) => {
-                        if (index === galleryIndex) {
-                            indicator.classList.add('active');
-                        } else {
-                            indicator.classList.remove('active');
-                        }
-                    });
+                    if (galleryContainer) {
+                        galleryContainer.style.transform = `translateX(-${galleryIndex * 100}%)`;
+                        
+                        // Atualizar indicadores
+                        galleryIndicators.forEach((indicator, index) => {
+                            if (index === galleryIndex) {
+                                indicator.classList.add('active');
+                            } else {
+                                indicator.classList.remove('active');
+                            }
+                        });
+                    }
                 }
                 
                 // Próxima imagem
@@ -1102,8 +1122,8 @@
                 }
                 
                 // Event listeners para botões
-                galleryNext.addEventListener('click', nextImage);
-                galleryPrev.addEventListener('click', prevImage);
+                if (galleryNext) galleryNext.addEventListener('click', nextImage);
+                if (galleryPrev) galleryPrev.addEventListener('click', prevImage);
                 
                 // Event listeners para indicadores
                 galleryIndicators.forEach(indicator => {
@@ -1116,13 +1136,11 @@
                 // Funcionalidade de arrasto para a galeria
                 let isDragging = false;
                 let startX = 0;
-                let startScrollLeft = 0;
                 
                 const startDrag = (e) => {
                     isDragging = true;
                     startX = e.clientX || e.touches[0].clientX;
-                    startScrollLeft = galleryContainer.scrollLeft;
-                    galleryContainer.style.transition = 'none';
+                    if (galleryContainer) galleryContainer.style.transition = 'none';
                 };
                 
                 const drag = (e) => {
@@ -1135,28 +1153,30 @@
                     if (walk > 50) {
                         prevImage();
                         isDragging = false;
-                        galleryContainer.style.transition = 'transform 0.5s ease';
+                        if (galleryContainer) galleryContainer.style.transition = 'transform 0.5s ease';
                     } else if (walk < -50) {
                         nextImage();
                         isDragging = false;
-                        galleryContainer.style.transition = 'transform 0.5s ease';
+                        if (galleryContainer) galleryContainer.style.transition = 'transform 0.5s ease';
                     }
                 };
                 
                 const endDrag = () => {
                     isDragging = false;
-                    galleryContainer.style.transition = 'transform 0.5s ease';
+                    if (galleryContainer) galleryContainer.style.transition = 'transform 0.5s ease';
                 };
                 
-                galleryContainer.addEventListener('mousedown', startDrag);
-                galleryContainer.addEventListener('touchstart', startDrag, { passive: true });
-                
-                galleryContainer.addEventListener('mousemove', drag);
-                galleryContainer.addEventListener('touchmove', drag, { passive: true });
-                
-                galleryContainer.addEventListener('mouseup', endDrag);
-                galleryContainer.addEventListener('mouseleave', endDrag);
-                galleryContainer.addEventListener('touchend', endDrag);
+                if (galleryContainer) {
+                    galleryContainer.addEventListener('mousedown', startDrag);
+                    galleryContainer.addEventListener('touchstart', startDrag, { passive: true });
+                    
+                    galleryContainer.addEventListener('mousemove', drag);
+                    galleryContainer.addEventListener('touchmove', drag, { passive: true });
+                    
+                    galleryContainer.addEventListener('mouseup', endDrag);
+                    galleryContainer.addEventListener('mouseleave', endDrag);
+                    galleryContainer.addEventListener('touchend', endDrag);
+                }
             }
         });
     </script>
