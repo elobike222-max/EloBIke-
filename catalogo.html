@@ -113,6 +113,34 @@
 
         .view-details-container {
             margin-bottom: 15px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .view-details-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 40px;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            width: auto;
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .view-details-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(228, 187, 19, 0.6);
         }
 
         .model-info {
@@ -201,28 +229,6 @@
             color: var(--text-muted);
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: var(--accent);
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(228, 187, 19, 0.6);
-        }
-
         /* Controles de navegação */
         .catalog-controls {
             position: absolute;
@@ -300,7 +306,7 @@
             color: var(--primary);
         }
 
-        /* Página individual do produto */
+        /* Página individual do produto - MAIS COMPACTA */
         .product-page {
             display: none;
             max-width: 700px;
@@ -317,12 +323,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .product-gallery {
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-radius: 10px;
             overflow: hidden;
         }
@@ -334,7 +340,7 @@
 
         .gallery-image {
             min-width: 100%;
-            height: 280px;
+            height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -385,7 +391,7 @@
             display: flex;
             justify-content: center;
             gap: 8px;
-            margin-top: 15px;
+            margin-top: 12px;
         }
 
         .gallery-indicator {
@@ -403,30 +409,30 @@
         }
 
         .product-details {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .product-title {
             font-size: 1.6rem;
             color: var(--accent);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .product-description {
             color: var(--text-muted);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.6;
             font-size: 0.95rem;
         }
 
         .product-features {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .features-title {
             font-size: 1.1rem;
             color: var(--accent);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .features-list {
@@ -434,7 +440,7 @@
         }
 
         .features-list li {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             padding-left: 25px;
             position: relative;
             color: var(--text);
@@ -452,7 +458,7 @@
         .product-actions-detailed {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .whatsapp-btn {
@@ -461,10 +467,18 @@
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
             padding: 14px 28px;
             font-size: 1rem;
+            text-decoration: none;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
         }
 
         .whatsapp-btn:hover {
             box-shadow: 0 6px 15px rgba(37, 211, 102, 0.6);
+            transform: translateY(-2px);
         }
 
         @media (max-width: 768px) {
@@ -514,13 +528,14 @@
                 font-size: 16px;
             }
             
-            .btn {
-                padding: 12px 24px;
+            .view-details-btn {
+                padding: 12px 30px;
                 font-size: 0.95rem;
+                min-width: 180px;
             }
             
             .gallery-image {
-                height: 220px;
+                height: 200px;
             }
             
             .product-actions-detailed {
@@ -555,7 +570,7 @@
                         <img src="R11-01.jpg" alt="Modelo R11">
                     </div>
                     <div class="view-details-container">
-                        <button class="btn view-details-btn" data-product="r11">
+                        <button class="view-details-btn" data-product="r11">
                             <i class="fas fa-eye"></i> Ver Detalhes
                         </button>
                     </div>
@@ -600,7 +615,7 @@
                         <img src="A3-01.png" alt="Modelo A3">
                     </div>
                     <div class="view-details-container">
-                        <button class="btn view-details-btn" data-product="a3">
+                        <button class="view-details-btn" data-product="a3">
                             <i class="fas fa-eye"></i> Ver Detalhes
                         </button>
                     </div>
@@ -638,6 +653,186 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Modelo S2 -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="S2-01.png" alt="Modelo S2">
+                    </div>
+                    <div class="view-details-container">
+                        <button class="view-details-btn" data-product="s2">
+                            <i class="fas fa-eye"></i> Ver Detalhes
+                        </button>
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo S2</h2>
+                        <div class="model-price">A partir de R$ 11.490,00</div>
+                        <div class="price-subtitle">Design moderno e econômico</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">À Vista</div>
+                                <div class="price-value">R$ 10.685,70</div>
+                                <div class="price-description">PIX/Transferência</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.436,25</div>
+                                <div class="price-description">Cartão de Crédito</div>
+                            </div>
+                        </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">45 KM</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">40 KM/H</div>
+                                <div class="spec-label">Velocidade</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">1000W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modelo V8 -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="V8-01.png" alt="Modelo V8">
+                    </div>
+                    <div class="view-details-container">
+                        <button class="view-details-btn" data-product="v8">
+                            <i class="fas fa-eye"></i> Ver Detalhes
+                        </button>
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo V8</h2>
+                        <div class="model-price">A partir de R$ 8.490,00</div>
+                        <div class="price-subtitle">Compacto e eficiente</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">À Vista</div>
+                                <div class="price-value">R$ 7.895,70</div>
+                                <div class="price-description">PIX/Transferência</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.061,25</div>
+                                <div class="price-description">Cartão de Crédito</div>
+                            </div>
+                        </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">45 KM</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">50 KM/H</div>
+                                <div class="spec-label">Velocidade</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">1000W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modelo Chopper -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="Chooper-01.png" alt="Modelo Chopper">
+                    </div>
+                    <div class="view-details-container">
+                        <button class="view-details-btn" data-product="chopper">
+                            <i class="fas fa-eye"></i> Ver Detalhes
+                        </button>
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo Chopper</h2>
+                        <div class="model-price">A partir de R$ 13.500,00</div>
+                        <div class="price-subtitle">Estilo clássico e potente</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">À Vista</div>
+                                <div class="price-value">R$ 12.555,00</div>
+                                <div class="price-description">PIX/Transferência</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.687,50</div>
+                                <div class="price-description">Cartão de Crédito</div>
+                            </div>
+                        </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">50 KM</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">60 KM/H</div>
+                                <div class="spec-label">Velocidade</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">2000W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modelo R13 -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="R13-01.png" alt="Modelo R13">
+                    </div>
+                    <div class="view-details-container">
+                        <button class="view-details-btn" data-product="r13">
+                            <i class="fas fa-eye"></i> Ver Detalhes
+                        </button>
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo R13</h2>
+                        <div class="model-price">A partir de R$ 14.200,00</div>
+                        <div class="price-subtitle">Ultra performance e tecnologia</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">À Vista</div>
+                                <div class="price-value">R$ 13.206,00</div>
+                                <div class="price-description">PIX/Transferência</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.775,00</div>
+                                <div class="price-description">Cartão de Crédito</div>
+                            </div>
+                        </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">55 KM</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">75 KM/H</div>
+                                <div class="spec-label">Velocidade</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">3500W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!-- Controles de navegação -->
@@ -654,6 +849,10 @@
             <div class="catalog-indicators">
                 <div class="catalog-indicator active" data-index="0"></div>
                 <div class="catalog-indicator" data-index="1"></div>
+                <div class="catalog-indicator" data-index="2"></div>
+                <div class="catalog-indicator" data-index="3"></div>
+                <div class="catalog-indicator" data-index="4"></div>
+                <div class="catalog-indicator" data-index="5"></div>
             </div>
         </div>
 
@@ -706,7 +905,7 @@
             
             <!-- Botão de compra abaixo das fotos -->
             <div class="product-actions-detailed">
-                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="btn whatsapp-btn">
+                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> Comprar agora
                 </a>
             </div>
@@ -763,110 +962,7 @@
             </div>
         </div>
         
-        <!-- Modelo A3 -->
-        <div id="product-a3" class="product-page">
-            <div class="product-header">
-                <h2 class="product-title">Modelo A3</h2>
-                <button class="back-btn back-to-catalog">
-                    <i class="fas fa-arrow-left"></i> Voltar
-                </button>
-            </div>
-            
-            <div class="product-gallery">
-                <div class="gallery-container">
-                    <div class="gallery-image">
-                        <img src="A3-01.png" alt="Modelo A3">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="A3-02.png" alt="Modelo A3 - Vista 2">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="A3-03.png" alt="Modelo A3 - Vista 3">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="A3-04.png" alt="Modelo A3 - Vista 4">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="A3-05.png" alt="Modelo A3 - Vista 5">
-                    </div>
-                </div>
-                
-                <div class="gallery-controls">
-                    <div class="gallery-arrow gallery-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="gallery-arrow gallery-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-                
-                <div class="gallery-indicators">
-                    <div class="gallery-indicator active" data-index="0"></div>
-                    <div class="gallery-indicator" data-index="1"></div>
-                    <div class="gallery-indicator" data-index="2"></div>
-                    <div class="gallery-indicator" data-index="3"></div>
-                    <div class="gallery-indicator" data-index="4"></div>
-                </div>
-            </div>
-            
-            <!-- Botão de compra abaixo das fotos -->
-            <div class="product-actions-detailed">
-                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo A3 🛵" class="btn whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Comprar agora
-                </a>
-            </div>
-            
-            <div class="product-details">
-                <div class="price-details">
-                    <div class="price-card">
-                        <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 9.765,00</div>
-                        <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
-                    </div>
-                    <div class="price-card">
-                        <div class="price-title">Parcelado</div>
-                        <div class="price-value">8x R$ 1.312,50</div>
-                        <div class="price-description">NO CARTÃO</div>
-                    </div>
-                </div>
-                
-                <div class="model-specs">
-                    <div class="spec-card">
-                        <div class="spec-value">40 KM</div>
-                        <div class="spec-label">Autonomia</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">45 KM/H</div>
-                        <div class="spec-label">Velocidade Máxima</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">1200W</div>
-                        <div class="spec-label">Motor</div>
-                    </div>
-                </div>
-                
-                <div class="product-description">
-                    <p>O Modelo A3 é uma scooter elétrica com design moderno e eficiente, perfeita para o dia a dia urbano. Combinando estilo e performance, oferece uma experiência de condução suave e econômica.</p>
-                </div>
-                
-                <div class="product-features">
-                    <h3 class="features-title">Características</h3>
-                    <ul class="features-list">
-                        <li>Motor brushless de 1200W de potência</li>
-                        <li>Bateria de lítio de 48V/15Ah</li>
-                        <li>Autonomia de até 40km por carga</li>
-                        <li>Velocidade máxima de 45km/h</li>
-                        <li>Pneus de 10 polegadas com sistema anti-furo</li>
-                        <li>Iluminação LED frontal e traseira</li>
-                        <li>Display digital com indicador de velocidade e bateria</li>
-                        <li>Freio a disco dianteiro e traseiro</li>
-                        <li>Suspensão dianteira com amortecedor</li>
-                        <li>Tempo de carga: 4-6 horas</li>
-                        <li>Capacidade de carga: 120kg</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <!-- Adicione páginas semelhantes para os outros modelos seguindo o mesmo padrão -->
         
     </div>
 
