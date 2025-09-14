@@ -34,7 +34,6 @@
             font-size: 16px;
             padding: 10px;
             min-height: 100vh;
-            -webkit-overflow-scrolling: touch;
         }
 
         .container {
@@ -74,18 +73,11 @@
             border: 1px solid var(--card-border);
             padding: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            touch-action: pan-y; /* Melhora a experiência em dispositivos touch [citation:3] */
         }
 
         .catalog-container {
             display: flex;
-            transition: transform 0.5s ease;
-            cursor: grab;
-        }
-
-        .catalog-container.grabbing {
-            cursor: grabbing;
-            transition: none;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .scooter-model {
@@ -112,16 +104,8 @@
             max-height: 100%;
             object-fit: contain;
             -webkit-user-drag: none;
-            -khtml-user-drag: none;
-            -moz-user-drag: none;
-            -o-user-drag: none;
             user-drag: none;
             pointer-events: none;
-            transition: transform 0.3s ease;
-        }
-
-        .model-image img:hover {
-            transform: scale(1.05);
         }
 
         .view-details-container {
@@ -195,11 +179,6 @@
             padding: 10px;
             text-align: center;
             border: 1px solid var(--card-border);
-            transition: transform 0.3s ease;
-        }
-
-        .price-card:hover {
-            transform: translateY(-3px);
         }
 
         .price-title {
@@ -234,11 +213,6 @@
             padding: 8px;
             text-align: center;
             border: 1px solid var(--card-border);
-            transition: transform 0.3s ease;
-        }
-
-        .spec-card:hover {
-            transform: translateY(-3px);
         }
 
         .spec-value {
@@ -356,19 +330,12 @@
             border-radius: 10px;
             overflow: hidden;
             height: 220px;
-            touch-action: pan-y; /* Melhora a experiência em dispositivos touch [citation:3] */
         }
 
         .gallery-container {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             height: 100%;
-            cursor: grab;
-        }
-
-        .gallery-container.grabbing {
-            cursor: grabbing;
-            transition: none;
         }
 
         .gallery-image {
@@ -384,11 +351,6 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-image img:hover {
-            transform: scale(1.03);
         }
 
         .gallery-controls {
@@ -483,11 +445,6 @@
             position: relative;
             color: var(--text);
             font-size: 0.9rem;
-            transition: transform 0.2s ease;
-        }
-
-        .features-list li:hover {
-            transform: translateX(5px);
         }
 
         .features-list li:before {
@@ -563,31 +520,10 @@
             color: var(--text);
         }
 
-        /* Loading animation */
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: var(--accent);
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Animações suaves */
-        .smooth-transition {
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Timing function suave [citation:7] */
-        }
-
         @media (max-width: 768px) {
             body {
                 padding: 8px;
                 font-size: 14px;
-                touch-action: manipulation; /* Melhora a experiência em dispositivos touch [citation:3] */
             }
             
             .container {
@@ -1092,6 +1028,7 @@
             </div>
         </div>
         
+        <!-- Adicione páginas semelhantes para os outros modelos seguindo o mesmo padrão -->
         <!-- Modelo A3 -->
         <div id="product-a3" class="product-page">
             <div class="product-header">
@@ -1209,7 +1146,7 @@
                         <li>Velocidade máxima de 32km/h</li>
                         <li>Pneus de 10 polegadas</li>
                         <li>Farol LED e luzes de freio</li>
-                        <li>Painel digital with velocímetro</li>
+                        <li>Painel digital com velocímetro</li>
                         <li>Freio a disco dianteiro</li>
                         <li>Suspensão traseira</li>
                         <li>Tempo de carga: 4-6 horas</li>
@@ -1298,7 +1235,7 @@
                 </div>
                 
                 <div class="product-description">
-                    <p>O Modelo S2 combina elegância e desempenho em um design sofisticado. Com velocidade de até 40km/h, é a escolha perfeita para quem busca estilo e eficiência no trânsito urbano.</p>
+                    <p>O Modelo S2 combina elegância e desempenho em um design sofisticado. Com velocidade de até 40km/h, é a escolha perfeita para quem busca estilo и eficiência no trânsito urbano.</p>
                 </div>
                 
                 <div class="product-benefits">
@@ -1425,7 +1362,7 @@
                 </div>
                 
                 <div class="product-description">
-                    <p>O Modelo R11 é a scooter elétrica de alta performance. Com motor de 3000W e velocidade de até 70km/h, é ideal para quem busca potência e desempenho superior em seus deslocamentos.</p>
+                    <p>O Modelo R11 é a scooter elétrica de alta performance. Com motor de 3000W и velocidade de até 70km/h, é ideal para quem busca potência e desempenho superior em seus deslocamentos.</p>
                 </div>
                 
                 <div class="product-benefits">
@@ -1742,12 +1679,8 @@
             let currentIndex = 0;
             const modelCount = models.length;
             let startX = 0;
-            let currentX = 0;
             let isDragging = false;
             let autoSlide;
-            let velocity = 0;
-            let lastX = 0;
-            let animationFrameId;
             
             // Atualizar catálogo
             function updateCatalog() {
@@ -1783,29 +1716,6 @@
             // Parar slideshow automático
             function stopAutoSlide() {
                 clearInterval(autoSlide);
-            }
-            
-            // Animação de inércia suave [citation:8]
-            function smoothScroll() {
-                if (Math.abs(velocity) > 0.5) {
-                    velocity *= 0.85; // Reduz a velocidade gradualmente
-                    
-                    // Calcula o deslocamento com base na velocidade
-                    const displacement = velocity / 2;
-                    
-                    // Atualiza a posição do container
-                    const newPosition = (-currentIndex * 100) + (displacement / catalogContainer.offsetWidth * 100);
-                    catalogContainer.style.transform = `translateX(${newPosition}%)`;
-                    
-                    // Continua a animação
-                    animationFrameId = requestAnimationFrame(smoothScroll);
-                } else {
-                    // Finaliza a animação e ajusta para o slide mais próximo
-                    velocity = 0;
-                    catalogContainer.style.transition = 'transform 0.3s ease';
-                    updateCatalog();
-                    cancelAnimationFrame(animationFrameId);
-                }
             }
             
             // Event listeners para botões
@@ -1844,82 +1754,93 @@
                 }
             });
             
-            // Funcionalidade de arrastar para o catálogo [citation:4][citation:8]
-            catalogContainer.addEventListener('mousedown', dragStart);
-            catalogContainer.addEventListener('touchstart', dragStart, { passive: true });
-            
-            catalogContainer.addEventListener('mousemove', drag);
-            catalogContainer.addEventListener('touchmove', drag, { passive: false });
-            
-            catalogContainer.addEventListener('mouseup', dragEnd);
-            catalogContainer.addEventListener('mouseleave', dragEnd);
-            catalogContainer.addEventListener('touchend', dragEnd);
-            
-            function dragStart(e) {
+            // Funcionalidade de arrastar para o catálogo - SIMPLIFICADA
+            catalogContainer.addEventListener('mousedown', function(e) {
                 isDragging = true;
-                startX = e.clientX || e.touches[0].clientX;
-                currentX = startX;
-                lastX = currentIndex * catalogContainer.offsetWidth;
-                catalogContainer.classList.add('grabbing');
-                catalogContainer.style.transition = 'none';
+                startX = e.clientX;
                 stopAutoSlide();
-                
-                // Prevenir comportamento padrão em dispositivos touch [citation:2][citation:3]
-                if (e.type === 'touchstart') {
-                    e.preventDefault();
-                }
-            }
+            });
             
-            function drag(e) {
+            catalogContainer.addEventListener('mousemove', function(e) {
                 if (!isDragging) return;
                 
-                const x = e.clientX || e.touches[0].clientX;
-                const walk = (x - currentX);
+                const currentX = e.clientX;
+                const diffX = startX - currentX;
                 
-                // Calcular velocidade para inércia [citation:8]
-                velocity = (x - currentX) * 2;
-                currentX = x;
-                
-                // Calcular nova posição
-                const newPosition = (-currentIndex * 100) + (walk / catalogContainer.offsetWidth * 100);
-                catalogContainer.style.transform = `translateX(${newPosition}%)`;
-                
-                // Prevenir scroll da página durante o arraste [citation:2][citation:6]
-                if (e.type === 'touchmove') {
-                    e.preventDefault();
-                }
-            }
+                // Mover o container junto com o mouse
+                const offset = (-currentIndex * 100) + (diffX / catalogContainer.offsetWidth * 100);
+                catalogContainer.style.transform = `translateX(${offset}%)`;
+            });
             
-            function dragEnd() {
+            catalogContainer.addEventListener('mouseup', function(e) {
                 if (!isDragging) return;
                 
                 isDragging = false;
-                catalogContainer.classList.remove('grabbing');
-                catalogContainer.style.transition = 'transform 0.5s ease';
+                const currentX = e.clientX;
+                const diffX = startX - currentX;
                 
-                // Determinar se deve mudar de slide com base na velocidade e posição
-                const threshold = 0.15; // 15% da largura do slide
-                const diff = (startX - currentX) / catalogContainer.offsetWidth;
-                
-                if (Math.abs(diff) > threshold || Math.abs(velocity) > 5) {
-                    if (diff > 0 || velocity > 5) {
+                // Determinar se deve mudar de slide
+                if (Math.abs(diffX) > 100) { // Sensibilidade ajustada
+                    if (diffX > 0) {
                         nextModel();
-                    } else if (diff < 0 || velocity < -5) {
+                    } else {
                         prevModel();
                     }
                 } else {
-                    // Se não atingiu o threshold, voltar para o slide atual
+                    // Voltar para o slide atual
                     updateCatalog();
                 }
                 
-                // Iniciar animação de inércia se houver velocidade suficiente
-                if (Math.abs(velocity) > 2) {
-                    cancelAnimationFrame(animationFrameId);
-                    animationFrameId = requestAnimationFrame(smoothScroll);
+                startAutoSlide();
+            });
+            
+            catalogContainer.addEventListener('mouseleave', function() {
+                if (isDragging) {
+                    isDragging = false;
+                    updateCatalog();
+                    startAutoSlide();
+                }
+            });
+            
+            // Para dispositivos touch
+            catalogContainer.addEventListener('touchstart', function(e) {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                stopAutoSlide();
+            }, { passive: true });
+            
+            catalogContainer.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                
+                const currentX = e.touches[0].clientX;
+                const diffX = startX - currentX;
+                
+                // Mover o container junto com o toque
+                const offset = (-currentIndex * 100) + (diffX / catalogContainer.offsetWidth * 100);
+                catalogContainer.style.transform = `translateX(${offset}%)`;
+            }, { passive: true });
+            
+            catalogContainer.addEventListener('touchend', function(e) {
+                if (!isDragging) return;
+                
+                isDragging = false;
+                const currentX = e.changedTouches[0].clientX;
+                const diffX = startX - currentX;
+                
+                // Determinar se deve mudar de slide
+                if (Math.abs(diffX) > 100) { // Sensibilidade ajustada
+                    if (diffX > 0) {
+                        nextModel();
+                    } else {
+                        prevModel();
+                    }
+                } else {
+                    // Voltar para o slide atual
+                    updateCatalog();
                 }
                 
                 startAutoSlide();
-            }
+            }, { passive: true });
             
             // Pausar slideshow quando o mouse estiver sobre o catálogo
             catalogElement.addEventListener('mouseenter', stopAutoSlide);
@@ -1971,11 +1892,7 @@
                 let galleryIndex = 0;
                 const galleryCount = galleryImages.length;
                 let galleryStartX = 0;
-                let galleryCurrentX = 0;
                 let isGalleryDragging = false;
-                let galleryVelocity = 0;
-                let galleryLastX = 0;
-                let galleryAnimationFrameId;
                 
                 // Atualizar galeria
                 function updateGallery() {
@@ -2005,29 +1922,6 @@
                     updateGallery();
                 }
                 
-                // Animação de inércia suave para a galeria [citation:8]
-                function smoothGalleryScroll() {
-                    if (Math.abs(galleryVelocity) > 0.5) {
-                        galleryVelocity *= 0.85; // Reduz a velocidade gradualmente
-                        
-                        // Calcula o deslocamento com base na velocidade
-                        const displacement = galleryVelocity / 2;
-                        
-                        // Atualiza a posição do container
-                        const newPosition = (-galleryIndex * 100) + (displacement / galleryContainer.offsetWidth * 100);
-                        galleryContainer.style.transform = `translateX(${newPosition}%)`;
-                        
-                        // Continua a animação
-                        galleryAnimationFrameId = requestAnimationFrame(smoothGalleryScroll);
-                    } else {
-                        // Finaliza a animação e ajusta para o slide mais próximo
-                        galleryVelocity = 0;
-                        galleryContainer.style.transition = 'transform 0.3s ease';
-                        updateGallery();
-                        cancelAnimationFrame(galleryAnimationFrameId);
-                    }
-                }
-                
                 // Event listeners para botões
                 if (galleryNext) galleryNext.addEventListener('click', nextImage);
                 if (galleryPrev) galleryPrev.addEventListener('click', prevImage);
@@ -2040,79 +1934,86 @@
                     });
                 });
                 
-                // Funcionalidade de arrasto para a galeria [citation:4]
-                galleryContainer.addEventListener('mousedown', galleryDragStart);
-                galleryContainer.addEventListener('touchstart', galleryDragStart, { passive: true });
-                
-                galleryContainer.addEventListener('mousemove', galleryDrag);
-                galleryContainer.addEventListener('touchmove', galleryDrag, { passive: false });
-                
-                galleryContainer.addEventListener('mouseup', galleryDragEnd);
-                galleryContainer.addEventListener('mouseleave', galleryDragEnd);
-                galleryContainer.addEventListener('touchend', galleryDragEnd);
-                
-                function galleryDragStart(e) {
+                // Funcionalidade de arrasto para a galeria - SIMPLIFICADA
+                galleryContainer.addEventListener('mousedown', function(e) {
                     isGalleryDragging = true;
-                    galleryStartX = e.clientX || e.touches[0].clientX;
-                    galleryCurrentX = galleryStartX;
-                    galleryLastX = galleryIndex * galleryContainer.offsetWidth;
-                    galleryContainer.classList.add('grabbing');
-                    galleryContainer.style.transition = 'none';
-                    
-                    // Prevenir comportamento padrão em dispositivos touch [citation:2][citation:3]
-                    if (e.type === 'touchstart') {
-                        e.preventDefault();
-                    }
-                }
+                    galleryStartX = e.clientX;
+                });
                 
-                function galleryDrag(e) {
+                galleryContainer.addEventListener('mousemove', function(e) {
                     if (!isGalleryDragging) return;
                     
-                    const x = e.clientX || e.touches[0].clientX;
-                    const walk = (x - galleryCurrentX);
+                    const currentX = e.clientX;
+                    const diffX = galleryStartX - currentX;
                     
-                    // Calcular velocidade para inércia [citation:8]
-                    galleryVelocity = (x - galleryCurrentX) * 2;
-                    galleryCurrentX = x;
-                    
-                    // Calcular nova posição
-                    const newPosition = (-galleryIndex * 100) + (walk / galleryContainer.offsetWidth * 100);
-                    galleryContainer.style.transform = `translateX(${newPosition}%)`;
-                    
-                    // Prevenir scroll da página durante o arraste [citation:2][citation:6]
-                    if (e.type === 'touchmove') {
-                        e.preventDefault();
-                    }
-                }
+                    // Mover o container junto com o mouse
+                    const offset = (-galleryIndex * 100) + (diffX / galleryContainer.offsetWidth * 100);
+                    galleryContainer.style.transform = `translateX(${offset}%)`;
+                });
                 
-                function galleryDragEnd() {
+                galleryContainer.addEventListener('mouseup', function(e) {
                     if (!isGalleryDragging) return;
                     
                     isGalleryDragging = false;
-                    galleryContainer.classList.remove('grabbing');
-                    galleryContainer.style.transition = 'transform 0.5s ease';
+                    const currentX = e.clientX;
+                    const diffX = galleryStartX - currentX;
                     
-                    // Determinar se deve mudar de imagem com base na velocidade e posição
-                    const threshold = 0.15; // 15% da largura da imagem
-                    const diff = (galleryStartX - galleryCurrentX) / galleryContainer.offsetWidth;
-                    
-                    if (Math.abs(diff) > threshold || Math.abs(galleryVelocity) > 5) {
-                        if (diff > 0 || galleryVelocity > 5) {
+                    // Determinar se deve mudar de imagem
+                    if (Math.abs(diffX) > 100) { // Sensibilidade ajustada
+                        if (diffX > 0) {
                             nextImage();
-                        } else if (diff < 0 || galleryVelocity < -5) {
+                        } else {
                             prevImage();
                         }
                     } else {
-                        // Se não atingiu o threshold, voltar para a imagem atual
+                        // Voltar para a imagem atual
                         updateGallery();
                     }
-                    
-                    // Iniciar animação de inércia se houver velocidade suficiente
-                    if (Math.abs(galleryVelocity) > 2) {
-                        cancelAnimationFrame(galleryAnimationFrameId);
-                        galleryAnimationFrameId = requestAnimationFrame(smoothGalleryScroll);
+                });
+                
+                galleryContainer.addEventListener('mouseleave', function() {
+                    if (isGalleryDragging) {
+                        isGalleryDragging = false;
+                        updateGallery();
                     }
-                }
+                });
+                
+                // Para dispositivos touch
+                galleryContainer.addEventListener('touchstart', function(e) {
+                    isGalleryDragging = true;
+                    galleryStartX = e.touches[0].clientX;
+                }, { passive: true });
+                
+                galleryContainer.addEventListener('touchmove', function(e) {
+                    if (!isGalleryDragging) return;
+                    
+                    const currentX = e.touches[0].clientX;
+                    const diffX = galleryStartX - currentX;
+                    
+                    // Mover o container junto com o toque
+                    const offset = (-galleryIndex * 100) + (diffX / galleryContainer.offsetWidth * 100);
+                    galleryContainer.style.transform = `translateX(${offset}%)`;
+                }, { passive: true });
+                
+                galleryContainer.addEventListener('touchend', function(e) {
+                    if (!isGalleryDragging) return;
+                    
+                    isGalleryDragging = false;
+                    const currentX = e.changedTouches[0].clientX;
+                    const diffX = galleryStartX - currentX;
+                    
+                    // Determinar se deve mudar de imagem
+                    if (Math.abs(diffX) > 100) { // Sensibilidade ajustada
+                        if (diffX > 0) {
+                            nextImage();
+                        } else {
+                            prevImage();
+                        }
+                    } else {
+                        // Voltar para a imagem atual
+                        updateGallery();
+                    }
+                }, { passive: true });
             }
             
             // Iniciar o slideshow automático
