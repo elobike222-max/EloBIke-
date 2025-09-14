@@ -17,7 +17,6 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
             --scooter-color: #2563eb;
-            --helmet-color: #E4BB13;
         }
         
         * {
@@ -46,132 +45,63 @@
 
         .catalog-header {
             text-align: center;
-            margin: 10px 0;
+            margin: 20px 0;
         }
 
         .catalog-header h1 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--accent);
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
         }
 
-        /* Botões de categoria */
-        .category-buttons {
-            display: flex;
-            justify-content: center;
-            margin: 25px 0;
-            flex-wrap: wrap;
-            gap: 20px;
+        .catalog-header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .category-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 20px 40px;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: none;
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        .scooters-btn {
-            background: var(--scooter-color);
-        }
-
-        .helmets-btn {
-            background: var(--helmet-color);
-            color: var(--primary);
-        }
-
-        .category-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .category-btn i {
-            font-size: 1.5rem;
-        }
-
-        /* Seções de produtos */
-        .category-section {
-            margin: 30px 0;
-            padding: 15px 0;
-        }
-
-        .category-title {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        /* Carrossel de produtos */
-        .products-carousel {
+        /* Catálogo de scooters */
+        .scooter-catalog {
             position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
             overflow: hidden;
-            margin: 20px 0;
-            padding: 5px;
-        }
-
-        .carousel-container {
-            display: flex;
-            transition: transform 0.8s ease;
-            gap: 15px;
-        }
-
-        .product-card {
-            flex: 0 0 calc(33.333% - 10px);
+            border-radius: 12px;
             background: var(--card-bg);
-            border-radius: 6px;
-            overflow: hidden;
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .product-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Carrossel de imagens do produto - MULTIPLAS FOTOS */
-        .product-image-carousel {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .image-carousel-container {
+        .catalog-container {
             display: flex;
             transition: transform 0.5s ease;
-            width: 100%;
-            height: 100%;
         }
 
-        .product-image {
-            flex: 0 0 100%;
-            height: 100%;
+        .scooter-model {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .model-image {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 25px;
         }
 
-        .product-image img {
-            width: 100%;
-            height: 100%;
+        .model-image img {
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
             -webkit-user-drag: none;
             -khtml-user-drag: none;
@@ -181,7 +111,138 @@
             pointer-events: none;
         }
 
-        .carousel-controls {
+        .model-info {
+            width: 100%;
+            text-align: center;
+        }
+
+        .model-name {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .model-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .price-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .price-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .price-card {
+            background: rgba(13, 27, 61, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .price-title {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .price-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .price-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .model-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .spec-card {
+            background: rgba(13, 27, 61, 0.7);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .spec-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .spec-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .spec-detail {
+            font-size: 0.8rem;
+            color: var(--text);
+            margin-top: 5px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
+        }
+
+        .whatsapp-btn:hover {
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Controles de navegação */
+        .catalog-controls {
             position: absolute;
             top: 50%;
             left: 0;
@@ -194,11 +255,11 @@
             z-index: 20;
         }
 
-        .carousel-control {
+        .catalog-arrow {
             pointer-events: all;
             background: rgba(0, 0, 0, 0.5);
-            width: 35px;
-            height: 35px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -206,127 +267,34 @@
             color: white;
             cursor: pointer;
             transition: background 0.3s;
-            font-size: 16px;
+            font-size: 20px;
+            border: 2px solid var(--accent);
         }
 
-        .carousel-control:hover {
+        .catalog-arrow:hover {
             background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
         }
 
-        .product-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--accent);
-            color: var(--primary);
-            padding: 6px 12px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            z-index: 10;
-        }
-
-        .product-info {
-            padding: 18px;
-            flex-grow: 1;
+        .catalog-indicators {
             display: flex;
-            flex-direction: column;
-        }
-
-        .product-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--accent);
-            text-align: center;
-        }
-
-        .product-features {
-            list-style: none;
-            margin-bottom: 18px;
-            flex-grow: 1;
-        }
-
-        .product-features li {
-            margin-bottom: 10px;
-            padding-left: 30px;
-            position: relative;
-            font-size: 1.1rem;
-            color: var(--text);
-        }
-
-        .product-features li:before {
-            content: "✓";
-            color: var(--accent);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            font-size: 1.3rem;
-        }
-
-        .product-price {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .price-avista {
-            font-size: 1.4rem;
-        }
-
-        .price-parcelado {
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-
-        .product-price .original {
-            font-size: 1.2rem;
-            text-decoration: line-through;
-            color: var(--text-muted);
-        }
-
-        .product-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 20px;
-            background: var(--accent);
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            flex: 1;
             justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
         }
 
-        .whatsapp-btn {
-            background: #25D366;
-            color: white;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        .catalog-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
-        }
-
-        .whatsapp-btn:hover {
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.6);
-            transform: translateY(-2px);
+        .catalog-indicator.active {
+            background: var(--accent);
+            transform: scale(1.3);
         }
 
         .back-btn {
@@ -349,136 +317,51 @@
             color: var(--primary);
         }
 
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .carousel-dot.active {
-            background: var(--accent);
-            transform: scale(1.3);
-        }
-
-        /* Indicadores para o carrossel interno de imagens */
-        .image-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 10px;
-        }
-
-        .image-indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .image-indicator.active {
-            background: var(--accent);
-            transform: scale(1.2);
-        }
-
-        /* Indicador de mais itens no carrossel */
-        .carousel-hint {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            animation: pulse 2s infinite;
-            pointer-events: none;
-        }
-
-        @keyframes pulse {
-            0% { transform: translateY(-50%) scale(1); }
-            50% { transform: translateY(-50%) scale(1.1); }
-            100% { transform: translateY(-50%) scale(1); }
-        }
-
-        @media (max-width: 1024px) {
-            .product-card {
-                flex: 0 0 calc(50% - 8px);
-            }
-        }
-
         @media (max-width: 768px) {
             body {
                 font-size: 16px;
                 padding: 8px;
             }
             
-            .product-card {
-                flex: 0 0 100%;
-            }
-            
-            .category-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
             .catalog-header h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
-            .category-btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-                padding: 18px 30px;
-                font-size: 18px;
-            }
-            
-            .category-title {
-                font-size: 1.6rem;
-            }
-            
-            .product-image-carousel {
-                height: 180px;
-            }
-            
-            .product-features li {
+            .catalog-header p {
                 font-size: 1rem;
             }
             
-            .category-section {
-                margin: 25px 0;
+            .scooter-catalog {
+                padding: 15px;
             }
             
-            .carousel-control {
-                width: 32px;
-                height: 32px;
+            .model-name {
+                font-size: 1.6rem;
             }
             
-            .product-actions {
-                flex-direction: column;
+            .model-price {
+                font-size: 1.5rem;
             }
             
-            .carousel-hint {
-                width: 25px;
-                height: 25px;
-                font-size: 12px;
+            .price-details {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .model-specs {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .catalog-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -491,706 +374,288 @@
 
         <div class="catalog-header">
             <h1>Catálogo EloBike</h1>
+            <p>Descubra nossa linha completa de scooters elétricas</p>
         </div>
 
-        <!-- Botões de categoria -->
-        <div class="category-buttons">
-            <a href="#scooters" class="category-btn scooters-btn">
-                <i class="fas fa-motorcycle"></i> Scooters
-            </a>
-            <a href="#helmets" class="category-btn helmets-btn">
-                <i class="fas fa-helmet-safety"></i> Capacetes
-            </a>
-        </div>
-
-        <!-- Seção de Scooters -->
-        <section id="scooters" class="category-section">
-            <h2 class="category-title">Scooters Elétricas</h2>
-            
-            <div class="products-carousel">
-                <div class="carousel-container">
-                    <!-- Modelo R11 -->
-                    <div class="product-card">
-                        <div class="product-image-carousel">
-                            <div class="image-carousel-container">
-                                <div class="product-image">
-                                    <img src="R11-01.png" alt="Modelo R11 Cor 1">
-                                </div>
-                                <div class="product-image">
-                                    <img src="R11-02.png" alt="Modelo R11 Cor 2">
-                                </div>
-                                <div class="product-image">
-                                    <img src="R11-03.png" alt="Modelo R11 Cor 3">
-                                </div>
-                                <div class="product-image">
-                                    <img src="R11-04.png" alt="Modelo R11 Cor 4">
-                                </div>
-                            </div>
-                            <div class="carousel-controls">
-                                <div class="carousel-control prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="carousel-control next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                            <div class="product-badge">Mais Vendido</div>
-                            <div class="carousel-hint">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                        <div class="image-indicators">
-                            <div class="image-indicator active" data-index="0"></div>
-                            <div class="image-indicator" data-index="1"></div>
-                            <div class="image-indicator" data-index="2"></div>
-                            <div class="image-indicator" data-index="3"></div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Modelo R11</h3>
-                            <ul class="product-features">
-                                <li>⚡ 3.000W de potência</li>
-                                <li>⏱️ Até 70 km/h</li>
-                                <li>🔋 45 km de autonomia</li>
-                                <li>⏳ 5h de carregamento</li>
-                                <li>💪 150kg a 200kg</li>
-                            </ul>
-                            <div class="product-price">
-                                <span class="price-avista">💵 R$ 12.000,00 à vista</span>
-                                <span class="price-parcelado">ou 18x de R$ 759,73 no cartão</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Comprar agora
-                                </a>
-                            </div>
-                        </div>
+        <!-- Catálogo de Scooters -->
+        <div class="scooter-catalog">
+            <div class="catalog-container">
+                <!-- Modelo Mini X11 1000W -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="mini-x11.png" alt="Mini X11 1000W">
                     </div>
-                    
-                    <!-- Modelo S2 -->
-                    <div class="product-card">
-                        <div class="product-image-carousel">
-                            <div class="image-carousel-container">
-                                <div class="product-image">
-                                    <img src="S2-01.png" alt="Modelo S2 Cor 1">
-                                </div>
-                                <div class="product-image">
-                                    <img src="S2-02.png" alt="Modelo S2 Cor 2">
-                                </div>
-                                <div class="product-image">
-                                    <img src="S2-03.png" alt="Modelo S2 Cor 3">
-                                </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Mini X11 1000W</h2>
+                        <div class="model-price">A partir de R$ 11.900,00</div>
+                        <div class="price-subtitle">Preços especiais para pagamento à vista</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">Preço À Vista</div>
+                                <div class="price-value">R$ 11.067,00</div>
+                                <div class="price-description">VIA PIX OU TRANSFERÊNCIA BANCÁRIA</div>
                             </div>
-                            <div class="carousel-controls">
-                                <div class="carousel-control prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="carousel-control next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                            <div class="product-badge">Econômico</div>
-                            <div class="carousel-hint">
-                                <i class="fas fa-chevron-right"></i>
+                            <div class="price-card">
+                                <div class="price-title">Parcelas a partir de</div>
+                                <div class="price-value">R$ 1.487,50</div>
+                                <div class="price-description">8X NO CARTÃO DE CRÉDITO</div>
                             </div>
                         </div>
-                        <div class="image-indicators">
-                            <div class="image-indicator active" data-index="0"></div>
-                            <div class="image-indicator" data-index="1"></div>
-                            <div class="image-indicator" data-index="2"></div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Modelo S2</h3>
-                            <ul class="product-features">
-                                <li>⚡ 1.000W de potência</li>
-                                <li>⏱️ Até 40 km/h</li>
-                                <li>🔋 45 km de autonomia</li>
-                                <li>⏳ 5h de carregamento</li>
-                                <li>💪 Até 200 kg</li>
-                            </ul>
-                            <div class="product-price">
-                                <span class="price-avista">💵 R$ 11.490,00 à vista</span>
-                                <span class="price-parcelado">ou 18x de R$ 759,00 no cartão</span>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">40 KM</div>
+                                <div class="spec-label">Autonomia</div>
                             </div>
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo S2 🛵" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Comprar agora
-                                </a>
+                            <div class="spec-card">
+                                <div class="spec-value">32 KM/H</div>
+                                <div class="spec-label">Velocidade Máxima</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">1000W</div>
+                                <div class="spec-label">Motor</div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Modelo V8 -->
-                    <div class="product-card">
-                        <div class="product-image-carousel">
-                            <div class="image-carousel-container">
-                                <div class="product-image">
-                                    <img src="V8-01.png" alt="Modelo V8 Cor 1">
-                                </div>
-                                <div class="product-image">
-                                    <img src="V8-02.png" alt="Modelo V8 Cor 2">
-                                </div>
-                                <div class="product-image">
-                                    <img src="V8-03.png" alt="Modelo V8 Cor 3">
-                                </div>
-                                <div class="product-image">
-                                    <img src="V8-04.png" alt="Modelo V8 Cor 4">
-                                </div>
-                                <div class="product-image">
-                                    <img src="V8-05.png" alt="Modelo V8 Cor 5">
-                                </div>
-                                <div class="product-image">
-                                    <img src="V8-06.png" alt="Modelo V8 Cor 6">
-                                </div>
-                            </div>
-                            <div class="carousel-controls">
-                                <div class="carousel-control prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="carousel-control next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                            <div class="product-badge">Compacto</div>
-                            <div class="carousel-hint">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                        <div class="image-indicators">
-                            <div class="image-indicator active" data-index="0"></div>
-                            <div class="image-indicator" data-index="1"></div>
-                            <div class="image-indicator" data-index="2"></div>
-                            <div class="image-indicator" data-index="3"></div>
-                            <div class="image-indicator" data-index="4"></div>
-                            <div class="image-indicator" data-index="5"></div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Modelo V8</h3>
-                            <ul class="product-features">
-                                <li>⚡ 1.000W de potência</li>
-                                <li>⏱️ Até 50 km/h</li>
-                                <li>🔋 45 km de autonomia</li>
-                                <li>⏳ 5h de carregamento</li>
-                                <li>💪 Até 150 kg</li>
-                            </ul>
-                            <div class="product-price">
-                                <span class="price-avista">💵 R$ 8.490,00 à vista</span>
-                                <span class="price-parcelado">ou 18x de R$ 537,51 no cartão</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo V8 🛵" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Comprar agora
-                                </a>
-                            </div>
+                        
+                        <div class="product-actions">
+                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Mini X11 1000W 🛵" class="btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> Ver Produto
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="carousel-nav">
-                    <div class="carousel-dot active" data-index="0"></div>
-                    <div class="carousel-dot" data-index="1"></div>
-                    <div class="carousel-dot" data-index="2"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Capacetes -->
-        <section id="helmets" class="category-section">
-            <h2 class="category-title">Capacetes</h2>
-            
-            <div class="products-carousel">
-                <div class="carousel-container">
-                    <!-- Capacete 1 -->
-                    <div class="product-card">
-                        <div class="product-image-carousel">
-                            <div class="image-carousel-container">
-                                <div class="product-image">
-                                    <i class="fas fa-helmet-safety"></i>
-                                </div>
-                            </div>
-                            <div class="carousel-controls">
-                                <div class="carousel-control prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="carousel-control next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                            <div class="product-badge">Popular</div>
-                        </div>
-                        <div class="image-indicators">
-                            <div class="image-indicator active" data-index="0"></div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Capacete Jet</h3>
-                            <ul class="product-features">
-                                <li>🛡️ Proteção certificada</li>
-                                <li>🎨 Design moderno</li>
-                                <li>🔄 Fácil de ajustar</li>
-                                <li>🌬️ Sistema ventilação</li>
-                                <li>👓 Compatível óculos</li>
-                            </ul>
-                            <div class="product-price">
-                                R$ 199,00
-                                <span class="original">R$ 249,00</span>
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Jet" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Comprar agora
-                                </a>
-                            </div>
-                        </div>
+                <!-- Modelo R11 -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="r11.png" alt="Modelo R11">
                     </div>
-                    
-                    <!-- Capacete 2 -->
-                    <div class="product-card">
-                        <div class="product-image-carousel">
-                            <div class="image-carousel-container">
-                                <div class="product-image">
-                                    <i class="fas fa-helmet-safety"></i>
-                                </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo R11</h2>
+                        <div class="model-price">A partir de R$ 12.000,00</div>
+                        <div class="price-subtitle">Alta performance e tecnologia</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">Preço À Vista</div>
+                                <div class="price-value">R$ 11.160,00</div>
+                                <div class="price-description">VIA PIX OU TRANSFERÊNCIA BANCÁRIA</div>
                             </div>
-                            <div class="carousel-controls">
-                                <div class="carousel-control prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="carousel-control next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="image-indicators">
-                            <div class="image-indicator active" data-index="0"></div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Capacete Integral</h3>
-                            <ul class="product-features">
-                                <li>🛡️ Proteção total</li>
-                                <li>👁️ Visor anti-riscos</li>
-                                <li>💨 Ventilação ajustável</li>
-                                <li>🔒 Fechamento seguro</li>
-                                <li>🎧 Espaço headphones</li>
-                            </ul>
-                            <div class="product-price">
-                                R$ 349,00
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Integral" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Comprar agora
-                                </a>
+                            <div class="price-card">
+                                <div class="price-title">Parcelas a partir de</div>
+                                <div class="price-value">R$ 1.500,00</div>
+                                <div class="price-description">8X NO CARTÃO DE CRÉDITO</div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Capacete 3 -->
-                    <div class="product-card">
-                        <div class="product-image-carousel">
-                            <div class="image-carousel-container">
-                                <div class="product-image">
-                                    <i class="fas fa-helmet-safety"></i>
-                                </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">45 KM</div>
+                                <div class="spec-label">Autonomia</div>
                             </div>
-                            <div class="carousel-controls">
-                                <div class="carousel-control prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="carousel-control next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
+                            <div class="spec-card">
+                                <div class="spec-value">70 KM/H</div>
+                                <div class="spec-label">Velocidade Máxima</div>
                             </div>
-                            <div class="product-badge">Novidade</div>
+                            <div class="spec-card">
+                                <div class="spec-value">3000W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
                         </div>
-                        <div class="image-indicators">
-                            <div class="image-indicator active" data-index="0"></div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Capacete Modular</h3>
-                            <ul class="product-features">
-                                <li>🔄 Conversível jet/integral</li>
-                                <li>🎤 Sistema comunicação</li>
-                                <li>🛡️ Certificação dupla</li>
-                                <li>🌧️ Resistente à água</li>
-                                <li>🔇 Sistema anti-ruído</li>
-                            </ul>
-                            <div class="product-price">
-                                R$ 459,00
-                            </div>
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Capacete Modular" class="btn whatsapp-btn">
-                                    <i class="fab fa-whatsapp"></i> Comprar agora
-                                </a>
-                            </div>
+                        
+                        <div class="product-actions">
+                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> Ver Produto
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="carousel-nav">
-                    <div class="carousel-dot active" data-index="0"></div>
-                    <div class="carousel-dot" data-index="1"></div>
-                    <div class="carousel-dot" data-index="2"></div>
+                <!-- Modelo S2 -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="s2.png" alt="Modelo S2">
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo S2</h2>
+                        <div class="model-price">A partir de R$ 11.490,00</div>
+                        <div class="price-subtitle">Design moderno e econômico</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">Preço À Vista</div>
+                                <div class="price-value">R$ 10.685,70</div>
+                                <div class="price-description">VIA PIX OU TRANSFERÊNCIA BANCÁRIA</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-title">Parcelas a partir de</div>
+                                <div class="price-value">R$ 1.436,25</div>
+                                <div class="price-description">8X NO CARTÃO DE CRÉDITO</div>
+                            </div>
+                        </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">45 KM</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">40 KM/H</div>
+                                <div class="spec-label">Velocidade Máxima</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">1000W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo S2 🛵" class="btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> Ver Produto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modelo V8 -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="v8.png" alt="Modelo V8">
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo V8</h2>
+                        <div class="model-price">A partir de R$ 8.490,00</div>
+                        <div class="price-subtitle">Compacto e eficiente</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">Preço À Vista</div>
+                                <div class="price-value">R$ 7.895,70</div>
+                                <div class="price-description">VIA PIX OU TRANSFERÊNCIA BANCÁRIA</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-title">Parcelas a partir de</div>
+                                <div class="price-value">R$ 1.061,25</div>
+                                <div class="price-description">8X NO CARTÃO DE CRÉDITO</div>
+                            </div>
+                        </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">45 KM</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">50 KM/H</div>
+                                <div class="spec-label">Velocidade Máxima</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">1000W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo V8 🛵" class="btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> Ver Produto
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+            
+            <!-- Controles de navegação -->
+            <div class="catalog-controls">
+                <div class="catalog-arrow prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="catalog-arrow next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <!-- Indicadores -->
+            <div class="catalog-indicators">
+                <div class="catalog-indicator active" data-index="0"></div>
+                <div class="catalog-indicator" data-index="1"></div>
+                <div class="catalog-indicator" data-index="2"></div>
+                <div class="catalog-indicator" data-index="3"></div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Variáveis para controle das automatizações
-        let modelChangeIntervals = {};
-        const MODEL_CHANGE_DELAY = 3000; // 3 segundos
-        let autoPlayCount = 0;
-        const MAX_AUTO_PLAYS = 5; // Número máximo de transições automáticas
-        let userHasInteracted = false;
-
-        // Função para rolagem suave ao clicar nos botões
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    const offsetTop = targetSection.offsetTop - 20;
-                    
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Inicializar todos os carrosséis
-        function initAllCarousels() {
-            initProductCarousels();
-            initImageCarousels();
-            startInitialAutoPlay();
-        }
-
-        // Inicializar carrosséis de produtos principais
-        function initProductCarousels() {
-            const productCarousels = document.querySelectorAll('.products-carousel');
+        // Inicializar catálogo de scooters
+        document.addEventListener('DOMContentLoaded', function() {
+            const catalogContainer = document.querySelector('.catalog-container');
+            const models = document.querySelectorAll('.scooter-model');
+            const indicators = document.querySelectorAll('.catalog-indicator');
+            const prevBtn = document.querySelector('.catalog-arrow.prev');
+            const nextBtn = document.querySelector('.catalog-arrow.next');
             
-            productCarousels.forEach((carousel, carouselIndex) => {
-                const container = carousel.querySelector('.carousel-container');
-                const cards = carousel.querySelectorAll('.product-card');
-                const dots = carousel.querySelectorAll('.carousel-dot');
-                const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(container).gap);
-                
-                let currentPosition = 0;
-                let maxPosition = (cards.length - 3) * cardWidth;
-                
-                if (window.innerWidth <= 1024) {
-                    maxPosition = (cards.length - 2) * cardWidth;
-                }
-                if (window.innerWidth <= 768) {
-                    maxPosition = (cards.length - 1) * cardWidth;
-                }
-                
-                // Atualizar dots
-                function updateDots() {
-                    const activeDot = Math.floor(Math.abs(currentPosition) / cardWidth);
-                    dots.forEach((dot, idx) => {
-                        dot.classList.toggle('active', idx === activeDot);
-                    });
-                }
-                
-                // Atualizar carrossel
-                function updateCarousel() {
-                    if (currentPosition > 0) currentPosition = 0;
-                    if (currentPosition < -maxPosition) currentPosition = -maxPosition;
-                    
-                    container.style.transform = `translateX(${currentPosition}px)`;
-                    updateDots();
-                }
-                
-                // Navegação por dots
-                dots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        // Pausar a automatização quando o usuário interagir
-                        userHasInteracted = true;
-                        pauseAllAutomations();
-                        
-                        if (window.innerWidth <= 768) {
-                            currentPosition = -index * cardWidth;
-                        } else if (window.innerWidth <= 1024) {
-                            currentPosition = -index * cardWidth * 2;
-                        } else {
-                            currentPosition = -index * cardWidth * 3;
-                        }
-                        
-                        updateCarousel();
-                    });
-                });
-                
-                // Navegação por arrasto
-                let isDragging = false;
-                let startPosition = 0;
-                let startX = 0;
-                
-                const startDrag = (e) => {
-                    // Pausar a automatização quando o usuário interagir
-                    userHasInteracted = true;
-                    pauseAllAutomations();
-                    
-                    isDragging = true;
-                    startX = e.clientX || e.touches[0].clientX;
-                    startPosition = currentPosition;
-                    container.style.transition = 'none';
-                };
-                
-                const drag = (e) => {
-                    if (!isDragging) return;
-                    
-                    const x = e.clientX || e.touches[0].clientX;
-                    const walk = (x - startX) * 2;
-                    currentPosition = startPosition + walk;
-                    
-                    updateCarousel();
-                };
-                
-                const endDrag = () => {
-                    isDragging = false;
-                    container.style.transition = 'transform 0.5s ease';
-                    
-                    const itemIndex = Math.round(Math.abs(currentPosition) / cardWidth);
-                    currentPosition = -itemIndex * cardWidth;
-                    
-                    updateCarousel();
-                };
-                
-                carousel.addEventListener('mousedown', startDrag);
-                carousel.addEventListener('touchstart', startDrag, { passive: true });
-                
-                carousel.addEventListener('mousemove', drag);
-                carousel.addEventListener('touchmove', drag, { passive: true });
-                
-                carousel.addEventListener('mouseup', endDrag);
-                carousel.addEventListener('mouseleave', endDrag);
-                carousel.addEventListener('touchend', endDrag);
-                
-                updateDots();
-            });
-        }
-
-        // Inicializar carrosséis de imagens internos
-        function initImageCarousels() {
-            const imageCarousels = document.querySelectorAll('.product-image-carousel');
+            let currentIndex = 0;
+            const modelCount = models.length;
             
-            imageCarousels.forEach((carousel, index) => {
-                const container = carousel.querySelector('.image-carousel-container');
-                const images = carousel.querySelectorAll('.product-image');
-                const prevBtn = carousel.querySelector('.carousel-control.prev');
-                const nextBtn = carousel.querySelector('.carousel-control.next');
-                const indicators = carousel.parentElement.querySelectorAll('.image-indicator');
-                
-                let currentIndex = 0;
+            // Atualizar catálogo
+            function updateCatalog() {
+                catalogContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
                 
                 // Atualizar indicadores
-                function updateIndicators() {
-                    if (indicators.length > 0) {
-                        indicators.forEach((indicator, idx) => {
-                            indicator.classList.toggle('active', idx === currentIndex);
-                        });
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
                     }
-                }
-                
-                // Atualizar carrossel
-                function updateCarousel() {
-                    container.style.transform = `translateX(-${currentIndex * 100}%)`;
-                    updateIndicators();
-                }
-                
-                // Navegação por botões
-                if (prevBtn) {
-                    prevBtn.addEventListener('click', () => {
-                        currentIndex = (currentIndex - 1 + images.length) % images.length;
-                        updateCarousel();
-                    });
-                }
-                
-                if (nextBtn) {
-                    nextBtn.addEventListener('click', () => {
-                        currentIndex = (currentIndex + 1) % images.length;
-                        updateCarousel();
-                    });
-                }
-                
-                // Navegação por indicadores
-                if (indicators.length > 0) {
-                    indicators.forEach((indicator, index) => {
-                        indicator.addEventListener('click', () => {
-                            currentIndex = index;
-                            updateCarousel();
-                        });
-                    });
-                }
-                
-                // Navegação por arrasto - DESATIVADA
-                // Apenas navegação por setas e indicadores
-                
-                updateIndicators();
-            });
-        }
-
-        // Função para a reprodução automática inicial
-        function startInitialAutoPlay() {
-            const productCarousels = document.querySelectorAll('.products-carousel');
-            
-            productCarousels.forEach((carousel, index) => {
-                startInitialAutoPlayForCarousel(index);
-            });
-        }
-
-        function startInitialAutoPlayForCarousel(index) {
-            const carousels = document.querySelectorAll('.products-carousel');
-            if (!carousels[index]) return;
-            
-            const container = carousels[index].querySelector('.carousel-container');
-            const cards = carousels[index].querySelectorAll('.product-card');
-            const dots = carousels[index].querySelectorAll('.carousel-dot');
-            const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(container).gap);
-            
-            let maxPosition = (cards.length - 3) * cardWidth;
-            
-            if (window.innerWidth <= 1024) {
-                maxPosition = (cards.length - 2) * cardWidth;
-            }
-            if (window.innerWidth <= 768) {
-                maxPosition = (cards.length - 1) * cardWidth;
-            }
-            
-            let autoPlayInterval = setInterval(() => {
-                if (userHasInteracted) {
-                    clearInterval(autoPlayInterval);
-                    return;
-                }
-                
-                if (autoPlayCount >= MAX_AUTO_PLAYS) {
-                    clearInterval(autoPlayInterval);
-                    return;
-                }
-                
-                const currentTranslate = container.style.transform;
-                let currentPosition = 0;
-                
-                if (currentTranslate) {
-                    currentPosition = parseInt(currentTranslate.split('(')[1]) || 0;
-                }
-                
-                let nextPosition = currentPosition - cardWidth * 3;
-                
-                if (window.innerWidth <= 1024) {
-                    nextPosition = currentPosition - cardWidth * 2;
-                }
-                if (window.innerWidth <= 768) {
-                    nextPosition = currentPosition - cardWidth;
-                }
-                
-                if (nextPosition < -maxPosition) {
-                    nextPosition = 0;
-                }
-                
-                container.style.transform = `translateX(${nextPosition}px)`;
-                
-                // Atualizar dots
-                const activeDot = Math.floor(Math.abs(nextPosition) / cardWidth);
-                dots.forEach((dot, idx) => {
-                    dot.classList.toggle('active', idx === activeDot);
                 });
-                
-                autoPlayCount++;
-                
-            }, 2500); // 2.5 segundos entre cada transição
-        }
-
-        // Funções para automatização de MODELOS
-        function startAllModelAutomations() {
-            if (userHasInteracted) return;
-            
-            const modelCarousels = document.querySelectorAll('.products-carousel');
-            modelCarousels.forEach((carousel, index) => {
-                startModelAutomation(index);
-            });
-        }
-
-        function pauseAllAutomations() {
-            const modelCarousels = document.querySelectorAll('.products-carousel');
-            modelCarousels.forEach((carousel, index) => {
-                clearInterval(modelChangeIntervals[index]);
-            });
-        }
-
-        function startModelAutomation(index) {
-            clearInterval(modelChangeIntervals[index]);
-            
-            modelChangeIntervals[index] = setInterval(() => {
-                if (userHasInteracted) {
-                    clearInterval(modelChangeIntervals[index]);
-                    return;
-                }
-                
-                const carousels = document.querySelectorAll('.products-carousel');
-                if (carousels[index]) {
-                    const container = carousels[index].querySelector('.carousel-container');
-                    const cards = carousels[index].querySelectorAll('.product-card');
-                    const dots = carousels[index].querySelectorAll('.carousel-dot');
-                    const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(container).gap);
-                    
-                    const currentTranslate = container.style.transform;
-                    let currentPosition = 0;
-                    
-                    if (currentTranslate) {
-                        currentPosition = parseInt(currentTranslate.split('(')[1]) || 0;
-                    }
-                    
-                    let nextPosition = currentPosition - cardWidth * 3;
-                    let maxPosition = (cards.length - 3) * cardWidth;
-                    
-                    if (window.innerWidth <= 1024) {
-                        nextPosition = currentPosition - cardWidth * 2;
-                        maxPosition = (cards.length - 2) * cardWidth;
-                    }
-                    if (window.innerWidth <= 768) {
-                        nextPosition = currentPosition - cardWidth;
-                        maxPosition = (cards.length - 1) * cardWidth;
-                    }
-                    
-                    if (nextPosition < -maxPosition) {
-                        nextPosition = 0;
-                    }
-                    
-                    container.style.transform = `translateX(${nextPosition}px)`;
-                    
-                    // Atualizar dots
-                    const activeDot = Math.floor(Math.abs(nextPosition) / cardWidth);
-                    dots.forEach((dot, idx) => {
-                        dot.classList.toggle('active', idx === activeDot);
-                    });
-                }
-            }, MODEL_CHANGE_DELAY);
-        }
-
-        // Pausar automatização quando o mouse estiver sobre o carrossel
-        document.querySelectorAll('.products-carousel').forEach((carousel, index) => {
-            carousel.addEventListener('mouseenter', () => {
-                clearInterval(modelChangeIntervals[index]);
-            });
-            
-            carousel.addEventListener('mouseleave', () => {
-                if (!userHasInteracted) {
-                    startModelAutomation(index);
-                }
-            });
-        });
-
-        // Inicializar quando a página carregar
-        window.addEventListener('load', initAllCarousels);
-        window.addEventListener('resize', function() {
-            initProductCarousels();
-            initImageCarousels();
-            if (!userHasInteracted) {
-                startAllModelAutomations();
             }
+            
+            // Próximo modelo
+            function nextModel() {
+                currentIndex = (currentIndex + 1) % modelCount;
+                updateCatalog();
+            }
+            
+            // Modelo anterior
+            function prevModel() {
+                currentIndex = (currentIndex - 1 + modelCount) % modelCount;
+                updateCatalog();
+            }
+            
+            // Event listeners para botões
+            nextBtn.addEventListener('click', nextModel);
+            prevBtn.addEventListener('click', prevModel);
+            
+            // Event listeners para indicadores
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', function() {
+                    currentIndex = parseInt(this.getAttribute('data-index'));
+                    updateCatalog();
+                });
+            });
+            
+            // Navegação por teclado
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    nextModel();
+                } else if (e.key === 'ArrowLeft') {
+                    prevModel();
+                }
+            });
+            
+            // Iniciar slideshow automático
+            let autoSlide = setInterval(nextModel, 5000);
+            
+            // Pausar slideshow quando o mouse estiver sobre o catálogo
+            const catalog = document.querySelector('.scooter-catalog');
+            catalog.addEventListener('mouseenter', function() {
+                clearInterval(autoSlide);
+            });
+            
+            catalog.addEventListener('mouseleave', function() {
+                autoSlide = setInterval(nextModel, 5000);
+            });
         });
     </script>
 </body>
