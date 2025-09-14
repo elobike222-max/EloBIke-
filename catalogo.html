@@ -74,6 +74,7 @@
             border: 1px solid var(--card-border);
             padding: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            touch-action: pan-y; /* Melhora a experiência em dispositivos touch [citation:3] */
         }
 
         .catalog-container {
@@ -116,6 +117,11 @@
             -o-user-drag: none;
             user-drag: none;
             pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+
+        .model-image img:hover {
+            transform: scale(1.05);
         }
 
         .view-details-container {
@@ -189,6 +195,11 @@
             padding: 10px;
             text-align: center;
             border: 1px solid var(--card-border);
+            transition: transform 0.3s ease;
+        }
+
+        .price-card:hover {
+            transform: translateY(-3px);
         }
 
         .price-title {
@@ -223,6 +234,11 @@
             padding: 8px;
             text-align: center;
             border: 1px solid var(--card-border);
+            transition: transform 0.3s ease;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-3px);
         }
 
         .spec-value {
@@ -262,7 +278,7 @@
             justify-content: center;
             color: white;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
             font-size: 18px;
             border: 2px solid var(--accent);
         }
@@ -340,6 +356,7 @@
             border-radius: 10px;
             overflow: hidden;
             height: 220px;
+            touch-action: pan-y; /* Melhora a experiência em dispositivos touch [citation:3] */
         }
 
         .gallery-container {
@@ -367,6 +384,11 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-image img:hover {
+            transform: scale(1.03);
         }
 
         .gallery-controls {
@@ -461,6 +483,11 @@
             position: relative;
             color: var(--text);
             font-size: 0.9rem;
+            transition: transform 0.2s ease;
+        }
+
+        .features-list li:hover {
+            transform: translateX(5px);
         }
 
         .features-list li:before {
@@ -536,10 +563,31 @@
             color: var(--text);
         }
 
+        /* Loading animation */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Animações suaves */
+        .smooth-transition {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Timing function suave [citation:7] */
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 8px;
                 font-size: 14px;
+                touch-action: manipulation; /* Melhora a experiência em dispositivos touch [citation:3] */
             }
             
             .container {
@@ -937,6 +985,12 @@
                     <div class="gallery-image">
                         <img src="R13-03.png" alt="Modelo R13 - Vista 3">
                     </div>
+                    <div class="gallery-image">
+                        <img src="R13-04.png" alt="Modelo R13 - Vista 4">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="R13-05.png" alt="Modelo R13 - Vista 5">
+                    </div>
                 </div>
                 
                 <div class="gallery-controls">
@@ -952,6 +1006,8 @@
                     <div class="gallery-indicator active" data-index="0"></div>
                     <div class="gallery-indicator" data-index="1"></div>
                     <div class="gallery-indicator" data-index="2"></div>
+                    <div class="gallery-indicator" data-index="3"></div>
+                    <div class="gallery-indicator" data-index="4"></div>
                 </div>
             </div>
             
@@ -1036,7 +1092,6 @@
             </div>
         </div>
         
-        <!-- Adicione páginas semelhantes para os outros modelos seguindo o mesmo padrão -->
         <!-- Modelo A3 -->
         <div id="product-a3" class="product-page">
             <div class="product-header">
@@ -1057,6 +1112,12 @@
                     <div class="gallery-image">
                         <img src="A3-03.png" alt="Modelo A3 - Vista 3">
                     </div>
+                    <div class="gallery-image">
+                        <img src="A3-04.png" alt="Modelo A3 - Vista 4">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="A3-05.png" alt="Modelo A3 - Vista 5">
+                    </div>
                 </div>
                 
                 <div class="gallery-controls">
@@ -1072,6 +1133,8 @@
                     <div class="gallery-indicator active" data-index="0"></div>
                     <div class="gallery-indicator" data-index="1"></div>
                     <div class="gallery-indicator" data-index="2"></div>
+                    <div class="gallery-indicator" data-index="3"></div>
+                    <div class="gallery-indicator" data-index="4"></div>
                 </div>
             </div>
             
@@ -1146,7 +1209,7 @@
                         <li>Velocidade máxima de 32km/h</li>
                         <li>Pneus de 10 polegadas</li>
                         <li>Farol LED e luzes de freio</li>
-                        <li>Painel digital com velocímetro</li>
+                        <li>Painel digital with velocímetro</li>
                         <li>Freio a disco dianteiro</li>
                         <li>Suspensão traseira</li>
                         <li>Tempo de carga: 4-6 horas</li>
@@ -1176,6 +1239,9 @@
                     <div class="gallery-image">
                         <img src="S2-03.png" alt="Modelo S2 - Vista 3">
                     </div>
+                    <div class="gallery-image">
+                        <img src="S2-04.png" alt="Modelo S2 - Vista 4">
+                    </div>
                 </div>
                 
                 <div class="gallery-controls">
@@ -1191,6 +1257,7 @@
                     <div class="gallery-indicator active" data-index="0"></div>
                     <div class="gallery-indicator" data-index="1"></div>
                     <div class="gallery-indicator" data-index="2"></div>
+                    <div class="gallery-indicator" data-index="3"></div>
                 </div>
             </div>
             
@@ -1295,6 +1362,12 @@
                     <div class="gallery-image">
                         <img src="R11-03.png" alt="Modelo R11 - Vista 3">
                     </div>
+                    <div class="gallery-image">
+                        <img src="R11-04.png" alt="Modelo R11 - Vista 4">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="R11-05.png" alt="Modelo R11 - Vista 5">
+                    </div>
                 </div>
                 
                 <div class="gallery-controls">
@@ -1310,6 +1383,8 @@
                     <div class="gallery-indicator active" data-index="0"></div>
                     <div class="gallery-indicator" data-index="1"></div>
                     <div class="gallery-indicator" data-index="2"></div>
+                    <div class="gallery-indicator" data-index="3"></div>
+                    <div class="gallery-indicator" data-index="4"></div>
                 </div>
             </div>
             
@@ -1414,6 +1489,12 @@
                     <div class="gallery-image">
                         <img src="V8-03.png" alt="Modelo V8 - Vista 3">
                     </div>
+                    <div class="gallery-image">
+                        <img src="V8-04.png" alt="Modelo V8 - Vista 4">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="V8-05.png" alt="Modelo V8 - Vista 5">
+                    </div>
                 </div>
                 
                 <div class="gallery-controls">
@@ -1429,6 +1510,8 @@
                     <div class="gallery-indicator active" data-index="0"></div>
                     <div class="gallery-indicator" data-index="1"></div>
                     <div class="gallery-indicator" data-index="2"></div>
+                    <div class="gallery-indicator" data-index="3"></div>
+                    <div class="gallery-indicator" data-index="4"></div>
                 </div>
             </div>
             
@@ -1528,10 +1611,16 @@
                         <img src="Chooper-01.png" alt="Modelo Chopper">
                     </div>
                     <div class="gallery-image">
-                        <img src="Chopper-02.png" alt="Modelo Chopper - Vista 2">
+                        <img src="Chooper-02.png" alt="Modelo Chopper - Vista 2">
                     </div>
                     <div class="gallery-image">
-                        <img src="Chopper-03.png" alt="Modelo Chopper - Vista 3">
+                        <img src="Chooper-03.png" alt="Modelo Chopper - Vista 3">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="Choper-04.png" alt="Modelo Chopper - Vista 4">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="Choper-05.png" alt="Modelo Chopper - Vista 5">
                     </div>
                 </div>
                 
@@ -1548,6 +1637,8 @@
                     <div class="gallery-indicator active" data-index="0"></div>
                     <div class="gallery-indicator" data-index="1"></div>
                     <div class="gallery-indicator" data-index="2"></div>
+                    <div class="gallery-indicator" data-index="3"></div>
+                    <div class="gallery-indicator" data-index="4"></div>
                 </div>
             </div>
             
@@ -1654,6 +1745,9 @@
             let currentX = 0;
             let isDragging = false;
             let autoSlide;
+            let velocity = 0;
+            let lastX = 0;
+            let animationFrameId;
             
             // Atualizar catálogo
             function updateCatalog() {
@@ -1691,16 +1785,48 @@
                 clearInterval(autoSlide);
             }
             
+            // Animação de inércia suave [citation:8]
+            function smoothScroll() {
+                if (Math.abs(velocity) > 0.5) {
+                    velocity *= 0.85; // Reduz a velocidade gradualmente
+                    
+                    // Calcula o deslocamento com base na velocidade
+                    const displacement = velocity / 2;
+                    
+                    // Atualiza a posição do container
+                    const newPosition = (-currentIndex * 100) + (displacement / catalogContainer.offsetWidth * 100);
+                    catalogContainer.style.transform = `translateX(${newPosition}%)`;
+                    
+                    // Continua a animação
+                    animationFrameId = requestAnimationFrame(smoothScroll);
+                } else {
+                    // Finaliza a animação e ajusta para o slide mais próximo
+                    velocity = 0;
+                    catalogContainer.style.transition = 'transform 0.3s ease';
+                    updateCatalog();
+                    cancelAnimationFrame(animationFrameId);
+                }
+            }
+            
             // Event listeners para botões
-            nextBtn.addEventListener('click', nextModel);
-            prevBtn.addEventListener('click', prevModel);
+            nextBtn.addEventListener('click', function() {
+                stopAutoSlide();
+                nextModel();
+                startAutoSlide();
+            });
+            
+            prevBtn.addEventListener('click', function() {
+                stopAutoSlide();
+                prevModel();
+                startAutoSlide();
+            });
             
             // Event listeners para indicadores
             indicators.forEach(indicator => {
                 indicator.addEventListener('click', function() {
+                    stopAutoSlide();
                     currentIndex = parseInt(this.getAttribute('data-index'));
                     updateCatalog();
-                    stopAutoSlide();
                     startAutoSlide();
                 });
             });
@@ -1708,22 +1834,22 @@
             // Navegação por teclado
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowRight') {
-                    nextModel();
                     stopAutoSlide();
+                    nextModel();
                     startAutoSlide();
                 } else if (e.key === 'ArrowLeft') {
-                    prevModel();
                     stopAutoSlide();
+                    prevModel();
                     startAutoSlide();
                 }
             });
             
-            // Funcionalidade de arrastar para o catálogo
+            // Funcionalidade de arrastar para o catálogo [citation:4][citation:8]
             catalogContainer.addEventListener('mousedown', dragStart);
             catalogContainer.addEventListener('touchstart', dragStart, { passive: true });
             
             catalogContainer.addEventListener('mousemove', drag);
-            catalogContainer.addEventListener('touchmove', drag, { passive: true });
+            catalogContainer.addEventListener('touchmove', drag, { passive: false });
             
             catalogContainer.addEventListener('mouseup', dragEnd);
             catalogContainer.addEventListener('mouseleave', dragEnd);
@@ -1733,18 +1859,35 @@
                 isDragging = true;
                 startX = e.clientX || e.touches[0].clientX;
                 currentX = startX;
+                lastX = currentIndex * catalogContainer.offsetWidth;
                 catalogContainer.classList.add('grabbing');
+                catalogContainer.style.transition = 'none';
                 stopAutoSlide();
+                
+                // Prevenir comportamento padrão em dispositivos touch [citation:2][citation:3]
+                if (e.type === 'touchstart') {
+                    e.preventDefault();
+                }
             }
             
             function drag(e) {
                 if (!isDragging) return;
                 
                 const x = e.clientX || e.touches[0].clientX;
-                const walk = (x - currentX) * 2;
+                const walk = (x - currentX);
                 
-                catalogContainer.style.transform = `translateX(calc(-${currentIndex * 100}% + ${walk}px))`;
+                // Calcular velocidade para inércia [citation:8]
+                velocity = (x - currentX) * 2;
                 currentX = x;
+                
+                // Calcular nova posição
+                const newPosition = (-currentIndex * 100) + (walk / catalogContainer.offsetWidth * 100);
+                catalogContainer.style.transform = `translateX(${newPosition}%)`;
+                
+                // Prevenir scroll da página durante o arraste [citation:2][citation:6]
+                if (e.type === 'touchmove') {
+                    e.preventDefault();
+                }
             }
             
             function dragEnd() {
@@ -1752,19 +1895,29 @@
                 
                 isDragging = false;
                 catalogContainer.classList.remove('grabbing');
+                catalogContainer.style.transition = 'transform 0.5s ease';
                 
-                const diff = startX - currentX;
+                // Determinar se deve mudar de slide com base na velocidade e posição
+                const threshold = 0.15; // 15% da largura do slide
+                const diff = (startX - currentX) / catalogContainer.offsetWidth;
                 
-                if (diff > 100) {
-                    // Arrastou para a esquerda (próximo)
-                    nextModel();
-                } else if (diff < -100) {
-                    // Arrastou para a direita (anterior)
-                    prevModel();
+                if (Math.abs(diff) > threshold || Math.abs(velocity) > 5) {
+                    if (diff > 0 || velocity > 5) {
+                        nextModel();
+                    } else if (diff < 0 || velocity < -5) {
+                        prevModel();
+                    }
+                } else {
+                    // Se não atingiu o threshold, voltar para o slide atual
+                    updateCatalog();
                 }
                 
-                // Restaurar a posição
-                updateCatalog();
+                // Iniciar animação de inércia se houver velocidade suficiente
+                if (Math.abs(velocity) > 2) {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = requestAnimationFrame(smoothScroll);
+                }
+                
                 startAutoSlide();
             }
             
@@ -1820,6 +1973,9 @@
                 let galleryStartX = 0;
                 let galleryCurrentX = 0;
                 let isGalleryDragging = false;
+                let galleryVelocity = 0;
+                let galleryLastX = 0;
+                let galleryAnimationFrameId;
                 
                 // Atualizar galeria
                 function updateGallery() {
@@ -1849,6 +2005,29 @@
                     updateGallery();
                 }
                 
+                // Animação de inércia suave para a galeria [citation:8]
+                function smoothGalleryScroll() {
+                    if (Math.abs(galleryVelocity) > 0.5) {
+                        galleryVelocity *= 0.85; // Reduz a velocidade gradualmente
+                        
+                        // Calcula o deslocamento com base na velocidade
+                        const displacement = galleryVelocity / 2;
+                        
+                        // Atualiza a posição do container
+                        const newPosition = (-galleryIndex * 100) + (displacement / galleryContainer.offsetWidth * 100);
+                        galleryContainer.style.transform = `translateX(${newPosition}%)`;
+                        
+                        // Continua a animação
+                        galleryAnimationFrameId = requestAnimationFrame(smoothGalleryScroll);
+                    } else {
+                        // Finaliza a animação e ajusta para o slide mais próximo
+                        galleryVelocity = 0;
+                        galleryContainer.style.transition = 'transform 0.3s ease';
+                        updateGallery();
+                        cancelAnimationFrame(galleryAnimationFrameId);
+                    }
+                }
+                
                 // Event listeners para botões
                 if (galleryNext) galleryNext.addEventListener('click', nextImage);
                 if (galleryPrev) galleryPrev.addEventListener('click', prevImage);
@@ -1861,12 +2040,12 @@
                     });
                 });
                 
-                // Funcionalidade de arrasto para a galeria
+                // Funcionalidade de arrasto para a galeria [citation:4]
                 galleryContainer.addEventListener('mousedown', galleryDragStart);
                 galleryContainer.addEventListener('touchstart', galleryDragStart, { passive: true });
                 
                 galleryContainer.addEventListener('mousemove', galleryDrag);
-                galleryContainer.addEventListener('touchmove', galleryDrag, { passive: true });
+                galleryContainer.addEventListener('touchmove', galleryDrag, { passive: false });
                 
                 galleryContainer.addEventListener('mouseup', galleryDragEnd);
                 galleryContainer.addEventListener('mouseleave', galleryDragEnd);
@@ -1876,17 +2055,34 @@
                     isGalleryDragging = true;
                     galleryStartX = e.clientX || e.touches[0].clientX;
                     galleryCurrentX = galleryStartX;
+                    galleryLastX = galleryIndex * galleryContainer.offsetWidth;
                     galleryContainer.classList.add('grabbing');
+                    galleryContainer.style.transition = 'none';
+                    
+                    // Prevenir comportamento padrão em dispositivos touch [citation:2][citation:3]
+                    if (e.type === 'touchstart') {
+                        e.preventDefault();
+                    }
                 }
                 
                 function galleryDrag(e) {
                     if (!isGalleryDragging) return;
                     
                     const x = e.clientX || e.touches[0].clientX;
-                    const walk = (x - galleryCurrentX) * 2;
+                    const walk = (x - galleryCurrentX);
                     
-                    galleryContainer.style.transform = `translateX(calc(-${galleryIndex * 100}% + ${walk}px))`;
+                    // Calcular velocidade para inércia [citation:8]
+                    galleryVelocity = (x - galleryCurrentX) * 2;
                     galleryCurrentX = x;
+                    
+                    // Calcular nova posição
+                    const newPosition = (-galleryIndex * 100) + (walk / galleryContainer.offsetWidth * 100);
+                    galleryContainer.style.transform = `translateX(${newPosition}%)`;
+                    
+                    // Prevenir scroll da página durante o arraste [citation:2][citation:6]
+                    if (e.type === 'touchmove') {
+                        e.preventDefault();
+                    }
                 }
                 
                 function galleryDragEnd() {
@@ -1894,19 +2090,28 @@
                     
                     isGalleryDragging = false;
                     galleryContainer.classList.remove('grabbing');
+                    galleryContainer.style.transition = 'transform 0.5s ease';
                     
-                    const diff = galleryStartX - galleryCurrentX;
+                    // Determinar se deve mudar de imagem com base na velocidade e posição
+                    const threshold = 0.15; // 15% da largura da imagem
+                    const diff = (galleryStartX - galleryCurrentX) / galleryContainer.offsetWidth;
                     
-                    if (diff > 100) {
-                        // Arrastou para a esquerda (próximo)
-                        nextImage();
-                    } else if (diff < -100) {
-                        // Arrastou para a direita (anterior)
-                        prevImage();
+                    if (Math.abs(diff) > threshold || Math.abs(galleryVelocity) > 5) {
+                        if (diff > 0 || galleryVelocity > 5) {
+                            nextImage();
+                        } else if (diff < 0 || galleryVelocity < -5) {
+                            prevImage();
+                        }
+                    } else {
+                        // Se não atingiu o threshold, voltar para a imagem atual
+                        updateGallery();
                     }
                     
-                    // Restaurar a posição
-                    updateGallery();
+                    // Iniciar animação de inércia se houver velocidade suficiente
+                    if (Math.abs(galleryVelocity) > 2) {
+                        cancelAnimationFrame(galleryAnimationFrameId);
+                        galleryAnimationFrameId = requestAnimationFrame(smoothGalleryScroll);
+                    }
                 }
             }
             
