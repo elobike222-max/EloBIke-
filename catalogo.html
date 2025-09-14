@@ -79,6 +79,12 @@
         .catalog-container {
             display: flex;
             transition: transform 0.5s ease;
+            cursor: grab;
+        }
+
+        .catalog-container.grabbing {
+            cursor: grabbing;
+            transition: none;
         }
 
         .scooter-model {
@@ -87,6 +93,7 @@
             flex-direction: column;
             align-items: center;
             padding: 15px;
+            user-select: none;
         }
 
         .model-image {
@@ -307,7 +314,7 @@
             color: var(--primary);
         }
 
-        /* Página individual do produto - MAIS COMPACTA */
+        /* Página individual do produto */
         .product-page {
             display: none;
             max-width: 700px;
@@ -339,6 +346,12 @@
             display: flex;
             transition: transform 0.5s ease;
             height: 100%;
+            cursor: grab;
+        }
+
+        .gallery-container.grabbing {
+            cursor: grabbing;
+            transition: none;
         }
 
         .gallery-image {
@@ -486,6 +499,43 @@
             transform: translateY(-2px);
         }
 
+        .product-benefits {
+            background: rgba(13, 27, 61, 0.7);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .benefits-title {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .benefit-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .benefit-text {
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 8px;
@@ -553,6 +603,10 @@
                 font-size: 1rem;
                 min-width: 200px;
             }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -564,36 +618,36 @@
 
         <div class="catalog-header">
             <h1>Catálogo EloBike</h1>
-            <p>Descubra nossa linha completa de scooters elétricas</p>
+            <p>Descubra nossa linha completa de scooters elétricas - Mobilidade sustentável com performance e estilo</p>
         </div>
 
         <!-- Catálogo de Scooters -->
         <div class="scooter-catalog">
             <div class="catalog-container">
-                <!-- Modelo R11 -->
+                <!-- Modelo R13 -->
                 <div class="scooter-model">
                     <div class="model-image">
-                        <img src="R11-01.jpg" alt="Modelo R11">
+                        <img src="R13-01.png" alt="Modelo R13">
                     </div>
                     <div class="view-details-container">
-                        <button class="view-details-btn" data-product="r11">
+                        <button class="view-details-btn" data-product="r13">
                             <i class="fas fa-eye"></i> Ver Detalhes
                         </button>
                     </div>
                     <div class="model-info">
-                        <h2 class="model-name">Modelo R11</h2>
-                        <div class="model-price">A partir de R$ 12.000,00</div>
-                        <div class="price-subtitle">Alta performance e tecnologia</div>
+                        <h2 class="model-name">Modelo R13</h2>
+                        <div class="model-price">R$ 11.000,00</div>
+                        <div class="price-subtitle">Performance e tecnologia avançada</div>
                         
                         <div class="price-details">
                             <div class="price-card">
                                 <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 11.160,00</div>
+                                <div class="price-value">R$ 11.000,00</div>
                                 <div class="price-description">PIX/Transferência</div>
                             </div>
                             <div class="price-card">
                                 <div class="price-title">Parcelado</div>
-                                <div class="price-value">8x R$ 1.500,00</div>
+                                <div class="price-value">18x R$ 696,42</div>
                                 <div class="price-description">Cartão de Crédito</div>
                             </div>
                         </div>
@@ -604,11 +658,11 @@
                                 <div class="spec-label">Autonomia</div>
                             </div>
                             <div class="spec-card">
-                                <div class="spec-value">70 KM/H</div>
+                                <div class="spec-value">45 KM/H</div>
                                 <div class="spec-label">Velocidade</div>
                             </div>
                             <div class="spec-card">
-                                <div class="spec-value">3000W</div>
+                                <div class="spec-value">1000W</div>
                                 <div class="spec-label">Motor</div>
                             </div>
                         </div>
@@ -627,33 +681,33 @@
                     </div>
                     <div class="model-info">
                         <h2 class="model-name">Modelo A3</h2>
-                        <div class="model-price">A partir de R$ 10.500,00</div>
+                        <div class="model-price">R$ 10.800,00</div>
                         <div class="price-subtitle">Design moderno e eficiente</div>
                         
                         <div class="price-details">
                             <div class="price-card">
                                 <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 9.765,00</div>
+                                <div class="price-value">R$ 10.800,00</div>
                                 <div class="price-description">PIX/Transferência</div>
                             </div>
                             <div class="price-card">
                                 <div class="price-title">Parcelado</div>
-                                <div class="price-value">8x R$ 1.312,50</div>
+                                <div class="price-value">18x R$ 683,76</div>
                                 <div class="price-description">Cartão de Crédito</div>
                             </div>
                         </div>
                         
                         <div class="model-specs">
                             <div class="spec-card">
-                                <div class="spec-value">40 KM</div>
+                                <div class="spec-value">45 KM</div>
                                 <div class="spec-label">Autonomia</div>
                             </div>
                             <div class="spec-card">
-                                <div class="spec-value">45 KM/H</div>
+                                <div class="spec-value">32 KM/H</div>
                                 <div class="spec-label">Velocidade</div>
                             </div>
                             <div class="spec-card">
-                                <div class="spec-value">1200W</div>
+                                <div class="spec-value">1000W</div>
                                 <div class="spec-label">Motor</div>
                             </div>
                         </div>
@@ -672,18 +726,18 @@
                     </div>
                     <div class="model-info">
                         <h2 class="model-name">Modelo S2</h2>
-                        <div class="model-price">A partir de R$ 11.490,00</div>
-                        <div class="price-subtitle">Design moderno and econômico</div>
+                        <div class="model-price">R$ 11.490,00</div>
+                        <div class="price-subtitle">Elegância e desempenho</div>
                         
                         <div class="price-details">
                             <div class="price-card">
                                 <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 10.685,70</div>
+                                <div class="price-value">R$ 11.490,00</div>
                                 <div class="price-description">PIX/Transferência</div>
                             </div>
                             <div class="price-card">
                                 <div class="price-title">Parcelado</div>
-                                <div class="price-value">8x R$ 1.436,25</div>
+                                <div class="price-value">18x R$ 759,10</div>
                                 <div class="price-description">Cartão de Crédito</div>
                             </div>
                         </div>
@@ -705,6 +759,51 @@
                     </div>
                 </div>
                 
+                <!-- Modelo R11 -->
+                <div class="scooter-model">
+                    <div class="model-image">
+                        <img src="R11-01.jpg" alt="Modelo R11">
+                    </div>
+                    <div class="view-details-container">
+                        <button class="view-details-btn" data-product="r11">
+                            <i class="fas fa-eye"></i> Ver Detalhes
+                        </button>
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">Modelo R11</h2>
+                        <div class="model-price">R$ 10.800,00</div>
+                        <div class="price-subtitle">Alta performance</div>
+                        
+                        <div class="price-details">
+                            <div class="price-card">
+                                <div class="price-title">À Vista</div>
+                                <div class="price-value">R$ 10.800,00</div>
+                                <div class="price-description">PIX/Transferência</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">18x R$ 759,73</div>
+                                <div class="price-description">Cartão de Crédito</div>
+                            </div>
+                        </div>
+                        
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">45 KM</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">70 KM/H</div>
+                                <div class="spec-label">Velocidade</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">3000W</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- Modelo V8 -->
                 <div class="scooter-model">
                     <div class="model-image">
@@ -717,18 +816,18 @@
                     </div>
                     <div class="model-info">
                         <h2 class="model-name">Modelo V8</h2>
-                        <div class="model-price">A partir de R$ 8.490,00</div>
+                        <div class="model-price">R$ 8.490,00</div>
                         <div class="price-subtitle">Compacto e eficiente</div>
                         
                         <div class="price-details">
                             <div class="price-card">
                                 <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 7.895,70</div>
+                                <div class="price-value">R$ 8.490,00</div>
                                 <div class="price-description">PIX/Transferência</div>
                             </div>
                             <div class="price-card">
                                 <div class="price-title">Parcelado</div>
-                                <div class="price-value">8x R$ 1.061,25</div>
+                                <div class="price-value">18x R$ 537,51</div>
                                 <div class="price-description">Cartão de Crédito</div>
                             </div>
                         </div>
@@ -762,78 +861,33 @@
                     </div>
                     <div class="model-info">
                         <h2 class="model-name">Modelo Chopper</h2>
-                        <div class="model-price">A partir de R$ 13.500,00</div>
-                        <div class="price-subtitle">Estilo clássico e potente</div>
+                        <div class="model-price">R$ 14.490,00</div>
+                        <div class="price-subtitle">Estilo único e potência máxima</div>
                         
                         <div class="price-details">
                             <div class="price-card">
                                 <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 12.555,00</div>
+                                <div class="price-value">R$ 14.490,00</div>
                                 <div class="price-description">PIX/Transferência</div>
                             </div>
                             <div class="price-card">
                                 <div class="price-title">Parcelado</div>
-                                <div class="price-value">8x R$ 1.687,50</div>
+                                <div class="price-value">18x R$ 949,90</div>
                                 <div class="price-description">Cartão de Crédito</div>
                             </div>
                         </div>
                         
                         <div class="model-specs">
                             <div class="spec-card">
-                                <div class="spec-value">50 KM</div>
+                                <div class="spec-value">45 KM</div>
                                 <div class="spec-label">Autonomia</div>
                             </div>
                             <div class="spec-card">
-                                <div class="spec-value">60 KM/H</div>
+                                <div class="spec-value">80 KM/H</div>
                                 <div class="spec-label">Velocidade</div>
                             </div>
                             <div class="spec-card">
-                                <div class="spec-value">2000W</div>
-                                <div class="spec-label">Motor</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Modelo R13 -->
-                <div class="scooter-model">
-                    <div class="model-image">
-                        <img src="R13-01.png" alt="Modelo R13">
-                    </div>
-                    <div class="view-details-container">
-                        <button class="view-details-btn" data-product="r13">
-                            <i class="fas fa-eye"></i> Ver Detalhes
-                        </button>
-                    </div>
-                    <div class="model-info">
-                        <h2 class="model-name">Modelo R13</h2>
-                        <div class="model-price">A partir de R$ 14.200,00</div>
-                        <div class="price-subtitle">Ultra performance e tecnologia</div>
-                        
-                        <div class="price-details">
-                            <div class="price-card">
-                                <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 13.206,00</div>
-                                <div class="price-description">PIX/Transferência</div>
-                            </div>
-                            <div class="price-card">
-                                <div class="price-title">Parcelado</div>
-                                <div class="price-value">8x R$ 1.775,00</div>
-                                <div class="price-description">Cartão de Crédito</div>
-                            </div>
-                        </div>
-                        
-                        <div class="model-specs">
-                            <div class="spec-card">
-                                <div class="spec-value">55 KM</div>
-                                <div class="spec-label">Autonomia</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">75 KM/H</div>
-                                <div class="spec-label">Velocidade</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">3500W</div>
+                                <div class="spec-value">3000W</div>
                                 <div class="spec-label">Motor</div>
                             </div>
                         </div>
@@ -863,10 +917,10 @@
         </div>
 
         <!-- Páginas individuais dos produtos -->
-        <!-- Modelo R11 -->
-        <div id="product-r11" class="product-page">
+        <!-- Modelo R13 -->
+        <div id="product-r13" class="product-page">
             <div class="product-header">
-                <h2 class="product-title">Modelo R11</h2>
+                <h2 class="product-title">Modelo R13</h2>
                 <button class="back-btn back-to-catalog">
                     <i class="fas fa-arrow-left"></i> Voltar
                 </button>
@@ -875,19 +929,13 @@
             <div class="product-gallery">
                 <div class="gallery-container">
                     <div class="gallery-image">
-                        <img src="R11-01.jpg" alt="Modelo R11">
+                        <img src="R13-01.png" alt="Modelo R13">
                     </div>
                     <div class="gallery-image">
-                        <img src="R11-02.png" alt="Modelo R11 - Vista 2">
+                        <img src="R13-02.png" alt="Modelo R13 - Vista 2">
                     </div>
                     <div class="gallery-image">
-                        <img src="R11-03.png" alt="Modelo R11 - Vista 3">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="R11-04.png" alt="Modelo R11 - Vista 4">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="R11-05.png" alt="Modelo R11 - Vista 5">
+                        <img src="R13-03.png" alt="Modelo R13 - Vista 3">
                     </div>
                 </div>
                 
@@ -904,14 +952,12 @@
                     <div class="gallery-indicator active" data-index="0"></div>
                     <div class="gallery-indicator" data-index="1"></div>
                     <div class="gallery-indicator" data-index="2"></div>
-                    <div class="gallery-indicator" data-index="3"></div>
-                    <div class="gallery-indicator" data-index="4"></div>
                 </div>
             </div>
             
             <!-- Botão de compra abaixo das fotos -->
             <div class="product-actions-detailed">
-                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="whatsapp-btn">
+                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R13 🛵" class="whatsapp-btn">
                     <i class="fab fa-whatsapp"></i> Comprar agora
                 </a>
             </div>
@@ -920,12 +966,12 @@
                 <div class="price-details">
                     <div class="price-card">
                         <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 11.160,00</div>
+                        <div class="price-value">R$ 11.000,00</div>
                         <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
                     </div>
                     <div class="price-card">
                         <div class="price-title">Parcelado</div>
-                        <div class="price-value">8x R$ 1.500,00</div>
+                        <div class="price-value">18x R$ 696,42</div>
                         <div class="price-description">NO CARTÃO</div>
                     </div>
                 </div>
@@ -936,38 +982,61 @@
                         <div class="spec-label">Autonomia</div>
                     </div>
                     <div class="spec-card">
-                        <div class="spec-value">70 KM/H</div>
+                        <div class="spec-value">45 KM/H</div>
                         <div class="spec-label">Velocidade Máxima</div>
                     </div>
                     <div class="spec-card">
-                        <div class="spec-value">3000W</div>
+                        <div class="spec-value">1000W</div>
                         <div class="spec-label">Motor</div>
                     </div>
                 </div>
                 
                 <div class="product-description">
-                    <p>O Modelo R11 é a scooter elétrica de alta performance. Com motor de 3000W e velocidade de até 70km/h, é ideal para quem busca potência e desempenho superior.</p>
+                    <p>O Modelo R13 combina design moderno com alta tecnologia. Com motor de 1000W e velocidade de até 45km/h, é ideal para quem busca desempenho e estilo no dia a dia.</p>
+                </div>
+                
+                <div class="product-benefits">
+                    <h3 class="benefits-title">Vantagens da Scooter Elétrica</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="benefit-text">Economia de até 90% com combustível</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
+                            <div class="benefit-text">Zero emissões de poluentes</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="benefit-text">Isenção de licenciamento e IPVA</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                            <div class="benefit-text">Não precisa de tempo de aquecimento</div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="product-features">
                     <h3 class="features-title">Características</h3>
                     <ul class="features-list">
-                        <li>Motor brushless de 3000W de potência</li>
-                        <li>Bateria de lítio de 60V/20Ah</li>
+                        <li>Motor brushless de 1000W de potência</li>
+                        <li>Bateria de lítio de 48V/20Ah</li>
                         <li>Autonomia de até 45km por carga</li>
-                        <li>Velocidade máxima de 70km/h</li>
+                        <li>Velocidade máxima de 45km/h</li>
                         <li>Pneus tubeless de 10 polegadas</li>
                         <li>Sistema de iluminação LED completa</li>
                         <li>Display LCD digital com diversas funções</li>
-                        <li>Freio a disco hidráulico dianteiro e traseiro</li>
+                        <li>Freio a disco dianteiro e traseiro</li>
                         <li>Suspensão ajustável</li>
-                        <li>Tempo de carga: 5-7 horas</li>
+                        <li>Tempo de carga: 4-6 horas</li>
                         <li>Capacidade de carga: 150kg</li>
                     </ul>
                 </div>
             </div>
         </div>
         
+        <!-- Adicione páginas semelhantes para os outros modelos seguindo o mesmo padrão -->
         <!-- Modelo A3 -->
         <div id="product-a3" class="product-page">
             <div class="product-header">
@@ -1017,47 +1086,69 @@
                 <div class="price-details">
                     <div class="price-card">
                         <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 9.765,00</div>
+                        <div class="price-value">R$ 10.800,00</div>
                         <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
                     </div>
                     <div class="price-card">
                         <div class="price-title">Parcelado</div>
-                        <div class="price-value">8x R$ 1.312,50</div>
+                        <div class="price-value">18x R$ 683,76</div>
                         <div class="price-description">NO CARTÃO</div>
                     </div>
                 </div>
                 
                 <div class="model-specs">
                     <div class="spec-card">
-                        <div class="spec-value">40 KM</div>
+                        <div class="spec-value">45 KM</div>
                         <div class="spec-label">Autonomia</div>
                     </div>
                     <div class="spec-card">
-                        <div class="spec-value">45 KM/H</div>
+                        <div class="spec-value">32 KM/H</div>
                         <div class="spec-label">Velocidade Máxima</div>
                     </div>
                     <div class="spec-card">
-                        <div class="spec-value">1200W</div>
+                        <div class="spec-value">1000W</div>
                         <div class="spec-label">Motor</div>
                     </div>
                 </div>
                 
                 <div class="product-description">
-                    <p>O Modelo A3 combina design moderno com eficiência energética. Perfeito para deslocamentos urbanos, oferece conforto e agilidade no trânsito.</p>
+                    <p>O Modelo A3 é perfeito para o dia a dia urbano. Com design moderno e desempenho eficiente, oferece a combinação ideal entre estilo e praticidade para seus deslocamentos.</p>
+                </div>
+                
+                <div class="product-benefits">
+                    <h3 class="benefits-title">Vantagens da Scooter Elétrica</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="benefit-text">Economia de até 90% com combustível</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
+                            <div class="benefit-text">Zero emissões de poluentes</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="benefit-text">Isenção de licenciamento e IPVA</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                            <div class="benefit-text">Não precisa de tempo de aquecimento</div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="product-features">
                     <h3 class="features-title">Características</h3>
                     <ul class="features-list">
-                        <li>Motor brushless de 1200W de potência</li>
+                        <li>Motor brushless de 1000W de potência</li>
                         <li>Bateria de lítio de 48V/20Ah</li>
-                        <li>Autonomia de até 40km por carga</li>
-                        <li>Velocidade máxima de 45km/h</li>
+                        <li>Autonomia de até 45km por carga</li>
+                        <li>Velocidade máxima de 32km/h</li>
                         <li>Pneus de 10 polegadas</li>
-                        <li>Iluminação LED frontal e traseira</li>
-                        <li>Display digital com indicador de bateria</li>
-                        <li>Freio a disco dianteiro e traseiro</li>
-                        <li>Suspensão dianteira</li>
+                        <li>Farol LED e luzes de freio</li>
+                        <li>Painel digital com velocímetro</li>
+                        <li>Freio a disco dianteiro</li>
+                        <li>Suspensão traseira</li>
                         <li>Tempo de carga: 4-6 horas</li>
                         <li>Capacidade de carga: 120kg</li>
                     </ul>
@@ -1114,12 +1205,12 @@
                 <div class="price-details">
                     <div class="price-card">
                         <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 10.685,70</div>
+                        <div class="price-value">R$ 11.490,00</div>
                         <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
                     </div>
                     <div class="price-card">
                         <div class="price-title">Parcelado</div>
-                        <div class="price-value">8x R$ 1.436,25</div>
+                        <div class="price-value">18x R$ 759,10</div>
                         <div class="price-description">NO CARTÃO</div>
                     </div>
                 </div>
@@ -1140,7 +1231,29 @@
                 </div>
                 
                 <div class="product-description">
-                    <p>O Modelo S2 é a escolha perfeita para quem busca economia e praticidade. Com design moderno e desempenho eficiente, é ideal para o dia a dia.</p>
+                    <p>O Modelo S2 combina elegância e desempenho em um design sofisticado. Com velocidade de até 40km/h, é a escolha perfeita para quem busca estilo e eficiência no trânsito urbano.</p>
+                </div>
+                
+                <div class="product-benefits">
+                    <h3 class="benefits-title">Vantagens da Scooter Elétrica</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="benefit-text">Economia de até 90% com combustível</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
+                            <div class="benefit-text">Zero emissões de poluentes</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="benefit-text">Isenção de licenciamento e IPVA</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                            <div class="benefit-text">Não precisa de tempo de aquecimento</div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="product-features">
@@ -1151,12 +1264,131 @@
                         <li>Autonomia de até 45km por carga</li>
                         <li>Velocidade máxima de 40km/h</li>
                         <li>Pneus de 10 polegadas</li>
-                        <li>Farol LED e luzes de freio</li>
-                        <li>Painel digital com velocímetro</li>
-                        <li>Freio a disco dianteiro</li>
-                        <li>Suspensão traseira</li>
-                        <li>Tempo de carga: 5-6 horas</li>
+                        <li>Sistema de iluminação LED</li>
+                        <li>Painel digital com indicador de velocidade</li>
+                        <li>Freio a disco dianteiro e traseiro</li>
+                        <li>Suspensão dianteira e traseira</li>
+                        <li>Tempo de carga: 4-6 horas</li>
                         <li>Capacidade de carga: 120kg</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modelo R11 -->
+        <div id="product-r11" class="product-page">
+            <div class="product-header">
+                <h2 class="product-title">Modelo R11</h2>
+                <button class="back-btn back-to-catalog">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+            </div>
+            
+            <div class="product-gallery">
+                <div class="gallery-container">
+                    <div class="gallery-image">
+                        <img src="R11-01.jpg" alt="Modelo R11">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="R11-02.png" alt="Modelo R11 - Vista 2">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="R11-03.png" alt="Modelo R11 - Vista 3">
+                    </div>
+                </div>
+                
+                <div class="gallery-controls">
+                    <div class="gallery-arrow gallery-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="gallery-arrow gallery-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-indicators">
+                    <div class="gallery-indicator active" data-index="0"></div>
+                    <div class="gallery-indicator" data-index="1"></div>
+                    <div class="gallery-indicator" data-index="2"></div>
+                </div>
+            </div>
+            
+            <!-- Botão de compra abaixo das fotos -->
+            <div class="product-actions-detailed">
+                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Comprar agora
+                </a>
+            </div>
+            
+            <div class="product-details">
+                <div class="price-details">
+                    <div class="price-card">
+                        <div class="price-title">Preço À Vista</div>
+                        <div class="price-value">R$ 10.800,00</div>
+                        <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
+                    </div>
+                    <div class="price-card">
+                        <div class="price-title">Parcelado</div>
+                        <div class="price-value">18x R$ 759,73</div>
+                        <div class="price-description">NO CARTÃO</div>
+                    </div>
+                </div>
+                
+                <div class="model-specs">
+                    <div class="spec-card">
+                        <div class="spec-value">45 KM</div>
+                        <div class="spec-label">Autonomia</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-value">70 KM/H</div>
+                        <div class="spec-label">Velocidade Máxima</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-value">3000W</div>
+                        <div class="spec-label">Motor</div>
+                    </div>
+                </div>
+                
+                <div class="product-description">
+                    <p>O Modelo R11 é a scooter elétrica de alta performance. Com motor de 3000W e velocidade de até 70km/h, é ideal para quem busca potência e desempenho superior em seus deslocamentos.</p>
+                </div>
+                
+                <div class="product-benefits">
+                    <h3 class="benefits-title">Vantagens da Scooter Elétrica</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="benefit-text">Economia de até 90% com combustível</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
+                            <div class="benefit-text">Zero emissões de poluentes</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="benefit-text">Isenção de licenciamento e IPVA</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                            <div class="benefit-text">Não precisa de tempo de aquecimento</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-features">
+                    <h3 class="features-title">Características</h3>
+                    <ul class="features-list">
+                        <li>Motor brushless de 3000W de potência</li>
+                        <li>Bateria de lítio de 60V/20Ah</li>
+                        <li>Autonomia de até 45km por carga</li>
+                        <li>Velocidade máxima de 70km/h</li>
+                        <li>Pneus tubeless de 10 polegadas</li>
+                        <li>Sistema de iluminação LED completa</li>
+                        <li>Display LCD digital com diversas funções</li>
+                        <li>Freio a disco hidráulico dianteiro e traseiro</li>
+                        <li>Suspensão ajustável</li>
+                        <li>Tempo de carga: 5-7 horas</li>
+                        <li>Capacidade de carga: 150kg</li>
                     </ul>
                 </div>
             </div>
@@ -1211,12 +1443,12 @@
                 <div class="price-details">
                     <div class="price-card">
                         <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 7.895,70</div>
+                        <div class="price-value">R$ 8.490,00</div>
                         <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
                     </div>
                     <div class="price-card">
                         <div class="price-title">Parcelado</div>
-                        <div class="price-value">8x R$ 1.061,25</div>
+                        <div class="price-value">18x R$ 537,51</div>
                         <div class="price-description">NO CARTÃO</div>
                     </div>
                 </div>
@@ -1237,7 +1469,29 @@
                 </div>
                 
                 <div class="product-description">
-                    <p>O Modelo V8 é compacto, ágil e perfeito para navegar pela cidade. Com design ergonômico e desempenho confiável, é a escolha ideal para o dia a dia.</p>
+                    <p>O Modelo V8 é compacto, ágil e perfeito para navegar pela cidade. Com design ergonômico e desempenho confiável, é a escolha ideal para o dia a dia com o melhor custo-benefício.</p>
+                </div>
+                
+                <div class="product-benefits">
+                    <h3 class="benefits-title">Vantagens da Scooter Elétrica</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="benefit-text">Economia de até 90% com combustível</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
+                            <div class="benefit-text">Zero emissões de poluentes</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="benefit-text">Isenção de licenciamento e IPVA</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                            <div class="benefit-text">Não precisa de tempo de aquecimento</div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="product-features">
@@ -1308,42 +1562,64 @@
                 <div class="price-details">
                     <div class="price-card">
                         <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 12.555,00</div>
+                        <div class="price-value">R$ 14.490,00</div>
                         <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
                     </div>
                     <div class="price-card">
                         <div class="price-title">Parcelado</div>
-                        <div class="price-value">8x R$ 1.687,50</div>
+                        <div class="price-value">18x R$ 949,90</div>
                         <div class="price-description">NO CARTÃO</div>
                     </div>
                 </div>
                 
                 <div class="model-specs">
                     <div class="spec-card">
-                        <div class="spec-value">50 KM</div>
+                        <div class="spec-value">45 KM</div>
                         <div class="spec-label">Autonomia</div>
                     </div>
                     <div class="spec-card">
-                        <div class="spec-value">60 KM/H</div>
+                        <div class="spec-value">80 KM/H</div>
                         <div class="spec-label">Velocidade Máxima</div>
                     </div>
                     <div class="spec-card">
-                        <div class="spec-value">2000W</div>
+                        <div class="spec-value">3000W</div>
                         <div class="spec-label">Motor</div>
                     </div>
                 </div>
                 
                 <div class="product-description">
-                    <p>O Modelo Chopper combina o estilo clássico das motos custom com a tecnologia moderna das scooters elétricas. Potente e com design marcante, é perfeito para quem busca estilo e performance.</p>
+                    <p>O Modelo Chopper combina o estilo clássico das motos custom com a tecnologia moderna das scooters elétricas. Com motor de 3000W e velocidade de até 80km/h, é a escolha perfeita para quem busca potência máxima e design marcante.</p>
+                </div>
+                
+                <div class="product-benefits">
+                    <h3 class="benefits-title">Vantagens da Scooter Elétrica</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="benefit-text">Economia de até 90% com combustível</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
+                            <div class="benefit-text">Zero emissões de poluentes</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="benefit-text">Isenção de licenciamento e IPVA</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                            <div class="benefit-text">Não precisa de tempo de aquecimento</div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="product-features">
                     <h3 class="features-title">Características</h3>
                     <ul class="features-list">
-                        <li>Motor brushless de 2000W de potência</li>
+                        <li>Motor brushless de 3000W de potência</li>
                         <li>Bateria de lítio de 60V/20Ah</li>
-                        <li>Autonomia de até 50km por carga</li>
-                        <li>Velocidade máxima de 60km/h</li>
+                        <li>Autonomia de até 45km por carga</li>
+                        <li>Velocidade máxima de 80km/h</li>
                         <li>Pneus de 12 polegadas</li>
                         <li>Farol redondo estilo retro com LED</li>
                         <li>Painel digital analógico</li>
@@ -1352,105 +1628,6 @@
                         <li>Banco alongado estilo chopper</li>
                         <li>Tempo de carga: 6-8 horas</li>
                         <li>Capacidade de carga: 150kg</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Modelo R13 -->
-        <div id="product-r13" class="product-page">
-            <div class="product-header">
-                <h2 class="product-title">Modelo R13</h2>
-                <button class="back-btn back-to-catalog">
-                    <i class="fas fa-arrow-left"></i> Voltar
-                </button>
-            </div>
-            
-            <div class="product-gallery">
-                <div class="gallery-container">
-                    <div class="gallery-image">
-                        <img src="R13-01.png" alt="Modelo R13">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="R13-02.png" alt="Modelo R13 - Vista 2">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="R13-03.png" alt="Modelo R13 - Vista 3">
-                    </div>
-                </div>
-                
-                <div class="gallery-controls">
-                    <div class="gallery-arrow gallery-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="gallery-arrow gallery-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-                
-                <div class="gallery-indicators">
-                    <div class="gallery-indicator active" data-index="0"></div>
-                    <div class="gallery-indicator" data-index="1"></div>
-                    <div class="gallery-indicator" data-index="2"></div>
-                </div>
-            </div>
-            
-            <!-- Botão de compra abaixo das fotos -->
-            <div class="product-actions-detailed">
-                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R13 🛵" class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Comprar agora
-                </a>
-            </div>
-            
-            <div class="product-details">
-                <div class="price-details">
-                    <div class="price-card">
-                        <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 13.206,00</div>
-                        <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
-                    </div>
-                    <div class="price-card">
-                        <div class="price-title">Parcelado</div>
-                        <div class="price-value">8x R$ 1.775,00</div>
-                        <div class="price-description">NO CARTÃO</div>
-                    </div>
-                </div>
-                
-                <div class="model-specs">
-                    <div class="spec-card">
-                        <div class="spec-value">55 KM</div>
-                        <div class="spec-label">Autonomia</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">75 KM/H</div>
-                        <div class="spec-label">Velocidade Máxima</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">3500W</div>
-                        <div class="spec-label">Motor</div>
-                    </div>
-                </div>
-                
-                <div class="product-description">
-                    <p>O Modelo R13 é a scooter elétrica de ultra performance. Com motor de 3500W e velocidade de até 75km/h, oferece a mais avançada tecnologia em mobilidade elétrica para quem não abre mão da potência e do desempenho excepcional.</p>
-                </div>
-                
-                <div class="product-features">
-                    <h3 class="features-title">Características</h3>
-                    <ul class="features-list">
-                        <li>Motor brushless de 3500W de potência</li>
-                        <li>Bateria de lítio de 72V/20Ah</li>
-                        <li>Autonomia de até 55km por carga</li>
-                        <li>Velocidade máxima de 75km/h</li>
-                        <li>Pneus tubeless de 10 polegadas</li>
-                        <li>Sistema de iluminação LED completa</li>
-                        <li>Display LCD digital colorido</li>
-                        <li>Freio a disco hidráulico duplo</li>
-                        <li>Suspensão ajustável dianteira e traseira</li>
-                        <li>Modos de condução: Eco, Normal e Sport</li>
-                        <li>Funcionalidade de cruise control</li>
-                        <li>Tempo de carga: 6-8 horas</li>
-                        <li>Capacidade de carga: 180kg</li>
                     </ul>
                 </div>
             </div>
@@ -1473,6 +1650,10 @@
             
             let currentIndex = 0;
             const modelCount = models.length;
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+            let autoSlide;
             
             // Atualizar catálogo
             function updateCatalog() {
@@ -1500,6 +1681,16 @@
                 updateCatalog();
             }
             
+            // Iniciar slideshow automático
+            function startAutoSlide() {
+                autoSlide = setInterval(nextModel, 5000);
+            }
+            
+            // Parar slideshow automático
+            function stopAutoSlide() {
+                clearInterval(autoSlide);
+            }
+            
             // Event listeners para botões
             nextBtn.addEventListener('click', nextModel);
             prevBtn.addEventListener('click', prevModel);
@@ -1509,6 +1700,8 @@
                 indicator.addEventListener('click', function() {
                     currentIndex = parseInt(this.getAttribute('data-index'));
                     updateCatalog();
+                    stopAutoSlide();
+                    startAutoSlide();
                 });
             });
             
@@ -1516,24 +1709,70 @@
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowRight') {
                     nextModel();
+                    stopAutoSlide();
+                    startAutoSlide();
                 } else if (e.key === 'ArrowLeft') {
                     prevModel();
+                    stopAutoSlide();
+                    startAutoSlide();
                 }
             });
             
-            // Iniciar slideshow automático
-            let autoSlide = setInterval(nextModel, 5000);
+            // Funcionalidade de arrastar para o catálogo
+            catalogContainer.addEventListener('mousedown', dragStart);
+            catalogContainer.addEventListener('touchstart', dragStart, { passive: true });
+            
+            catalogContainer.addEventListener('mousemove', drag);
+            catalogContainer.addEventListener('touchmove', drag, { passive: true });
+            
+            catalogContainer.addEventListener('mouseup', dragEnd);
+            catalogContainer.addEventListener('mouseleave', dragEnd);
+            catalogContainer.addEventListener('touchend', dragEnd);
+            
+            function dragStart(e) {
+                isDragging = true;
+                startX = e.clientX || e.touches[0].clientX;
+                currentX = startX;
+                catalogContainer.classList.add('grabbing');
+                stopAutoSlide();
+            }
+            
+            function drag(e) {
+                if (!isDragging) return;
+                
+                const x = e.clientX || e.touches[0].clientX;
+                const walk = (x - currentX) * 2;
+                
+                catalogContainer.style.transform = `translateX(calc(-${currentIndex * 100}% + ${walk}px))`;
+                currentX = x;
+            }
+            
+            function dragEnd() {
+                if (!isDragging) return;
+                
+                isDragging = false;
+                catalogContainer.classList.remove('grabbing');
+                
+                const diff = startX - currentX;
+                
+                if (diff > 100) {
+                    // Arrastou para a esquerda (próximo)
+                    nextModel();
+                } else if (diff < -100) {
+                    // Arrastou para a direita (anterior)
+                    prevModel();
+                }
+                
+                // Restaurar a posição
+                updateCatalog();
+                startAutoSlide();
+            }
             
             // Pausar slideshow quando o mouse estiver sobre o catálogo
-            catalogElement.addEventListener('mouseenter', function() {
-                clearInterval(autoSlide);
-            });
+            catalogElement.addEventListener('mouseenter', stopAutoSlide);
+            catalogElement.addEventListener('mouseleave', startAutoSlide);
             
-            catalogElement.addEventListener('mouseleave', function() {
-                autoSlide = setInterval(nextModel, 5000);
-            });
-            
-            // Mostrar página do produto - CORRIGIDO: funciona com um único clique
+            // Mostrar página do produto
             viewDetailsButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1578,6 +1817,9 @@
                 
                 let galleryIndex = 0;
                 const galleryCount = galleryImages.length;
+                let galleryStartX = 0;
+                let galleryCurrentX = 0;
+                let isGalleryDragging = false;
                 
                 // Atualizar galeria
                 function updateGallery() {
@@ -1620,50 +1862,56 @@
                 });
                 
                 // Funcionalidade de arrasto para a galeria
-                let isDragging = false;
-                let startX = 0;
+                galleryContainer.addEventListener('mousedown', galleryDragStart);
+                galleryContainer.addEventListener('touchstart', galleryDragStart, { passive: true });
                 
-                const startDrag = (e) => {
-                    isDragging = true;
-                    startX = e.clientX || e.touches[0].clientX;
-                    if (galleryContainer) galleryContainer.style.transition = 'none';
-                };
+                galleryContainer.addEventListener('mousemove', galleryDrag);
+                galleryContainer.addEventListener('touchmove', galleryDrag, { passive: true });
                 
-                const drag = (e) => {
-                    if (!isDragging) return;
+                galleryContainer.addEventListener('mouseup', galleryDragEnd);
+                galleryContainer.addEventListener('mouseleave', galleryDragEnd);
+                galleryContainer.addEventListener('touchend', galleryDragEnd);
+                
+                function galleryDragStart(e) {
+                    isGalleryDragging = true;
+                    galleryStartX = e.clientX || e.touches[0].clientX;
+                    galleryCurrentX = galleryStartX;
+                    galleryContainer.classList.add('grabbing');
+                }
+                
+                function galleryDrag(e) {
+                    if (!isGalleryDragging) return;
                     
-                    e.preventDefault();
                     const x = e.clientX || e.touches[0].clientX;
-                    const walk = (x - startX) * 2;
+                    const walk = (x - galleryCurrentX) * 2;
                     
-                    if (walk > 50) {
-                        prevImage();
-                        isDragging = false;
-                        if (galleryContainer) galleryContainer.style.transition = 'transform 0.5s ease';
-                    } else if (walk < -50) {
+                    galleryContainer.style.transform = `translateX(calc(-${galleryIndex * 100}% + ${walk}px))`;
+                    galleryCurrentX = x;
+                }
+                
+                function galleryDragEnd() {
+                    if (!isGalleryDragging) return;
+                    
+                    isGalleryDragging = false;
+                    galleryContainer.classList.remove('grabbing');
+                    
+                    const diff = galleryStartX - galleryCurrentX;
+                    
+                    if (diff > 100) {
+                        // Arrastou para a esquerda (próximo)
                         nextImage();
-                        isDragging = false;
-                        if (galleryContainer) galleryContainer.style.transition = 'transform 0.5s ease';
+                    } else if (diff < -100) {
+                        // Arrastou para a direita (anterior)
+                        prevImage();
                     }
-                };
-                
-                const endDrag = () => {
-                    isDragging = false;
-                    if (galleryContainer) galleryContainer.style.transition = 'transform 0.5s ease';
-                };
-                
-                if (galleryContainer) {
-                    galleryContainer.addEventListener('mousedown', startDrag);
-                    galleryContainer.addEventListener('touchstart', startDrag, { passive: true });
                     
-                    galleryContainer.addEventListener('mousemove', drag);
-                    galleryContainer.addEventListener('touchmove', drag, { passive: true });
-                    
-                    galleryContainer.addEventListener('mouseup', endDrag);
-                    galleryContainer.addEventListener('mouseleave', endDrag);
-                    galleryContainer.addEventListener('touchend', endDrag);
+                    // Restaurar a posição
+                    updateGallery();
                 }
             }
+            
+            // Iniciar o slideshow automático
+            startAutoSlide();
         });
     </script>
 </body>
