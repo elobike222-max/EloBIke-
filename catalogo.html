@@ -31,7 +31,7 @@
             color: var(--text);
             line-height: 1.5;
             overflow-x: hidden;
-            font-size: 18px;
+            font-size: 16px;
             padding: 10px;
             min-height: 100vh;
             -webkit-overflow-scrolling: touch;
@@ -45,19 +45,19 @@
 
         .catalog-header {
             text-align: center;
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
         .catalog-header h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--accent);
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .catalog-header p {
             color: var(--text-muted);
-            font-size: 1.2rem;
+            font-size: 1rem;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -65,15 +65,15 @@
         /* Catálogo de scooters */
         .scooter-catalog {
             position: relative;
-            max-width: 1000px;
-            margin: 40px auto;
+            max-width: 900px;
+            margin: 30px auto;
             overflow: hidden;
             border-radius: 12px;
             background: var(--card-bg);
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         .catalog-container {
@@ -86,17 +86,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         .model-image {
             width: 100%;
-            max-width: 500px;
-            height: 300px;
+            max-width: 400px;
+            height: 220px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         .model-image img {
@@ -117,103 +117,97 @@
         }
 
         .model-name {
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: var(--accent);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-weight: 700;
         }
 
         .model-price {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--accent);
             margin-bottom: 5px;
         }
 
         .price-subtitle {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .price-details {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
         .price-card {
             background: rgba(13, 27, 61, 0.7);
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 8px;
+            padding: 15px;
             text-align: center;
             border: 1px solid var(--card-border);
         }
 
         .price-title {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: var(--accent);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: 600;
         }
 
         .price-value {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--text);
             margin-bottom: 5px;
         }
 
         .price-description {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
         .model-specs {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
         .spec-card {
             background: rgba(13, 27, 61, 0.7);
-            border-radius: 10px;
-            padding: 15px;
+            border-radius: 8px;
+            padding: 12px;
             text-align: center;
             border: 1px solid var(--card-border);
         }
 
         .spec-value {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--accent);
             margin-bottom: 5px;
         }
 
         .spec-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .spec-detail {
             font-size: 0.8rem;
-            color: var(--text);
-            margin-top: 5px;
+            color: var(--text-muted);
         }
 
         .product-actions {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 16px 32px;
+            padding: 12px 24px;
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -223,22 +217,23 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
         }
 
         .whatsapp-btn {
             background: #25D366;
             color: white;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            margin-left: 10px;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(228, 187, 19, 0.6);
         }
 
         .whatsapp-btn:hover {
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.6);
         }
 
         /* Controles de navegação */
@@ -249,7 +244,7 @@
             right: 0;
             display: flex;
             justify-content: space-between;
-            padding: 0 10px;
+            padding: 0 5px;
             transform: translateY(-50%);
             pointer-events: none;
             z-index: 20;
@@ -258,8 +253,8 @@
         .catalog-arrow {
             pointer-events: all;
             background: rgba(0, 0, 0, 0.5);
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -267,7 +262,7 @@
             color: white;
             cursor: pointer;
             transition: background 0.3s;
-            font-size: 20px;
+            font-size: 18px;
             border: 2px solid var(--accent);
         }
 
@@ -279,13 +274,13 @@
         .catalog-indicators {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 15px;
         }
 
         .catalog-indicator {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
@@ -301,7 +296,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 20px;
+            padding: 10px 16px;
             background: var(--card-bg);
             color: var(--text);
             text-decoration: none;
@@ -309,7 +304,8 @@
             font-weight: 500;
             transition: all 0.3s;
             border: 1px solid var(--card-border);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
         }
 
         .back-btn:hover {
@@ -317,51 +313,182 @@
             color: var(--primary);
         }
 
+        /* Página individual do produto */
+        .product-page {
+            display: none;
+            max-width: 1000px;
+            margin: 20px auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .product-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .main-image {
+            grid-column: span 2;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .main-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .thumbnail {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        .product-details {
+            margin-bottom: 20px;
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .product-features {
+            margin-bottom: 20px;
+        }
+
+        .features-title {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text);
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .product-actions-detailed {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
         @media (max-width: 768px) {
             body {
-                font-size: 16px;
                 padding: 8px;
+                font-size: 14px;
             }
             
             .catalog-header h1 {
-                font-size: 2rem;
+                font-size: 1.7rem;
             }
             
             .catalog-header p {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .scooter-catalog {
-                padding: 15px;
+                padding: 12px;
             }
             
             .model-name {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
             }
             
             .model-price {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
             
             .price-details {
                 grid-template-columns: 1fr;
-                gap: 15px;
+                gap: 12px;
             }
             
             .model-specs {
                 grid-template-columns: 1fr;
-                gap: 12px;
+                gap: 10px;
             }
             
             .catalog-arrow {
-                width: 40px;
-                height: 40px;
+                width: 35px;
+                height: 35px;
                 font-size: 16px;
             }
             
             .btn {
-                padding: 14px 28px;
-                font-size: 1rem;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .product-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-image {
+                grid-column: span 1;
+                height: 250px;
+            }
+            
+            .product-actions-detailed {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -394,12 +521,12 @@
                             <div class="price-card">
                                 <div class="price-title">Preço À Vista</div>
                                 <div class="price-value">R$ 11.067,00</div>
-                                <div class="price-description">VIA PIX OU TRANSFERÊNCIA BANCÁRIA</div>
+                                <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
                             </div>
                             <div class="price-card">
-                                <div class="price-title">Parcelas a partir de</div>
-                                <div class="price-value">R$ 1.487,50</div>
-                                <div class="price-description">8X NO CARTÃO DE CRÉDITO</div>
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.487,50</div>
+                                <div class="price-description">NO CARTÃO</div>
                             </div>
                         </div>
                         
@@ -410,7 +537,7 @@
                             </div>
                             <div class="spec-card">
                                 <div class="spec-value">32 KM/H</div>
-                                <div class="spec-label">Velocidade Máxima</div>
+                                <div class="spec-label">Velocidade</div>
                             </div>
                             <div class="spec-card">
                                 <div class="spec-value">1000W</div>
@@ -419,8 +546,11 @@
                         </div>
                         
                         <div class="product-actions">
+                            <button class="btn view-details-btn" data-product="mini-x11">
+                                <i class="fas fa-eye"></i> Ver Detalhes
+                            </button>
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Mini X11 1000W 🛵" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Produto
+                                <i class="fab fa-whatsapp"></i> Comprar
                             </a>
                         </div>
                     </div>
@@ -440,12 +570,12 @@
                             <div class="price-card">
                                 <div class="price-title">Preço À Vista</div>
                                 <div class="price-value">R$ 11.160,00</div>
-                                <div class="price-description">VIA PIX OU TRANSFERÊNCIA BANCÁRIA</div>
+                                <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
                             </div>
                             <div class="price-card">
-                                <div class="price-title">Parcelas a partir de</div>
-                                <div class="price-value">R$ 1.500,00</div>
-                                <div class="price-description">8X NO CARTÃO DE CRÉDITO</div>
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.500,00</div>
+                                <div class="price-description">NO CARTÃO</div>
                             </div>
                         </div>
                         
@@ -456,7 +586,7 @@
                             </div>
                             <div class="spec-card">
                                 <div class="spec-value">70 KM/H</div>
-                                <div class="spec-label">Velocidade Máxima</div>
+                                <div class="spec-label">Velocidade</div>
                             </div>
                             <div class="spec-card">
                                 <div class="spec-value">3000W</div>
@@ -465,8 +595,11 @@
                         </div>
                         
                         <div class="product-actions">
+                            <button class="btn view-details-btn" data-product="r11">
+                                <i class="fas fa-eye"></i> Ver Detalhes
+                            </button>
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Produto
+                                <i class="fab fa-whatsapp"></i> Comprar
                             </a>
                         </div>
                     </div>
@@ -486,12 +619,12 @@
                             <div class="price-card">
                                 <div class="price-title">Preço À Vista</div>
                                 <div class="price-value">R$ 10.685,70</div>
-                                <div class="price-description">VIA PIX OU TRANSFERÊNCIA BANCÁRIA</div>
+                                <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
                             </div>
                             <div class="price-card">
-                                <div class="price-title">Parcelas a partir de</div>
-                                <div class="price-value">R$ 1.436,25</div>
-                                <div class="price-description">8X NO CARTÃO DE CRÉDITO</div>
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.436,25</div>
+                                <div class="price-description">NO CARTÃO</div>
                             </div>
                         </div>
                         
@@ -502,7 +635,7 @@
                             </div>
                             <div class="spec-card">
                                 <div class="spec-value">40 KM/H</div>
-                                <div class="spec-label">Velocidade Máxima</div>
+                                <div class="spec-label">Velocidade</div>
                             </div>
                             <div class="spec-card">
                                 <div class="spec-value">1000W</div>
@@ -511,8 +644,11 @@
                         </div>
                         
                         <div class="product-actions">
+                            <button class="btn view-details-btn" data-product="s2">
+                                <i class="fas fa-eye"></i> Ver Detalhes
+                            </button>
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo S2 🛵" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Produto
+                                <i class="fab fa-whatsapp"></i> Comprar
                             </a>
                         </div>
                     </div>
@@ -532,12 +668,12 @@
                             <div class="price-card">
                                 <div class="price-title">Preço À Vista</div>
                                 <div class="price-value">R$ 7.895,70</div>
-                                <div class="price-description">VIA PIX OU TRANSFERÊNCIA BANCÁRIA</div>
+                                <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
                             </div>
                             <div class="price-card">
-                                <div class="price-title">Parcelas a partir de</div>
-                                <div class="price-value">R$ 1.061,25</div>
-                                <div class="price-description">8X NO CARTÃO DE CRÉDITO</div>
+                                <div class="price-title">Parcelado</div>
+                                <div class="price-value">8x R$ 1.061,25</div>
+                                <div class="price-description">NO CARTÃO</div>
                             </div>
                         </div>
                         
@@ -548,7 +684,7 @@
                             </div>
                             <div class="spec-card">
                                 <div class="spec-value">50 KM/H</div>
-                                <div class="spec-label">Velocidade Máxima</div>
+                                <div class="spec-label">Velocidade</div>
                             </div>
                             <div class="spec-card">
                                 <div class="spec-value">1000W</div>
@@ -557,8 +693,11 @@
                         </div>
                         
                         <div class="product-actions">
+                            <button class="btn view-details-btn" data-product="v8">
+                                <i class="fas fa-eye"></i> Ver Detalhes
+                            </button>
                             <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo V8 🛵" class="btn whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i> Ver Produto
+                                <i class="fab fa-whatsapp"></i> Comprar
                             </a>
                         </div>
                     </div>
@@ -583,6 +722,185 @@
                 <div class="catalog-indicator" data-index="3"></div>
             </div>
         </div>
+
+        <!-- Páginas individuais dos produtos -->
+        <!-- Mini X11 -->
+        <div id="product-mini-x11" class="product-page">
+            <div class="product-header">
+                <h2 class="product-title">Mini X11 1000W</h2>
+                <button class="back-btn back-to-catalog">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+            </div>
+            
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img src="mini-x11.png" alt="Mini X11 1000W" id="main-image-mini-x11">
+                </div>
+                <div class="thumbnail" onclick="changeImage('mini-x11', 'mini-x11.png')">
+                    <img src="mini-x11.png" alt="Mini X11 1000W - Vista 1">
+                </div>
+                <div class="thumbnail" onclick="changeImage('mini-x11', 'mini-x11-2.png')">
+                    <img src="mini-x11-2.png" alt="Mini X11 1000W - Vista 2">
+                </div>
+                <div class="thumbnail" onclick="changeImage('mini-x11', 'mini-x11-3.png')">
+                    <img src="mini-x11-3.png" alt="Mini X11 1000W - Vista 3">
+                </div>
+                <div class="thumbnail" onclick="changeImage('mini-x11', 'mini-x11-4.png')">
+                    <img src="mini-x11-4.png" alt="Mini X11 1000W - Vista 4">
+                </div>
+            </div>
+            
+            <div class="product-details">
+                <div class="price-details">
+                    <div class="price-card">
+                        <div class="price-title">Preço À Vista</div>
+                        <div class="price-value">R$ 11.067,00</div>
+                        <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
+                    </div>
+                    <div class="price-card">
+                        <div class="price-title">Parcelado</div>
+                        <div class="price-value">8x R$ 1.487,50</div>
+                        <div class="price-description">NO CARTÃO</div>
+                    </div>
+                </div>
+                
+                <div class="model-specs">
+                    <div class="spec-card">
+                        <div class="spec-value">40 KM</div>
+                        <div class="spec-label">Autonomia</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-value">32 KM/H</div>
+                        <div class="spec-label">Velocidade Máxima</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-value">1000W</div>
+                        <div class="spec-label">Motor</div>
+                    </div>
+                </div>
+                
+                <div class="product-description">
+                    <p>O Mini X11 1000W é a scooter elétrica perfeita para mobilidade urbana. Com design compacto e potente motor de 1000W, oferece agilidade e economia para seu dia a dia.</p>
+                </div>
+                
+                <div class="product-features">
+                    <h3 class="features-title">Características</h3>
+                    <ul class="features-list">
+                        <li>Motor brushless de 1000W de potência</li>
+                        <li>Bateria de lítio de 48V/12Ah</li>
+                        <li>Autonomia de até 40km por carga</li>
+                        <li>Velocidade máxima de 32km/h</li>
+                        <li>Pneus antifaturo de 10 polegadas</li>
+                        <li>Sistema de iluminação LED</li>
+                        <li>Display digital com informações de velocidade e bateria</li>
+                        <li>Freio a disco dianteiro e traseiro</li>
+                        <li>Tempo de carga: 4-6 horas</li>
+                        <li>Capacidade de carga: 120kg</li>
+                    </ul>
+                </div>
+                
+                <div class="product-actions-detailed">
+                    <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Mini X11 1000W 🛵" class="btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Comprar agora
+                    </a>
+                    <button class="back-btn back-to-catalog">
+                        <i class="fas fa-arrow-left"></i> Voltar ao catálogo
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modelo R11 -->
+        <div id="product-r11" class="product-page">
+            <div class="product-header">
+                <h2 class="product-title">Modelo R11</h2>
+                <button class="back-btn back-to-catalog">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+            </div>
+            
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img src="r11.png" alt="Modelo R11" id="main-image-r11">
+                </div>
+                <div class="thumbnail" onclick="changeImage('r11', 'r11.png')">
+                    <img src="r11.png" alt="Modelo R11 - Vista 1">
+                </div>
+                <div class="thumbnail" onclick="changeImage('r11', 'r11-2.png')">
+                    <img src="r11-2.png" alt="Modelo R11 - Vista 2">
+                </div>
+                <div class="thumbnail" onclick="changeImage('r11', 'r11-3.png')">
+                    <img src="r11-3.png" alt="Modelo R11 - Vista 3">
+                </div>
+                <div class="thumbnail" onclick="changeImage('r11', 'r11-4.png')">
+                    <img src="r11-4.png" alt="Modelo R11 - Vista 4">
+                </div>
+            </div>
+            
+            <div class="product-details">
+                <div class="price-details">
+                    <div class="price-card">
+                        <div class="price-title">Preço À Vista</div>
+                        <div class="price-value">R$ 11.160,00</div>
+                        <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
+                    </div>
+                    <div class="price-card">
+                        <div class="price-title">Parcelado</div>
+                        <div class="price-value">8x R$ 1.500,00</div>
+                        <div class="price-description">NO CARTÃO</div>
+                    </div>
+                </div>
+                
+                <div class="model-specs">
+                    <div class="spec-card">
+                        <div class="spec-value">45 KM</div>
+                        <div class="spec-label">Autonomia</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-value">70 KM/H</div>
+                        <div class="spec-label">Velocidade Máxima</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-value">3000W</div>
+                        <div class="spec-label">Motor</div>
+                    </div>
+                </div>
+                
+                <div class="product-description">
+                    <p>O Modelo R11 é a scooter elétrica de alta performance. Com motor de 3000W e velocidade de até 70km/h, é ideal para quem busca potência e desempenho superior.</p>
+                </div>
+                
+                <div class="product-features">
+                    <h3 class="features-title">Características</h3>
+                    <ul class="features-list">
+                        <li>Motor brushless de 3000W de potência</li>
+                        <li>Bateria de lítio de 60V/20Ah</li>
+                        <li>Autonomia de até 45km por carga</li>
+                        <li>Velocidade máxima de 70km/h</li>
+                        <li>Pneus tubeless de 10 polegadas</li>
+                        <li>Sistema de iluminação LED completa</li>
+                        <li>Display LCD digital com diversas funções</li>
+                        <li>Freio a disco hidráulico dianteiro e traseiro</li>
+                        <li>Suspensão ajustável</li>
+                        <li>Tempo de carga: 5-7 horas</li>
+                        <li>Capacidade de carga: 150kg</li>
+                    </ul>
+                </div>
+                
+                <div class="product-actions-detailed">
+                    <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R11 🛵" class="btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Comprar agora
+                    </a>
+                    <button class="back-btn back-to-catalog">
+                        <i class="fas fa-arrow-left"></i> Voltar ao catálogo
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Adicione páginas semelhantes para S2 e V8 seguindo o mesmo padrão -->
+        
     </div>
 
     <script>
@@ -593,6 +911,10 @@
             const indicators = document.querySelectorAll('.catalog-indicator');
             const prevBtn = document.querySelector('.catalog-arrow.prev');
             const nextBtn = document.querySelector('.catalog-arrow.next');
+            const catalogElement = document.querySelector('.scooter-catalog');
+            const productPages = document.querySelectorAll('.product-page');
+            const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
+            const backToCatalogButtons = document.querySelectorAll('.back-to-catalog');
             
             let currentIndex = 0;
             const modelCount = models.length;
@@ -648,15 +970,38 @@
             let autoSlide = setInterval(nextModel, 5000);
             
             // Pausar slideshow quando o mouse estiver sobre o catálogo
-            const catalog = document.querySelector('.scooter-catalog');
-            catalog.addEventListener('mouseenter', function() {
+            catalogElement.addEventListener('mouseenter', function() {
                 clearInterval(autoSlide);
             });
             
-            catalog.addEventListener('mouseleave', function() {
+            catalogElement.addEventListener('mouseleave', function() {
                 autoSlide = setInterval(nextModel, 5000);
             });
+            
+            // Mostrar página do produto
+            viewDetailsButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-product');
+                    catalogElement.style.display = 'none';
+                    document.getElementById(`product-${productId}`).style.display = 'block';
+                });
+            });
+            
+            // Voltar para o catálogo
+            backToCatalogButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    productPages.forEach(page => {
+                        page.style.display = 'none';
+                    });
+                    catalogElement.style.display = 'block';
+                });
+            });
         });
+        
+        // Função para trocar imagem principal na galeria
+        function changeImage(productId, imageSrc) {
+            document.getElementById(`main-image-${productId}`).src = imageSrc;
+        }
     </script>
 </body>
 </html>
