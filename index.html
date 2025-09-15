@@ -35,7 +35,7 @@
             --text-muted: #adb5bd;
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
-            --vh: 1vh; /* Variável para altura da viewport */
+            --vh: 1vh;
         }
         
         * {
@@ -60,14 +60,14 @@
             overflow-x: hidden;
             font-size: 16px;
             min-height: 100vh;
-            min-height: -webkit-fill-available; /* Preenche a tela disponível em mobile */
+            min-height: -webkit-fill-available;
         }
 
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 4%; /* Usando porcentagem para padding responsivo */
+            padding: 0 4%;
         }
 
         /* WhatsApp Float */
@@ -230,7 +230,7 @@
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            min-height: calc(var(--vh, 1vh) * 100); /* Usando a variável JS para altura */
+            min-height: calc(var(--vh, 1vh) * 100);
             display: flex;
             align-items: center;
             padding: 90px 0 40px;
@@ -243,7 +243,7 @@
         }
 
         .hero-content h2 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem); /* Título responsivo */
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 15px;
             color: var(--accent);
             font-weight: 700;
@@ -251,7 +251,7 @@
         }
 
         .hero-content p {
-            font-size: clamp(1rem, 2.5vw, 1.1rem); /* Parágrafo responsivo */
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             margin-bottom: 25px;
             opacity: 0.9;
             color: var(--text-muted);
@@ -278,8 +278,8 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: clamp(14px, 3vw, 16px); /* Botão responsivo */
-            min-height: 44px; /* Tamanho mínimo para toque */
+            font-size: clamp(14px, 3vw, 16px);
+            min-height: 44px;
         }
 
         .whatsapp-btn {
@@ -323,7 +323,7 @@
         }
 
         .moto-placeholder {
-            width: min(350px, 80vw); /* Limita o tamanho máximo e usa viewport width */
+            width: min(350px, 80vw);
             height: min(350px, 80vw);
             background: rgba(228, 187, 19, 0.1);
             border-radius: 50%;
@@ -344,7 +344,7 @@
         }
 
         .moto-placeholder i {
-            font-size: clamp(70px, 20vw, 120px); /* Ícone responsivo */
+            font-size: clamp(70px, 20vw, 120px);
             color: var(--accent);
         }
 
@@ -870,38 +870,32 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
         }
 
-        /* Instagram WebView Banner */
-        .webview-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #0d1b3d;
-            color: white;
-            z-index: 2000;
-            padding: 12px;
-            text-align: center;
-            border-bottom: 2px solid #E4BB13;
-            display: none;
-            justify-content: space-between;
-            align-items: center;
+        /* Instagram WebView Specific Fixes */
+        .instagram-webview .hero {
+            min-height: calc(var(--vh, 1vh) * 100 - 70px) !important;
         }
-
-        .webview-banner p {
-            margin: 0;
-            font-size: clamp(14px, 3vw, 16px);
+        
+        .instagram-webview .moto-placeholder {
+            margin-top: 20px !important;
         }
-
-        .webview-banner button {
-            background: #E4BB13;
-            color: #0d1b3d;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: clamp(12px, 2.5vw, 14px);
-            min-height: 36px;
+        
+        .instagram-webview .btn {
+            min-height: 44px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        /* Prevenir problemas de scroll no Instagram */
+        .instagram-webview body {
+            overflow: hidden !important;
+            height: 100% !important;
+            position: relative;
+        }
+        
+        /* Melhorar a visualização de imagens */
+        .instagram-webview img {
+            transform: translateZ(0);
         }
 
         /* Responsive */
@@ -1073,12 +1067,6 @@
     </style>
 </head>
 <body>
-    <!-- Instagram WebView Banner -->
-    <div class="webview-banner" id="webviewBanner">
-        <p>Para melhor experiência, abra no navegador</p>
-        <button id="openInBrowserBtn">Abrir</button>
-    </div>
-
     <!-- WhatsApp Float -->
     <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
@@ -1368,7 +1356,7 @@
     </footer>
 
     <script>
-        // ===== DETECÇÃO E CORREÇÃO DE WEBVIEW =====
+        // ===== DETECÇÃO DE WEBVIEW DO INSTAGRAM =====
         function isInInstagramWebView() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
             return /Instagram/i.test(userAgent) || /FBAN|FBAV/i.test(userAgent);
@@ -1380,15 +1368,44 @@
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         }
 
-        // Inicializar banner para WebView
-        function initWebViewBanner() {
+        // Aplicar classes específicas para WebView do Instagram
+        function applyInstagramFix() {
             if (isInInstagramWebView()) {
-                const banner = document.getElementById('webviewBanner');
-                banner.style.display = 'flex';
+                document.body.classList.add('instagram-webview');
                 
-                document.getElementById('openInBrowserBtn').addEventListener('click', function() {
-                    alert("Para abrir no navegador, toque no menu (⋯) no canto superior direito e selecione 'Abrir no Chrome' (ou no seu navegador).");
-                });
+                // Correções específicas para o Instagram
+                const style = document.createElement('style');
+                style.textContent = `
+                    /* Remover qualquer banner nativo do Instagram */
+                    [class*="banner"], [id*="banner"], [class*="Banner"], [id*="Banner"] {
+                        display: none !important;
+                    }
+                    
+                    /* Garantir que os botões sejam clicáveis */
+                    .btn, a, button {
+                        cursor: pointer !important;
+                        z-index: 9999 !important;
+                        position: relative;
+                    }
+                    
+                    /* Melhorar a visualização de elementos de fundo */
+                    body {
+                        -webkit-overflow-scrolling: touch !important;
+                    }
+                    
+                    /* Corrigir problemas de posicionamento */
+                    .hero {
+                        position: relative;
+                        z-index: 1;
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Forçar redimensionamento após carregamento
+                setTimeout(() => {
+                    setViewportHeight();
+                    window.scrollTo(0, 0);
+                }, 300);
             }
         }
 
@@ -1624,8 +1641,8 @@
             // Configurar altura da viewport
             setViewportHeight();
             
-            // Inicializar banner para WebView
-            initWebViewBanner();
+            // Aplicar correções para Instagram
+            applyInstagramFix();
         });
 
         // Recalcular altura da viewport em redimensionamento
