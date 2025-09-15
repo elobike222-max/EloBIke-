@@ -1187,7 +1187,7 @@
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn" id="catalogBtn1">
+                            <a href="catalogo.html" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1209,7 +1209,7 @@
                                 <li>💪 Capacidade: até 200 kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn" id="catalogBtn2">
+                            <a href="catalogo.html" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1231,7 +1231,7 @@
                                 <li>💪 Capacidade: até 150 kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn" id="catalogBtn3">
+                            <a href="catalogo.html" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1274,7 +1274,7 @@
                     <li>Assistência técnica especializada</li>
                 </ul>
                 
-                <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵" class="service-btn" id="maintenanceBtn">
+                <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵" class="service-btn">
                     <i class="fab fa-whatsapp"></i> Agendar Serviço
                 </a>
             </div>
@@ -1406,51 +1406,6 @@
                     setViewportHeight();
                     window.scrollTo(0, 0);
                 }, 300);
-            }
-        }
-
-        // ===== CORREÇÃO PARA OS BOTÕES NO INSTAGRAM =====
-        function fixInstagramButtons() {
-            if (isInInstagramWebView()) {
-                // Adicionar event listeners para todos os botões de catálogo
-                document.querySelectorAll('.catalog-central-btn, .catalog-btn-hero, .catalog-btn').forEach(btn => {
-                    btn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        
-                        // Abrir o catálogo em uma nova janela
-                        window.open('catalogo.html', '_blank');
-                    });
-                });
-                
-                // Correção específica para o botão de manutenção
-                const maintenanceBtn = document.getElementById('maintenanceBtn');
-                if (maintenanceBtn) {
-                    maintenanceBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        
-                        // Abrir o WhatsApp para agendamento de manutenção
-                        window.open('https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵', '_blank');
-                    });
-                }
-                
-                // Correção para links internos (âncoras)
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        
-                        if (targetId === '#') return;
-                        
-                        const target = document.querySelector(targetId);
-                        if (target) {
-                            const targetPosition = target.offsetTop - 70;
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
-                            });
-                        }
-                    });
-                });
             }
         }
 
@@ -1688,9 +1643,6 @@
             
             // Aplicar correções para Instagram
             applyInstagramFix();
-            
-            // Corrigir funcionamento dos botões no Instagram
-            fixInstagramButtons();
         });
 
         // Recalcular altura da viewport em redimensionamento
