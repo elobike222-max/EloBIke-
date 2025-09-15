@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>EloBike - Motos Elétricas | Araxá MG</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="logo.png" type="image/png">
+    
+    <!-- Meta tags para redes sociais -->
+    <meta property="og:title" content="EloBike - Motos Elétricas | Araxá MG">
+    <meta property="og:description" content="As melhores scooters elétricas de Araxá e região. Zero gasolina, ecológico e manutenção especializada.">
+    <meta property="og:image" content="https://example.com/path/to/your/image.jpg">
+    <meta property="og:url" content="https://www.elobike.com.br">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EloBike - Motos Elétricas | Araxá MG">
+    <meta name="twitter:description" content="As melhores scooters elétricas de Araxá e região.">
+    <meta name="twitter:image" content="https://example.com/path/to/your/image.jpg">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
     <style>
         :root {
             --primary: #0d1b3d;
@@ -18,14 +35,1602 @@
             --text-muted: #adb5bd;
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
+            --vh: 1vh; /* Variável para altura da viewport */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
+        html, body {
+            width: 100% !important;
+            height: 100% !important;
+            overflow-x: hidden !important;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text);
+            line-height: 1.5;
+            overflow-x: hidden;
+            font-size: 16px;
+            min-height: 100vh;
+            min-height: -webkit-fill-available; /* Preenche a tela disponível em mobile */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 4%; /* Usando porcentagem para padding responsivo */
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 85px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: var(--accent);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
+            z-index: 999;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--accent-hover);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Header */
+        header {
+            background: rgba(13, 27, 61, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            object-fit: cover;
+        }
+
+        .logo h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            background: rgba(228, 187, 19, 0.1);
+        }
+
+        .catalog-btn {
+            background: var(--accent) !important;
+            color: var(--primary) !important;
+            font-weight: 600 !important;
+            padding: 8px 16px !important;
+            border-radius: 20px !important;
+        }
+
+        .catalog-btn:hover {
+            background: var(--accent-hover) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 28px;
+            height: 22px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .menu-toggle span {
+            width: 100%;
+            height: 2.5px;
+            background-color: var(--accent);
+            border-radius: 5px;
+            transition: all 0.3s linear;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            min-height: calc(var(--vh, 1vh) * 100); /* Usando a variável JS para altura */
+            display: flex;
+            align-items: center;
+            padding: 90px 0 40px;
+            background: linear-gradient(135deg, rgba(13, 27, 61, 0.9) 0%, rgba(30, 58, 138, 0.8) 100%);
+        }
+
+        .hero-content {
+            flex: 1;
+            padding: 0 15px;
+        }
+
+        .hero-content h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem); /* Título responsivo */
+            margin-bottom: 15px;
+            color: var(--accent);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2.5vw, 1.1rem); /* Parágrafo responsivo */
+            margin-bottom: 25px;
+            opacity: 0.9;
+            color: var(--text-muted);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 30px 0 25px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 22px;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
+            border: none;
+            cursor: pointer;
+            font-size: clamp(14px, 3vw, 16px); /* Botão responsivo */
+            min-height: 44px; /* Tamanho mínimo para toque */
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+        }
+
+        .location-btn {
+            background: #336a8f;
+            color: white;
+        }
+
+        .catalog-btn-hero {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .maintenance-btn {
+            background: #4285F4;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            flex-direction: column;
+        }
+
+        .moto-placeholder {
+            width: min(350px, 80vw); /* Limita o tamanho máximo e usa viewport width */
+            height: min(350px, 80vw);
+            background: rgba(228, 187, 19, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--accent);
+            position: relative;
+            margin-top: -20px;
+            overflow: hidden;
+        }
+
+        .moto-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .moto-placeholder i {
+            font-size: clamp(70px, 20vw, 120px); /* Ícone responsivo */
+            color: var(--accent);
+        }
+
+        .floating-elements {
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .float-element {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: clamp(12px, 3vw, 16px) clamp(18px, 4vw, 22px);
+            border-radius: 25px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            font-size: clamp(14px, 3vw, 16px);
+            text-align: center;
+            width: clamp(140px, 40vw, 160px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, -60%); }
+        }
+
+        /* Features */
+        .features {
+            padding: 40px 0;
+            background: var(--primary);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.6rem, 5vw, 1.8rem);
+            margin-bottom: 30px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+            gap: 15px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px 15px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(228, 187, 19, 0.1);
+        }
+
+        .feature i {
+            font-size: clamp(28px, 8vw, 32px);
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .feature h4 {
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        .feature p {
+            opacity: 0.9;
+            line-height: 1.4;
+            font-size: clamp(0.8rem, 2.5vw, 0.85rem);
+            color: var(--text-muted);
+        }
+
+        /* Products */
+        .products {
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            text-align: center;
+        }
+
+        .product-carousel {
+            position: relative;
+            max-width: min(850px, 95vw);
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            cursor: grab;
+        }
+
+        .product-carousel:active {
+            cursor: grabbing;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            user-select: none;
+        }
+
+        .carousel-img {
+            width: 100%;
+            max-width: min(450px, 90vw);
+            height: min(250px, 50vh);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            position: relative;
+        }
+
+        .carousel-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-img i {
+            font-size: clamp(50px, 12vw, 60px);
+            color: var(--accent);
+        }
+
+        .carousel-content {
+            text-align: center;
+            width: 100%;
+        }
+
+        .carousel-content h3 {
+            font-size: clamp(1.4rem, 4vw, 1.5rem);
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .carousel-content p {
+            color: var(--text);
+            margin-bottom: 15px;
+            opacity: 0.9;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            font-weight: 500;
+        }
+
+        .carousel-content ul {
+            list-style: none;
+            margin: 15px 0;
+            text-align: left;
+            padding: 0 15px;
+        }
+
+        .carousel-content ul li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .carousel-content ul li:before {
+            content: "✓";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Carousel Controls */
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transform: translateY(-50%);
+            padding: 0 15px;
+            pointer-events: none;
+        }
+
+        .carousel-arrow {
+            background: rgba(255, 255, 255, 0.1);
+            width: clamp(30px, 8vw, 40px);
+            height: clamp(30px, 8vw, 40px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: clamp(14px, 4vw, 16px);
+            color: var(--accent);
+            pointer-events: auto;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(228, 187, 19, 0.2);
+            transform: scale(1.1);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0 10px;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .catalog-central-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: clamp(12px, 3vw, 16px) clamp(24px, 5vw, 32px);
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
+            margin: 8px 0 25px;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            width: 100%;
+            max-width: min(320px, 90vw);
+            justify-content: center;
+            min-height: 44px;
+        }
+
+        .catalog-central-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
+            background: var(--accent-hover);
+        }
+
+        /* Services */
+        .services {
+            padding: 60px 0;
+            background: var(--primary);
+        }
+
+        .services-simple {
+            max-width: min(800px, 90vw);
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            text-align: center;
+        }
+
+        .services-simple h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: clamp(1.3rem, 4vw, 1.5rem);
+        }
+
+        .services-list {
+            list-style: none;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .services-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
+            color: var(--text);
+        }
+
+        .services-list li:before {
+            content: "✓";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .service-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: clamp(12px, 3vw, 14px) clamp(24px, 5vw, 28px);
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            border: none;
+            cursor: pointer;
+            min-height: 44px;
+        }
+
+        .service-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
+            background: var(--accent-hover);
+        }
+
+        /* About */
+        .about {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: min(800px, 90vw);
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            margin-bottom: 25px;
+            opacity: 0.9;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+
+        .about-feature:hover {
+            transform: translateX(5px);
+            background: rgba(228, 187, 19, 0.1);
+        }
+
+        .about-feature i {
+            color: var(--accent);
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            width: 25px;
+        }
+
+        .about-feature span {
+            font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* Contact */
+        .contact {
+            padding: 50px 0 30px;
+            background: var(--primary);
+            text-align: center;
+        }
+
+        .business-hours {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            max-width: min(380px, 90vw);
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .business-hours h4 {
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .business-hours p {
+            margin-bottom: 6px;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            opacity: 0.9;
+            color: var(--text);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a1429;
+            padding: 20px 0 12px;
+            border-top: 1px solid rgba(228, 187, 19, 0.2);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-logo img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            box-shadow: 0 2px 8px rgba(228, 187, 19, 0.3);
+        }
+
+        .footer-logo span {
+            font-size: clamp(0.8rem, 2.5vw, 0.85rem);
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .footer-contact {
+            text-align: center;
+        }
+
+        .footer-contact p {
+            margin-bottom: 4px;
+            opacity: 0.9;
+            font-size: clamp(0.7rem, 2vw, 0.75rem);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            color: var(--text);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .social-link {
+            width: 34px;
+            height: 34px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
+        }
+
+        /* Instagram WebView Banner */
+        .webview-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #0d1b3d;
+            color: white;
+            z-index: 2000;
+            padding: 12px;
+            text-align: center;
+            border-bottom: 2px solid #E4BB13;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .webview-banner p {
+            margin: 0;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+
+        .webview-banner button {
+            background: #E4BB13;
+            color: #0d1b3d;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: clamp(12px, 2.5vw, 14px);
+            min-height: 36px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            
+            .footer-contact {
+                order: 3;
+                grid-column: span 2;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 90px 0 40px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .footer-contact {
+                order: 0;
+                grid-column: span 1;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+
+            /* Mobile menu */
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(13, 27, 61, 0.98);
+                flex-direction: column;
+                padding: 15px;
+                gap: 10px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 12px;
+            }
+
+            .feature {
+                padding: 15px 12px;
+            }
+            
+            .business-hours {
+                max-width: 90%;
+            }
+            
+            .carousel-controls {
+                padding: 0 5px;
+            }
+            
+            .floating-elements {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .footer-content {
+                gap: 12px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .indicator {
+                width: 8px;
+                height: 8px;
+            }
+            
+            .moto-placeholder {
+                width: 240px;
+                height: 240px;
+            }
+            
+            .carousel-content ul li {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Orientação paisagem em dispositivos móveis */
+        @media screen and (max-height: 480px) and (orientation: landscape) {
+            .hero {
+                min-height: 150vh !important;
+                padding: 80px 0 !important;
+            }
+            
+            .hero-content {
+                padding-top: 20px;
+            }
+            
+            .moto-placeholder {
+                width: 200px !important;
+                height: 200px !important;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Efeito de fade-in para as seções */
+        section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
+    <!-- Instagram WebView Banner -->
+    <div class="webview-banner" id="webviewBanner">
+        <p>Para melhor experiência, abra no navegador</p>
+        <button id="openInBrowserBtn">Abrir</button>
+    </div>
+
     <!-- WhatsApp Float -->
     <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="EloBike">
+                <h1>ELOBIKE</h1>
+            </div>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <a href="#produtos">Produtos</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+                <a href="catalogo.html" class="catalog-btn">Catálogo</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>
+            <p>As melhores scooters elétricas de Araxá e região</p>
+            
+            <div class="hero-buttons">
+                <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
+                    <i class="fas fa-map-marker-alt"></i> Localização
+                </a>
+                <a href="#produtos" class="btn catalog-btn-hero">
+                    <i class="fas fa-store"></i> Ver Catálogo
+                </a>
+                <a href="#servicos" class="btn maintenance-btn">
+                    <i class="fas fa-tools"></i> Manutenção
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Círculo com os balões flutuantes DENTRO -->
+            <div class="moto-placeholder">
+                <i class="fas fa-bolt"></i>
+                <div class="floating-elements">
+                    <div class="float-element">⭐ Qualidade</div>
+                    <div class="float-element">🚀 Entrega</div>
+                    <div class="float-element">💪 Garantia</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature">
+                    <i class="fas fa-gas-pump"></i>
+                    <h4>Zero Gasolina</h4>
+                    <p>Economize até R$ 300/mês</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Ecológico</h4>
+                    <p>Zero emissões de carbono</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tools"></i>
+                    <h4>Manutenção</h4>
+                    <p>Assistência técnica especializada</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Performance</h4>
+                    <p>Alta tecnologia e potência</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="produtos" class="products">
+        <div class="container">
+            <h2 class="section-title">Nossos Modelos</h2>
+            
+            <div class="product-carousel">
+                <div class="carousel-container" id="carousel">
+                    <!-- Modelo R11 (mantido conforme solicitado) -->
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <img src="R11.png" alt="Modelo R11">
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Modelo R11</h3>
+                            <p>Design moderno e elegante</p>
+                            <ul>
+                                <li>⚡ 3.000W de potência</li>
+                                <li>⏱️ Até 70 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: 150kg a 200kg</li>
+                            </ul>
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Modelo S2 (novo modelo) -->
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <img src="S2.png" alt="Modelo S2">
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Modelo S2</h3>
+                            <p>Eficiência e praticidade</p>
+                            <ul>
+                                <li>⚡ 1.000W de potência</li>
+                                <li>⏱️ Até 40 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: até 200 kg</li>
+                            </ul>
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Modelo V8 (novo modelo) -->
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <img src="V8.png" alt="Modelo V8">
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Modelo V8</h3>
+                            <p>Desempenho e agilidade</p>
+                            <ul>
+                                <li>⚡ 1.000W de potência</li>
+                                <li>⏱️ Até 50 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: até 150 kg</li>
+                            </ul>
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Controles do carrossel posicionados nas laterais -->
+                <div class="carousel-controls">
+                    <div class="carousel-arrow prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-arrow next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Indicadores abaixo do botão (agora dentro do carrossel) -->
+            <div class="carousel-indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="servicos" class="services">
+        <div class="container">
+            <h2 class="section-title">Serviços de Reparo</h2>
+            
+            <div class="services-simple">
+                <h3>Manutenção Especializada</h3>
+                <ul class="services-list">
+                    <li>Manutenção preventiva e corretiva</li>
+                    <li>Substituição de baterias</li>
+                    <li>Reparo de controladoras e motores</li>
+                    <li>Troca de peças</li>
+                    <li>Diagnóstico completo com equipamentos especializados</li>
+                    <li>Assistência técnica especializada</li>
+                </ul>
+                
+                <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵" class="service-btn">
+                    <i class="fab fa-whatsapp"></i> Agendar Serviço
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="sobre" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">EloBike Araxá</h2>
+                <div class="about-text">
+                    <p>Especialistas em scooters elétricas com os melhores preços e atendimento personalizado em Araxá e região. Qualidade garantida e satisfação dos nossos clientes.</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Produtos de qualidade</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Atendimento personalizado</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-piggy-bank"></i>
+                            <span>Economia Garantida</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-tools"></i>
+                            <span>Serviços especializados</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <div class="business-hours">
+                <h4><i class="far fa-clock"></i> Horário de Funcionamento</h4>
+                <p>Segunda a Sexta: 8h às 17h30</p>
+                <p>Sábado: 8h às 12h</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="EloBike">
+                    <span>ELOBIKE ARAXá</span>
+                </div>
+                
+                <div class="footer-contact">
+                    <p><i class="fab fa-whatsapp"></i> (34) 9926-9707</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Araxá - MG</p>
+                    <p><i class="far fa-clock"></i> Seg-Sex: 8h-17h30 | Sáb: 8h-12h</p>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/elobikearaxa" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 EloBike Araxá - CNPJ: 57.620.431/0001-78</p>
+                <p>Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== DETECÇÃO E CORREÇÃO DE WEBVIEW =====
+        function isInInstagramWebView() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            return /Instagram/i.test(userAgent) || /FBAN|FBAV/i.test(userAgent);
+        }
+
+        // Ajustar altura da viewport para mobile
+        function setViewportHeight() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        // Inicializar banner para WebView
+        function initWebViewBanner() {
+            if (isInInstagramWebView()) {
+                const banner = document.getElementById('webviewBanner');
+                banner.style.display = 'flex';
+                
+                document.getElementById('openInBrowserBtn').addEventListener('click', function() {
+                    alert("Para abrir no navegador, toque no menu (⋯) no canto superior direito e selecione 'Abrir no Chrome' (ou no seu navegador).");
+                });
+            }
+        }
+
+        // ===== OBSERVADOR DE INTERSEÇÃO PARA ANIMAÇÕES =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observar todas as seções
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // ===== ROLAGEM SUAVE PARA LINKS INTERNOS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#produtos') {
+                    const targetSection = document.querySelector(targetId);
+                    const catalogButton = document.querySelector('.catalog-central-btn');
+                    
+                    if (targetSection && catalogButton) {
+                        const targetPosition = targetSection.offsetTop - 70;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                } else {
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        const targetPosition = target.offsetTop - 70;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                
+                // Fechar menu mobile após clicar em um link
+                if (window.innerWidth <= 768) {
+                    document.querySelector('nav').classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // ===== CARROSSEL DE PRODUTOS =====
+        const carousel = document.getElementById('carousel');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const carouselContainer = document.querySelector('.product-carousel');
+        const prevButton = document.querySelector('.carousel-arrow.prev');
+        const nextButton = document.querySelector('.carousel-arrow.next');
+        
+        let currentIndex = 0;
+        const slideCount = slides.length;
+        let autoSlideInterval;
+        let userInteractionTimeout;
+        let isDragging = false;
+        let startX = 0;
+        let startScrollLeft = 0;
+        
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Atualizar indicadores
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slideCount;
+            updateCarousel();
+            resetAutoSlide();
+        }
+        
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+            updateCarousel();
+            resetAutoSlide();
+        }
+        
+        // Iniciar slides automáticos
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                nextSlide();
+            }, 5000);
+        }
+        
+        // Parar slides automáticos
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+        
+        // Reiniciar slides automáticos após 26 segundos de inatividade
+        function resetAutoSlide() {
+            clearTimeout(userInteractionTimeout);
+            stopAutoSlide();
+            
+            userInteractionTimeout = setTimeout(() => {
+                startAutoSlide();
+            }, 26000);
+        }
+        
+        // Indicadores clicáveis
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                currentIndex = parseInt(indicator.getAttribute('data-index'));
+                updateCarousel();
+                resetAutoSlide();
+            });
+        });
+        
+        // Botões de navegação
+        nextButton.addEventListener('click', () => {
+            nextSlide();
+        });
+        
+        prevButton.addEventListener('click', () => {
+            prevSlide();
+        });
+        
+        // ===== FUNCIONALIDADE DE ARRASTAR =====
+        carouselContainer.addEventListener('mousedown', dragStart);
+        carouselContainer.addEventListener('touchstart', dragStart, { passive: true });
+        
+        carouselContainer.addEventListener('mousemove', drag);
+        carouselContainer.addEventListener('touchmove', drag, { passive: true });
+        
+        carouselContainer.addEventListener('mouseup', dragEnd);
+        carouselContainer.addEventListener('mouseleave', dragEnd);
+        carouselContainer.addEventListener('touchend', dragEnd);
+        
+        // Pausar auto slide quando o mouse estiver sobre o carrossel
+        carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+        carouselContainer.addEventListener('mouseleave', () => {
+            resetAutoSlide();
+        });
+        
+        function dragStart(e) {
+            isDragging = true;
+            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+            startScrollLeft = carousel.scrollLeft;
+            stopAutoSlide();
+            carousel.style.cursor = 'grabbing';
+            carousel.style.transition = 'none';
+        }
+        
+        function drag(e) {
+            if (!isDragging) return;
+            
+            e.preventDefault();
+            const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+            const walk = (x - startX) * 2;
+            
+            if (walk > 50) {
+                prevSlide();
+                isDragging = false;
+                carousel.style.cursor = 'grab';
+                carousel.style.transition = 'transform 0.5s ease';
+            } else if (walk < -50) {
+                nextSlide();
+                isDragging = false;
+                carousel.style.cursor = 'grab';
+                carousel.style.transition = 'transform 0.5s ease';
+            }
+        }
+        
+        function dragEnd() {
+            isDragging = false;
+            carousel.style.cursor = 'grab';
+            carousel.style.transition = 'transform 0.5s ease';
+            resetAutoSlide();
+        }
+        
+        // ===== MENU MOBILE TOGGLE =====
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+            
+            // Animação do hamburger menu
+            menuToggle.classList.toggle('active');
+        });
+
+        // ===== BACK TO TOP BUTTON =====
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ===== INICIALIZAÇÃO GERAL =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar algumas seções como visíveis
+            document.querySelector('.hero').classList.add('visible');
+            
+            // Iniciar o slideshow automaticamente
+            startAutoSlide();
+            
+            // Configurar altura da viewport
+            setViewportHeight();
+            
+            // Inicializar banner para WebView
+            initWebViewBanner();
+        });
+
+        // Recalcular altura da viewport em redimensionamento
+        window.addEventListener('resize', setViewportHeight);
+        window.addEventListener('orientationchange', setViewportHeight);
+    </script>
 </body>
 </html>
