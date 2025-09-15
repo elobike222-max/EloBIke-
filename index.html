@@ -372,7 +372,7 @@
             font-size: clamp(14px, 3vw, 16px);
             text-align: center;
             width: clamp(140px, 40vw, 160px);
-            box-shadow: 极速4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes float {
@@ -407,7 +407,7 @@
             border-radius: 12px;
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
-            transition: transform 极速.3s;
+            transition: transform 0.3s;
         }
 
         .feature:hover {
@@ -416,7 +416,7 @@
         }
 
         .feature i {
-            font极速: clamp(28px, 8vw, 32px);
+            font-size: clamp(28px, 8vw, 32px);
             color: var(--accent);
             margin-bottom: 12px;
         }
@@ -427,7 +427,7 @@
             font-size: clamp(0.9rem, 3vw, 1rem);
         }
 
-极速.feature p {
+        .feature p {
             opacity: 0.9;
             line-height: 1.4;
             font-size: clamp(0.8rem, 2.5vw, 0.85rem);
@@ -460,7 +460,7 @@
             transition: transform 0.5s ease;
         }
 
-        .carousel-sl极速 {
+        .carousel-slide {
             min-width: 100%;
             display: flex;
             flex-direction: column;
@@ -476,7 +476,7 @@
 
         .carousel-img {
             width: 100%;
-            max-width: min(450极速, 90vw);
+            max-width: min(450px, 90vw);
             height: min(250px, 50vh);
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             border-radius: 10px;
@@ -566,7 +566,7 @@
         .carousel-arrow {
             background: rgba(255, 255, 255, 0.1);
             width: clamp(30px, 8vw, 40px);
-            height: clamp(30极速, 8vw, 40px);
+            height: clamp(30px, 8vw, 40px);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -588,7 +588,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin: 20px 极速 10px;
+            margin: 20px 0 10px;
         }
 
         .indicator {
@@ -683,7 +683,7 @@
             gap: 8px;
             padding: clamp(12px, 3vw, 14px) clamp(24px, 5vw, 28px);
             background: var(--accent);
-极速         color: var(--primary);
+            color: var(--primary);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
@@ -699,84 +699,6 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
             background: var(--accent-hover);
-        }
-
-        /* Maintenance Page Styles */
-        .maintenance-page {
-            display: none;
-            padding: 100px 0 60px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            min-height: 100vh;
-        }
-
-        .maintenance-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border);
-        }
-
-        .maintenance-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .maintenance-header h2 {
-            color: var(--accent);
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .maintenance-content {
-            margin-bottom: 30px;
-        }
-
-        .maintenance-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .maintenance-feature {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--card-border);
-            text-align: center;
-        }
-
-        .maintenance-feature i {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 15px;
-        }
-
-        .maintenance-feature h4 {
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-
-        .back-to-home {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: var(--accent);
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            margin-top: 20px;
-        }
-
-        .back-to-home:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
         }
 
         /* About */
@@ -811,7 +733,7 @@
             align-items: center;
             gap: 10px;
             padding: 12px;
-极速         background: var(--card-bg);
+            background: var(--card-bg);
             border-radius: 12px;
             transition: transform 0.3s ease;
             text-align: left;
@@ -847,7 +769,7 @@
             border-radius: 12px;
             text-align: center;
             backdrop-filter: blur(10px);
-            border: 1极速 solid var(--card-border);
+            border: 1px solid var(--card-border);
             max-width: min(380px, 90vw);
             margin: 0 auto;
             animation: fadeIn 1s ease-out;
@@ -855,7 +777,7 @@
 
         .business-hours h4 {
             color: var(--accent);
-            margin-bottom: 12极速;
+            margin-bottom: 12px;
             font-size: clamp(1rem, 3vw, 1.1rem);
             font-weight: 600;
             display: flex;
@@ -1049,7 +971,7 @@
 
             .feature-grid {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 12极速;
+                gap: 12px;
             }
 
             .feature {
@@ -1066,10 +988,6 @@
             
             .floating-elements {
                 width: 90%;
-            }
-
-            .maintenance-features {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -1105,10 +1023,6 @@
             
             .carousel-content ul li {
                 font-size: 0.9rem;
-            }
-
-            .maintenance-container {
-                padding: 20px;
             }
         }
 
@@ -1180,298 +1094,231 @@
                 <a href="#servicos">Serviços</a>
                 <a href="#sobre">Sobre</a>
                 <a href="#contato">Contato</a>
-                <a href="https://seusite.com/catalogo" class="catalog-btn" target="_blank">Catálogo</a>
+                <a href="catalogo.html" class="catalog-btn">Catálogo</a>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div id="main-content">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>
-                <p>As melhores scooters elétricas de Araxá e região</p>
-                
-                <div class="hero-buttons">
-                    <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="btn whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
-                    <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
-                        <i class="fas fa-map-marker-alt"></i> Localização
-                    </a>
-                    <a href="https://seusite.com/catalogo" class="btn catalog-btn-hero" target="_blank">
-                        <i class="fas fa-store"></i> Ver Catálogo
-                    </a>
-                    <a href="#" class="btn maintenance-btn" id="maintenancePageBtn">
-                        <i class="fas fa-tools"></i> Manutenção
-                    </a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>
+            <p>As melhores scooters elétricas de Araxá e região</p>
+            
+            <div class="hero-buttons">
+                <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
+                    <i class="fas fa-map-marker-alt"></i> Localização
+                </a>
+                <a href="#produtos" class="btn catalog-btn-hero">
+                    <i class="fas fa-store"></i> Ver Catálogo
+                </a>
+                <a href="#servicos" class="btn maintenance-btn">
+                    <i class="fas fa-tools"></i> Manutenção
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Círculo com os balões flutuantes DENTRO -->
+            <div class="moto-placeholder">
+                <i class="fas fa-bolt"></i>
+                <div class="floating-elements">
+                    <div class="float-element">⭐ Qualidade</div>
+                    <div class="float-element">🚀 Entrega</div>
+                    <div class="float-element">💪 Garantia</div>
                 </div>
             </div>
-            <div class="hero-image">
-                <!-- Círculo com os balões flutuantes DENTRO -->
-                <div class="moto-placeholder">
-                    <i class="fas fa-bolt"></i>
-                    <div class="floating-elements">
-                        <div class="float-element">⭐ Qualidade</div>
-                        <div class="float-element">🚀 Entrega</div>
-                        <div class="float-element">💪 Garantia</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Features -->
-        <section class="features">
-            <div class="container">
-                <div class="feature-grid">
-                    <div class="feature">
-                        <i class="fas fa-gas-pump"></i>
-                        <h4>Zero Gasolina</h4>
-                        <p>Economize até R$ 300/mês</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-leaf"></i>
-                        <h4>Ecológico</h4>
-                        <p>Zero emissões de carbono</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-tools"></i>
-                        <h4>Manutenção</h4>
-                        <p>Assistência técnica especializada</p>
-                    </div>
-                    <极速 class="feature">
-                        <i class="fas fa-bolt"></i>
-                        <h4>Performance</h4>
-                        <p>Alta tecnologia e potência</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Products -->
-        <section id="produtos" class="products">
-            <div class="container">
-                <h2 class="section-title">Nossos Modelos</h2>
-                
-                <div class="product-carousel">
-                    <div class="carousel-container" id="carousel">
-                        <!-- Modelo R11 (mantido conforme solicitado) -->
-                        <div class="carousel-slide">
-                            <div class="carousel-img">
-                                <img src="R11.png" alt="Modelo R11">
-                            </div>
-                            <div class="carousel-content">
-                                <h3>Modelo R11</h3>
-                                <p>Design moderno e elegante</p>
-                                <ul>
-                                    <li>⚡ 3.000W de potência</li>
-                                    <li>⏱️ Até 70 km/h</li>
-                                    <li>🔋 45 km de autonomia</li>
-                                    <li>⏳ 5 horas para carga completa</li>
-                                    <li>💪 Capacidade: 150kg a 200kg</li>
-                                </ul>
-                                <!-- Botão dentro do retângulo do modelo -->
-                                <a href="https://seusite.com/catalogo" class="catalog-central-btn" target="_blank">
-                                    <i class="fas fa-store"></i> Ver Catálogo Completo
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Modelo S2 (novo modelo) -->
-                        <div class="carousel-slide">
-                            <div class="carousel-img">
-                                <img src="S2.png" alt="Modelo S2">
-                            </div>
-                            <div class="carousel-content">
-                                <h3>Modelo S2</h3>
-                                <极速>Eficiência e praticidade</p>
-                                <ul>
-                                    <li>⚡ 1.000W de potência</li>
-                                    <li>⏱️ Até 40 km/h</li>
-                                    <li>🔋 45 km de autonomia</li>
-                                    <li>⏳ 5 horas para carga completa</li>
-                                    <li>💪 Capacidade: até 200 kg</li>
-                                </ul>
-                                <!-- Botão dentro do retângulo do modelo -->
-                                <a href="https://seusite.com/catalogo" class="catalog-central-btn" target="_blank">
-                                    <i class="fas fa-store"></i> Ver Catálogo Completo
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Modelo V8 (novo modelo) -->
-                        <div class="carousel-slide">
-                            <div class="carousel-img">
-                                <img src="V8.png" alt="Modelo V8">
-                            </div>
-                            <div class="carousel-content">
-                                <h3>Modelo V8</h3>
-                                <p>Desempenho e agilidade</p>
-                                <ul>
-                                    <li>⚡ 1.000W de potência</li>
-                                    <li>⏱️ Até 50 km/h</li>
-                                    <li>🔋 45 km de autonomia</li>
-                                    <li>⏳ 5 horas para carga completa</li>
-                                    <li>💪 Capacidade: até 150 kg</li>
-                                </ul>
-                                <!-- Botão dentro do retângulo do modelo -->
-                                <a href="https://seusite.com/catalogo" class="catalog-central-btn" target="_blank">
-                                    <i class="fas fa-store"></i> Ver Catálogo Completo
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Controles do carrossel posicionados nas laterais -->
-                    <div class="carousel-controls">
-                        <div class="carousel-arrow prev">
-                            <i class="fas fa-chevron-left"></i>
-                        </div>
-                        <div class="carousel-arrow next">
-                            <i class="fas fa-chevron-right"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Indicadores abaixo do botão (agora dentro do carrossel) -->
-                <div class="carousel-indicators">
-                    <div class="indicator active" data-index="0"></div>
-                    <div class="indicator" data-index="1"></div>
-                    <div class="indicator" data-index="2"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services -->
-        <section id="servicos" class="services">
-            <div class="container">
-                <h2 class="section-title">Serviços de Reparo</h2>
-                
-                <div class="services-simple">
-                    <h3>Manutenção Especializada</h3>
-                    <ul class="services-list">
-                        <li>Manutenção preventiva e corretiva</li>
-                        <li>Substituição de baterias</li>
-                        <li>Reparo de controladoras e motores</li>
-                        <li>Troca de peças</li>
-                        <li>Diagnóstico completo com equipamentos especializados</li>
-                        <li>Assistência técnica especializada</li>
-                    </ul>
-                    
-                    <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵" class="service-btn">
-                        <i class="fab fa-whatsapp"></i> Agendar Serviço
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About -->
-        <section id="sobre" class="about">
-            <div class="container">
-                <div class="about-content">
-                    <h2 class="section-title">EloBike Araxá</h2>
-                    <div class极速="about-text">
-                        <p>Especialistas em scooters elétricas com os melhores preços e atendimento personalizado em Araxá e região. Qualidade garantida e satisfação dos nossos clientes.</p>
-                        
-                        <div class="about-features">
-                            <div class="about-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Produtos de qualidade</span>
-                            </div>
-                            <div class="about-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Atendimento personalizado</span>
-                            </div>
-                            <div class="about-feature">
-                                <i class="fas fa-piggy-bank"></i>
-                                <span>Economia Garantida</span>
-                            </div>
-                            <div class="about-feature">
-                                <i class="fas fa-tools"></i>
-                                <span>Serviços especializados</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contato" class="contact">
-            <div class="container">
-                <div class="business-hours">
-                    <h4><i class="far fa-clock"></i> Horário de Funcionamento</h4>
-                    <p>Segunda a Sexta: 8h às 17h30</p>
-                    <p>Sábado: 8h às 12h</p>
-                </div>
-            </极速>
-        </section>
-    </div>
-
-    <!-- Maintenance Page (Initially Hidden) -->
-    <section id="maintenance-page" class="maintenance-page">
+    <!-- Features -->
+    <section class="features">
         <div class="container">
-            <div class="maintenance-container">
-                <div class="maintenance-header">
-                    <h2><i class="fas fa-tools"></i> Serviços de Manutenção</h2>
-                    <p>Especialistas em manutenção de scooters elétricas</p>
+            <div class="feature-grid">
+                <div class="feature">
+                    <i class="fas fa-gas-pump"></i>
+                    <h4>Zero Gasolina</h4>
+                    <p>Economize até R$ 300/mês</p>
                 </div>
-                
-                <div class="maintenance-content">
-                    <p>Na EloBike, oferecemos serviços especializados de manutenção para garantir que sua scooter elétrica esteja sempre em perfeito estado de funcionamento. Nossa equipe técnica é treinada e capacitada para lidar com todos os modelos de scooters elétricas.</p>
-                    
-                    <h3>Nossos Serviços</h3>
-                    
-                    <div class="maintenance-features">
-                        <div class="maintenance-feature">
-                            <i class="fas fa-cogs"></i>
-                            <h4>Manutenção Preventiva</h4>
-                            <p>Revisões periódicas para evitar problemas futuros e garantir o bom funcionamento do veículo.</p>
+                <div class="feature">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Ecológico</h4>
+                    <p>Zero emissões de carbono</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tools"></i>
+                    <h4>Manutenção</h4>
+                    <p>Assistência técnica especializada</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Performance</h4>
+                    <p>Alta tecnologia e potência</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="produtos" class="products">
+        <div class="container">
+            <h2 class="section-title">Nossos Modelos</h2>
+            
+            <div class="product-carousel">
+                <div class="carousel-container" id="carousel">
+                    <!-- Modelo R11 (mantido conforme solicitado) -->
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <img src="R11.png" alt="Modelo R11">
                         </div>
-                        
-                        <div class="maintenance-feature">
-                            <i class="fas fa-wrench"></i>
-                            <h4>Manutenção Corretiva</h4>
-                            <p>Reparo de problemas existentes com peças originais e mão de obra especializada.</p>
-                        </div>
-                        
-                        <div class="maintenance-feature">
-                            <i class="fas fa-battery-full"></i>
-                            <h4>Substituição de Baterias</h4>
-                            <p>Troca de baterias com produtos de qualidade e garantia.</p>
-                        </div>
-                        
-                        <div class="maintenance-feature">
-                            <i class="fas fa-microchip"></i>
-                            <h4>Reparo de Controladoras</h4>
-                            <p>Conserto e substituição de controladoras e sistemas elétricos.</p>
+                        <div class="carousel-content">
+                            <h3>Modelo R11</h3>
+                            <p>Design moderno e elegante</p>
+                            <ul>
+                                <li>⚡ 3.000W de potência</li>
+                                <li>⏱️ Até 70 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: 150kg a 200kg</li>
+                            </ul>
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn" id="catalogBtn1">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
                     </div>
                     
-                    <h3>Por que escolher nossos serviços?</h3>
-                    <ul class="services-list">
-                        <li>Profissionais especializados em scooters elétricas</li>
-                        <li>Peças originais e de qualidade</li>
-                        <li>Garantia em todos os serviços realizados</li>
-                        <li>Atendimento rápido e eficiente</li>
-                        <li>Orçamento sem compromisso</li>
-                        <li>Diagnóstico preciso com equipamentos especializados</li>
-                    </ul>
+                    <!-- Modelo S2 (novo modelo) -->
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <img src="S2.png" alt="Modelo S2">
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Modelo S2</h3>
+                            <p>Eficiência e praticidade</p>
+                            <ul>
+                                <li>⚡ 1.000W de potência</li>
+                                <li>⏱️ Até 40 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: até 200 kg</li>
+                            </ul>
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn" id="catalogBtn2">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Modelo V8 (novo modelo) -->
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <img src="V8.png" alt="Modelo V8">
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Modelo V8</h3>
+                            <p>Desempenho e agilidade</p>
+                            <ul>
+                                <li>⚡ 1.000W de potência</li>
+                                <li>⏱️ Até 50 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: até 150 kg</li>
+                            </ul>
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn" id="catalogBtn3">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="text-center">
-                    <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵" class="service-btn">
-                        <i class="fab fa-whatsapp"></i> Agendar Manutenção
-                    </a>
-                    <br>
-                    <a href="#" class="back-to-home" id="backToHome">
-                        <i class="fas fa-arrow-left"></i> Voltar para a Página Inicial
-                    </a>
+                <!-- Controles do carrossel posicionados nas laterais -->
+                <div class="carousel-controls">
+                    <div class="carousel-arrow prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-arrow next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
                 </div>
+            </div>
+            
+            <!-- Indicadores abaixo do botão (agora dentro do carrossel) -->
+            <div class="carousel-indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="servicos" class="services">
+        <div class="container">
+            <h2 class="section-title">Serviços de Reparo</h2>
+            
+            <div class="services-simple">
+                <h3>Manutenção Especializada</h3>
+                <ul class="services-list">
+                    <li>Manutenção preventiva e corretiva</li>
+                    <li>Substituição de baterias</li>
+                    <li>Reparo de controladoras e motores</li>
+                    <li>Troca de peças</li>
+                    <li>Diagnóstico completo com equipamentos especializados</li>
+                    <li>Assistência técnica especializada</li>
+                </ul>
+                
+                <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵" class="service-btn" id="maintenanceBtn">
+                    <i class="fab fa-whatsapp"></i> Agendar Serviço
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="sobre" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">EloBike Araxá</h2>
+                <div class="about-text">
+                    <p>Especialistas em scooters elétricas com os melhores preços e atendimento personalizado em Araxá e região. Qualidade garantida e satisfação dos nossos clientes.</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Produtos de qualidade</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Atendimento personalizado</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-piggy-bank"></i>
+                            <span>Economia Garantida</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-tools"></i>
+                            <span>Serviços especializados</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <div class="business-hours">
+                <h4><i class="far fa-clock"></i> Horário de Funcionamento</h4>
+                <p>Segunda a Sexta: 8h às 17h30</p>
+                <p>Sábado: 8h às 12h</p>
             </div>
         </div>
     </section>
@@ -1487,7 +1334,7 @@
                 
                 <div class="footer-contact">
                     <p><i class="fab fa-whatsapp"></i> (34) 9926-9707</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Araxá - MG</极速>
+                    <p><i class="fas fa-map-marker-alt"></i> Araxá - MG</p>
                     <p><i class="far fa-clock"></i> Seg-Sex: 8h-17h30 | Sáb: 8h-12h</p>
                 </div>
                 
@@ -1562,19 +1409,6 @@
             }
         }
 
-        // ===== GERENCIAMENTO DE PÁGINAS =====
-        function showMaintenancePage() {
-            document.getElementById('main-content').style.display = 'none';
-            document.getElementById('maintenance-page').style.display = 'block';
-            window.scrollTo(0, 0);
-        }
-
-        function showMainPage() {
-            document.getElementById('maintenance-page').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-            window.scrollTo(0, 0);
-        }
-
         // ===== CORREÇÃO PARA OS BOTÕES NO INSTAGRAM =====
         function fixInstagramButtons() {
             if (isInInstagramWebView()) {
@@ -1584,9 +1418,20 @@
                         e.preventDefault();
                         
                         // Abrir o catálogo em uma nova janela
-                        window.open('https://seusite.com/catalogo', '_blank');
+                        window.open('catalogo.html', '_blank');
                     });
                 });
+                
+                // Correção específica para o botão de manutenção
+                const maintenanceBtn = document.getElementById('maintenanceBtn');
+                if (maintenanceBtn) {
+                    maintenanceBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Abrir o WhatsApp para agendamento de manutenção
+                        window.open('https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵', '_blank');
+                    });
+                }
                 
                 // Correção para links internos (âncoras)
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1686,7 +1531,7 @@
             carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
             
             // Atualizar indicadores
-            indicators.forEach((indicator, index极速) => {
+            indicators.forEach((indicator, index) => {
                 if (index === currentIndex) {
                     indicator.classList.add('active');
                 } else {
@@ -1788,7 +1633,7 @@
             } else if (walk < -50) {
                 nextSlide();
                 isDragging = false;
-                carousel.style.cursor极速 = 'grab';
+                carousel.style.cursor = 'grab';
                 carousel.style.transition = 'transform 0.5s ease';
             }
         }
@@ -1846,17 +1691,6 @@
             
             // Corrigir funcionamento dos botões no Instagram
             fixInstagramButtons();
-            
-            // Adicionar event listeners para a página de manutenção
-            document.getElementById('maintenancePageBtn').addEventListener('click', function(e) {
-                e.preventDefault();
-                showMaintenancePage();
-            });
-            
-            document.getElementById('backToHome').addEventListener('click', function(e) {
-                e.preventDefault();
-                showMainPage();
-            });
         });
 
         // Recalcular altura da viewport em redimensionamento
