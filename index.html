@@ -1605,6 +1605,20 @@
                 behavior: 'smooth'
             });
         });
+
+        // CORREÇÃO: Garantir que os botões do catálogo funcionem corretamente
+        document.querySelectorAll('.catalog-central-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Impede que o evento seja capturado pelo carrossel
+                window.location.href = 'catalogo.html'; // Redireciona para a página do catálogo
+            });
+        });
+
+        // CORREÇÃO: Garantir que o botão "Ver Catálogo" no hero também funcione
+        document.querySelector('.catalog-btn-hero').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'catalogo.html';
+        });
     </script>
 </body>
 </html>
