@@ -51,7 +51,6 @@
             width: 100% !important;
             height: 100% !important;
             overflow-x: hidden !important;
-            scroll-behavior: smooth;
         }
 
         body {
@@ -1110,11 +1109,6 @@
             }
         }
 
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
         /* Efeito de fade-in para as seções */
         section {
             opacity: 0;
@@ -1254,7 +1248,7 @@
                         </div>
                         <div class="carousel-content">
                             <h3>Modelo R11</h3>
-                            <p>Design moderno e elegante</p>
+                            <p>Design moderno và elegante</p>
                             <ul>
                                 <li>⚡ 3.000W de potência</li>
                                 <li>⏱️ Até 70 km/h</li>
@@ -1485,7 +1479,7 @@
             }
         }
 
-        // ===== SCROLL SUAVE COM FEEDBACK VISUAL =====
+        // ===== SCROLL SUAVE UNIVERSAL =====
         function smoothScrollTo(targetId, duration = 1000) {
             const targetElement = document.querySelector(targetId);
             if (!targetElement) return;
