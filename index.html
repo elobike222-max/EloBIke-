@@ -36,6 +36,7 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
             --vh: 1vh;
+            --header-height: 70px;
         }
         
         * {
@@ -144,6 +145,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            height: var(--header-height);
         }
 
         header .container {
@@ -898,6 +900,63 @@
             transform: translateZ(0);
         }
 
+        /* Scroll animation indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 998;
+        }
+
+        .scroll-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .scroll-dot.active {
+            background: var(--accent);
+            transform: scale(1.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .scroll-dot:hover {
+            background: var(--accent-hover);
+            transform: scale(1.2);
+        }
+
+        /* Section highlight during scroll */
+        .section-highlight {
+            position: relative;
+        }
+
+        .section-highlight::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            animation: highlight 1.5s ease;
+            opacity: 0;
+        }
+
+        @keyframes highlight {
+            0% { opacity: 0; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.02); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .footer-content {
@@ -909,6 +968,10 @@
                 order: 3;
                 grid-column: span 2;
                 text-align: center;
+            }
+
+            .scroll-indicator {
+                right: 10px;
             }
         }
 
@@ -988,6 +1051,10 @@
             
             .floating-elements {
                 width: 90%;
+            }
+
+            .scroll-indicator {
+                display: none; /* Esconder indicadores de scroll no mobile */
             }
         }
 
@@ -1077,6 +1144,15 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-dot" data-section="hero" title="Início"></div>
+        <div class="scroll-dot" data-section="produtos" title="Produtos"></div>
+        <div class="scroll-dot" data-section="servicos" title="Serviços"></div>
+        <div class="scroll-dot" data-section="sobre" title="Sobre"></div>
+        <div class="scroll-dot" data-section="contato" title="Contato"></div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -1090,17 +1166,17 @@
                 <span></span>
             </button>
             <nav>
-                <a href="#produtos">Produtos</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#contato">Contato</a>
+                <a href="#produtos" data-scroll="produtos">Produtos</a>
+                <a href="#servicos" data-scroll="servicos">Serviços</a>
+                <a href="#sobre" data-scroll="sobre">Sobre</a>
+                <a href="#contato" data-scroll="contato">Contato</a>
                 <a href="catalogo.html" class="catalog-btn">Catálogo</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-content">
             <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>
             <p>As melhores scooters elétricas de Araxá e região</p>
@@ -1115,10 +1191,10 @@
                 <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                     <i class="fas fa-map-marker-alt"></i> Localização
                 </a>
-                <a href="#produtos" class="btn catalog-btn-hero">
+                <a href="#produtos" class="btn catalog-btn-hero" data-scroll="produtos">
                     <i class="fas fa-store"></i> Ver Catálogo
                 </a>
-                <a href="#servicos" class="btn maintenance-btn">
+                <a href="#servicos" class="btn maintenance-btn" data-scroll="servicos">
                     <i class="fas fa-tools"></i> Manutenção
                 </a>
             </div>
@@ -1409,6 +1485,67 @@
             }
         }
 
+        // ===== SCROLL SUAVE COM FEEDBACK VISUAL =====
+        function smoothScrollTo(targetId, duration = 1000) {
+            const targetElement = document.querySelector(targetId);
+            if (!targetElement) return;
+            
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition - 70; // Considerar altura do header
+            let startTime = null;
+            
+            // Adicionar destaque visual à seção
+            targetElement.classList.add('section-highlight');
+            setTimeout(() => {
+                targetElement.classList.remove('section-highlight');
+            }, 1500);
+            
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                } else {
+                    // Atualizar URL sem recarregar a página
+                    window.history.replaceState(null, null, targetId);
+                }
+            }
+            
+            function easeInOutQuad(t, b, c, d) {
+                t /= d/2;
+                if (t < 1) return c/2*t*t + b;
+                t--;
+                return -c/2 * (t*(t-2) - 1) + b;
+            }
+            
+            requestAnimationFrame(animation);
+        }
+
+        // ===== ATUALIZAR INDICADORES DE SCROLL =====
+        function updateScrollIndicator() {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollDots = document.querySelectorAll('.scroll-dot');
+            const scrollPosition = window.scrollY;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    scrollDots.forEach(dot => {
+                        dot.classList.remove('active');
+                        if (dot.getAttribute('data-section') === sectionId) {
+                            dot.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
         // ===== OBSERVADOR DE INTERSEÇÃO PARA ANIMAÇÕES =====
         const observerOptions = {
             threshold: 0.1,
@@ -1429,40 +1566,35 @@
         });
 
         // ===== ROLAGEM SUAVE PARA LINKS INTERNOS =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"], [data-scroll]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
+                let targetId;
                 
-                if (targetId === '#produtos') {
-                    const targetSection = document.querySelector(targetId);
-                    const catalogButton = document.querySelector('.catalog-central-btn');
-                    
-                    if (targetSection && catalogButton) {
-                        const targetPosition = targetSection.offsetTop - 70;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
+                if (this.getAttribute('data-scroll')) {
+                    targetId = '#' + this.getAttribute('data-scroll');
                 } else {
-                    const target = document.querySelector(targetId);
-                    if (target) {
-                        const targetPosition = target.offsetTop - 70;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
+                    targetId = this.getAttribute('href');
                 }
+                
+                if (targetId === '#') return;
+                
+                smoothScrollTo(targetId);
                 
                 // Fechar menu mobile após clicar em um link
                 if (window.innerWidth <= 768) {
                     document.querySelector('nav').classList.remove('active');
                     document.body.style.overflow = 'auto';
+                    document.querySelector('.menu-toggle').classList.remove('active');
                 }
+            });
+        });
+
+        // Navegação pelos pontos do indicador de scroll
+        document.querySelectorAll('.scroll-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetId = '#' + dot.getAttribute('data-section');
+                smoothScrollTo(targetId);
             });
         });
 
@@ -1606,10 +1738,8 @@
         
         menuToggle.addEventListener('click', () => {
             nav.classList.toggle('active');
-            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
-            
-            // Animação do hamburger menu
             menuToggle.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
         });
 
         // ===== BACK TO TOP BUTTON =====
@@ -1621,13 +1751,12 @@
             } else {
                 backToTopButton.classList.remove('visible');
             }
+            
+            updateScrollIndicator();
         });
         
         backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            smoothScrollTo('#hero');
         });
 
         // ===== INICIALIZAÇÃO GERAL =====
@@ -1643,6 +1772,16 @@
             
             // Aplicar correções para Instagram
             applyInstagramFix();
+            
+            // Atualizar indicador de scroll
+            updateScrollIndicator();
+            
+            // Verificar se há um hash na URL e rolar para a seção correspondente
+            if (window.location.hash) {
+                setTimeout(() => {
+                    smoothScrollTo(window.location.hash, 800);
+                }, 500);
+            }
         });
 
         // Recalcular altura da viewport em redimensionamento
