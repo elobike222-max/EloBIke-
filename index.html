@@ -1186,7 +1186,7 @@
                     <i class="fas fa-map-marker-alt"></i> Localização
                 </a>
                 <a href="#produtos" class="btn catalog-btn-hero" data-scroll="produtos">
-                    <i class="fas fa-store"></i> Ver Catálogo
+                    <i class="fas fa-motorcycle"></i> Ver Scooters
                 </a>
                 <a href="#servicos" class="btn maintenance-btn" data-scroll="servicos">
                     <i class="fas fa-tools"></i> Manutenção
@@ -1248,7 +1248,7 @@
                         </div>
                         <div class="carousel-content">
                             <h3>Modelo R11</h3>
-                            <p>Design moderno và elegante</p>
+                            <p>Design moderno e elegante</p>
                             <ul>
                                 <li>⚡ 3.000W de potência</li>
                                 <li>⏱️ Até 70 km/h</li>
@@ -1560,212 +1560,229 @@
         });
 
         // ===== ROLAGEM SUAVE PARA LINKS INTERNOS =====
-        document.querySelectorAll('a[href^="#"], [data-scroll]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                let targetId;
-                
-                if (this.getAttribute('data-scroll')) {
-                    targetId = '#' + this.getAttribute('data-scroll');
-                } else {
-                    targetId = this.getAttribute('href');
-                }
-                
-                if (targetId === '#') return;
-                
-                smoothScrollTo(targetId);
-                
-                // Fechar menu mobile após clicar em um link
-                if (window.innerWidth <= 768) {
-                    document.querySelector('nav').classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    document.querySelector('.menu-toggle').classList.remove('active');
-                }
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"], [data-scroll]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    let targetId;
+                    
+                    if (this.getAttribute('data-scroll')) {
+                        targetId = '#' + this.getAttribute('data-scroll');
+                    } else {
+                        targetId = this.getAttribute('href');
+                    }
+                    
+                    if (targetId === '#') return;
+                    
+                    smoothScrollTo(targetId);
+                    
+                    // Fechar menu mobile após clicar em um link
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('nav').classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                        document.querySelector('.menu-toggle').classList.remove('active');
+                    }
+                });
             });
-        });
+        }
 
         // Navegação pelos pontos do indicador de scroll
-        document.querySelectorAll('.scroll-dot').forEach(dot => {
-            dot.addEventListener('click', () => {
-                const targetId = '#' + dot.getAttribute('data-section');
-                smoothScrollTo(targetId);
+        function setupScrollDots() {
+            document.querySelectorAll('.scroll-dot').forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const targetId = '#' + dot.getAttribute('data-section');
+                    smoothScrollTo(targetId);
+                });
             });
-        });
+        }
 
         // ===== CARROSSEL DE PRODUTOS =====
-        const carousel = document.getElementById('carousel');
-        const slides = document.querySelectorAll('.carousel-slide');
-        const indicators = document.querySelectorAll('.indicator');
-        const carouselContainer = document.querySelector('.product-carousel');
-        const prevButton = document.querySelector('.carousel-arrow.prev');
-        const nextButton = document.querySelector('.carousel-arrow.next');
-        
-        let currentIndex = 0;
-        const slideCount = slides.length;
-        let autoSlideInterval;
-        let userInteractionTimeout;
-        let isDragging = false;
-        let startX = 0;
-        let startScrollLeft = 0;
-        
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        function setupCarousel() {
+            const carousel = document.getElementById('carousel');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const carouselContainer = document.querySelector('.product-carousel');
+            const prevButton = document.querySelector('.carousel-arrow.prev');
+            const nextButton = document.querySelector('.carousel-arrow.next');
             
-            // Atualizar indicadores
-            indicators.forEach((indicator, index) => {
-                if (index === currentIndex) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
-                }
-            });
-        }
-        
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slideCount;
-            updateCarousel();
-            resetAutoSlide();
-        }
-        
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-            updateCarousel();
-            resetAutoSlide();
-        }
-        
-        // Iniciar slides automáticos
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(() => {
-                nextSlide();
-            }, 5000);
-        }
-        
-        // Parar slides automáticos
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-        }
-        
-        // Reiniciar slides automáticos após 26 segundos de inatividade
-        function resetAutoSlide() {
-            clearTimeout(userInteractionTimeout);
-            stopAutoSlide();
+            let currentIndex = 0;
+            const slideCount = slides.length;
+            let autoSlideInterval;
+            let userInteractionTimeout;
+            let isDragging = false;
+            let startX = 0;
+            let startScrollLeft = 0;
             
-            userInteractionTimeout = setTimeout(() => {
-                startAutoSlide();
-            }, 26000);
-        }
-        
-        // Indicadores clicáveis
-        indicators.forEach(indicator => {
-            indicator.addEventListener('click', () => {
-                currentIndex = parseInt(indicator.getAttribute('data-index'));
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Atualizar indicadores
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slideCount;
                 updateCarousel();
                 resetAutoSlide();
-            });
-        });
-        
-        // Botões de navegação
-        nextButton.addEventListener('click', () => {
-            nextSlide();
-        });
-        
-        prevButton.addEventListener('click', () => {
-            prevSlide();
-        });
-        
-        // ===== FUNCIONALIDADE DE ARRASTAR =====
-        carouselContainer.addEventListener('mousedown', dragStart);
-        carouselContainer.addEventListener('touchstart', dragStart, { passive: true });
-        
-        carouselContainer.addEventListener('mousemove', drag);
-        carouselContainer.addEventListener('touchmove', drag, { passive: true });
-        
-        carouselContainer.addEventListener('mouseup', dragEnd);
-        carouselContainer.addEventListener('mouseleave', dragEnd);
-        carouselContainer.addEventListener('touchend', dragEnd);
-        
-        // Pausar auto slide quando o mouse estiver sobre o carrossel
-        carouselContainer.addEventListener('mouseenter', stopAutoSlide);
-        carouselContainer.addEventListener('mouseleave', () => {
-            resetAutoSlide();
-        });
-        
-        function dragStart(e) {
-            isDragging = true;
-            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-            startScrollLeft = carousel.scrollLeft;
-            stopAutoSlide();
-            carousel.style.cursor = 'grabbing';
-            carousel.style.transition = 'none';
-        }
-        
-        function drag(e) {
-            if (!isDragging) return;
-            
-            e.preventDefault();
-            const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-            const walk = (x - startX) * 2;
-            
-            if (walk > 50) {
-                prevSlide();
-                isDragging = false;
-                carousel.style.cursor = 'grab';
-                carousel.style.transition = 'transform 0.5s ease';
-            } else if (walk < -50) {
-                nextSlide();
-                isDragging = false;
-                carousel.style.cursor = 'grab';
-                carousel.style.transition = 'transform 0.5s ease';
             }
+            
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateCarousel();
+                resetAutoSlide();
+            }
+            
+            // Iniciar slides automáticos
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(() => {
+                    nextSlide();
+                }, 5000);
+            }
+            
+            // Parar slides automáticos
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+            
+            // Reiniciar slides automáticos após 26 segundos de inatividade
+            function resetAutoSlide() {
+                clearTimeout(userInteractionTimeout);
+                stopAutoSlide();
+                
+                userInteractionTimeout = setTimeout(() => {
+                    startAutoSlide();
+                }, 26000);
+            }
+            
+            // Indicadores clicáveis
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = parseInt(indicator.getAttribute('data-index'));
+                    updateCarousel();
+                    resetAutoSlide();
+                });
+            });
+            
+            // Botões de navegação
+            nextButton.addEventListener('click', () => {
+                nextSlide();
+            });
+            
+            prevButton.addEventListener('click', () => {
+                prevSlide();
+            });
+            
+            // ===== FUNCIONALIDADE DE ARRASTAR =====
+            carouselContainer.addEventListener('mousedown', dragStart);
+            carouselContainer.addEventListener('touchstart', dragStart, { passive: true });
+            
+            carouselContainer.addEventListener('mousemove', drag);
+            carouselContainer.addEventListener('touchmove', drag, { passive: true });
+            
+            carouselContainer.addEventListener('mouseup', dragEnd);
+            carouselContainer.addEventListener('mouseleave', dragEnd);
+            carouselContainer.addEventListener('touchend', dragEnd);
+            
+            // Pausar auto slide quando o mouse estiver sobre o carrossel
+            carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+            carouselContainer.addEventListener('mouseleave', () => {
+                resetAutoSlide();
+            });
+            
+            function dragStart(e) {
+                isDragging = true;
+                startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                startScrollLeft = carousel.scrollLeft;
+                stopAutoSlide();
+                carousel.style.cursor = 'grabbing';
+                carousel.style.transition = 'none';
+            }
+            
+            function drag(e) {
+                if (!isDragging) return;
+                
+                e.preventDefault();
+                const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                const walk = (x - startX) * 2;
+                
+                if (walk > 50) {
+                    prevSlide();
+                    isDragging = false;
+                    carousel.style.cursor = 'grab';
+                    carousel.style.transition = 'transform 0.5s ease';
+                } else if (walk < -50) {
+                    nextSlide();
+                    isDragging = false;
+                    carousel.style.cursor = 'grab';
+                    carousel.style.transition = 'transform 0.5s ease';
+                }
+            }
+            
+            function dragEnd() {
+                isDragging = false;
+                carousel.style.cursor = 'grab';
+                carousel.style.transition = 'transform 0.5s ease';
+                resetAutoSlide();
+            }
+            
+            // Iniciar o slideshow automaticamente
+            startAutoSlide();
         }
-        
-        function dragEnd() {
-            isDragging = false;
-            carousel.style.cursor = 'grab';
-            carousel.style.transition = 'transform 0.5s ease';
-            resetAutoSlide();
-        }
-        
+
         // ===== MENU MOBILE TOGGLE =====
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav');
-        
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
-        });
+        function setupMobileMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+            });
+        }
 
         // ===== BACK TO TOP BUTTON =====
-        const backToTopButton = document.querySelector('.back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
+        function setupBackToTop() {
+            const backToTopButton = document.querySelector('.back-to-top');
             
-            updateScrollIndicator();
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            smoothScrollTo('#hero');
-        });
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+                
+                updateScrollIndicator();
+            });
+            
+            backToTopButton.addEventListener('click', () => {
+                smoothScrollTo('#hero');
+            });
+        }
 
         // ===== INICIALIZAÇÃO GERAL =====
         document.addEventListener('DOMContentLoaded', function() {
             // Inicializar algumas seções como visíveis
             document.querySelector('.hero').classList.add('visible');
             
-            // Iniciar o slideshow automaticamente
-            startAutoSlide();
-            
             // Configurar altura da viewport
             setViewportHeight();
             
             // Aplicar correções para Instagram
             applyInstagramFix();
+            
+            // Configurar funcionalidades
+            setupSmoothScroll();
+            setupScrollDots();
+            setupCarousel();
+            setupMobileMenu();
+            setupBackToTop();
             
             // Atualizar indicador de scroll
             updateScrollIndicator();
