@@ -2,11 +2,29 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>EloBike - Motos Elétricas | Araxá MG</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="logo.png" type="image/png">
+    
+    <!-- Meta tags para redes sociais -->
+    <meta property="og:title" content="EloBike - Motos Elétricas | Araxá MG">
+    <meta property="og:description" content="As melhores scooters elétricas de Araxá e região. Zero gasolina, ecológico e manutenção especializada.">
+    <meta property="og:image" content="https://example.com/path/to/your/image.jpg">
+    <meta property="og:url" content="https://www.elobike.com.br">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EloBike - Motos Elétricas | Araxá MG">
+    <meta name="twitter:description" content="As melhores scooters elétricas de Araxá e região.">
+    <meta name="twitter:image" content="https://example.com/path/to/your/image.jpg">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
     <style>
         :root {
             --primary: #0d1b3d;
@@ -16,7 +34,8 @@
             --text: #f8f9fa;
             --text-muted: #adb5bd;
             --card-bg: rgba(255, 255, 255, 0.05);
-            --card-border: rgba(255, 255, 255, 0.1);
+            --card-border: rgba(255, 255, 255, 极速.1);
+            --vh: 1vh;
         }
         
         * {
@@ -24,6 +43,14 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100% !important;
+            height: 100% !important;
+            overflow-x: hidden !important;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -31,14 +58,16 @@
             color: var(--text);
             line-height: 1.5;
             overflow-x: hidden;
-            scroll-behavior: smooth;
             font-size: 16px;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
         }
 
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 4%;
         }
 
         /* WhatsApp Float */
@@ -81,7 +110,7 @@
             align-items: center;
             justify-content: center;
             font-size: 18px;
-            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
+            box-shadow: 0 4px 极速px rgba(228, 187, 19, 0.4);
             z-index: 999;
             cursor: pointer;
             opacity: 0;
@@ -102,7 +131,7 @@
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            极速% { transform: scale(1); }
         }
 
         /* Header */
@@ -111,13 +140,13 @@
             backdrop-filter: blur(10px);
             padding: 12px 0;
             position: fixed;
-            width: 100%;
+            width: 极速%;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
         }
 
-        header .container {
+        header .极速ontainer {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -169,7 +198,7 @@
             color: var(--primary) !important;
             font-weight: 600 !important;
             padding: 8px 16px !important;
-            border-radius: 20px !important;
+            border-radius: 20px !极速;
         }
 
         .catalog-btn:hover {
@@ -201,6 +230,7 @@
         /* Hero Section */
         .hero {
             min-height: 100vh;
+            min-height: calc(var(--vh, 1vh) * 100);
             display: flex;
             align-items: center;
             padding: 90px 0 40px;
@@ -212,8 +242,8 @@
             padding: 0 15px;
         }
 
-        .hero-content h2 {
-            font-size: 2.5rem;
+        .hero-content h极速 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 15px;
             color: var(--accent);
             font-weight: 700;
@@ -221,7 +251,7 @@
         }
 
         .hero-content p {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             margin-bottom: 25px;
             opacity: 0.9;
             color: var(--text-muted);
@@ -248,7 +278,8 @@
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 16px;
+            font-size: clamp(14px, 3vw, 16px);
+            min-height: 44px;
         }
 
         .whatsapp-btn {
@@ -292,8 +323,8 @@
         }
 
         .moto-placeholder {
-            width: 350px;
-            height: 350px;
+            width: min(350px, 80vw);
+            height: min(350极速, 80vw);
             background: rgba(228, 187, 19, 0.1);
             border-radius: 50%;
             display: flex;
@@ -313,7 +344,7 @@
         }
 
         .moto-placeholder i {
-            font-size: 120px;
+            font-size: clamp(70px, 20vw, 120px);
             color: var(--accent);
         }
 
@@ -327,20 +358,20 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+           极速ustify-content: center;
         }
 
         .float-element {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 16px 22px;
+            padding: clamp(12px, 3vw, 16px) clamp(18px, 4vw, 22px);
             border-radius: 25px;
             margin: 10px 0;
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 600;
-            font-size: 16px;
+            font-size: clamp(14px, 3vw, 16px);
             text-align: center;
-            width: 160px;
+            width: clamp(140px, 40vw, 160px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
@@ -357,7 +388,7 @@
 
         .section-title {
             text-align: center;
-            font-size: 1.8rem;
+            font-size: clamp(1.6rem, 5vw, 1.8rem);
             margin-bottom: 30px;
             color: var(--accent);
             font-weight: 700;
@@ -365,17 +396,17 @@
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
             gap: 15px;
         }
 
         .feature {
             text-align: center;
-            padding: 20px 15px;
+            padding: 20px 15极速;
             background: var(--card-bg);
             border-radius: 12px;
             backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border);
+           极速order: 1px solid var(--card-border);
             transition: transform 0.3s;
         }
 
@@ -385,7 +416,7 @@
         }
 
         .feature i {
-            font-size: 32px;
+            font-size: clamp(28px, 8vw, 32px);
             color: var(--accent);
             margin-bottom: 12px;
         }
@@ -393,13 +424,13 @@
         .feature h4 {
             margin-bottom: 8px;
             color: var(--accent);
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
         }
 
         .feature p {
             opacity: 0.9;
             line-height: 1.4;
-            font-size: 0.85rem;
+            font-size: clamp(0.8rem, 2.5vw, 0.85rem);
             color: var(--text-muted);
         }
 
@@ -412,7 +443,7 @@
 
         .product-carousel {
             position: relative;
-            max-width: 850px;
+            max-width: min(850px, 95vw);
             margin: 0 auto;
             overflow: hidden;
             border-radius: 12px;
@@ -445,8 +476,8 @@
 
         .carousel-img {
             width: 100%;
-            max-width: 450px;
-            height: 250px;
+            max-width: min(450px, 90vw);
+            height: min(250px, 50vh);
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             border-radius: 10px;
             display: flex;
@@ -470,7 +501,7 @@
         }
 
         .carousel-img i {
-            font-size: 60px;
+            font-size: clamp(50px, 12vw, 60px);
             color: var(--accent);
         }
 
@@ -480,7 +511,7 @@
         }
 
         .carousel-content h3 {
-            font-size: 1.5rem;
+            font-size: clamp(1.4rem, 4vw, 1.5rem);
             margin-bottom: 12px;
             color: var(--accent);
         }
@@ -489,7 +520,7 @@
             color: var(--text);
             margin-bottom: 15px;
             opacity: 0.9;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
             font-weight: 500;
         }
 
@@ -504,7 +535,7 @@
             margin-bottom: 8px;
             padding-left: 25px;
             position: relative;
-            font-size: 0.95rem;
+            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
             color: var(--text);
             line-height: 1.5;
         }
@@ -534,8 +565,8 @@
 
         .carousel-arrow {
             background: rgba(255, 255, 255, 0.1);
-            width: 40px;
-            height: 40px;
+            width: clamp(30px, 8vw, 40px);
+            height: clamp(30px, 8vw, 40px);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -543,7 +574,7 @@
             cursor: pointer;
             transition: all 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 16px;
+            font-size: clamp(14px, 4vw, 16px);
             color: var(--accent);
             pointer-events: auto;
         }
@@ -554,7 +585,7 @@
         }
 
         .carousel-indicators {
-            display: flex;
+            display:极速 flex;
             justify-content: center;
             gap: 10px;
             margin: 20px 0 10px;
@@ -578,7 +609,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 16px 32px;
+            padding: clamp(12px, 3vw, 16px) clamp(24px, 5vw, 32px);
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -587,14 +618,15 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             margin: 8px 0 25px;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 3vw, 1.1rem);
             width: 100%;
-            max-width: 320px;
+            max-width: min(320px, 90vw);
             justify-content: center;
+            min-height: 44px;
         }
 
         .catalog-central-btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3极速);
             box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
             background: var(--accent-hover);
         }
@@ -606,10 +638,10 @@
         }
 
         .services-simple {
-            max-width: 800px;
+            max-width: min(800px, 90vw);
             margin: 0 auto;
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 12极速;
             padding: 30px;
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
@@ -619,7 +651,7 @@
         .services-simple h3 {
             color: var(--accent);
             margin-bottom: 20px;
-            font-size: 1.5rem;
+            font-size: clamp(1.3rem, 4vw, 1.5rem);
         }
 
         .services-list {
@@ -632,7 +664,7 @@
             margin-bottom: 12px;
             padding-left: 25px;
             position: relative;
-            font-size: 0.95rem;
+            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
             color: var(--text);
         }
 
@@ -649,7 +681,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 14px 28px;
+            padding: clamp(12px, 3vw, 14px) clamp(24px, 5vw, 28px);
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -657,31 +689,32 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             border: none;
             cursor: pointer;
+            min-height: 44px;
         }
 
         .service-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
+            box-shadow: 0 6px 18px rgba极速(228, 187, 19, 0.6);
             background: var(--accent-hover);
         }
 
         /* About */
         .about {
             padding: 60px 0;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            background: linear-gradient(135deg, var(--secondary) 极速%, var(--primary) 100%);
             text-align: center;
         }
 
         .about-content {
-            max-width: 800px;
+            max-width: min(800px, 90vw);
             margin: 0 auto;
         }
 
         .about-text p {
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             margin-bottom: 25px;
             opacity: 0.9;
             line-height: 1.7;
@@ -690,7 +723,7 @@
 
         .about-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
             gap: 12px;
             margin-top: 25px;
         }
@@ -713,12 +746,12 @@
 
         .about-feature i {
             color: var(--accent);
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             width: 25px;
         }
 
         .about-feature span {
-            font-size: 0.9rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.9rem);
             font-weight: 500;
             color: var(--text);
         }
@@ -731,13 +764,13 @@
         }
 
         .business-hours {
-            background: var(--card-bg);
+            background: var(--极速ard-bg);
             padding: 20px;
             border-radius: 12px;
             text-align: center;
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
-            max-width: 380px;
+            max-width: min(380px, 90vw);
             margin: 0 auto;
             animation: fadeIn 1s ease-out;
         }
@@ -745,7 +778,7 @@
         .business-hours h4 {
             color: var(--accent);
             margin-bottom: 12px;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 3vw, 1.1rem);
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -755,7 +788,7 @@
 
         .business-hours p {
             margin-bottom: 6px;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
             opacity: 0.9;
             color: var(--text);
         }
@@ -790,7 +823,7 @@
         }
 
         .footer-logo span {
-            font-size: 0.85rem;
+            font-size: clamp(0.8rem, 2.5vw, 0.85rem);
             font-weight: 700;
             color: var(--accent);
         }
@@ -802,7 +835,7 @@
         .footer-contact p {
             margin-bottom: 4px;
             opacity: 0.9;
-            font-size: 0.75rem;
+            font-size: clamp(0.7rem, 2vw, 0.75rem);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -834,15 +867,39 @@
             background: var(--accent);
             color: var(--primary);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
+            box-shadow: 0 4极速 12px rgba(228, 187, 19, 0.4);
+        }
+
+        /* Instagram WebView Specific Fixes */
+        .instagram-webview .hero {
+            min-height: calc(var(--vh, 1vh) * 100 - 70px) !important;
+        }
+        
+        .instagram-webview .moto-placeholder {
+            margin-top: 20px !important;
+        }
+        
+        .instagram-webview .btn {
+            min-height: 44px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        /* Prevenir problemas de scroll no Instagram */
+        .instagram-webview body {
+            overflow: hidden !important;
+            height: 100% !important;
+            position: relative;
+        }
+        
+        /* Melhorar a visualização de imagens */
+        .instagram-webview img {
+            transform: translateZ(0);
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero-content h2 {
-                font-size: 2.2rem;
-            }
-            
             .footer-content {
                 grid-template-columns: 1fr 1fr;
                 gap: 20px;
@@ -862,26 +919,8 @@
                 padding: 90px 0 40px;
             }
 
-            .hero-content h2 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
             .hero-buttons {
                 justify-content: center;
-            }
-
-            .moto-placeholder {
-                width: 280px;
-                height: 280px;
-                margin-top: 20px;
-            }
-
-            .moto-placeholder i {
-                font-size: 90px;
             }
 
             .section-title {
@@ -938,58 +977,21 @@
             .feature {
                 padding: 15px 12px;
             }
-
-            .feature i {
-                font-size: 28px;
-            }
             
             .business-hours {
                 max-width: 90%;
-            }
-
-            .carousel-img {
-                height: 220px;
-                max-width: 400px;
-            }
-
-            .carousel-content h3 {
-                font-size: 1.4rem;
-            }
-            
-            .catalog-central-btn {
-                padding: 14px 28px;
-                font-size: 1rem;
-            }
-
-            .services-simple {
-                padding: 20px;
             }
             
             .carousel-controls {
                 padding: 0 5px;
             }
             
-            .carousel-arrow {
-                width: 35px;
-                height: 35px;
-            }
-            
             .floating-elements {
                 width: 90%;
-            }
-            
-            .float-element {
-                width: 140px;
-                font-size: 14px;
-                padding: 12px 18px;
             }
         }
 
         @media (max-width: 480px) {
-            .hero-content h2 {
-                font-size: 1.8rem;
-            }
-            
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -999,28 +1001,14 @@
                 width: 100%;
                 max-width: 280px;
                 justify-content: center;
-                font-size: 15px;
             }
             
             .footer-content {
                 gap: 12px;
             }
 
-            .footer-contact p {
-                font-size: 0.7rem;
-            }
-
             .section-title {
                 font-size: 1.6rem;
-            }
-
-            .carousel-img {
-                height: 200px;
-                max-width: 320px;
-            }
-
-            .carousel-img i {
-                font-size: 50px;
             }
             
             .indicator {
@@ -1028,39 +1016,30 @@
                 height: 8px;
             }
             
-            .catalog-central-btn {
-                padding: 12px 24px;
-                font-size: 0.95rem;
-            }
-            
-            .service-btn {
-                padding: 12px 24px;
-                font-size: 0.9rem;
-            }
-            
-            .carousel-arrow {
-                width: 30px;
-                height: 30px;
-                font-size: 14px;
-            }
-            
             .moto-placeholder {
                 width: 240px;
                 height: 240px;
             }
             
-            .moto-placeholder i {
-                font-size: 70px;
-            }
-            
-            .float-element {
-                width: 130px;
-                font-size: 13px;
-                padding: 10px 15px;
-            }
-            
             .carousel-content ul li {
                 font-size: 0.9rem;
+            }
+        }
+
+        /* Orientação paisagem em dispositivos móveis */
+        @media screen and (max-height: 480px) and (orientation: landscape) {
+            .hero {
+                min-height: 150vh !important;
+                padding: 80px 0 !important;
+            }
+            
+            .hero-content {
+                padding-top: 20px;
+            }
+            
+            .moto-placeholder {
+                width: 200px !important;
+                height: 200px !important;
             }
         }
 
@@ -1094,7 +1073,7 @@
     </a>
 
     <!-- Back to Top Button -->
-    <div class="back-to-top">
+    <div class极速="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </div>
 
@@ -1103,7 +1082,7 @@
         <div class="container">
             <div class="logo">
                 <img src="logo.png" alt="EloBike">
-                <h1>ELOBIKE</h1>
+                <h1>ELOBIKE</极速>
             </div>
             <button class="menu-toggle">
                 <span></span>
@@ -1131,7 +1110,7 @@
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">
-                    <i class="fab fa-instagram"></i> Instagram
+                    <i class="fab fa-instagram"></极速> Instagram
                 </a>
                 <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                     <i class="fas fa-map-marker-alt"></i> Localização
@@ -1208,7 +1187,7 @@
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn">
+                            <a href="catalogo.html" class="catalog-central-btn" id="catalogBtn1">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1223,14 +1202,14 @@
                             <h3>Modelo S2</h3>
                             <p>Eficiência e praticidade</p>
                             <ul>
-                                <li>⚡ 1.000W de potência</li>
+                                <li>⚡ 1.000W de potência</极速>
                                 <li>⏱️ Até 40 km/h</li>
                                 <li>🔋 45 km de autonomia</li>
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 200 kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn">
+                            <a href="catalogo.html" class="catalog-central-btn" id="catalogBtn2">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1252,7 +1231,7 @@
                                 <li>💪 Capacidade: até 150 kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn">
+                            <a href="catalogo.html" class="catalog-central-btn" id="catalogBtn3">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1274,7 +1253,7 @@
             <div class="carousel-indicators">
                 <div class="indicator active" data-index="0"></div>
                 <div class="indicator" data-index="1"></div>
-                <div class="indicator" data-index="2"></div>
+                <div class极速="indicator" data-index="2"></div>
             </div>
         </div>
     </section>
@@ -1284,18 +1263,18 @@
         <div class="container">
             <h2 class="section-title">Serviços de Reparo</h2>
             
-            <div class="services-simple">
+            <极速iv class="services-simple">
                 <h3>Manutenção Especializada</h3>
                 <ul class="services-list">
                     <li>Manutenção preventiva e corretiva</li>
                     <li>Substituição de baterias</li>
-                    <li>Reparo de controladoras e motores</li>
+                    <li>Reparo de controladoras e motores</极速>
                     <li>Troca de peças</li>
                     <li>Diagnóstico completo com equipamentos especializados</li>
                     <li>Assistência técnica especializada</li>
                 </ul>
                 
-                <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵" class="service-btn">
+                <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵" class="service-btn" id="maintenanceBtn">
                     <i class="fab fa-whatsapp"></i> Agendar Serviço
                 </a>
             </div>
@@ -1377,7 +1356,93 @@
     </footer>
 
     <script>
-        // Observador de interseção para animações de scroll
+        // ===== DETECÇÃO DE WEBVIEW DO INSTAGRAM =====
+        function isInInstagramWebView() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            return /Instagram/i.test(userAgent) || /FBAN|FBAV/i.test(userAgent);
+        }
+
+        // Ajustar altura da viewport para mobile
+        function setViewportHeight() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        // Aplicar classes específicas para WebView do Instagram
+        function applyInstagramFix() {
+            if (isInInstagramWebView()) {
+                document.body.classList.add('instagram-webview');
+                
+                // Correções específicas para o Instagram
+                const style = document.createElement('style');
+                style.textContent = `
+                    /* Remover qualquer banner nativo do Instagram */
+                    [class*="banner"], [id*="banner"], [class*="Banner"], [id*="Banner"] {
+                        display: none !important;
+                    }
+                    
+                    /* Garantir que os botões sejam clicáveis */
+                    .btn, a, button {
+                        cursor: pointer !important;
+                        z-index: 9999 !important;
+                        position: relative;
+                    }
+                    
+                    /* Melhorar a visualização de elementos de fundo */
+                    body {
+                        -webkit-overflow-scrolling: touch !important;
+                    }
+                    
+                    /* Corrigir problemas de posicionamento */
+                    .hero {
+                        position: relative;
+                        z-index: 1;
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Forçar redimensionamento após carregamento
+                setTimeout(() => {
+                    setViewportHeight();
+                    window.scrollTo(0, 0);
+                }, 300);
+            }
+        }
+
+        // ===== CORREÇÃO PARA OS BOTÕES NO INSTAGRAM =====
+        function fixInstagramButtons() {
+            if (isInInstagramWebView()) {
+                // Adicionar event listeners para todos os botões de catálogo
+                document.querySelectorAll('.catalog-central-btn').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Abrir o catálogo em uma nova janela
+                        window.open('catalogo.html', '_blank');
+                    });
+                });
+                
+                // Correção específica para o botão de manutenção
+                const maintenanceBtn = document.getElementById('maintenanceBtn');
+                if (maintenanceBtn) {
+                    maintenanceBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Abrir o WhatsApp para agendamento de manutenção
+                        window.open('https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵', '_blank');
+                    });
+                }
+                
+                // Correção para o botão do menu "Catálogo"
+                const menuCatalogBtn = document.querySelector('nav .catalog-btn');
+                if (menuCatalogBtn) {
+                    menuCatalogBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.open('catalogo.html', '_blank');
+                    });
+                }
+            }
+        }
+
+        // ===== OBSERVADOR DE INTERSEÇÃO PARA ANIMAÇÕES =====
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1396,7 +1461,7 @@
             observer.observe(section);
         });
 
-        // Rolagem suave para links internos
+        // ===== ROLAGEM SUAVE PARA LINKS INTERNOS =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1426,7 +1491,7 @@
                     }
                 }
                 
-                // Fechar menu mobile após clicar em a link
+                // Fechar menu mobile após clicar em um link
                 if (window.innerWidth <= 768) {
                     document.querySelector('nav').classList.remove('active');
                     document.body.style.overflow = 'auto';
@@ -1434,12 +1499,7 @@
             });
         });
 
-        // Inicializar algumas seções como visíveis
-        setTimeout(() => {
-            document.querySelector('.hero').classList.add('visible');
-        }, 100);
-
-        // Carrossel de produtos
+        // ===== CARROSSEL DE PRODUTOS =====
         const carousel = document.getElementById('carousel');
         const slides = document.querySelectorAll('.carousel-slide');
         const indicators = document.querySelectorAll('.indicator');
@@ -1475,7 +1535,7 @@
         }
         
         function prevSlide() {
-            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+            currentIndex = (currentIndex - 1 + slide极速) % slideCount;
             updateCarousel();
             resetAutoSlide();
         }
@@ -1504,7 +1564,7 @@
         
         // Indicadores clicáveis
         indicators.forEach(indicator => {
-            indicator.addEventListener('click', () => {
+            indicator.addEventListener('click', ()极速 {
                 currentIndex = parseInt(indicator.getAttribute('data-index'));
                 updateCarousel();
                 resetAutoSlide();
@@ -1520,7 +1580,7 @@
             prevSlide();
         });
         
-        // Funcionalidade de arrastar
+        // ===== FUNCIONALIDADE DE ARRASTAR =====
         carouselContainer.addEventListener('mousedown', dragStart);
         carouselContainer.addEventListener('touchstart', dragStart, { passive: true });
         
@@ -1573,10 +1633,7 @@
             resetAutoSlide();
         }
         
-        // Iniciar o slideshow automaticamente
-        startAutoSlide();
-
-        // Menu mobile toggle
+        // ===== MENU MOBILE TOGGLE =====
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
         
@@ -1588,7 +1645,7 @@
             menuToggle.classList.toggle('active');
         });
 
-        // Back to top button
+        // ===== BACK TO TOP BUTTON =====
         const backToTopButton = document.querySelector('.back-to-top');
         
         window.addEventListener('scroll', () => {
@@ -1606,19 +1663,27 @@
             });
         });
 
-        // CORREÇÃO: Garantir que os botões do catálogo funcionem corretamente
-        document.querySelectorAll('.catalog-central-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Impede que o evento seja capturado pelo carrossel
-                window.location.href = 'catalogo.html'; // Redireciona para a página do catálogo
-            });
+        // ===== INICIALIZAÇÃO GERAL =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar algumas seções como visíveis
+            document.querySelector('.hero').classList.add('visible');
+            
+            // Iniciar o slideshow automaticamente
+            startAutoSlide();
+            
+            // Configurar altura da viewport
+            setViewportHeight();
+            
+            // Aplicar correções para Instagram
+            applyInstagramFix();
+            
+            // Corrigir funcionamento dos botões no Instagram
+            fixInstagramButtons();
         });
 
-        // CORREÇÃO: Garantir que o botão "Ver Catálogo" no hero também funcione
-        document.querySelector('.catalog-btn-hero').addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = 'catalogo.html';
-        });
+        // Recalcular altura da viewport em redimensionamento
+        window.addEventListener('resize', setViewportHeight);
+        window.addEventListener('orientationchange', setViewportHeight);
     </script>
 </body>
 </html>
