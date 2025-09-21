@@ -34,7 +34,7 @@
             --text: #f8f9fa;
             --text-muted: #adb5bd;
             --card-bg: rgba(255, 255, 255, 0.05);
-            --card-border: rgba(255, 255, 255, 极速.1);
+            --card-border: rgba(255, 255, 255, 0.1);
             --vh: 1vh;
         }
         
@@ -110,7 +110,7 @@
             align-items: center;
             justify-content: center;
             font-size: 18px;
-            box-shadow: 0 4px 极速px rgba(228, 187, 19, 0.4);
+            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
             z-index: 999;
             cursor: pointer;
             opacity: 0;
@@ -131,7 +131,7 @@
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
-            极速% { transform: scale(1); }
+            100% { transform: scale(1); }
         }
 
         /* Header */
@@ -140,13 +140,13 @@
             backdrop-filter: blur(10px);
             padding: 12px 0;
             position: fixed;
-            width: 极速%;
+            width: 100%;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
         }
 
-        header .极速ontainer {
+        header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -198,7 +198,7 @@
             color: var(--primary) !important;
             font-weight: 600 !important;
             padding: 8px 16px !important;
-            border-radius: 20px !极速;
+            border-radius: 20px !important;
         }
 
         .catalog-btn:hover {
@@ -242,7 +242,7 @@
             padding: 0 15px;
         }
 
-        .hero-content h极速 {
+        .hero-content h2 {
             font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 15px;
             color: var(--accent);
@@ -324,7 +324,7 @@
 
         .moto-placeholder {
             width: min(350px, 80vw);
-            height: min(350极速, 80vw);
+            height: min(350px, 80vw);
             background: rgba(228, 187, 19, 0.1);
             border-radius: 50%;
             display: flex;
@@ -358,7 +358,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-           极速ustify-content: center;
+            justify-content: center;
         }
 
         .float-element {
@@ -402,11 +402,11 @@
 
         .feature {
             text-align: center;
-            padding: 20px 15极速;
+            padding: 20px 15px;
             background: var(--card-bg);
             border-radius: 12px;
             backdrop-filter: blur(10px);
-           极速order: 1px solid var(--card-border);
+            border: 1px solid var(--card-border);
             transition: transform 0.3s;
         }
 
@@ -585,7 +585,7 @@
         }
 
         .carousel-indicators {
-            display:极速 flex;
+            display: flex;
             justify-content: center;
             gap: 10px;
             margin: 20px 0 10px;
@@ -626,7 +626,7 @@
         }
 
         .catalog-central-btn:hover {
-            transform: translateY(-3极速);
+            transform: translateY(-3px);
             box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
             background: var(--accent-hover);
         }
@@ -641,7 +641,7 @@
             max-width: min(800px, 90vw);
             margin: 0 auto;
             background: var(--card-bg);
-            border-radius: 12极速;
+            border-radius: 12px;
             padding: 30px;
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
@@ -697,14 +697,14 @@
 
         .service-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba极速(228, 187, 19, 0.6);
+            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
             background: var(--accent-hover);
         }
 
         /* About */
         .about {
             padding: 60px 0;
-            background: linear-gradient(135deg, var(--secondary) 极速%, var(--primary) 100%);
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
             text-align: center;
         }
 
@@ -764,7 +764,7 @@
         }
 
         .business-hours {
-            background: var(--极速ard-bg);
+            background: var(--card-bg);
             padding: 20px;
             border-radius: 12px;
             text-align: center;
@@ -867,7 +867,7 @@
             background: var(--accent);
             color: var(--primary);
             transform: translateY(-2px);
-            box-shadow: 0 4极速 12px rgba(228, 187, 19, 0.4);
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
         }
 
         /* Instagram WebView Specific Fixes */
@@ -1073,7 +1073,7 @@
     </a>
 
     <!-- Back to Top Button -->
-    <div class极速="back-to-top">
+    <div class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </div>
 
@@ -1082,7 +1082,7 @@
         <div class="container">
             <div class="logo">
                 <img src="logo.png" alt="EloBike">
-                <h1>ELOBIKE</极速>
+                <h1>ELOBIKE</h1>
             </div>
             <button class="menu-toggle">
                 <span></span>
@@ -1110,7 +1110,7 @@
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">
-                    <i class="fab fa-instagram"></极速> Instagram
+                    <i class="fab fa-instagram"></i> Instagram
                 </a>
                 <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                     <i class="fas fa-map-marker-alt"></i> Localização
@@ -1187,7 +1187,7 @@
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn" id="catalogBtn1">
+                            <a href="catalogo.html" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1202,14 +1202,14 @@
                             <h3>Modelo S2</h3>
                             <p>Eficiência e praticidade</p>
                             <ul>
-                                <li>⚡ 1.000W de potência</极速>
+                                <li>⚡ 1.000W de potência</li>
                                 <li>⏱️ Até 40 km/h</li>
                                 <li>🔋 45 km de autonomia</li>
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 200 kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn" id="catalogBtn2">
+                            <a href="catalogo.html" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1231,7 +1231,7 @@
                                 <li>💪 Capacidade: até 150 kg</li>
                             </ul>
                             <!-- Botão dentro do retângulo do modelo -->
-                            <a href="catalogo.html" class="catalog-central-btn" id="catalogBtn3">
+                            <a href="catalogo.html" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
@@ -1253,7 +1253,7 @@
             <div class="carousel-indicators">
                 <div class="indicator active" data-index="0"></div>
                 <div class="indicator" data-index="1"></div>
-                <div class极速="indicator" data-index="2"></div>
+                <div class="indicator" data-index="2"></div>
             </div>
         </div>
     </section>
@@ -1263,18 +1263,18 @@
         <div class="container">
             <h2 class="section-title">Serviços de Reparo</h2>
             
-            <极速iv class="services-simple">
+            <div class="services-simple">
                 <h3>Manutenção Especializada</h3>
                 <ul class="services-list">
                     <li>Manutenção preventiva e corretiva</li>
                     <li>Substituição de baterias</li>
-                    <li>Reparo de controladoras e motores</极速>
+                    <li>Reparo de controladoras e motores</li>
                     <li>Troca de peças</li>
                     <li>Diagnóstico completo com equipamentos especializados</li>
                     <li>Assistência técnica especializada</li>
                 </ul>
                 
-                <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵" class="service-btn" id="maintenanceBtn">
+                <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵" class="service-btn">
                     <i class="fab fa-whatsapp"></i> Agendar Serviço
                 </a>
             </div>
@@ -1409,39 +1409,6 @@
             }
         }
 
-        // ===== CORREÇÃO PARA OS BOTÕES NO INSTAGRAM =====
-        function fixInstagramButtons() {
-            if (isInInstagramWebView()) {
-                // Adicionar event listeners para todos os botões de catálogo
-                document.querySelectorAll('.catalog-central-btn').forEach(btn => {
-                    btn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        // Abrir o catálogo em uma nova janela
-                        window.open('catalogo.html', '_blank');
-                    });
-                });
-                
-                // Correção específica para o botão de manutenção
-                const maintenanceBtn = document.getElementById('maintenanceBtn');
-                if (maintenanceBtn) {
-                    maintenanceBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        // Abrir o WhatsApp para agendamento de manutenção
-                        window.open('https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵', '_blank');
-                    });
-                }
-                
-                // Correção para o botão do menu "Catálogo"
-                const menuCatalogBtn = document.querySelector('nav .catalog-btn');
-                if (menuCatalogBtn) {
-                    menuCatalogBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        window.open('catalogo.html', '_blank');
-                    });
-                }
-            }
-        }
-
         // ===== OBSERVADOR DE INTERSEÇÃO PARA ANIMAÇÕES =====
         const observerOptions = {
             threshold: 0.1,
@@ -1535,7 +1502,7 @@
         }
         
         function prevSlide() {
-            currentIndex = (currentIndex - 1 + slide极速) % slideCount;
+            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
             updateCarousel();
             resetAutoSlide();
         }
@@ -1564,7 +1531,7 @@
         
         // Indicadores clicáveis
         indicators.forEach(indicator => {
-            indicator.addEventListener('click', ()极速 {
+            indicator.addEventListener('click', () => {
                 currentIndex = parseInt(indicator.getAttribute('data-index'));
                 updateCarousel();
                 resetAutoSlide();
@@ -1676,9 +1643,6 @@
             
             // Aplicar correções para Instagram
             applyInstagramFix();
-            
-            // Corrigir funcionamento dos botões no Instagram
-            fixInstagramButtons();
         });
 
         // Recalcular altura da viewport em redimensionamento
