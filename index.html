@@ -30,7 +30,6 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
             --header-height: 70px;
-            --helmets-accent: #c19b30; /* Amarelo mais escuro para capacetes */
         }
 
         * {
@@ -45,7 +44,6 @@
             width: 100%;
             height: 100%;
             overflow-x: hidden;
-            scroll-behavior: smooth; /* Adiciona scroll suave */
         }
 
         body {
@@ -288,7 +286,7 @@
         }
 
         .helmets-btn {
-            background: var(--helmets-accent); /* Alterado para amarelo mais escuro */
+            background: var(--accent);
             color: white;
         }
 
@@ -303,7 +301,7 @@
         }
 
         .helmets-btn:hover {
-            background: #b38d29; /* Tom mais escuro para o hover */
+            background: var(--accent-hover);
         }
 
         .hero-image {
@@ -727,490 +725,724 @@
             gap: 10px;
             padding: 12px;
             background: var(--card-bg);
-            border-radius: 8px;
-            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+
+        .about-feature:hover {
+            transform: translateX(5px);
+            background: rgba(228, 187, 19, 0.1);
         }
 
         .about-feature i {
             color: var(--accent);
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            width: 25px;
+        }
+
+        .about-feature span {
+            font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* Contact */
+        .contact {
+            padding: 50px 0 30px;
+            background: var(--primary);
+            text-align: center;
+        }
+
+        .business-hours {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            max-width: min(380px, 90vw);
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .business-hours h4 {
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .business-hours p {
+            margin-bottom: 6px;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            opacity: 0.9;
+            color: var(--text);
         }
 
         /* Footer */
         footer {
-            background: var(--primary);
-            padding: 40px 0 20px;
-            text-align: center;
+            background: #0a1429;
+            padding: 20px 0 12px;
+            border-top: 1px solid rgba(228, 187, 19, 0.2);
         }
 
         .footer-content {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            margin-bottom: 25px;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
         }
 
         .footer-logo {
             display: flex;
-            flex-direction: column;
             align-items: center;
             gap: 8px;
         }
 
         .footer-logo img {
-            width: 50px;
-            height: 50px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             border: 2px solid var(--accent);
-            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(228, 187, 19, 0.3);
         }
 
-        .footer-logo h3 {
+        .footer-logo span {
+            font-size: clamp(0.8rem, 2.5vw, 0.85rem);
+            font-weight: 700;
             color: var(--accent);
-            font-size: 1.3rem;
         }
 
-        .footer-contact, .footer-social {
+        .footer-contact {
+            text-align: center;
+        }
+
+        .footer-contact p {
+            margin-bottom: 4px;
+            opacity: 0.9;
+            font-size: clamp(0.7rem, 2vw, 0.75rem);
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            color: var(--text);
         }
 
-        .footer-contact h4, .footer-social h4 {
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-size: 1.1rem;
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
         }
 
-        .footer-contact a, .footer-social a {
+        .social-link {
+            width: 34px;
+            height: 34px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text);
             text-decoration: none;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
-        .footer-contact a:hover, .footer-social a:hover {
-            color: var(--accent);
-        }
-
-        .footer-social .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .footer-social .social-icons a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--card-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .footer-social .social-icons a:hover {
+        .social-link:hover {
             background: var(--accent);
             color: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
         }
 
-        .footer-bottom {
-            border-top: 1px solid var(--card-border);
-            padding-top: 20px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        /* Instagram WebView Specific Fixes */
+        .instagram-webview .hero {
+            min-height: calc(100vh - 70px) !important;
         }
 
-        /* Responsividade */
-        @media (min-width: 768px) {
+        .instagram-webview .moto-placeholder {
+            margin-top: 20px !important;
+        }
+
+        .instagram-webview .btn {
+            min-height: 44px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        /* Prevenir problemas de scroll no Instagram */
+        .instagram-webview body {
+            overflow: hidden !important;
+            height: 100% !important;
+            position: relative;
+        }
+
+        /* Melhorar a visualização de imagens */
+        .instagram-webview img {
+            transform: translateZ(0);
+        }
+
+        /* Scroll animation indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 998;
+        }
+
+        .scroll-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .scroll-dot.active {
+            background: var(--accent);
+            transform: scale(1.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .scroll-dot:hover {
+            background: var(--accent-hover);
+            transform: scale(1.2);
+        }
+
+        /* Section highlight during scroll */
+        .section-highlight {
+            position: relative;
+        }
+
+        .section-highlight::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            animation: highlight 1.5s ease;
+            opacity: 0;
+        }
+
+        @keyframes highlight {
+            0% { opacity: 0; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.02); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
             .footer-content {
-                flex-direction: row;
-                justify-content: space-around;
-                align-items: flex-start;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
             }
-            
-            .footer-contact, .footer-social {
-                align-items: flex-start;
+            .footer-contact {
+                order: 3;
+                grid-column: span 2;
+                text-align: center;
             }
-            
-            .footer-social .social-icons {
-                justify-content: flex-start;
+            .scroll-indicator {
+                right: 10px;
             }
         }
 
         @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 90px 0 40px;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 15px;
+            }
+            .footer-contact {
+                order: 0;
+                grid-column: span 1;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            
+            /* Mobile menu */
             .menu-toggle {
                 display: flex;
             }
-            
             nav {
                 position: fixed;
-                top: var(--header-height);
+                top: 70px;
                 left: 0;
                 width: 100%;
                 background: rgba(13, 27, 61, 0.98);
-                backdrop-filter: blur(10px);
                 flex-direction: column;
-                padding: 20px;
-                gap: 15px;
+                padding: 15px;
+                gap: 10px;
                 transform: translateY(-100%);
                 opacity: 0;
                 visibility: hidden;
-                transition: all 0.3s;
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             }
-            
             nav.active {
                 transform: translateY(0);
                 opacity: 1;
                 visibility: visible;
             }
-            
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 100px 0 40px;
+            .feature-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 12px;
             }
-            
-            .hero-content, .hero-image {
-                flex: none;
-                width: 100%;
+            .feature {
+                padding: 15px 12px;
             }
-            
-            .hero-buttons {
-                justify-content: center;
+            .business-hours {
+                max-width: 90%;
             }
-            
-            .moto-placeholder {
-                margin-top: 30px;
+            .carousel-controls {
+                padding: 0 5px;
             }
-            
             .floating-elements {
-                position: relative;
-                margin-top: 30px;
-                animation: none;
+                width: 90%;
             }
-            
-            .float-element {
-                margin: 8px 0;
+            .scroll-indicator {
+                display: none;
             }
         }
 
-        /* Adicionando scroll margin para compensar o header fixo */
-        #scooters, #helmets, #maintenance {
-            scroll-margin-top: 80px;
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            .footer-content {
+                gap: 12px;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .indicator {
+                width: 8px;
+                height: 8px;
+            }
+            .moto-placeholder {
+                width: 240px;
+                height: 240px;
+            }
+            .carousel-content ul li {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Orientação paisagem em dispositivos móveis */
+        @media screen and (max-height: 480px) and (orientation: landscape) {
+            .hero {
+                min-height: 150vh !important;
+                padding: 80px 0 !important;
+            }
+            .hero-content {
+                padding-top: 20px;
+            }
+            .moto-placeholder {
+                width: 200px !important;
+                height: 200px !important;
+            }
+        }
+
+        /* Efeito de fade-in para as seções */
+        section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/5534999999999?text=Olá! Gostaria de mais informações sobre as scooters elétricas." class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Back to Top -->
-    <button class="back-to-top">
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
         <i class="fas fa-arrow-up"></i>
-    </button>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-dot" data-section="hero" title="Início"></div>
+        <div class="scroll-dot" data-section="scooters" title="Scooters"></div>
+        <div class="scroll-dot" data-section="capacetes" title="Capacetes"></div>
+        <div class="scroll-dot" data-section="servicos" title="Serviços"></div>
+        <div class="scroll-dot" data-section="sobre" title="Sobre"></div>
+        <div class="scroll-dot" data-section="contato" title="Contato"></div>
+    </div>
 
     <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
-                <img src="https://via.placeholder.com/40" alt="EloBike Logo">
-                <h1>EloBike</h1>
+                <img src="logo.png" alt="EloBike">
+                <h1>ELOBIKE</h1>
             </div>
-            <nav id="nav">
-                <a href="#scooters" class="catalog-btn">Ver Scooters</a>
-                <a href="#helmets" class="helmets-btn">Ver Capacetes</a>
-                <a href="#maintenance" class="maintenance-btn">Manutenção</a>
-            </nav>
-            <button class="menu-toggle" id="menuToggle">
+            <button class="menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+            <nav>
+                <a href="#scooters" data-scroll="scooters">Scooters</a>
+                <a href="#capacetes" data-scroll="capacetes">Capacetes</a>
+                <a href="#servicos" data-scroll="servicos">Serviços</a>
+                <a href="#sobre" data-scroll="sobre">Sobre</a>
+                <a href="#contato" data-scroll="contato">Contato</a>
+                <a href="catalogo.html" class="catalog-btn">Catálogo</a>
+            </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
+    <section class="hero" id="hero">
+        <div class="container" style="display: flex; flex-wrap: wrap;">
             <div class="hero-content">
-                <h2>As melhores scooters elétricas de Araxá e região</h2>
-                <p>Zero gasolina, ecológico, econômico e com manutenção especializada. Experimente o futuro da mobilidade urbana!</p>
-                
+                <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>
+                <p>As melhores scooters elétricas de Araxá e região</p>
                 <div class="hero-buttons">
-                    <a href="#scooters" class="btn btn-primary">
-                        <i class="fas fa-motorcycle"></i> Ver Scooters
-                    </a>
-                    <a href="#helmets" class="btn helmets-btn">
-                        <i class="fas fa-helmet-safety"></i> Ver Capacetes
-                    </a>
-                    <a href="#maintenance" class="btn maintenance-btn">
-                        <i class="fas fa-tools"></i> Manutenção
-                    </a>
-                    <a href="https://wa.me/5534999999999?text=Olá! Gostaria de mais informações sobre as scooters elétricas." class="btn whatsapp-btn" target="_blank">
+                    <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="btn whatsapp-btn">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
-                    <a href="https://www.instagram.com/elobike.araxa" class="btn instagram-btn" target="_blank">
+                    <a href="https://www.instagram.com/elobikearaxa" class="btn instagram-btn">
                         <i class="fab fa-instagram"></i> Instagram
                     </a>
+                    <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
+                        <i class="fas fa-map-marker-alt"></i> Localização
+                    </a>
+                    <a href="#scooters" class="btn outline-btn" data-scroll="scooters">
+                        <i class="fas fa-motorcycle"></i> Ver Scooters
+                    </a>
+                    <a href="#capacetes" class="btn helmets-btn" data-scroll="capacetes">
+                        <i class="fas fa-helmet-safety"></i> Ver Capacetes
+                    </a>
+                    <a href="#servicos" class="btn maintenance-btn" data-scroll="servicos">
+                        <i class="fas fa-tools"></i> Manutenção
+                    </a>
                 </div>
-                
-                <div class="features">
-                    <div class="feature-grid">
-                        <div class="feature">
-                            <i class="fas fa-bolt"></i>
-                            <h4>Econômico</h4>
-                            <p>R$ 0,02 por km</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-leaf"></i>
-                            <h4>Ecológico</h4>
-                            <p>Zero emissões</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <h4>Ágil</h4>
-                            <p>Até 45 km/h</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-road"></i>
-                            <h4>Autonomia</h4>
-                            <p>Até 60 km</p>
-                        </div>
+            </div>
+            <div class="hero-image">
+                <div class="moto-placeholder">
+                    <i class="fas fa-bolt"></i>
+                    <div class="floating-elements">
+                        <div class="float-element">⭐ Qualidade</div>
+                        <div class="float-element">🚀 Entrega</div>
+                        <div class="float-element">💪 Garantia</div>
                     </div>
                 </div>
             </div>
-            
-            <div class="hero-image">
-                <div class="moto-placeholder">
-                    <i class="fas fa-motorcycle"></i>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature">
+                    <i class="fas fa-gas-pump"></i>
+                    <h4>Zero Gasolina</h4>
+                    <p>Economize até R$ 300/mês</p>
                 </div>
-                
-                <div class="floating-elements">
-                    <div class="float-element">Freio a disco</div>
-                    <div class="float-element">Bateria removível</div>
-                    <div class="float-element">Display digital</div>
+                <div class="feature">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Ecológico</h4>
+                    <p>Zero emissões de carbono</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tools"></i>
+                    <h4>Manutenção</h4>
+                    <p>Assistência técnica especializada</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Performance</h4>
+                    <p>Alta tecnologia e potência</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Scooters Section -->
-    <section class="products" id="scooters">
+    <section id="scooters" class="products">
         <div class="container">
             <h2 class="section-title">Nossos Modelos de Scooters</h2>
-            
-            <div class="product-carousel" id="productCarousel">
-                <div class="carousel-container">
+            <div class="product-carousel" id="scooters-carousel">
+                <div class="carousel-container" id="carousel-scooters">
+                    <!-- Modelo R11 -->
                     <div class="carousel-slide">
                         <div class="carousel-img">
-                            <i class="fas fa-motorcycle"></i>
+                            <img src="R11.png" alt="Modelo R11">
                         </div>
                         <div class="carousel-content">
-                            <h3>Modelo Urban 500W</h3>
-                            <p>Perfeito para o dia a dia na cidade</p>
+                            <h3>Modelo R11</h3>
+                            <p>Design moderno and elegante</p>
                             <ul>
-                                <li>Motor: 500W</li>
-                                <li>Autonomia: 45km</li>
-                                <li>Velocidade: 35km/h</li>
-                                <li>Bateria: Lithium 48V</li>
-                                <li>Recarga: 4-6 horas</li>
+                                <li>⚡ 3.000W de potência</li>
+                                <li>⏱️ Até 70 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
-                            <a href="https://wa.me/5534999999999?text=Tenho interesse no Modelo Urban 500W" class="catalog-central-btn" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
                     </div>
                     
+                    <!-- Modelo S2 -->
                     <div class="carousel-slide">
                         <div class="carousel-img">
-                            <i class="fas fa-motorcycle"></i>
+                            <img src="S2.png" alt="Modelo S2">
                         </div>
                         <div class="carousel-content">
-                            <h3>Modelo Touring 800W</h3>
-                            <p>Para quem precisa de mais potência</p>
+                            <h3>Modelo S2</h3>
+                            <p>Eficiência e praticidade</p>
                             <ul>
-                                <li>Motor: 800W</li>
-                                <li>Autonomia: 60km</li>
-                                <li>Velocidade: 45km/h</li>
-                                <li>Bateria: Lithium 60V</li>
-                                <li>Recarga: 6-8 horas</li>
+                                <li>⚡ 1.000W de potência</li>
+                                <li>⏱️ Até 40 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: até 200 kg</li>
                             </ul>
-                            <a href="https://wa.me/5534999999999?text=Tenho interesse no Modelo Touring 800W" class="catalog-central-btn" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
                     </div>
                     
+                    <!-- Modelo V8 -->
                     <div class="carousel-slide">
                         <div class="carousel-img">
-                            <i class="fas fa-motorcycle"></i>
+                            <img src="V8.png" alt="Modelo V8">
                         </div>
                         <div class="carousel-content">
-                            <h3>Modelo Off-Road 1000W</h3>
-                            <p>Para aventuras beyond the urban</p>
+                            <h3>Modelo V8</h3>
+                            <p>Desempenho e agilidade</p>
                             <ul>
-                                <li>Motor: 1000W</li>
-                                <li>Autonomia: 50km</li>
-                                <li>Velocidade: 50km/h</li>
-                                <li>Bateria: Lithium 72V</li>
-                                <li>Recarga: 8-10 horas</li>
+                                <li>⚡ 1.000W de potência</li>
+                                <li>⏱️ Até 50 km/h</li>
+                                <li>🔋 45 km de autonomia</li>
+                                <li>⏳ 5 horas para carga completa</li>
+                                <li>💪 Capacidade: até 150 kg</li>
                             </ul>
-                            <a href="https://wa.me/5534999999999?text=Tenho interesse no Modelo Off-Road 1000W" class="catalog-central-btn" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
                     </div>
                 </div>
                 
+                <!-- Controles do carrossel -->
                 <div class="carousel-controls">
-                    <div class="carousel-arrow prev">&#10094;</div>
-                    <div class="carousel-arrow next">&#10095;</div>
+                    <div class="carousel-arrow prev" id="prev-scooters">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-arrow next" id="next-scooters">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
                 </div>
-                
-                <div class="carousel-indicators"></div>
+            </div>
+            
+            <!-- Indicadores -->
+            <div class="carousel-indicators" id="indicators-scooters">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
             </div>
         </div>
     </section>
 
     <!-- Helmets Section -->
-    <section class="products" id="helmets">
+    <section id="capacetes" class="products">
         <div class="container">
             <h2 class="section-title">Nossos Modelos de Capacetes</h2>
-            
-            <div class="product-carousel" id="helmetsCarousel">
-                <div class="carousel-container">
+            <div class="product-carousel" id="helmets-carousel">
+                <div class="carousel-container" id="carousel-helmets">
+                    <!-- Modelo Capacete A -->
                     <div class="carousel-slide">
                         <div class="carousel-img">
-                            <i class="fas fa-helmet-safety"></i>
+                            <img src="capacete1.png" alt="Capacete Modelo A">
                         </div>
                         <div class="carousel-content">
-                            <h3>Capacete Jet Básico</h3>
-                            <p>Estilo e segurança para o dia a dia</p>
+                            <h3>Capacete Modelo A</h3>
+                            <p>Design moderno e seguro</p>
                             <ul>
-                                <li>Material: ABS Injection</li>
-                                <li>Size: M (55-56cm)</li>
-                                <li>Peso: 1050g</li>
-                                <li>Visor: Transparente inclusa</li>
-                                <li>Certificação: INMETRO</li>
+                                <li>⭐ Material: ABS de alta resistência</li>
+                                <li>⭐ Peso: Leve e confortável</li>
+                                <li>⭐ Visor: Anti-risco e ampla visão</li>
+                                <li>⭐ Certificação: Possui selo de segurança</li>
+                                <li>⭐ Cores disponíveis: Preto, Branco, Vermelho</li>
                             </ul>
-                            <a href="https://wa.me/5534999999999?text=Tenho interesse no Capacete Jet Básico" class="catalog-central-btn" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
                     </div>
                     
+                    <!-- Modelo Capacete B -->
                     <div class="carousel-slide">
                         <div class="carousel-img">
-                            <i class="fas fa-helmet-safety"></i>
+                            <img src="capacete2.png" alt="Capacete Modelo B">
                         </div>
                         <div class="carousel-content">
-                            <h3>Capacete Modular Premium</h3>
-                            <p>Conforto e praticidade</p>
+                            <h3>Capacete Modelo B</h3>
+                            <p>Conforto e estilo</p>
                             <ul>
-                                <li>Material: Policarbonato</li>
-                                <li>Size: M (55-56cm)</li>
-                                <li>Peso: 1450g</li>
-                                <li>Sistema modular</li>
-                                <li>Certificação: INMETRO</li>
+                                <li>⭐ Material: Policarbonato resistente</li>
+                                <li>⭐ Peso: Ultra leve</li>
+                                <li>⭐ Visor: Com proteção UV</li>
+                                <li>⭐ Ventilation: Sistema de ventilação avançado</li>
+                                <li>⭐ Cores disponíveis: Azul, Prata, Verde</li>
                             </ul>
-                            <a href="https://wa.me/5534999999999?text=Tenho interesse no Capacete Modular Premium" class="catalog-central-btn" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
                     </div>
                     
+                    <!-- Modelo Capacete C -->
                     <div class="carousel-slide">
                         <div class="carousel-img">
-                            <i class="fas fa-helmet-safety"></i>
+                            <img src="capacete3.png" alt="Capacete Modelo C">
                         </div>
                         <div class="carousel-content">
-                            <h3>Capacete Integral Esportivo</h3>
-                            <p>Máxima proteção para alta velocidade</p>
+                            <h3>Capacete Modelo C</h3>
+                            <p>Premium e elegante</p>
                             <ul>
-                                <li>Material: Fibra de Carbono</li>
-                                <li>Size: M (55-56cm)</li>
-                                <li>Peso: 1250g</li>
-                                <li>Aerodinâmico</li>
-                                <li>Certificação: INMETRO</li>
+                                <li>⭐ Material: Fibra de carbono</li>
+                                <li>⭐ Peso: Super leve</li>
+                                <li>⭐ Visor: Fotocromático</li>
+                                <li>⭐ Conforto: Interior removível e lavável</li>
+                                <li>⭐ Cores disponíveis: Preto fosco, Vermelho, Branco perolado</li>
                             </ul>
-                            <a href="https://wa.me/5534999999999?text=Tenho interesse no Capacete Integral Esportivo" class="catalog-central-btn" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
                         </div>
                     </div>
                 </div>
                 
+                <!-- Controles do carrossel -->
                 <div class="carousel-controls">
-                    <div class="carousel-arrow prev">&#10094;</div>
-                    <div class="carousel-arrow next">&#10095;</div>
+                    <div class="carousel-arrow prev" id="prev-helmets">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-arrow next" id="next-helmets">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
                 </div>
-                
-                <div class="carousel-indicators"></div>
+            </div>
+            
+            <!-- Indicadores -->
+            <div class="carousel-indicators" id="indicators-helmets">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="maintenance">
+    <!-- Services -->
+    <section id="servicos" class="services">
         <div class="container">
             <h2 class="section-title">Serviços de Reparo</h2>
-            
             <div class="services-simple">
-                <h3>Manutenção Especializada para Scooters Elétricas</h3>
-                
+                <h3>Manutenção Especializada</h3>
                 <ul class="services-list">
-                    <li>Troca e recuperação de baterias</li>
-                    <li>Manutenção em sistemas elétricos</li>
-                    <li>Substituição de pneus e freios</li>
-                    <li>Reparo em controladoras e motores</li>
-                    <li>Ajustes gerais e regulagem</li>
-                    <li>Diagnóstico completo</li>
+                    <li>Manutenção preventiva e corretiva</li>
+                    <li>Substituição de baterias</li>
+                    <li>Reparo de controladoras e motores</li>
+                    <li>Troca de peças</li>
+                    <li>Diagnóstico completo com equipamentos especializados</li>
+                    <li>Assistência técnica especializada</li>
                 </ul>
-                
-                <a href="https://wa.me/5534999999999?text=Preciso de manutenção para minha scooter elétrica" class="service-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Agendar Manutenção
+                <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um serviço de manutenção para minha scooter 🛵" class="service-btn">
+                    <i class="fab fa-whatsapp"></i> Agendar Serviço
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about">
+    <!-- About -->
+    <section id="sobre" class="about">
         <div class="container">
-            <h2 class="section-title">Sobre a EloBike</h2>
-            
             <div class="about-content">
+                <h2 class="section-title">EloBike Araxá</h2>
                 <div class="about-text">
-                    <p>Na EloBike, trazemos o futuro da mobilidade urbana para Araxá e região. Somos especialistas em scooters elétricas, oferecendo veículos econômicos, ecológicos e com manutenção especializada.</p>
-                    <p>Nossa missão é proporcionar uma alternativa de transporte sustentável, que une praticidade, economia e cuidado com o meio ambiente.</p>
-                </div>
-                
-                <div class="about-features">
-                    <div class="about-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Produtos de qualidade</span>
-                    </div>
-                    <div class="about-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Manutenção especializada</span>
-                    </div>
-                    <div class="about-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Atendimento personalizado</span>
-                    </div>
-                    <div class="about-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Preços justos</span>
+                    <p>Especialistas em scooters elétricas com os melhores preços e atendimento personalizado em Araxá e região. Qualidade garantida e satisfação dos nossos clientes.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Produtos de qualidade</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Atendimento personalizado</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-piggy-bank"></i>
+                            <span>Economia Garantida</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-tools"></i>
+                            <span>Serviços especializados</span>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <div class="business-hours">
+                <h4><i class="far fa-clock"></i> Horário de Funcionamento</h4>
+                <p>Segunda a Sexta: 8h às 17h30</p>
+                <p>Sábado: 8h às 12h</p>
             </div>
         </div>
     </section>
@@ -1220,96 +1452,201 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="https://via.placeholder.com/50" alt="EloBike Logo">
-                    <h3>EloBike</h3>
-                    <p>Motos Elétricas</p>
+                    <img src="logo.png" alt="EloBike">
+                    <span>ELOBIKE ARAXÁ</span>
                 </div>
-                
                 <div class="footer-contact">
-                    <h4>Contato</h4>
-                    <a href="https://wa.me/5534999999999" target="_blank">
-                        <i class="fab fa-whatsapp"></i> (34) 99999-9999
-                    </a>
-                    <a href="mailto:contato@elobike.com.br">
-                        <i class="fas fa-envelope"></i> contato@elobike.com.br
-                    </a>
+                    <p><i class="fab fa-whatsapp"></i> (34) 9926-9707</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Araxá - MG</p>
+                    <p><i class="far fa-clock"></i> Seg-Sex: 8h-17h30 | Sáb: 8h-12h</p>
                 </div>
-                
                 <div class="footer-social">
-                    <h4>Redes Sociais</h4>
-                    <div class="social-icons">
-                        <a href="https://www.instagram.com/elobike.araxa" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.facebook.com/elobike.araxa" target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
+                    <a href="https://www.instagram.com/elobikearaxa" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2023 EloBike - Motos Elétricas | Araxá MG. Todos os direitos reservados.</p>
+                <p>&copy; 2023 EloBike Araxá - CNPJ: 57.620.431/0001-78</p>
+                <p>Todos os direitos reservados</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Menu Mobile Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const nav = document.getElementById('nav');
-        
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-        
-        // Back to Top Button
-        const backToTop = document.querySelector('.back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
+        // ===== DETECÇÃO DE WEBVIEW DO INSTAGRAM =====
+        function isInInstagramWebView() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            return /Instagram/i.test(userAgent) || /FBAN|FBAV/i.test(userAgent);
+        }
+
+        // Aplicar classes específicas para WebView do Instagram
+        function applyInstagramFix() {
+            if (isInInstagramWebView()) {
+                document.body.classList.add('instagram-webview');
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    [class="banner"], [id*="banner"], [class*="Banner"], [id*="Banner"] {
+                        display: none !important;
+                    }
+                    .btn, a, button {
+                        cursor: pointer !important;
+                        z-index: 9999 !important;
+                        position: relative;
+                    }
+                    body {
+                        -webkit-overflow-scrolling: touch !important;
+                    }
+                    .hero {
+                        position: relative;
+                        z-index: 1;
+                    }
+                `;
+                document.head.appendChild(style);
             }
-        });
-        
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Product Carousel
-        function initializeCarousel(carouselId) {
-            const carousel = document.getElementById(carouselId);
-            if (!carousel) return;
+        }
+
+        // ===== SCROLL SUAVE =====
+        function smoothScrollTo(targetId, duration = 1000) {
+            const targetElement = document.querySelector(targetId);
+            if (!targetElement) return;
             
-            const container = carousel.querySelector('.carousel-container');
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 70;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            // Adicionar destaque visual à seção
+            targetElement.classList.add('section-highlight');
+            setTimeout(() => {
+                targetElement.classList.remove('section-highlight');
+            }, 1500);
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                } else {
+                    window.history.replaceState(null, null, targetId);
+                }
+            }
+
+            function easeInOutQuad(t, b, c, d) {
+                t /= d/2;
+                if (t < 1) return c/2*t*t + b;
+                t--;
+                return -c/2 * (t*(t-2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        // ===== ATUALIZAR INDICADORES DE SCROLL =====
+        function updateScrollIndicator() {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollDots = document.querySelectorAll('.scroll-dot');
+            const scrollPosition = window.scrollY;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    scrollDots.forEach(dot => {
+                        dot.classList.remove('active');
+                        if (dot.getAttribute('data-section') === sectionId) {
+                            dot.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        // ===== OBSERVADOR DE INTERSEÇÃO PARA ANIMAÇÕES =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observar todas as seções
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // ===== ROLAGEM SUAVE PARA LINKS INTERNOS =====
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"], [data-scroll]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    let targetId;
+                    
+                    if (this.getAttribute('data-scroll')) {
+                        targetId = '#' + this.getAttribute('data-scroll');
+                    } else {
+                        targetId = this.getAttribute('href');
+                    }
+                    
+                    if (targetId === '#') return;
+                    smoothScrollTo(targetId);
+                    
+                    // Fechar menu mobile após clicar em um link
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('nav').classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                        document.querySelector('.menu-toggle').classList.remove('active');
+                    }
+                });
+            });
+        }
+
+        // Navegação pelos pontos do indicador de scroll
+        function setupScrollDots() {
+            document.querySelectorAll('.scroll-dot').forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const targetId = '#' + dot.getAttribute('data-section');
+                    smoothScrollTo(targetId);
+                });
+            });
+        }
+
+        // ===== CARROSSEL DE PRODUTOS =====
+        function setupCarousel(carouselId, prevButtonId, nextButtonId, indicatorsId) {
+            const carousel = document.getElementById(carouselId);
             const slides = carousel.querySelectorAll('.carousel-slide');
-            const prevBtn = carousel.querySelector('.carousel-arrow.prev');
-            const nextBtn = carousel.querySelector('.carousel-arrow.next');
-            const indicatorsContainer = carousel.querySelector('.carousel-indicators');
+            const indicators = document.getElementById(indicatorsId).querySelectorAll('.indicator');
+            const carouselContainer = carousel.closest('.product-carousel');
+            const prevButton = document.getElementById(prevButtonId);
+            const nextButton = document.getElementById(nextButtonId);
             
             let currentIndex = 0;
             const slideCount = slides.length;
-            
-            // Create indicators
-            for (let i = 0; i < slideCount; i++) {
-                const indicator = document.createElement('div');
-                indicator.classList.add('indicator');
-                if (i === 0) indicator.classList.add('active');
-                indicator.addEventListener('click', () => goToSlide(i));
-                indicatorsContainer.appendChild(indicator);
-            }
-            
-            const indicators = carousel.querySelectorAll('.indicator');
-            
+            let autoSlideInterval;
+            let userInteractionTimeout;
+            let isDragging = false;
+            let startX = 0;
+            let startScrollLeft = 0;
+
             function updateCarousel() {
-                container.style.transform = `translateX(-${currentIndex * 100}%)`;
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
                 
+                // Atualizar indicadores
                 indicators.forEach((indicator, index) => {
                     if (index === currentIndex) {
                         indicator.classList.add('active');
@@ -1318,72 +1655,180 @@
                     }
                 });
             }
-            
-            function goToSlide(index) {
-                currentIndex = index;
-                updateCarousel();
-            }
-            
+
             function nextSlide() {
                 currentIndex = (currentIndex + 1) % slideCount;
                 updateCarousel();
+                resetAutoSlide();
             }
-            
+
             function prevSlide() {
                 currentIndex = (currentIndex - 1 + slideCount) % slideCount;
                 updateCarousel();
+                resetAutoSlide();
             }
-            
-            // Event listeners
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-            
-            // Touch events for mobile
-            let startX, moveX;
-            carousel.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-            });
-            
-            carousel.addEventListener('touchmove', (e) => {
-                moveX = e.touches[0].clientX;
-            });
-            
-            carousel.addEventListener('touchend', () => {
-                if (startX - moveX > 50) {
+
+            // Iniciar slides automáticos
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(() => {
                     nextSlide();
-                } else if (moveX - startX > 50) {
-                    prevSlide();
-                }
+                }, 5000);
+            }
+
+            // Parar slides automáticos
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+
+            // Reiniciar slides automáticos após 26 segundos de inatividade
+            function resetAutoSlide() {
+                clearTimeout(userInteractionTimeout);
+                stopAutoSlide();
+                userInteractionTimeout = setTimeout(() => {
+                    startAutoSlide();
+                }, 26000);
+            }
+
+            // Indicadores clicáveis
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = parseInt(indicator.getAttribute('data-index'));
+                    updateCarousel();
+                    resetAutoSlide();
+                });
             });
+
+            // Botões de navegação
+            nextButton.addEventListener('click', () => {
+                nextSlide();
+            });
+
+            prevButton.addEventListener('click', () => {
+                prevSlide();
+            });
+
+            // ===== FUNCIONALIDADE DE ARRASTAR =====
+            carouselContainer.addEventListener('mousedown', dragStart);
+            carouselContainer.addEventListener('touchstart', dragStart, { passive: true });
             
-            // Auto slide (optional)
-            // setInterval(nextSlide, 5000);
-        }
-        
-        // Initialize all carousels
-        initializeCarousel('productCarousel');
-        initializeCarousel('helmetsCarousel');
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            carouselContainer.addEventListener('mousemove', drag);
+            carouselContainer.addEventListener('touchmove', drag, { passive: true });
+            
+            carouselContainer.addEventListener('mouseup', dragEnd);
+            carouselContainer.addEventListener('mouseleave', dragEnd);
+            carouselContainer.addEventListener('touchend', dragEnd);
+
+            // Pausar auto slide quando o mouse estiver sobre o carrossel
+            carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+            carouselContainer.addEventListener('mouseleave', () => {
+                resetAutoSlide();
+            });
+
+            function dragStart(e) {
+                isDragging = true;
+                startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                startScrollLeft = carousel.scrollLeft;
+                stopAutoSlide();
+                carousel.style.cursor = 'grabbing';
+                carousel.style.transition = 'none';
+            }
+
+            function drag(e) {
+                if (!isDragging) return;
                 e.preventDefault();
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                const walk = (x - startX) * 2;
                 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Close mobile menu if open
-                    nav.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                    
-                    // Scroll to target
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                if (walk > 50) {
+                    prevSlide();
+                    isDragging = false;
+                    carousel.style.cursor = 'grab';
+                    carousel.style.transition = 'transform 0.5s ease';
+                } else if (walk < -50) {
+                    nextSlide();
+                    isDragging = false;
+                    carousel.style.cursor = 'grab';
+                    carousel.style.transition = 'transform 0.5s ease';
                 }
+            }
+
+            function dragEnd() {
+                isDragging = false;
+                carousel.style.cursor = 'grab';
+                carousel.style.transition = 'transform 0.5s ease';
+                resetAutoSlide();
+            }
+
+            // Iniciar o slideshow automaticamente
+            startAutoSlide();
+        }
+
+        // ===== MENU MOBILE TOGGLE =====
+        function setupMobileMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+            });
+        }
+
+        // ===== BACK TO TOP BUTTON =====
+        function setupBackToTop() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+                
+                updateScrollIndicator();
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                smoothScrollTo('#hero');
+            });
+        }
+
+        // ===== INICIALIZAÇÃO GERAL =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar algumas seções como visíveis
+            document.querySelector('.hero').classList.add('visible');
+            
+            // Aplicar correções para Instagram
+            applyInstagramFix();
+            
+            // Configurar funcionalidades
+            setupSmoothScroll();
+            setupScrollDots();
+            
+            // Configurar ambos os carrosséis
+            setupCarousel('carousel-scooters', 'prev-scooters', 'next-scooters', 'indicators-scooters');
+            setupCarousel('carousel-helmets', 'prev-helmets', 'next-helmets', 'indicators-helmets');
+            
+            setupMobileMenu();
+            setupBackToTop();
+            
+            // Atualizar indicador de scroll
+            updateScrollIndicator();
+            
+            // Verificar se há um hash na URL e rolar para a seção correspondente
+            if (window.location.hash) {
+                setTimeout(() => {
+                    smoothScrollTo(window.location.hash, 800);
+                }, 500);
+            }
+        });
+
+        // Recalcular altura da viewport em redimensionamento
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
             });
         });
     </script>
