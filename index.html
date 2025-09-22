@@ -25,6 +25,8 @@
             --secondary: #1e3a8a;
             --accent: #E4BB13;
             --accent-hover: #ffd700;
+            --helmets: #c9b300; /* NOVA COR PARA CAPACETES */
+            --helmets-hover: #e0c445; /* Cor hover para capacetes */
             --text: #f8f9fa;
             --text-muted: #adb5bd;
             --card-bg: rgba(255, 255, 255, 0.05);
@@ -44,6 +46,7 @@
             width: 100%;
             height: 100%;
             overflow-x: hidden;
+            scroll-behavior: smooth; /* Adiciona scroll suave global */
         }
 
         body {
@@ -286,8 +289,12 @@
         }
 
         .helmets-btn {
-            background: var(--accent);
+            background: var(--helmets); /* COR ALTERADA */
             color: white;
+        }
+
+        .helmets-btn:hover {
+            background: var(--helmets-hover); /* COR ALTERADA */
         }
 
         .maintenance-btn {
@@ -298,10 +305,6 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-        }
-
-        .helmets-btn:hover {
-            background: var(--accent-hover);
         }
 
         .hero-image {
@@ -702,6 +705,7 @@
         .about-content {
             max-width: min(800px, 90vw);
             margin: 0 auto;
+            position: relative; /* Para posicionar o indicador de seção */
         }
 
         .about-text p {
@@ -1335,7 +1339,7 @@
                                 <li>⭐ Peso: Ultra leve</li>
                                 <li>⭐ Visor: Com proteção UV</li>
                                 <li>⭐ Ventilation: Sistema de ventilação avançado</li>
-                                <li>⭐ Cores disponíveis: Azul, Prata, Verde</li>
+                                <li>⭐ Cores disponíveis: Azelox, Prata, Verde</li>
                             </ul>
                             <a href="catalogo.html" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
