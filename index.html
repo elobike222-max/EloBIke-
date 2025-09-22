@@ -304,6 +304,17 @@
             color: var(--accent);
         }
 
+        .helmets-btn {
+            background: var(--accent);
+            color: white !important;
+        }
+
+        .helmets-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
+        }
+
         .maintenance-btn {
             background: #4285F4;
             color: white;
@@ -1141,7 +1152,8 @@
     <!-- Scroll Indicator -->
     <div class="scroll-indicator">
         <div class="scroll-dot" data-section="hero" title="Início"></div>
-        <div class="scroll-dot" data-section="produtos" title="Produtos"></div>
+        <div class="scroll-dot" data-section="scooters" title="Scooters"></div>
+        <div class="scroll-dot" data-section="capacetes" title="Capacetes"></div>
         <div class="scroll-dot" data-section="servicos" title="Serviços"></div>
         <div class="scroll-dot" data-section="sobre" title="Sobre"></div>
         <div class="scroll-dot" data-section="contato" title="Contato"></div>
@@ -1160,7 +1172,8 @@
                 <span></span>
             </button>
             <nav>
-                <a href="#produtos" data-scroll="produtos">Produtos</a>
+                <a href="#scooters" data-scroll="scooters">Scooters</a>
+                <a href="#capacetes" data-scroll="capacetes">Capacetes</a>
                 <a href="#servicos" data-scroll="servicos">Serviços</a>
                 <a href="#sobre" data-scroll="sobre">Sobre</a>
                 <a href="#contato" data-scroll="contato">Contato</a>
@@ -1185,8 +1198,11 @@
                 <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                     <i class="fas fa-map-marker-alt"></i> Localização
                 </a>
-                <a href="#produtos" class="btn catalog-btn-hero" data-scroll="produtos">
+                <a href="#scooters" class="btn catalog-btn-hero" data-scroll="scooters">
                     <i class="fas fa-motorcycle"></i> Ver Scooters
+                </a>
+                <a href="#capacetes" class="btn helmets-btn" data-scroll="capacetes">
+                    <i class="fas fa-helmet-safety"></i> Ver Capacetes
                 </a>
                 <a href="#servicos" class="btn maintenance-btn" data-scroll="servicos">
                     <i class="fas fa-tools"></i> Manutenção
@@ -1234,13 +1250,13 @@
         </div>
     </section>
 
-    <!-- Products -->
-    <section id="produtos" class="products">
+    <!-- Scooters Section -->
+    <section id="scooters" class="products">
         <div class="container">
-            <h2 class="section-title">Nossos Modelos</h2>
+            <h2 class="section-title">Nossos Modelos de Scooters</h2>
             
-            <div class="product-carousel">
-                <div class="carousel-container" id="carousel">
+            <div class="product-carousel" id="scooters-carousel">
+                <div class="carousel-container" id="carousel-scooters">
                     <!-- Modelo R11 (mantido conforme solicitado) -->
                     <div class="carousel-slide">
                         <div class="carousel-img">
@@ -1248,7 +1264,7 @@
                         </div>
                         <div class="carousel-content">
                             <h3>Modelo R11</h3>
-                            <p>Design moderno e elegante</p>
+                            <p>Design moderno and elegante</p>
                             <ul>
                                 <li>⚡ 3.000W de potência</li>
                                 <li>⏱️ Até 70 km/h</li>
@@ -1310,17 +1326,111 @@
                 
                 <!-- Controles do carrossel posicionados nas laterais -->
                 <div class="carousel-controls">
-                    <div class="carousel-arrow prev">
+                    <div class="carousel-arrow prev" id="prev-scooters">
                         <i class="fas fa-chevron-left"></i>
                     </div>
-                    <div class="carousel-arrow next">
+                    <div class="carousel-arrow next" id="next-scooters">
                         <i class="fas fa-chevron-right"></i>
                     </div>
                 </div>
             </div>
             
             <!-- Indicadores abaixo do botão (agora dentro do carrossel) -->
-            <div class="carousel-indicators">
+            <div class="carousel-indicators" id="indicators-scooters">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Helmets Section -->
+    <section id="capacetes" class="products">
+        <div class="container">
+            <h2 class="section-title">Nossos Modelos de Capacetes</h2>
+            
+            <div class="product-carousel" id="helmets-carousel">
+                <div class="carousel-container" id="carousel-helmets">
+                    <!-- Modelo Capacete A -->
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <img src="capacete1.png" alt="Capacete Modelo A">
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Capacete Modelo A</h3>
+                            <p>Design moderno e seguro</p>
+                            <ul>
+                                <li>⭐ Material: ABS de alta resistência</li>
+                                <li>⭐ Peso: Leve e confortável</li>
+                                <li>⭐ Visor: Anti-risco e ampla visão</li>
+                                <li>⭐ Certificação: Possui selo de segurança</li>
+                                <li>⭐ Cores disponíveis: Preto, Branco, Vermelho</li>
+                            </ul>
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Modelo Capacete B -->
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <img src="capacete2.png" alt="Capacete Modelo B">
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Capacete Modelo B</h3>
+                            <p>Conforto e estilo</p>
+                            <ul>
+                                <li>⭐ Material: Policarbonato resistente</li>
+                                <li>⭐ Peso: Ultra leve</li>
+                                <li>⭐ Visor: Com proteção UV</li>
+                                <li>⭐ Ventilation: Sistema de ventilação avançado</li>
+                                <li>⭐ Cores disponíveis: Azul, Prata, Verde</li>
+                            </ul>
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Modelo Capacete C -->
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <img src="capacete3.png" alt="Capacete Modelo C">
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Capacete Modelo C</h3>
+                            <p>Premium e elegante</p>
+                            <ul>
+                                <li>⭐ Material: Fibra de carbono</li>
+                                <li>⭐ Peso: Super leve</li>
+                                <li>⭐ Visor: Fotocromático</li>
+                                <li>⭐ Conforto: Interior removível e lavável</li>
+                                <li>⭐ Cores disponíveis: Preto fosco, Vermelho, Branco perolado</li>
+                            </ul>
+                            <!-- Botão dentro do retângulo do modelo -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Controles do carrossel posicionados nas laterais -->
+                <div class="carousel-controls">
+                    <div class="carousel-arrow prev" id="prev-helmets">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-arrow next" id="next-helmets">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Indicadores abaixo do botão (agora dentro do carrossel) -->
+            <div class="carousel-indicators" id="indicators-helmets">
                 <div class="indicator active" data-index="0"></div>
                 <div class="indicator" data-index="1"></div>
                 <div class="indicator" data-index="2"></div>
@@ -1597,13 +1707,13 @@
         }
 
         // ===== CARROSSEL DE PRODUTOS =====
-        function setupCarousel() {
-            const carousel = document.getElementById('carousel');
-            const slides = document.querySelectorAll('.carousel-slide');
-            const indicators = document.querySelectorAll('.indicator');
-            const carouselContainer = document.querySelector('.product-carousel');
-            const prevButton = document.querySelector('.carousel-arrow.prev');
-            const nextButton = document.querySelector('.carousel-arrow.next');
+        function setupCarousel(carouselId, prevButtonId, nextButtonId, indicatorsId) {
+            const carousel = document.getElementById(carouselId);
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const indicators = document.getElementById(indicatorsId).querySelectorAll('.indicator');
+            const carouselContainer = carousel.closest('.product-carousel');
+            const prevButton = document.getElementById(prevButtonId);
+            const nextButton = document.getElementById(nextButtonId);
             
             let currentIndex = 0;
             const slideCount = slides.length;
@@ -1780,7 +1890,11 @@
             // Configurar funcionalidades
             setupSmoothScroll();
             setupScrollDots();
-            setupCarousel();
+            
+            // Configurar ambos os carrosséis
+            setupCarousel('carousel-scooters', 'prev-scooters', 'next-scooters', 'indicators-scooters');
+            setupCarousel('carousel-helmets', 'prev-helmets', 'next-helmets', 'indicators-helmets');
+            
             setupMobileMenu();
             setupBackToTop();
             
