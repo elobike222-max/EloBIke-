@@ -214,10 +214,13 @@
             align-items: center;
             padding: 90px 0 40px;
             background: linear-gradient(135deg, rgba(13, 27, 61, 0.9) 0%, rgba(30, 58, 138, 0.8) 100%);
+            text-align: center;
         }
 
         .hero-content {
-            flex: 1;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
             padding: 0 15px;
         }
 
@@ -241,6 +244,7 @@
             gap: 12px;
             flex-wrap: wrap;
             margin: 30px 0 25px;
+            justify-content: center;
         }
 
         .btn {
@@ -257,11 +261,6 @@
             cursor: pointer;
             font-size: clamp(14px, 3vw, 16px);
             min-height: 44px;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--primary);
         }
 
         .whatsapp-btn {
@@ -282,73 +281,6 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-        }
-
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            flex-direction: column;
-        }
-
-        .moto-placeholder {
-            width: min(350px, 80vw);
-            height: min(350px, 80vw);
-            background: rgba(228, 187, 19, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid var(--accent);
-            position: relative;
-            margin-top: -20px;
-            overflow: hidden;
-        }
-
-        .moto-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .moto-placeholder i {
-            font-size: clamp(70px, 20vw, 120px);
-            color: var(--accent);
-        }
-
-        .floating-elements {
-            position: absolute;
-            animation: float 3s ease-in-out infinite;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .float-element {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: clamp(12px, 3vw, 16px) clamp(18px, 4vw, 22px);
-            border-radius: 25px;
-            margin: 10px 0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            font-weight: 600;
-            font-size: clamp(14px, 3vw, 16px);
-            text-align: center;
-            width: clamp(140px, 40vw, 160px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(-50%, -50%); }
-            50% { transform: translate(-50%, -60%); }
         }
 
         /* Features */
@@ -846,10 +778,6 @@
             min-height: calc(100vh - 70px) !important;
         }
 
-        .instagram-webview .moto-placeholder {
-            margin-top: 20px !important;
-        }
-
         .instagram-webview .btn {
             min-height: 44px !important;
             display: flex !important;
@@ -949,8 +877,6 @@
 
         @media (max-width: 768px) {
             .hero {
-                flex-direction: column;
-                text-align: center;
                 padding: 90px 0 40px;
             }
             .hero-buttons {
@@ -1009,9 +935,6 @@
             .carousel-controls {
                 padding: 0 5px;
             }
-            .floating-elements {
-                width: 90%;
-            }
             .scroll-indicator {
                 display: none;
             }
@@ -1037,10 +960,6 @@
                 width: 8px;
                 height: 8px;
             }
-            .moto-placeholder {
-                width: 240px;
-                height: 240px;
-            }
             .carousel-content ul li {
                 font-size: 0.9rem;
             }
@@ -1054,10 +973,6 @@
             }
             .hero-content {
                 padding-top: 20px;
-            }
-            .moto-placeholder {
-                width: 200px !important;
-                height: 200px !important;
             }
         }
 
@@ -1119,7 +1034,7 @@
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="container" style="display: flex; flex-wrap: wrap;">
+        <div class="container">
             <div class="hero-content">
                 <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>
                 <p>As melhores scooters elétricas de Araxá e região</p>
@@ -1133,16 +1048,6 @@
                     <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                         <i class="fas fa-map-marker-alt"></i> Localização
                     </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="moto-placeholder">
-                    <i class="fas fa-bolt"></i>
-                    <div class="floating-elements">
-                        <div class="float-element">⭐ Qualidade</div>
-                        <div class="float-element">🚀 Entrega</div>
-                        <div class="float-element">💪 Garantia</div>
-                    </div>
                 </div>
             </div>
         </div>
