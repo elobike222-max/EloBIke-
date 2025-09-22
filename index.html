@@ -207,9 +207,9 @@
             transition: all 0.3s;
         }
 
-        /* Hero Section */
+        /* Hero Section - Altura reduzida */
         .hero {
-            min-height: 100vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             padding: 90px 0 40px;
@@ -450,6 +450,13 @@
             left: 0;
             font-weight: bold;
             font-size: 1.1rem;
+        }
+
+        /* Estilo específico para capacetes - apenas imagem e botão */
+        .helmets-content {
+            text-align: center;
+            width: 100%;
+            padding: 15px 0;
         }
 
         /* Carousel Controls */
@@ -775,7 +782,7 @@
 
         /* Instagram WebView Specific Fixes */
         .instagram-webview .hero {
-            min-height: calc(100vh - 70px) !important;
+            min-height: calc(60vh - 70px) !important;
         }
 
         .instagram-webview .btn {
@@ -878,6 +885,7 @@
         @media (max-width: 768px) {
             .hero {
                 padding: 90px 0 40px;
+                min-height: 50vh;
             }
             .hero-buttons {
                 justify-content: center;
@@ -941,6 +949,10 @@
         }
 
         @media (max-width: 480px) {
+            .hero {
+                min-height: 40vh;
+                padding: 80px 0 30px;
+            }
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -968,7 +980,7 @@
         /* Orientação paisagem em dispositivos móveis */
         @media screen and (max-height: 480px) and (orientation: landscape) {
             .hero {
-                min-height: 150vh !important;
+                min-height: 100vh !important;
                 padding: 80px 0 !important;
             }
             .hero-content {
@@ -1171,7 +1183,7 @@
         </div>
     </section>
 
-    <!-- Helmets Section -->
+    <!-- Helmets Section - Simplificada -->
     <section id="capacetes" class="products">
         <div class="container">
             <h2 class="section-title">Nossos Modelos de Capacetes</h2>
@@ -1182,16 +1194,7 @@
                         <div class="carousel-img">
                             <img src="capacete1.png" alt="Capacete Modelo A">
                         </div>
-                        <div class="carousel-content">
-                            <h3>Capacete Modelo A</h3>
-                            <p>Design moderno e seguro</p>
-                            <ul>
-                                <li>⭐ Material: ABS de alta resistência</li>
-                                <li>⭐ Peso: Leve e confortável</li>
-                                <li>⭐ Visor: Anti-risco e ampla visão</li>
-                                <li>⭐ Certificação: Possui selo de segurança</li>
-                                <li>⭐ Cores disponíveis: Preto, Branco, Vermelho</li>
-                            </ul>
+                        <div class="helmets-content">
                             <a href="catalogo.html" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
@@ -1203,16 +1206,7 @@
                         <div class="carousel-img">
                             <img src="capacete2.png" alt="Capacete Modelo B">
                         </div>
-                        <div class="carousel-content">
-                            <h3>Capacete Modelo B</h3>
-                            <p>Conforto e estilo</p>
-                            <ul>
-                                <li>⭐ Material: Policarbonato resistente</li>
-                                <li>⭐ Peso: Ultra leve</li>
-                                <li>⭐ Visor: Com proteção UV</li>
-                                <li>⭐ Ventilation: Sistema de ventilação avançado</li>
-                                <li>⭐ Cores disponíveis: Azul, Prata, Verde</li>
-                            </ul>
+                        <div class="helmets-content">
                             <a href="catalogo.html" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
@@ -1224,16 +1218,7 @@
                         <div class="carousel-img">
                             <img src="capacete3.png" alt="Capacete Modelo C">
                         </div>
-                        <div class="carousel-content">
-                            <h3>Capacete Modelo C</h3>
-                            <p>Premium e elegante</p>
-                            <ul>
-                                <li>⭐ Material: Fibra de carbono</li>
-                                <li>⭐ Peso: Super leve</li>
-                                <li>⭐ Visor: Fotocromático</li>
-                                <li>⭐ Conforto: Interior removível e lavável</li>
-                                <li>⭐ Cores disponíveis: Preto fosco, Vermelho, Branco perolado</li>
-                            </ul>
+                        <div class="helmets-content">
                             <a href="catalogo.html" class="catalog-central-btn">
                                 <i class="fas fa-store"></i> Ver Catálogo Completo
                             </a>
