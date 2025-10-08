@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* Estilos permanecem os mesmos, apenas removendo a referência aos capacetes */
         :root {
             --primary: #0d1b3d;
             --secondary: #1e3a8a;
@@ -278,6 +279,11 @@
             color: white;
         }
 
+        .catalog-hero-btn {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 18px rgba(0,0,0,0.6);
@@ -450,13 +456,6 @@
             left: 0;
             font-weight: bold;
             font-size: 1.1rem;
-        }
-
-        /* Estilo específico para capacetes - apenas imagem e botão */
-        .helmets-content {
-            text-align: center;
-            width: 100%;
-            padding: 15px 0;
         }
 
         /* Carousel Controls */
@@ -1015,7 +1014,6 @@
     <div class="scroll-indicator">
         <div class="scroll-dot" data-section="hero" title="Início"></div>
         <div class="scroll-dot" data-section="scooters" title="Scooters"></div>
-        <div class="scroll-dot" data-section="capacetes" title="Capacetes"></div>
         <div class="scroll-dot" data-section="servicos" title="Serviços"></div>
         <div class="scroll-dot" data-section="sobre" title="Sobre"></div>
         <div class="scroll-dot" data-section="contato" title="Contato"></div>
@@ -1035,7 +1033,6 @@
             </button>
             <nav>
                 <a href="#scooters" data-scroll="scooters">Scooters</a>
-                <a href="#capacetes" data-scroll="capacetes">Capacetes</a>
                 <a href="#servicos" data-scroll="servicos">Serviços</a>
                 <a href="#sobre" data-scroll="sobre">Sobre</a>
                 <a href="#contato" data-scroll="contato">Contato</a>
@@ -1059,6 +1056,9 @@
                     </a>
                     <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                         <i class="fas fa-map-marker-alt"></i> Localização
+                    </a>
+                    <a href="catalogo.html" class="btn catalog-hero-btn">
+                        <i class="fas fa-store"></i> Ver Catálogo
                     </a>
                 </div>
             </div>
@@ -1176,69 +1176,6 @@
             
             <!-- Indicadores -->
             <div class="carousel-indicators" id="indicators-scooters">
-                <div class="indicator active" data-index="0"></div>
-                <div class="indicator" data-index="1"></div>
-                <div class="indicator" data-index="2"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Helmets Section - Simplificada -->
-    <section id="capacetes" class="products">
-        <div class="container">
-            <h2 class="section-title">Nossos Modelos de Capacetes</h2>
-            <div class="product-carousel" id="helmets-carousel">
-                <div class="carousel-container" id="carousel-helmets">
-                    <!-- Modelo Capacete A -->
-                    <div class="carousel-slide">
-                        <div class="carousel-img">
-                            <img src="capacete1.png" alt="Capacete Modelo A">
-                        </div>
-                        <div class="helmets-content">
-                            <a href="catalogo.html" class="catalog-central-btn">
-                                <i class="fas fa-store"></i> Ver Catálogo Completo
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Modelo Capacete B -->
-                    <div class="carousel-slide">
-                        <div class="carousel-img">
-                            <img src="capacete2.png" alt="Capacete Modelo B">
-                        </div>
-                        <div class="helmets-content">
-                            <a href="catalogo.html" class="catalog-central-btn">
-                                <i class="fas fa-store"></i> Ver Catálogo Completo
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Modelo Capacete C -->
-                    <div class="carousel-slide">
-                        <div class="carousel-img">
-                            <img src="capacete3.png" alt="Capacete Modelo C">
-                        </div>
-                        <div class="helmets-content">
-                            <a href="catalogo.html" class="catalog-central-btn">
-                                <i class="fas fa-store"></i> Ver Catálogo Completo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Controles do carrossel -->
-                <div class="carousel-controls">
-                    <div class="carousel-arrow prev" id="prev-helmets">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="carousel-arrow next" id="next-helmets">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Indicadores -->
-            <div class="carousel-indicators" id="indicators-helmets">
                 <div class="indicator active" data-index="0"></div>
                 <div class="indicator" data-index="1"></div>
                 <div class="indicator" data-index="2"></div>
@@ -1668,9 +1605,8 @@
             setupSmoothScroll();
             setupScrollDots();
             
-            // Configurar ambos os carrosséis
+            // Configurar carrossel de scooters
             setupCarousel('carousel-scooters', 'prev-scooters', 'next-scooters', 'indicators-scooters');
-            setupCarousel('carousel-helmets', 'prev-helmets', 'next-helmets', 'indicators-helmets');
             
             setupMobileMenu();
             setupBackToTop();
