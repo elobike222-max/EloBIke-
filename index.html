@@ -7,7 +7,7 @@
     
     <!-- Meta tags para redes sociais -->
     <meta property="og:title" content="EloBike - Motos Elétricas | Araxá MG">
-    <meta property="og:description" content="As melhores scooters elétricas de Araxá e região. Zero gasolina, ecológico e manutenção especializada.">
+    <meta property="og:description" content="As melhores scooters elétricas de Araxá e região. Zero gasolina, ecológica e manutenção especializada.">
     <meta property="og:image" content="https://example.com/path/to/your/image.jpg">
     <meta property="og:url" content="https://www.elobike.com.br">
     <meta property="og:type" content="website">
@@ -20,7 +20,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Estilos permanecem os mesmos, apenas removendo a referência aos capacetes */
+        /* ESTILO PARA SCROLL SUAVE - ADICIONADO */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Seus estilos existentes permanecem aqui */
         :root {
             --primary: #0d1b3d;
             --secondary: #1e3a8a;
@@ -153,6 +158,7 @@
             color: var(--accent);
         }
 
+        /* NAVEGAÇÃO MODIFICADA - REMOVIDO CATÁLOGO E ADICIONADO CAPACETES */
         nav {
             display: flex;
             gap: 12px;
@@ -172,19 +178,6 @@
         nav a:hover {
             color: var(--accent);
             background: rgba(228, 187, 19, 0.1);
-        }
-
-        .catalog-btn {
-            background: var(--accent);
-            color: var(--primary);
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 20px;
-        }
-
-        .catalog-btn:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
         }
 
         /* Menu Mobile */
@@ -279,10 +272,7 @@
             color: white;
         }
 
-        .catalog-hero-btn {
-            background: var(--accent);
-            color: var(--primary);
-        }
+        /* REMOVIDO .catalog-hero-btn */
 
         .btn:hover {
             transform: translateY(-3px);
@@ -514,31 +504,7 @@
             transform: scale(1.2);
         }
 
-        .catalog-central-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: clamp(12px, 3vw, 16px) clamp(24px, 5vw, 32px);
-            background: var(--accent);
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
-            margin: 8px 0 25px;
-            font-size: clamp(1rem, 3vw, 1.1rem);
-            width: 100%;
-            max-width: min(320px, 90vw);
-            justify-content: center;
-            min-height: 44px;
-        }
-
-        .catalog-central-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
-            background: var(--accent-hover);
-        }
+        /* REMOVIDO .catalog-central-btn */
 
         /* Services */
         .services {
@@ -1010,16 +976,17 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Scroll Indicator -->
+    <!-- Scroll Indicator ATUALIZADO COM CAPACETES -->
     <div class="scroll-indicator">
         <div class="scroll-dot" data-section="hero" title="Início"></div>
         <div class="scroll-dot" data-section="scooters" title="Scooters"></div>
+        <div class="scroll-dot" data-section="capacetes" title="Capacetes"></div>
         <div class="scroll-dot" data-section="servicos" title="Serviços"></div>
         <div class="scroll-dot" data-section="sobre" title="Sobre"></div>
         <div class="scroll-dot" data-section="contato" title="Contato"></div>
     </div>
 
-    <!-- Header -->
+    <!-- Header COM NAVEGAÇÃO MODIFICADA -->
     <header>
         <div class="container">
             <div class="logo">
@@ -1032,16 +999,16 @@
                 <span></span>
             </button>
             <nav>
-                <a href="#scooters" data-scroll="scooters">Scooters</a>
-                <a href="#servicos" data-scroll="servicos">Serviços</a>
-                <a href="#sobre" data-scroll="sobre">Sobre</a>
-                <a href="#contato" data-scroll="contato">Contato</a>
-                <a href="catalogo.html" class="catalog-btn">Catálogo</a>
+                <a href="#scooters">Scooters</a>
+                <a href="#capacetes">Capacetes</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section MODIFICADA - REMOVIDO BOTÃO CATÁLOGO -->
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
@@ -1056,9 +1023,6 @@
                     </a>
                     <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                         <i class="fas fa-map-marker-alt"></i> Localização
-                    </a>
-                    <a href="catalogo.html" class="btn catalog-hero-btn">
-                        <i class="fas fa-store"></i> Ver Catálogo
                     </a>
                 </div>
             </div>
@@ -1093,7 +1057,7 @@
         </div>
     </section>
 
-    <!-- Scooters Section -->
+    <!-- Seção de Scooters ORIGINAL -->
     <section id="scooters" class="products">
         <div class="container">
             <h2 class="section-title">Nossos Modelos de Scooters</h2>
@@ -1106,7 +1070,7 @@
                         </div>
                         <div class="carousel-content">
                             <h3>Modelo R11</h3>
-                            <p>Design moderno and elegante</p>
+                            <p>Design moderno e elegante</p>
                             <ul>
                                 <li>⚡ 3.000W de potência</li>
                                 <li>⏱️ Até 70 km/h</li>
@@ -1114,9 +1078,6 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
-                            <a href="catalogo.html" class="catalog-central-btn">
-                                <i class="fas fa-store"></i> Ver Catálogo Completo
-                            </a>
                         </div>
                     </div>
                     
@@ -1135,9 +1096,6 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 200 kg</li>
                             </ul>
-                            <a href="catalogo.html" class="catalog-central-btn">
-                                <i class="fas fa-store"></i> Ver Catálogo Completo
-                            </a>
                         </div>
                     </div>
                     
@@ -1156,9 +1114,6 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 150 kg</li>
                             </ul>
-                            <a href="catalogo.html" class="catalog-central-btn">
-                                <i class="fas fa-store"></i> Ver Catálogo Completo
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -1176,6 +1131,87 @@
             
             <!-- Indicadores -->
             <div class="carousel-indicators" id="indicators-scooters">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVA SEÇÃO: Capacetes (duplicada da seção scooters) -->
+    <section id="capacetes" class="products">
+        <div class="container">
+            <h2 class="section-title">Nossos Modelos de Capacetes</h2>
+            <div class="product-carousel" id="helmets-carousel">
+                <div class="carousel-container" id="carousel-helmets">
+                    <!-- Capacete Modelo A -->
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <i class="fas fa-helmet-safety"></i>
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Capacete Esportivo</h3>
+                            <p>Segurança e conforto</p>
+                            <ul>
+                                <li>🛡️ Certificação de segurança</li>
+                                <li>🌬️ Sistema de ventilação</li>
+                                <li>🎨 Design aerodinâmico</li>
+                                <li>⚖️ Peso leve</li>
+                                <li>👁️ Visibilidade ampla</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Capacete Modelo B -->
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <i class="fas fa-helmet-safety"></i>
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Capacete Modular</h3>
+                            <p>Versatilidade e proteção</p>
+                            <ul>
+                                <li>🛡️ Dupla certificação</li>
+                                <li>🎧 Compatível com comunicação</li>
+                                <li>🌧️ Visor anti-embaçante</li>
+                                <li>💨 Ventilação ajustável</li>
+                                <li>🎯 Fechamento rápido</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Capacete Modelo C -->
+                    <div class="carousel-slide">
+                        <div class="carousel-img">
+                            <i class="fas fa-helmet-safety"></i>
+                        </div>
+                        <div class="carousel-content">
+                            <h3>Capacete Integral</h3>
+                            <p>Proteção máxima</p>
+                            <ul>
+                                <li>🛡️ Proteção total</li>
+                                <li>🔊 Sistema de áudio integrado</li>
+                                <li>🌫️ Visor fotocromático</li>
+                                <li>💡 LED integrado</li>
+                                <li>🎛️ Controles intuitivos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Controles do carrossel -->
+                <div class="carousel-controls">
+                    <div class="carousel-arrow prev" id="prev-helmets">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-arrow next" id="next-helmets">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Indicadores -->
+            <div class="carousel-indicators" id="indicators-helmets">
                 <div class="indicator active" data-index="0"></div>
                 <div class="indicator" data-index="1"></div>
                 <div class="indicator" data-index="2"></div>
@@ -1308,44 +1344,9 @@
             }
         }
 
-        // ===== SCROLL SUAVE =====
-        function smoothScrollTo(targetId, duration = 1000) {
-            const targetElement = document.querySelector(targetId);
-            if (!targetElement) return;
-            
-            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 70;
-            const startPosition = window.pageYOffset;
-            const distance = targetPosition - startPosition;
-            let startTime = null;
-
-            // Adicionar destaque visual à seção
-            targetElement.classList.add('section-highlight');
-            setTimeout(() => {
-                targetElement.classList.remove('section-highlight');
-            }, 1500);
-
-            function animation(currentTime) {
-                if (startTime === null) startTime = currentTime;
-                const timeElapsed = currentTime - startTime;
-                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-                window.scrollTo(0, run);
-                
-                if (timeElapsed < duration) {
-                    requestAnimationFrame(animation);
-                } else {
-                    window.history.replaceState(null, null, targetId);
-                }
-            }
-
-            function easeInOutQuad(t, b, c, d) {
-                t /= d/2;
-                if (t < 1) return c/2*t*t + b;
-                t--;
-                return -c/2 * (t*(t-2) - 1) + b;
-            }
-
-            requestAnimationFrame(animation);
-        }
+        // ===== SCROLL SUAVE NATIVO - AGORA FEITO VIA CSS =====
+        // O scroll suave agora é implementado via CSS com scroll-behavior: smooth
+        // Isso funciona melhor no Instagram WebView
 
         // ===== ATUALIZAR INDICADORES DE SCROLL =====
         function updateScrollIndicator() {
@@ -1389,26 +1390,29 @@
         });
 
         // ===== ROLAGEM SUAVE PARA LINKS INTERNOS =====
+        // Agora usando o método nativo do CSS, mas mantemos a prevenção de comportamento padrão
         function setupSmoothScroll() {
-            document.querySelectorAll('a[href^="#"], [data-scroll]').forEach(anchor => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    let targetId;
-                    
-                    if (this.getAttribute('data-scroll')) {
-                        targetId = '#' + this.getAttribute('data-scroll');
-                    } else {
-                        targetId = this.getAttribute('href');
-                    }
-                    
-                    if (targetId === '#') return;
-                    smoothScrollTo(targetId);
-                    
-                    // Fechar menu mobile após clicar em um link
-                    if (window.innerWidth <= 768) {
-                        document.querySelector('nav').classList.remove('active');
-                        document.body.style.overflow = 'auto';
-                        document.querySelector('.menu-toggle').classList.remove('active');
+                    // Verificar se o link é para uma seção interna
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href.startsWith('#')) {
+                        e.preventDefault();
+                        
+                        const targetId = href;
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            // Usar scroll nativo com comportamento suave (agora controlado pelo CSS)
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                            
+                            // Fechar menu mobile após clicar em um link
+                            if (window.innerWidth <= 768) {
+                                document.querySelector('nav').classList.remove('active');
+                                document.body.style.overflow = 'auto';
+                                document.querySelector('.menu-toggle').classList.remove('active');
+                            }
+                        }
                     }
                 });
             });
@@ -1419,7 +1423,11 @@
             document.querySelectorAll('.scroll-dot').forEach(dot => {
                 dot.addEventListener('click', () => {
                     const targetId = '#' + dot.getAttribute('data-section');
-                    smoothScrollTo(targetId);
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
                 });
             });
         }
@@ -1589,7 +1597,7 @@
             });
 
             backToTopButton.addEventListener('click', () => {
-                smoothScrollTo('#hero');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
 
@@ -1608,18 +1616,14 @@
             // Configurar carrossel de scooters
             setupCarousel('carousel-scooters', 'prev-scooters', 'next-scooters', 'indicators-scooters');
             
+            // Configurar carrossel de capacetes
+            setupCarousel('carousel-helmets', 'prev-helmets', 'next-helmets', 'indicators-helmets');
+            
             setupMobileMenu();
             setupBackToTop();
             
             // Atualizar indicador de scroll
             updateScrollIndicator();
-            
-            // Verificar se há um hash na URL e rolar para a seção correspondente
-            if (window.location.hash) {
-                setTimeout(() => {
-                    smoothScrollTo(window.location.hash, 800);
-                }, 500);
-            }
         });
 
         // Recalcular altura da viewport em redimensionamento
