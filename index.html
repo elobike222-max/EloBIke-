@@ -20,12 +20,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* ESTILO PARA SCROLL SUAVE - ADICIONADO */
+        /* ESTILO PARA SCROLL SUAVE */
         html {
             scroll-behavior: smooth;
         }
         
-        /* Seus estilos existentes permanecem aqui */
         :root {
             --primary: #0d1b3d;
             --secondary: #1e3a8a;
@@ -67,7 +66,7 @@
             padding: 0 4%;
         }
 
-        /* Elementos flutuantes (WhatsApp e voltar ao topo) */
+        /* Elementos flutuantes */
         .whatsapp-float, .back-to-top {
             position: fixed;
             right: 20px;
@@ -158,7 +157,7 @@
             color: var(--accent);
         }
 
-        /* NAVEGAÇÃO MODIFICADA - REMOVIDO CATÁLOGO E ADICIONADO CAPACETES */
+        /* Navegação */
         nav {
             display: flex;
             gap: 12px;
@@ -201,7 +200,7 @@
             transition: all 0.3s;
         }
 
-        /* Hero Section - Altura reduzida */
+        /* Hero Section */
         .hero {
             min-height: 60vh;
             display: flex;
@@ -255,24 +254,21 @@
             cursor: pointer;
             font-size: clamp(14px, 3vw, 16px);
             min-height: 44px;
+            color: white; /* Garante texto branco em todos os botões */
         }
 
         .whatsapp-btn {
             background: #25D366;
-            color: white;
         }
 
         .instagram-btn {
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            color: white;
         }
 
         .location-btn {
             background: #336a8f;
-            color: white;
         }
 
-        /* NOVOS BOTÕES ADICIONADOS */
         .scooters-hero-btn {
             background: var(--accent);
             color: var(--primary);
@@ -282,6 +278,11 @@
             background: transparent;
             color: var(--accent);
             border: 2px solid var(--accent);
+        }
+
+        .maintenance-hero-btn {
+            background: #0066cc; /* Azul */
+            border: 2px solid #0066cc;
         }
 
         .helmets-hero-btn:hover {
@@ -461,6 +462,33 @@
             left: 0;
             font-weight: bold;
             font-size: 1.1rem;
+        }
+
+        /* NOVO: Botão Ver Catálogo Completo */
+        .catalog-central-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: clamp(12px, 3vw, 16px) clamp(24px, 5vw, 32px);
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
+            margin: 8px 0 25px;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            width: 100%;
+            max-width: min(320px, 90vw);
+            justify-content: center;
+            min-height: 44px;
+        }
+
+        .catalog-central-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
+            background: var(--accent-hover);
         }
 
         /* Carousel Controls */
@@ -989,7 +1017,7 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Scroll Indicator ATUALIZADO COM CAPACETES -->
+    <!-- Scroll Indicator ATUALIZADO -->
     <div class="scroll-indicator">
         <div class="scroll-dot" data-section="hero" title="Início"></div>
         <div class="scroll-dot" data-section="scooters" title="Scooters"></div>
@@ -1012,7 +1040,6 @@
                 <span></span>
             </button>
             <nav>
-                <!-- BOTÕES ADICIONADOS AQUI -->
                 <a href="#scooters">Scooters</a>
                 <a href="#capacetes">Capacetes</a>
                 <a href="#servicos">Serviços</a>
@@ -1022,7 +1049,7 @@
         </div>
     </header>
 
-    <!-- Hero Section MODIFICADA - ADICIONADOS BOTÕES SCOOTERS E CAPACETES -->
+    <!-- Hero Section MODIFICADA - TODOS OS 6 BOTÕES -->
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
@@ -1038,12 +1065,15 @@
                     <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                         <i class="fas fa-map-marker-alt"></i> Localização
                     </a>
-                    <!-- NOVOS BOTÕES ADICIONADOS -->
+                    <!-- BOTÕES DE NAVEGAÇÃO INTERNA -->
                     <a href="#scooters" class="btn scooters-hero-btn">
                         <i class="fas fa-motorcycle"></i> Scooters
                     </a>
                     <a href="#capacetes" class="btn helmets-hero-btn">
                         <i class="fas fa-helmet-safety"></i> Capacetes
+                    </a>
+                    <a href="#servicos" class="btn maintenance-hero-btn">
+                        <i class="fas fa-tools"></i> Manutenção
                     </a>
                 </div>
             </div>
@@ -1078,7 +1108,7 @@
         </div>
     </section>
 
-    <!-- Seção de Scooters ORIGINAL -->
+    <!-- Seção de Scooters ORIGINAL COM BOTÃO CATÁLOGO -->
     <section id="scooters" class="products">
         <div class="container">
             <h2 class="section-title">Nossos Modelos de Scooters</h2>
@@ -1099,6 +1129,10 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
+                            <!-- BOTÃO CATÁLOGO COMPLETO ADICIONADO -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
                     </div>
                     
@@ -1117,6 +1151,10 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 200 kg</li>
                             </ul>
+                            <!-- BOTÃO CATÁLOGO COMPLETO ADICIONADO -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
                     </div>
                     
@@ -1135,6 +1173,10 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 150 kg</li>
                             </ul>
+                            <!-- BOTÃO CATÁLOGO COMPLETO ADICIONADO -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1159,7 +1201,7 @@
         </div>
     </section>
 
-    <!-- NOVA SEÇÃO: Capacetes (duplicada da seção scooters) -->
+    <!-- SEÇÃO: Capacetes COM BOTÃO CATÁLOGO -->
     <section id="capacetes" class="products">
         <div class="container">
             <h2 class="section-title">Nossos Modelos de Capacetes</h2>
@@ -1168,7 +1210,7 @@
                     <!-- Capacete Modelo A -->
                     <div class="carousel-slide">
                         <div class="carousel-img">
-                            <i class="fas fa-helmet-safety"></i>
+                            <span style="font-size: 60px;">🛵🪖</span>
                         </div>
                         <div class="carousel-content">
                             <h3>Capacete Esportivo</h3>
@@ -1180,13 +1222,17 @@
                                 <li>⚖️ Peso leve</li>
                                 <li>👁️ Visibilidade ampla</li>
                             </ul>
+                            <!-- BOTÃO CATÁLOGO COMPLETO ADICIONADO -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
                     </div>
                     
                     <!-- Capacete Modelo B -->
                     <div class="carousel-slide">
                         <div class="carousel-img">
-                            <i class="fas fa-helmet-safety"></i>
+                            <span style="font-size: 60px;">🛵🪖</span>
                         </div>
                         <div class="carousel-content">
                             <h3>Capacete Modular</h3>
@@ -1198,13 +1244,17 @@
                                 <li>💨 Ventilação ajustável</li>
                                 <li>🎯 Fechamento rápido</li>
                             </ul>
+                            <!-- BOTÃO CATÁLOGO COMPLETO ADICIONADO -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
                     </div>
                     
                     <!-- Capacete Modelo C -->
                     <div class="carousel-slide">
                         <div class="carousel-img">
-                            <i class="fas fa-helmet-safety"></i>
+                            <span style="font-size: 60px;">🛵🪖</span>
                         </div>
                         <div class="carousel-content">
                             <h3>Capacete Integral</h3>
@@ -1216,6 +1266,10 @@
                                 <li>💡 LED integrado</li>
                                 <li>🎛️ Controles intuitivos</li>
                             </ul>
+                            <!-- BOTÃO CATÁLOGO COMPLETO ADICIONADO -->
+                            <a href="catalogo.html" class="catalog-central-btn">
+                                <i class="fas fa-store"></i> Ver Catálogo Completo
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1365,7 +1419,7 @@
             }
         }
 
-        // ===== SCROLL SUAVE NATIVO - AGORA FEITO VIA CSS =====
+        // ===== SCROLL SUAVE NATIVO =====
         // O scroll suave agora é implementado via CSS com scroll-behavior: smooth
         // Isso funciona melhor no Instagram WebView
 
@@ -1411,7 +1465,6 @@
         });
 
         // ===== ROLAGEM SUAVE PARA LINKS INTERNOS =====
-        // Agora usando o método nativo do CSS, mas mantemos a prevenção de comportamento padrão
         function setupSmoothScroll() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
