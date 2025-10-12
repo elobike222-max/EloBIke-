@@ -272,7 +272,22 @@
             color: white;
         }
 
-        /* REMOVIDO .catalog-hero-btn */
+        /* NOVOS BOTÕES ADICIONADOS */
+        .scooters-hero-btn {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .helmets-hero-btn {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .helmets-hero-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
 
         .btn:hover {
             transform: translateY(-3px);
@@ -503,8 +518,6 @@
             background: var(--accent);
             transform: scale(1.2);
         }
-
-        /* REMOVIDO .catalog-central-btn */
 
         /* Services */
         .services {
@@ -1009,7 +1022,7 @@
         </div>
     </header>
 
-    <!-- Hero Section MODIFICADA - REMOVIDO BOTÃO CATÁLOGO -->
+    <!-- Hero Section MODIFICADA - ADICIONADOS BOTÕES SCOOTERS E CAPACETES -->
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
@@ -1024,6 +1037,13 @@
                     </a>
                     <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                         <i class="fas fa-map-marker-alt"></i> Localização
+                    </a>
+                    <!-- NOVOS BOTÕES ADICIONADOS -->
+                    <a href="#scooters" class="btn scooters-hero-btn">
+                        <i class="fas fa-motorcycle"></i> Scooters
+                    </a>
+                    <a href="#capacetes" class="btn helmets-hero-btn">
+                        <i class="fas fa-helmet-safety"></i> Capacetes
                     </a>
                 </div>
             </div>
