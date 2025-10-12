@@ -68,7 +68,7 @@
         }
 
         /* Elementos flutuantes (WhatsApp e voltar ao topo) */
-        .whatsapp-float, .back-to-top {
+        .back-to-top {
             position: fixed;
             right: 20px;
             width: 55px;
@@ -80,18 +80,6 @@
             z-index: 1000;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .whatsapp-float {
-            bottom: 20px;
-            background: #25D366;
-            color: white;
-            font-size: 22px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            animation: pulse 2s infinite;
-        }
-
-        .back-to-top {
             bottom: 85px;
             background: var(--accent);
             color: var(--primary);
@@ -106,17 +94,9 @@
             visibility: visible;
         }
 
-        .whatsapp-float:hover, .back-to-top:hover {
-            transform: scale(1.1);
-        }
-
         .back-to-top:hover {
+            transform: scale(1.1);
             background: var(--accent-hover);
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
         }
 
         /* Header */
@@ -158,7 +138,7 @@
             color: var(--accent);
         }
 
-        /* NAVEGAÇÃO MODIFICADA - REMOVIDO CATÁLOGO E ADICIONADO CAPACETES */
+        /* NAVEGAÇÃO MODIFICADA - REMOVIDO CAPACETES */
         nav {
             display: flex;
             gap: 12px;
@@ -272,19 +252,8 @@
             color: white;
         }
 
-        /* NOVOS BOTÕES ADICIONADOS */
-        .scooters-hero-btn {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        .helmets-hero-btn {
-            background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-        }
-
-        .helmets-hero-btn:hover {
+        /* BOTÕES MODIFICADOS */
+        .catalog-hero-btn {
             background: var(--accent);
             color: var(--primary);
         }
@@ -461,6 +430,34 @@
             left: 0;
             font-weight: bold;
             font-size: 1.1rem;
+        }
+
+        /* Botão Ver Catálogo Completo */
+        .catalog-btn-container {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .catalog-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 22px;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
+            font-size: clamp(14px, 3vw, 16px);
+            min-height: 44px;
+        }
+
+        .catalog-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(228, 187, 19, 0.6);
+            background: var(--accent-hover);
         }
 
         /* Carousel Controls */
@@ -979,27 +976,21 @@
     </style>
 </head>
 <body>
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/553499269707?text=Olá! Queria saber mais informações sobre as scooters elétricas 🛵" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <!-- Back to Top Button -->
     <div class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Scroll Indicator ATUALIZADO COM CAPACETES -->
+    <!-- Scroll Indicator ATUALIZADO - REMOVIDO CAPACETES -->
     <div class="scroll-indicator">
         <div class="scroll-dot" data-section="hero" title="Início"></div>
         <div class="scroll-dot" data-section="scooters" title="Scooters"></div>
-        <div class="scroll-dot" data-section="capacetes" title="Capacetes"></div>
         <div class="scroll-dot" data-section="servicos" title="Serviços"></div>
         <div class="scroll-dot" data-section="sobre" title="Sobre"></div>
         <div class="scroll-dot" data-section="contato" title="Contato"></div>
     </div>
 
-    <!-- Header COM NAVEGAÇÃO MODIFICADA -->
+    <!-- Header COM NAVEGAÇÃO MODIFICADA - REMOVIDO CAPACETES -->
     <header>
         <div class="container">
             <div class="logo">
@@ -1012,9 +1003,8 @@
                 <span></span>
             </button>
             <nav>
-                <!-- BOTÕES ADICIONADOS AQUI -->
+                <!-- BOTÕES MODIFICADOS - REMOVIDO CAPACETES -->
                 <a href="#scooters">Scooters</a>
-                <a href="#capacetes">Capacetes</a>
                 <a href="#servicos">Serviços</a>
                 <a href="#sobre">Sobre</a>
                 <a href="#contato">Contato</a>
@@ -1022,7 +1012,7 @@
         </div>
     </header>
 
-    <!-- Hero Section MODIFICADA - ADICIONADOS BOTÕES SCOOTERS E CAPACETES -->
+    <!-- Hero Section MODIFICADA - REMOVIDO BOTÃO CAPACETES E ALTERADO BOTÃO SCOOTERS PARA VER CATÁLOGO -->
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
@@ -1038,12 +1028,9 @@
                     <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                         <i class="fas fa-map-marker-alt"></i> Localização
                     </a>
-                    <!-- NOVOS BOTÕES ADICIONADOS -->
-                    <a href="#scooters" class="btn scooters-hero-btn">
-                        <i class="fas fa-motorcycle"></i> Scooters
-                    </a>
-                    <a href="#capacetes" class="btn helmets-hero-btn">
-                        <i class="fas fa-helmet-safety"></i> Capacetes
+                    <!-- BOTÃO MODIFICADO - SCOOTERS AGORA É VER CATÁLOGO -->
+                    <a href="#scooters" class="btn catalog-hero-btn">
+                        <i class="fas fa-motorcycle"></i> Ver Catálogo
                     </a>
                 </div>
             </div>
@@ -1078,7 +1065,7 @@
         </div>
     </section>
 
-    <!-- Seção de Scooters ORIGINAL -->
+    <!-- Seção de Scooters MODIFICADA - ADICIONADO BOTÃO VER CATÁLOGO COMPLETO -->
     <section id="scooters" class="products">
         <div class="container">
             <h2 class="section-title">Nossos Modelos de Scooters</h2>
@@ -1156,86 +1143,12 @@
                 <div class="indicator" data-index="1"></div>
                 <div class="indicator" data-index="2"></div>
             </div>
-        </div>
-    </section>
-
-    <!-- NOVA SEÇÃO: Capacetes (duplicada da seção scooters) -->
-    <section id="capacetes" class="products">
-        <div class="container">
-            <h2 class="section-title">Nossos Modelos de Capacetes</h2>
-            <div class="product-carousel" id="helmets-carousel">
-                <div class="carousel-container" id="carousel-helmets">
-                    <!-- Capacete Modelo A -->
-                    <div class="carousel-slide">
-                        <div class="carousel-img">
-                            <i class="fas fa-helmet-safety"></i>
-                        </div>
-                        <div class="carousel-content">
-                            <h3>Capacete Esportivo</h3>
-                            <p>Segurança e conforto</p>
-                            <ul>
-                                <li>🛡️ Certificação de segurança</li>
-                                <li>🌬️ Sistema de ventilação</li>
-                                <li>🎨 Design aerodinâmico</li>
-                                <li>⚖️ Peso leve</li>
-                                <li>👁️ Visibilidade ampla</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Capacete Modelo B -->
-                    <div class="carousel-slide">
-                        <div class="carousel-img">
-                            <i class="fas fa-helmet-safety"></i>
-                        </div>
-                        <div class="carousel-content">
-                            <h3>Capacete Modular</h3>
-                            <p>Versatilidade e proteção</p>
-                            <ul>
-                                <li>🛡️ Dupla certificação</li>
-                                <li>🎧 Compatível com comunicação</li>
-                                <li>🌧️ Visor anti-embaçante</li>
-                                <li>💨 Ventilação ajustável</li>
-                                <li>🎯 Fechamento rápido</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Capacete Modelo C -->
-                    <div class="carousel-slide">
-                        <div class="carousel-img">
-                            <i class="fas fa-helmet-safety"></i>
-                        </div>
-                        <div class="carousel-content">
-                            <h3>Capacete Integral</h3>
-                            <p>Proteção máxima</p>
-                            <ul>
-                                <li>🛡️ Proteção total</li>
-                                <li>🔊 Sistema de áudio integrado</li>
-                                <li>🌫️ Visor fotocromático</li>
-                                <li>💡 LED integrado</li>
-                                <li>🎛️ Controles intuitivos</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Controles do carrossel -->
-                <div class="carousel-controls">
-                    <div class="carousel-arrow prev" id="prev-helmets">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="carousel-arrow next" id="next-helmets">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-            </div>
             
-            <!-- Indicadores -->
-            <div class="carousel-indicators" id="indicators-helmets">
-                <div class="indicator active" data-index="0"></div>
-                <div class="indicator" data-index="1"></div>
-                <div class="indicator" data-index="2"></div>
+            <!-- BOTÃO VER CATÁLOGO COMPLETO ADICIONADO -->
+            <div class="catalog-btn-container">
+                <a href="catalogo.html" class="catalog-btn">
+                    <i class="fas fa-list"></i> Ver Catálogo Completo
+                </a>
             </div>
         </div>
     </section>
@@ -1636,9 +1549,6 @@
             
             // Configurar carrossel de scooters
             setupCarousel('carousel-scooters', 'prev-scooters', 'next-scooters', 'indicators-scooters');
-            
-            // Configurar carrossel de capacetes
-            setupCarousel('carousel-helmets', 'prev-helmets', 'next-helmets', 'indicators-helmets');
             
             setupMobileMenu();
             setupBackToTop();
