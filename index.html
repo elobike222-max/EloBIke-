@@ -36,7 +36,7 @@
             --text-muted: #adb5bd;
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
-            --header-height: 80px; /* Aumentado para acomodar logos maiores */
+            --header-height: 100px; /* Aumentado para acomodar logos maiores */
         }
 
         /* VARIÁVEIS PARA TEMAS SAZONAIS */
@@ -137,7 +137,7 @@
             background: var(--accent-hover);
         }
 
-        /* HEADER REORGANIZADO - APENAS AS LOGOS */
+        /* HEADER REORGANIZADO - APENAS AS LOGOS MAIORES */
         header {
             background: rgba(13, 27, 61, 0.95);
             backdrop-filter: blur(10px);
@@ -155,33 +155,36 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 100%;
         }
 
-        /* Logo principal no canto esquerdo - AUMENTADA */
+        /* Logo principal no canto esquerdo - AUMENTADA SIGNIFICATIVAMENTE */
         .logo-left {
             display: flex;
             align-items: center;
+            height: 100%;
         }
 
         .logo-left img {
-            width: 60px; /* Aumentado de 40px */
-            height: 60px; /* Aumentado de 40px */
+            width: 80px; /* Aumentado de 60px */
+            height: 80px; /* Aumentado de 60px */
             border-radius: 50%;
             object-fit: cover;
         }
 
-        /* Logo secundária no centro - AUMENTADA */
+        /* Logo secundária no centro - AUMENTADA SIGNIFICATIVAMENTE */
         .logo-center {
             display: flex;
             align-items: center;
             justify-content: center;
             flex: 1;
+            height: 100%;
         }
 
         .logo-center img {
-            height: 70px; /* Aumentado de 50px */
+            height: 90px; /* Aumentado de 70px */
             width: auto;
-            max-width: 200px; /* Aumentado de 150px */
+            max-width: 280px; /* Aumentado de 200px */
             object-fit: contain;
         }
 
@@ -233,7 +236,7 @@
             min-height: 60vh;
             display: flex;
             align-items: center;
-            padding: 100px 0 40px; /* Aumentado de 90px para compensar header maior */
+            padding: 120px 0 40px; /* Aumentado de 100px para compensar header maior */
             background: linear-gradient(135deg, rgba(13, 27, 61, 0.9) 0%, rgba(30, 58, 138, 0.8) 100%);
             text-align: center;
             position: relative;
@@ -272,12 +275,12 @@
             justify-content: center;
         }
 
-        /* BOTÕES AUMENTADOS - AUMENTADOS NOVAMENTE */
+        /* BOTÕES AUMENTADOS */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 18px 28px; /* Aumentado de 16px 26px */
+            padding: 18px 28px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
@@ -285,8 +288,8 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.4);
             border: none;
             cursor: pointer;
-            font-size: clamp(14px, 3vw, 17px); /* Aumentado de 16px */
-            min-height: 55px; /* Aumentado de 50px */
+            font-size: clamp(14px, 3vw, 17px);
+            min-height: 55px;
         }
 
         .whatsapp-btn {
@@ -494,7 +497,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 18px 28px; /* Aumentado de 16px 26px */
+            padding: 18px 28px;
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -502,8 +505,8 @@
             font-weight: 600;
             transition: all 0.3s;
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
-            font-size: clamp(14px, 3vw, 17px); /* Aumentado de 16px */
-            min-height: 55px; /* Aumentado de 50px */
+            font-size: clamp(14px, 3vw, 17px);
+            min-height: 55px;
         }
 
         .catalog-btn:hover {
@@ -619,7 +622,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: clamp(16px, 3vw, 18px) clamp(28px, 5vw, 32px); /* Aumentado */
+            padding: clamp(16px, 3vw, 18px) clamp(28px, 5vw, 32px);
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -630,7 +633,7 @@
             font-size: clamp(0.9rem, 2.5vw, 1rem);
             border: none;
             cursor: pointer;
-            min-height: 55px; /* Aumentado de 50px */
+            min-height: 55px;
         }
 
         .service-btn:hover {
@@ -912,7 +915,7 @@
 
         @media (max-width: 768px) {
             .hero {
-                padding: 100px 0 40px;
+                padding: 120px 0 40px;
                 min-height: 50vh;
             }
             .hero-buttons {
@@ -940,7 +943,7 @@
             }
             nav {
                 position: fixed;
-                top: 80px;
+                top: 100px;
                 left: 0;
                 width: 100%;
                 background: rgba(13, 27, 61, 0.98);
@@ -977,19 +980,19 @@
             
             /* Ajustes para as logos em mobile */
             .logo-left img {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
             }
             .logo-center img {
-                height: 55px;
-                max-width: 160px;
+                height: 70px;
+                max-width: 200px;
             }
         }
 
         @media (max-width: 480px) {
             .hero {
                 min-height: 40vh;
-                padding: 90px 0 30px;
+                padding: 110px 0 30px;
             }
             .hero-buttons {
                 flex-direction: column;
@@ -1016,12 +1019,12 @@
             
             /* Ajustes para as logos em telas muito pequenas */
             .logo-left img {
-                width: 45px;
-                height: 45px;
+                width: 50px;
+                height: 50px;
             }
             .logo-center img {
-                height: 50px;
-                max-width: 140px;
+                height: 60px;
+                max-width: 160px;
             }
         }
 
@@ -1029,7 +1032,7 @@
         @media screen and (max-height: 480px) and (orientation: landscape) {
             .hero {
                 min-height: 100vh !important;
-                padding: 90px 0 !important;
+                padding: 110px 0 !important;
             }
             .hero-content {
                 padding-top: 20px;
@@ -1129,7 +1132,7 @@
         </div>
     </header>
 
-    <!-- Hero Section MODIFICADA - REMOVIDO BOTÃO CAPACETES E ALTERADO BOTÃO SCOOTERS PARA VER CATÁLOGO -->
+    <!-- Hero Section MODIFICADA - BOTÃO VER CATÁLOGO AGORA LEVA PARA A SEÇÃO DE SCOOTERS -->
     <section class="hero" id="hero">
         <!-- Decorações sazonais - AGORA SÓ APARECEM QUANDO O TEMA É ATIVADO -->
         <div class="seasonal-decoration heart" style="top: 10%; left: 5%; font-size: 24px;">
@@ -1177,7 +1180,7 @@
                     <a href="https://maps.app.goo.gl/Z6brWy7twMynjEsm7" class="btn location-btn">
                         <i class="fas fa-map-marker-alt"></i> Localização
                     </a>
-                    <!-- BOTÃO MODIFICADO - SCOOTERS AGORA É VER CATÁLOGO -->
+                    <!-- BOTÃO MODIFICADO - AGORA LEVA PARA A SEÇÃO DE SCOOTERS -->
                     <a href="#scooters" class="btn catalog-hero-btn">
                         <i class="fas fa-motorcycle"></i> Ver Catálogo
                     </a>
@@ -1214,7 +1217,7 @@
         </div>
     </section>
 
-    <!-- Seção de Scooters MODIFICADA - ADICIONADO BOTÃO VER CATÁLOGO COMPLETO DENTRO DO RETÂNGULO -->
+    <!-- Seção de Scooters MODIFICADA - BOTÃO VER CATÁLOGO COMPLETO AGORA LEVA PARA A SEÇÃO DE SCOOTERS -->
     <section id="scooters" class="products">
         <div class="container">
             <h2 class="section-title">Nossos Modelos de Scooters</h2>
@@ -1235,9 +1238,9 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: 150kg a 200kg</li>
                             </ul>
-                            <!-- BOTÃO VER CATÁLOGO COMPLETO ADICIONADO DENTRO DO RETÂNGULO -->
+                            <!-- BOTÃO VER CATÁLOGO COMPLETO AGORA LEVA PARA A SEÇÃO DE SCOOTERS -->
                             <div class="catalog-btn-container">
-                                <a href="catalogo.html" class="catalog-btn">
+                                <a href="#scooters" class="catalog-btn">
                                     <i class="fas fa-list"></i> Ver Catálogo Completo
                                 </a>
                             </div>
@@ -1259,9 +1262,9 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 200 kg</li>
                             </ul>
-                            <!-- BOTÃO VER CATÁLOGO COMPLETO ADICIONADO DENTRO DO RETÂNGULO -->
+                            <!-- BOTÃO VER CATÁLOGO COMPLETO AGORA LEVA PARA A SEÇÃO DE SCOOTERS -->
                             <div class="catalog-btn-container">
-                                <a href="catalogo.html" class="catalog-btn">
+                                <a href="#scooters" class="catalog-btn">
                                     <i class="fas fa-list"></i> Ver Catálogo Completo
                                 </a>
                             </div>
@@ -1283,9 +1286,9 @@
                                 <li>⏳ 5 horas para carga completa</li>
                                 <li>💪 Capacidade: até 150 kg</li>
                             </ul>
-                            <!-- BOTÃO VER CATÁLOGO COMPLETO ADICIONADO DENTRO DO RETÂNGULO -->
+                            <!-- BOTÃO VER CATÁLOGO COMPLETO AGORA LEVA PARA A SEÇÃO DE SCOOTERS -->
                             <div class="catalog-btn-container">
-                                <a href="catalogo.html" class="catalog-btn">
+                                <a href="#scooters" class="catalog-btn">
                                     <i class="fas fa-list"></i> Ver Catálogo Completo
                                 </a>
                             </div>
