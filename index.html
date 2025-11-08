@@ -277,11 +277,12 @@
             justify-content: center;
         }
 
+        /* BOTÕES AUMENTADOS */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 14px 22px;
+            padding: 16px 26px; /* Aumentado de 14px 22px */
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
@@ -290,7 +291,7 @@
             border: none;
             cursor: pointer;
             font-size: clamp(14px, 3vw, 16px);
-            min-height: 44px;
+            min-height: 50px; /* Aumentado de 44px */
         }
 
         .whatsapp-btn {
@@ -498,7 +499,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 14px 22px;
+            padding: 16px 26px; /* Aumentado de 14px 22px */
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -507,7 +508,7 @@
             transition: all 0.3s;
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
             font-size: clamp(14px, 3vw, 16px);
-            min-height: 44px;
+            min-height: 50px; /* Aumentado de 44px */
         }
 
         .catalog-btn:hover {
@@ -622,7 +623,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: clamp(12px, 3vw, 14px) clamp(24px, 5vw, 28px);
+            padding: clamp(14px, 3vw, 16px) clamp(26px, 5vw, 30px); /* Aumentado */
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -633,7 +634,7 @@
             font-size: clamp(0.9rem, 2.5vw, 1rem);
             border: none;
             cursor: pointer;
-            min-height: 44px;
+            min-height: 50px; /* Aumentado de 44px */
         }
 
         .service-btn:hover {
@@ -817,7 +818,7 @@
         }
 
         .instagram-webview .btn {
-            min-height: 44px !important;
+            min-height: 50px !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -1044,29 +1045,34 @@
             transform: translateY(0);
         }
         
-        /* Decorações temáticas */
+        /* Decorações temáticas - AGORA SÓ APARECEM QUANDO ATIVADAS */
         .seasonal-decoration {
             position: absolute;
             z-index: 1;
             pointer-events: none;
+            display: none; /* Escondido por padrão */
         }
         
         .theme-valentines .seasonal-decoration.heart {
+            display: block;
             color: #ff4081;
             animation: float 6s ease-in-out infinite;
         }
         
         .theme-halloween .seasonal-decoration.pumpkin {
+            display: block;
             color: #ff7518;
             animation: float 8s ease-in-out infinite;
         }
         
         .theme-christmas .seasonal-decoration.snowflake {
+            display: block;
             color: #ffffff;
             animation: float 10s ease-in-out infinite;
         }
         
         .theme-carnival .seasonal-decoration.confetti {
+            display: block;
             color: #ffd700;
             animation: float 5s ease-in-out infinite;
         }
@@ -1099,7 +1105,8 @@
             <div class="logo">
                 <div class="logo-images">
                     <img src="logo.png" alt="EloBike">
-                    <img src="logo2.png" alt="EloBike" class="logo2">
+                    <!-- LOGO2 CORRIGIDA - AGORA COM O CAMINHO CORRETO -->
+                    <img src="logotipo2.png" alt="EloBike" class="logo2">
                 </div>
                 <h1>ELOBIKE</h1>
             </div>
@@ -1120,7 +1127,7 @@
 
     <!-- Hero Section MODIFICADA - REMOVIDO BOTÃO CAPACETES E ALTERADO BOTÃO SCOOTERS PARA VER CATÁLOGO -->
     <section class="hero" id="hero">
-        <!-- Decorações sazonais -->
+        <!-- Decorações sazonais - AGORA SÓ APARECEM QUANDO O TEMA É ATIVADO -->
         <div class="seasonal-decoration heart" style="top: 10%; left: 5%; font-size: 24px;">
             <i class="fas fa-heart"></i>
         </div>
