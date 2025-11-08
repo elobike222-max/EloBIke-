@@ -137,7 +137,7 @@
             background: var(--accent-hover);
         }
 
-        /* Header */
+        /* HEADER REORGANIZADO */
         header {
             background: rgba(13, 27, 61, 0.95);
             backdrop-filter: blur(10px);
@@ -157,37 +157,40 @@
             align-items: center;
         }
 
-        .logo {
+        /* Logo principal no canto esquerdo */
+        .logo-left {
             display: flex;
             align-items: center;
-            gap: 8px;
         }
 
-        .logo-images {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo img {
+        .logo-left img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            border: 2px solid var(--accent);
             object-fit: cover;
         }
 
-        .logo2 {
-            width: 40px !important;
-            height: 40px !important;
-            border-radius: 8px !important;
-            border: 2px solid var(--accent) !important;
+        /* Logo secundária no centro */
+        .logo-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
         }
 
-        .logo h1 {
+        .logo-center img {
+            height: 50px;
+            width: auto;
+            max-width: 150px;
+            object-fit: contain;
+        }
+
+        /* Nome da empresa no canto direito */
+        .brand-name {
             font-size: 20px;
             font-weight: 700;
             color: var(--accent);
+            text-align: right;
         }
 
         /* NAVEGAÇÃO MODIFICADA - REMOVIDO CAPACETES */
@@ -979,13 +982,15 @@
                 display: none;
             }
             
-            /* Ajustes para a logo2 em mobile */
-            .logo-images {
-                gap: 5px;
+            /* Ajustes para o header em mobile */
+            .logo-center {
+                flex: none;
             }
-            .logo img, .logo2 {
-                width: 35px !important;
-                height: 35px !important;
+            .logo-center img {
+                height: 40px;
+            }
+            .brand-name {
+                font-size: 16px;
             }
         }
 
@@ -1017,9 +1022,16 @@
                 font-size: 0.9rem;
             }
             
-            /* Ajustes para a logo2 em telas muito pequenas */
-            .logo h1 {
-                font-size: 16px;
+            /* Ajustes para o header em telas muito pequenas */
+            .brand-name {
+                font-size: 14px;
+            }
+            .logo-center img {
+                height: 35px;
+            }
+            .logo-left img {
+                width: 35px;
+                height: 35px;
             }
         }
 
@@ -1099,17 +1111,24 @@
         <div class="scroll-dot" data-section="contato" title="Contato"></div>
     </div>
 
-    <!-- Header COM NAVEGAÇÃO MODIFICADA - REMOVIDO CAPACETES -->
+    <!-- Header REORGANIZADO - Logo principal no canto esquerdo, logo secundária no centro, nome no canto direito -->
     <header>
         <div class="container">
-            <div class="logo">
-                <div class="logo-images">
-                    <img src="logo.png" alt="EloBike">
-                    <!-- LOGO2 CORRIGIDA - AGORA COM O CAMINHO CORRETO -->
-                    <img src="logotipo2.png" alt="EloBike" class="logo2">
-                </div>
-                <h1>ELOBIKE</h1>
+            <!-- Logo principal no canto esquerdo -->
+            <div class="logo-left">
+                <img src="logo.png" alt="EloBike">
             </div>
+            
+            <!-- Logo secundária no centro -->
+            <div class="logo-center">
+                <img src="logotipo2.png" alt="EloBike">
+            </div>
+            
+            <!-- Nome da empresa no canto direito -->
+            <div class="brand-name">
+                ELOBIKE
+            </div>
+            
             <button class="menu-toggle">
                 <span></span>
                 <span></span>
