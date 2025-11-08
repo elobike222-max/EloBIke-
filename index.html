@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EloBike - Motos Elétricas | Araxá MG</title>
     
-    <!-- Meta tags para redes sociais -->
+    <!-- Meta tags para SEO e redes sociais -->
+    <meta name="description" content="As melhores scooters elétricas de Araxá e região. Zero gasolina, ecológica e manutenção especializada.">
     <meta property="og:title" content="EloBike - Motos Elétricas | Araxá MG">
     <meta property="og:description" content="As melhores scooters elétricas de Araxá e região. Zero gasolina, ecológica e manutenção especializada.">
     <meta property="og:image" content="https://example.com/path/to/your/image.jpg">
@@ -38,6 +39,42 @@
             --header-height: 70px;
         }
 
+        /* VARIÁVEIS PARA TEMAS SAZONAIS */
+        .theme-valentines {
+            --primary: #8b0d3d;
+            --secondary: #c2185b;
+            --accent: #ff4081;
+            --accent-hover: #ff79b0;
+        }
+
+        .theme-halloween {
+            --primary: #2c0d3d;
+            --secondary: #5d1e8a;
+            --accent: #ff7518;
+            --accent-hover: #ff9e4a;
+        }
+
+        .theme-christmas {
+            --primary: #0d3d1b;
+            --secondary: #1e8a3a;
+            --accent: #e41d13;
+            --accent-hover: #ff4136;
+        }
+
+        .theme-carnival {
+            --primary: #3d0d8b;
+            --secondary: #8a1e5d;
+            --accent: #ffd700;
+            --accent-hover: #fff200;
+        }
+
+        .theme-newyear {
+            --primary: #1b0d3d;
+            --secondary: #3a1e8a;
+            --accent: #e4bb13;
+            --accent-hover: #ffd700;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -58,6 +95,7 @@
             line-height: 1.5;
             font-size: 16px;
             min-height: 100vh;
+            transition: background 0.5s ease;
         }
 
         .container {
@@ -110,6 +148,7 @@
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
             height: var(--header-height);
+            transition: background 0.3s ease;
         }
 
         header .container {
@@ -124,12 +163,25 @@
             gap: 8px;
         }
 
+        .logo-images {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .logo img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             border: 2px solid var(--accent);
             object-fit: cover;
+        }
+
+        .logo2 {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 8px !important;
+            border: 2px solid var(--accent) !important;
         }
 
         .logo h1 {
@@ -189,6 +241,8 @@
             padding: 90px 0 40px;
             background: linear-gradient(135deg, rgba(13, 27, 61, 0.9) 0%, rgba(30, 58, 138, 0.8) 100%);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-content {
@@ -196,6 +250,8 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 0 15px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content h2 {
@@ -921,6 +977,15 @@
             .scroll-indicator {
                 display: none;
             }
+            
+            /* Ajustes para a logo2 em mobile */
+            .logo-images {
+                gap: 5px;
+            }
+            .logo img, .logo2 {
+                width: 35px !important;
+                height: 35px !important;
+            }
         }
 
         @media (max-width: 480px) {
@@ -950,6 +1015,11 @@
             .carousel-content ul li {
                 font-size: 0.9rem;
             }
+            
+            /* Ajustes para a logo2 em telas muito pequenas */
+            .logo h1 {
+                font-size: 16px;
+            }
         }
 
         /* Orientação paisagem em dispositivos móveis */
@@ -973,6 +1043,39 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Decorações temáticas */
+        .seasonal-decoration {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .theme-valentines .seasonal-decoration.heart {
+            color: #ff4081;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .theme-halloween .seasonal-decoration.pumpkin {
+            color: #ff7518;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .theme-christmas .seasonal-decoration.snowflake {
+            color: #ffffff;
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        .theme-carnival .seasonal-decoration.confetti {
+            color: #ffd700;
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
     </style>
 </head>
 <body>
@@ -994,7 +1097,10 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="logo.png" alt="EloBike">
+                <div class="logo-images">
+                    <img src="logo.png" alt="EloBike">
+                    <img src="logo2.png" alt="EloBike" class="logo2">
+                </div>
                 <h1>ELOBIKE</h1>
             </div>
             <button class="menu-toggle">
@@ -1014,6 +1120,38 @@
 
     <!-- Hero Section MODIFICADA - REMOVIDO BOTÃO CAPACETES E ALTERADO BOTÃO SCOOTERS PARA VER CATÁLOGO -->
     <section class="hero" id="hero">
+        <!-- Decorações sazonais -->
+        <div class="seasonal-decoration heart" style="top: 10%; left: 5%; font-size: 24px;">
+            <i class="fas fa-heart"></i>
+        </div>
+        <div class="seasonal-decoration heart" style="top: 20%; right: 7%; font-size: 30px;">
+            <i class="fas fa-heart"></i>
+        </div>
+        <div class="seasonal-decoration heart" style="bottom: 15%; left: 10%; font-size: 20px;">
+            <i class="fas fa-heart"></i>
+        </div>
+        
+        <div class="seasonal-decoration pumpkin" style="top: 15%; left: 8%; font-size: 28px;">
+            <i class="fas fa-ghost"></i>
+        </div>
+        <div class="seasonal-decoration pumpkin" style="bottom: 20%; right: 5%; font-size: 32px;">
+            <i class="fas fa-hat-wizard"></i>
+        </div>
+        
+        <div class="seasonal-decoration snowflake" style="top: 25%; right: 10%; font-size: 22px;">
+            <i class="fas fa-snowflake"></i>
+        </div>
+        <div class="seasonal-decoration snowflake" style="bottom: 10%; left: 15%; font-size: 26px;">
+            <i class="fas fa-snowflake"></i>
+        </div>
+        
+        <div class="seasonal-decoration confetti" style="top: 12%; right: 15%; font-size: 20px;">
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="seasonal-decoration confetti" style="bottom: 25%; left: 5%; font-size: 24px;">
+            <i class="fas fa-star"></i>
+        </div>
+        
         <div class="container">
             <div class="hero-content">
                 <h2>MOBILIDADE ELÉTRICA INTELIGENTE</h2>
@@ -1094,7 +1232,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                                        
                     <!-- Modelo S2 -->
                     <div class="carousel-slide">
                         <div class="carousel-img">
@@ -1118,7 +1256,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                                        
                     <!-- Modelo V8 -->
                     <div class="carousel-slide">
                         <div class="carousel-img">
@@ -1143,7 +1281,7 @@
                         </div>
                     </div>
                 </div>
-                
+                                
                 <!-- Controles do carrossel -->
                 <div class="carousel-controls">
                     <div class="carousel-arrow prev" id="prev-scooters">
@@ -1154,7 +1292,7 @@
                     </div>
                 </div>
             </div>
-            
+                        
             <!-- Indicadores -->
             <div class="carousel-indicators" id="indicators-scooters">
                 <div class="indicator active" data-index="0"></div>
@@ -1256,6 +1394,44 @@
     </footer>
 
     <script>
+        // ===== SISTEMA DE TEMAS SAZONAIS =====
+        function applySeasonalTheme() {
+            const today = new Date();
+            const month = today.getMonth() + 1; // Janeiro é 0
+            const day = today.getDate();
+            
+            let themeClass = '';
+            
+            // Verificar datas específicas para aplicar temas
+            if (month === 2 && day >= 10 && day <= 14) {
+                // Dia dos Namorados (10 a 14 de fevereiro)
+                themeClass = 'theme-valentines';
+            } else if (month === 6 && day === 12) {
+                // Dia dos Namorados no Brasil (12 de junho)
+                themeClass = 'theme-valentines';
+            } else if (month === 10 && day >= 25 && day <= 31) {
+                // Halloween (última semana de outubro)
+                themeClass = 'theme-halloween';
+            } else if (month === 12 && day >= 15 && day <= 31) {
+                // Natal (meados de dezembro até o final do ano)
+                themeClass = 'theme-christmas';
+            } else if (month === 2 && day >= 20 && day <= 26) {
+                // Carnaval (aproximadamente, pode variar)
+                themeClass = 'theme-carnival';
+            } else if (month === 12 && day >= 30) {
+                // Ano Novo (últimos dias do ano)
+                themeClass = 'theme-newyear';
+            } else if (month === 1 && day <= 5) {
+                // Ano Novo (primeiros dias de janeiro)
+                themeClass = 'theme-newyear';
+            }
+            
+            // Aplicar a classe do tema ao body
+            if (themeClass) {
+                document.body.classList.add(themeClass);
+            }
+        }
+
         // ===== DETECÇÃO DE WEBVIEW DO INSTAGRAM =====
         function isInInstagramWebView() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -1548,6 +1724,9 @@
 
         // ===== INICIALIZAÇÃO GERAL =====
         document.addEventListener('DOMContentLoaded', function() {
+            // Aplicar tema sazonal
+            applySeasonalTheme();
+            
             // Inicializar algumas seções como visíveis
             document.querySelector('.hero').classList.add('visible');
             
