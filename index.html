@@ -36,7 +36,7 @@
             --text-muted: #adb5bd;
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
-            --header-height: 70px;
+            --header-height: 80px; /* Aumentado para acomodar logos maiores */
         }
 
         /* VARIÁVEIS PARA TEMAS SAZONAIS */
@@ -137,7 +137,7 @@
             background: var(--accent-hover);
         }
 
-        /* HEADER REORGANIZADO */
+        /* HEADER REORGANIZADO - APENAS AS LOGOS */
         header {
             background: rgba(13, 27, 61, 0.95);
             backdrop-filter: blur(10px);
@@ -157,20 +157,20 @@
             align-items: center;
         }
 
-        /* Logo principal no canto esquerdo */
+        /* Logo principal no canto esquerdo - AUMENTADA */
         .logo-left {
             display: flex;
             align-items: center;
         }
 
         .logo-left img {
-            width: 40px;
-            height: 40px;
+            width: 60px; /* Aumentado de 40px */
+            height: 60px; /* Aumentado de 40px */
             border-radius: 50%;
             object-fit: cover;
         }
 
-        /* Logo secundária no centro */
+        /* Logo secundária no centro - AUMENTADA */
         .logo-center {
             display: flex;
             align-items: center;
@@ -179,18 +179,10 @@
         }
 
         .logo-center img {
-            height: 50px;
+            height: 70px; /* Aumentado de 50px */
             width: auto;
-            max-width: 150px;
+            max-width: 200px; /* Aumentado de 150px */
             object-fit: contain;
-        }
-
-        /* Nome da empresa no canto direito */
-        .brand-name {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--accent);
-            text-align: right;
         }
 
         /* NAVEGAÇÃO MODIFICADA - REMOVIDO CAPACETES */
@@ -241,7 +233,7 @@
             min-height: 60vh;
             display: flex;
             align-items: center;
-            padding: 90px 0 40px;
+            padding: 100px 0 40px; /* Aumentado de 90px para compensar header maior */
             background: linear-gradient(135deg, rgba(13, 27, 61, 0.9) 0%, rgba(30, 58, 138, 0.8) 100%);
             text-align: center;
             position: relative;
@@ -280,12 +272,12 @@
             justify-content: center;
         }
 
-        /* BOTÕES AUMENTADOS */
+        /* BOTÕES AUMENTADOS - AUMENTADOS NOVAMENTE */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 16px 26px; /* Aumentado de 14px 22px */
+            padding: 18px 28px; /* Aumentado de 16px 26px */
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
@@ -293,8 +285,8 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.4);
             border: none;
             cursor: pointer;
-            font-size: clamp(14px, 3vw, 16px);
-            min-height: 50px; /* Aumentado de 44px */
+            font-size: clamp(14px, 3vw, 17px); /* Aumentado de 16px */
+            min-height: 55px; /* Aumentado de 50px */
         }
 
         .whatsapp-btn {
@@ -492,7 +484,7 @@
             font-size: 1.1rem;
         }
 
-        /* Botão Ver Catálogo Completo */
+        /* Botão Ver Catálogo Completo - AUMENTADO */
         .catalog-btn-container {
             margin-top: 25px;
             text-align: center;
@@ -502,7 +494,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 16px 26px; /* Aumentado de 14px 22px */
+            padding: 18px 28px; /* Aumentado de 16px 26px */
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -510,8 +502,8 @@
             font-weight: 600;
             transition: all 0.3s;
             box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
-            font-size: clamp(14px, 3vw, 16px);
-            min-height: 50px; /* Aumentado de 44px */
+            font-size: clamp(14px, 3vw, 17px); /* Aumentado de 16px */
+            min-height: 55px; /* Aumentado de 50px */
         }
 
         .catalog-btn:hover {
@@ -622,11 +614,12 @@
             font-size: 1rem;
         }
 
+        /* Botão de Serviço - AUMENTADO */
         .service-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: clamp(14px, 3vw, 16px) clamp(26px, 5vw, 30px); /* Aumentado */
+            padding: clamp(16px, 3vw, 18px) clamp(28px, 5vw, 32px); /* Aumentado */
             background: var(--accent);
             color: var(--primary);
             text-decoration: none;
@@ -637,7 +630,7 @@
             font-size: clamp(0.9rem, 2.5vw, 1rem);
             border: none;
             cursor: pointer;
-            min-height: 50px; /* Aumentado de 44px */
+            min-height: 55px; /* Aumentado de 50px */
         }
 
         .service-btn:hover {
@@ -821,7 +814,7 @@
         }
 
         .instagram-webview .btn {
-            min-height: 50px !important;
+            min-height: 55px !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -919,7 +912,7 @@
 
         @media (max-width: 768px) {
             .hero {
-                padding: 90px 0 40px;
+                padding: 100px 0 40px;
                 min-height: 50vh;
             }
             .hero-buttons {
@@ -947,7 +940,7 @@
             }
             nav {
                 position: fixed;
-                top: 70px;
+                top: 80px;
                 left: 0;
                 width: 100%;
                 background: rgba(13, 27, 61, 0.98);
@@ -982,22 +975,21 @@
                 display: none;
             }
             
-            /* Ajustes para o header em mobile */
-            .logo-center {
-                flex: none;
+            /* Ajustes para as logos em mobile */
+            .logo-left img {
+                width: 50px;
+                height: 50px;
             }
             .logo-center img {
-                height: 40px;
-            }
-            .brand-name {
-                font-size: 16px;
+                height: 55px;
+                max-width: 160px;
             }
         }
 
         @media (max-width: 480px) {
             .hero {
                 min-height: 40vh;
-                padding: 80px 0 30px;
+                padding: 90px 0 30px;
             }
             .hero-buttons {
                 flex-direction: column;
@@ -1022,16 +1014,14 @@
                 font-size: 0.9rem;
             }
             
-            /* Ajustes para o header em telas muito pequenas */
-            .brand-name {
-                font-size: 14px;
+            /* Ajustes para as logos em telas muito pequenas */
+            .logo-left img {
+                width: 45px;
+                height: 45px;
             }
             .logo-center img {
-                height: 35px;
-            }
-            .logo-left img {
-                width: 35px;
-                height: 35px;
+                height: 50px;
+                max-width: 140px;
             }
         }
 
@@ -1039,7 +1029,7 @@
         @media screen and (max-height: 480px) and (orientation: landscape) {
             .hero {
                 min-height: 100vh !important;
-                padding: 80px 0 !important;
+                padding: 90px 0 !important;
             }
             .hero-content {
                 padding-top: 20px;
@@ -1111,7 +1101,7 @@
         <div class="scroll-dot" data-section="contato" title="Contato"></div>
     </div>
 
-    <!-- Header REORGANIZADO - Logo principal no canto esquerdo, logo secundária no centro, nome no canto direito -->
+    <!-- Header REORGANIZADO - APENAS AS DUAS LOGOS, SEM TEXTO -->
     <header>
         <div class="container">
             <!-- Logo principal no canto esquerdo -->
@@ -1122,11 +1112,6 @@
             <!-- Logo secundária no centro -->
             <div class="logo-center">
                 <img src="logotipo2.png" alt="EloBike">
-            </div>
-            
-            <!-- Nome da empresa no canto direito -->
-            <div class="brand-name">
-                ELOBIKE
             </div>
             
             <button class="menu-toggle">
