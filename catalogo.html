@@ -1,2025 +1,394 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - EloBike Motos Elétricas</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0d1b3d;
-            --secondary: #1e3a8a;
-            --accent: #E4BB13;
-            --accent-hover: #ffd700;
-            --text: #f8f9fa;
-            --text-muted: #adb5bd;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --scooter-color: #2563eb;
+<!-- ========================================= -->
+<!-- ÁREA DO PROPRIETÁRIO - SISTEMA COMPLETO -->
+<!-- ========================================= -->
+<script src="https://unpkg.com/@supabase/supabase-js"></script>
+<script>
+// CONFIGURAÇÃO DO SUPABASE
+const supabaseUrl = 'https://vbcwtypnrkomwmpuwahl.supabase.co'
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZiY3d0eXBucmtvbXdtcHV3YWhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQyODI4MzQsImV4cCI6MjA3OTg1ODgzNH0.nZWx_f-ezPSawD0HIImtoA3fW4cPpPk5BUwfV5nOXkw'
+const supabase = supabase.createClient(supabaseUrl, supabaseKey)
+
+// SISTEMA DE SESSÃO PARA VISITAS
+function gerarSessionId() {
+    let sessionId = sessionStorage.getItem('session_id')
+    if (!sessionId) {
+        sessionId = 'sessao_' + Math.random().toString(36).substring(2) + Date.now().toString(36)
+        sessionStorage.setItem('session_id', sessionId)
+    }
+    return sessionId
+}
+
+// REGISTRAR VISITA
+async function registrarVisita() {
+    try {
+        const sessionId = gerarSessionId()
+        await supabase.from('visitas').insert([{
+            session_id: sessionId,
+            pagina: window.location.href,
+            user_agent: navigator.userAgent
+        }])
+    } catch (e) {
+        console.log('Erro ao registrar visita:', e)
+    }
+}
+
+// REGISTRAR VISUALIZAÇÃO DE MOTO
+async function verMoto(motoId, modelo, marca) {
+    try {
+        const sessionId = gerarSessionId()
+        await supabase.from('visualizacoes_motos').insert([{
+            session_id: sessionId,
+            moto_id: motoId,
+            modelo: modelo,
+            marca: marca
+        }])
+        console.log('Moto registrada:', modelo)
+    } catch (e) {
+        console.log('Erro ao registrar moto:', e)
+    }
+}
+
+// =========================================
+// SISTEMA DA ÁREA DO PROPRIETÁRIO
+// =========================================
+
+// SENHA DO PROPRIETÁRIO (você pode mudar)
+const SENHA_PROPRIETARIO = 'admin123'
+
+// FUNÇÕES PRINCIPAIS
+async function adicionarMoto(modelo, marca, ano, preco) {
+    const { data, error } = await supabase
+        .from('motos')
+        .insert([{ modelo, marca, ano, preco: parseFloat(preco) }])
+    return { data, error }
+}
+
+async function listarMotos() {
+    const { data, error } = await supabase
+        .from('motos')
+        .select('*')
+        .order('created_at', { ascending: false })
+    return { data, error }
+}
+
+async function editarMoto(id, modelo, marca, ano, preco) {
+    const { data, error } = await supabase
+        .from('motos')
+        .update({ modelo, marca, ano, preco: parseFloat(preco) })
+        .eq('id', id)
+    return { data, error }
+}
+
+async function apagarMoto(id) {
+    const { data, error } = await supabase
+        .from('motos')
+        .delete()
+        .eq('id', id)
+    return { data, error }
+}
+
+// FUNÇÕES DE ANALYTICS
+async function getEstatisticas() {
+    // Visitantes últimos 30 dias
+    const { data: visitas30dias } = await supabase
+        .from('visitas')
+        .select('session_id')
+        .gte('created_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString())
+
+    // Motos mais vistas
+    const { data: motosMaisVistas } = await supabase
+        .from('visualizacoes_motos')
+        .select('modelo, marca')
+        .gte('data_visualizacao', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString())
+
+    return {
+        visitantes30dias: new Set(visitas30dias?.map(v => v.session_id)).size,
+        totalVisualizacoes: motosMaisVistas?.length || 0,
+        motosMaisVistas: motosMaisVistas?.reduce((acc, item) => {
+            const key = `${item.modelo} - ${item.marca}`
+            acc[key] = (acc[key] || 0) + 1
+            return acc
+        }, {}) || {}
+    }
+}
+
+// =========================================
+// INTERFACE DA ÁREA DO PROPRIETÁRIO
+// =========================================
+
+function criarAreaProprietario() {
+    // Botão flutuante
+    const botaoAdmin = document.createElement('button')
+    botaoAdmin.innerHTML = '🔧 Admin'
+    botaoAdmin.style.cssText = `
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: #E4BB13;
+        color: #0d1b3d;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        font-size: 14px;
+    `
+    
+    // Modal de login
+    const modalLogin = document.createElement('div')
+    modalLogin.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 10001;
+    `
+    
+    modalLogin.innerHTML = `
+        <div style="background: #1e3a8a; padding: 30px; border-radius: 10px; text-align: center; color: white; max-width: 300px; width: 90%;">
+            <h3 style="margin-bottom: 20px; color: #E4BB13;">Área do Proprietário</h3>
+            <input type="password" id="senhaAdmin" placeholder="Digite a senha" style="width: 100%; padding: 10px; margin-bottom: 15px; border: none; border-radius: 5px;">
+            <button id="btnEntrar" style="background: #E4BB13; color: #0d1b3d; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;">Entrar</button>
+            <p id="erroLogin" style="color: #ff4444; margin-top: 10px; display: none;">Senha incorreta!</p>
+        </div>
+    `
+    
+    // Painel administrativo
+    const painelAdmin = document.createElement('div')
+    painelAdmin.style.cssText = `
+        position: fixed;
+        top: 120px;
+        right: 20px;
+        background: #1e3a8a;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 10000;
+        max-width: 400px;
+        width: 90vw;
+        max-height: 80vh;
+        overflow-y: auto;
+        display: none;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        border: 2px solid #E4BB13;
+    `
+    
+    document.body.appendChild(botaoAdmin)
+    document.body.appendChild(modalLogin)
+    document.body.appendChild(painelAdmin)
+    
+    // Event Listeners
+    botaoAdmin.addEventListener('click', () => {
+        modalLogin.style.display = 'flex'
+    })
+    
+    document.getElementById('btnEntrar')?.addEventListener('click', verificarSenha)
+    
+    function verificarSenha() {
+        const senha = document.getElementById('senhaAdmin').value
+        const erro = document.getElementById('erroLogin')
+        
+        if (senha === SENHA_PROPRIETARIO) {
+            modalLogin.style.display = 'none'
+            abrirPainelAdmin()
+        } else {
+            erro.style.display = 'block'
+        }
+    }
+    
+    async function abrirPainelAdmin() {
+        const estatisticas = await getEstatisticas()
+        const { data: motos } = await listarMotos()
+        
+        painelAdmin.innerHTML = `
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #E4BB13; margin-bottom: 15px;">🏍️ Painel do Proprietário</h3>
+                
+                <div style="background: #0d1b3d; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <h4 style="color: #E4BB13; margin-bottom: 10px;">📊 Estatísticas (30 dias)</h4>
+                    <p>👥 Visitantes: ${estatisticas.visitantes30dias}</p>
+                    <p>👀 Visualizações: ${estatisticas.totalVisualizacoes}</p>
+                </div>
+                
+                <div style="background: #0d1b3d; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <h4 style="color: #E4BB13; margin-bottom: 10px;">🚀 Ações Rápidas</h4>
+                    <button id="btnNovaMoto" style="background: #E4BB13; color: #0d1b3d; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin: 5px; width: 100%;">➕ Nova Moto</button>
+                    <button id="btnAtualizarLista" style="background: #E4BB13; color: #0d1b3d; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin: 5px; width: 100%;">🔄 Atualizar Lista</button>
+                </div>
+                
+                <div style="background: #0d1b3d; padding: 15px; border-radius: 8px;">
+                    <h4 style="color: #E4BB13; margin-bottom: 10px;">📈 Motos Mais Vistas</h4>
+                    ${Object.entries(estatisticas.motosMaisVistas)
+                        .sort((a, b) => b[1] - a[1])
+                        .slice(0, 5)
+                        .map(([moto, visualizacoes]) => 
+                            `<p style="margin: 5px 0; font-size: 12px;">${moto}: ${visualizacoes} visualizações</p>`
+                        ).join('')}
+                </div>
+                
+                <div style="margin-top: 15px;">
+                    <h4 style="color: #E4BB13; margin-bottom: 10px;">🏍️ Motos Cadastradas</h4>
+                    <div id="listaMotos" style="max-height: 200px; overflow-y: auto;">
+                        ${motos?.map(moto => `
+                            <div style="background: rgba(255,255,255,0.1); padding: 10px; margin: 5px 0; border-radius: 5px; font-size: 12px;">
+                                <strong>${moto.modelo} - ${moto.marca}</strong>
+                                <br>R$ ${moto.preco}
+                                <div style="margin-top: 5px;">
+                                    <button onclick="editarMotoUI('${moto.id}')" style="background: #E4BB13; color: #0d1b3d; border: none; padding: 3px 8px; border-radius: 3px; cursor: pointer; margin-right: 5px; font-size: 10px;">Editar</button>
+                                    <button onclick="apagarMotoUI('${moto.id}')" style="background: #ff4444; color: white; border: none; padding: 3px 8px; border-radius: 3px; cursor: pointer; font-size: 10px;">Apagar</button>
+                                </div>
+                            </div>
+                        `).join('') || '<p>Nenhuma moto cadastrada</p>'}
+                    </div>
+                </div>
+                
+                <button id="btnFecharPainel" style="background: #ff4444; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-top: 15px; width: 100%;">❌ Fechar</button>
+            </div>
+        `
+        
+        painelAdmin.style.display = 'block'
+        
+        // Event Listeners do painel
+        document.getElementById('btnNovaMoto').addEventListener('click', mostrarFormNovaMoto)
+        document.getElementById('btnAtualizarLista').addEventListener('click', abrirPainelAdmin)
+        document.getElementById('btnFecharPainel').addEventListener('click', () => {
+            painelAdmin.style.display = 'none'
+        })
+    }
+    
+    function mostrarFormNovaMoto() {
+        painelAdmin.innerHTML = `
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #E4BB13; margin-bottom: 15px;">➕ Nova Moto</h3>
+                <input type="text" id="novoModelo" placeholder="Modelo (ex: R13)" style="width: 100%; padding: 8px; margin-bottom: 10px; border: none; border-radius: 5px;">
+                <input type="text" id="novaMarca" placeholder="Marca (ex: Honda)" style="width: 100%; padding: 8px; margin-bottom: 10px; border: none; border-radius: 5px;">
+                <input type="number" id="novoAno" placeholder="Ano (ex: 2024)" style="width: 100%; padding: 8px; margin-bottom: 10px; border: none; border-radius: 5px;">
+                <input type="number" id="novoPreco" placeholder="Preço (ex: 11000)" style="width: 100%; padding: 8px; margin-bottom: 15px; border: none; border-radius: 5px;">
+                
+                <button id="btnSalvarMoto" style="background: #E4BB13; color: #0d1b3d; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; font-weight: bold;">💾 Salvar Moto</button>
+                <button id="btnCancelar" style="background: #666; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%;">↩️ Voltar</button>
+            </div>
+        `
+        
+        document.getElementById('btnSalvarMoto').addEventListener('click', salvarNovaMoto)
+        document.getElementById('btnCancelar').addEventListener('click', abrirPainelAdmin)
+    }
+    
+    async function salvarNovaMoto() {
+        const modelo = document.getElementById('novoModelo').value
+        const marca = document.getElementById('novaMarca').value
+        const ano = document.getElementById('novoAno').value
+        const preco = document.getElementById('novoPreco').value
+        
+        if (!modelo || !marca || !ano || !preco) {
+            alert('Preencha todos os campos!')
+            return
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--text);
-            line-height: 1.5;
-            overflow-x: hidden;
-            font-size: 16px;
-            padding: 10px;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 10px;
-        }
-
-        .catalog-header {
-            text-align: center;
-            margin: 15px 0;
-        }
-
-        .catalog-header h1 {
-            font-size: 2rem;
-            color: var(--accent);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            margin-bottom: 5px;
-        }
-
-        .catalog-header p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Catálogo de scooters */
-        .scooter-catalog {
-            position: relative;
-            max-width: 700px;
-            margin: 30px auto;
-            overflow: hidden;
-            border-radius: 12px;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border);
-            padding: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .catalog-container {
-            display: flex;
-            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .scooter-model {
-            min-width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 15px;
-            user-select: none;
-        }
-
-        .model-image {
-            width: 100%;
-            max-width: 300px;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-
-        .model-image img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            -webkit-user-drag: none;
-            user-drag: none;
-            pointer-events: none;
-        }
-
-        .view-details-container {
-            margin-bottom: 15px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .view-details-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 16px 50px;
-            background: var(--accent);
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(228, 187, 19, 0.4);
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            width: auto;
-            min-width: 250px;
-            justify-content: center;
-        }
-
-        .view-details-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(228, 187, 19, 0.6);
-            background: var(--accent-hover);
-        }
-
-        .model-info {
-            width: 100%;
-            text-align: center;
-        }
-
-        .model-name {
-            font-size: 1.4rem;
-            color: var(--accent);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .model-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 5px;
-        }
-
-        .price-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        .price-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .price-card {
-            background: rgba(13, 27, 61, 0.7);
-            border-radius: 8px;
-            padding: 10px;
-            text-align: center;
-            border: 1px solid var(--card-border);
-        }
-
-        .price-title {
-            font-size: 0.85rem;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .price-value {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 5px;
-        }
-
-        .price-description {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .model-specs {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .spec-card {
-            background: rgba(13, 27, 61, 0.7);
-            border-radius: 8px;
-            padding: 8px;
-            text-align: center;
-            border: 1px solid var(--card-border);
-        }
-
-        .spec-value {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 5px;
-        }
-
-        .spec-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* Controles de navegação */
-        .catalog-controls {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 5px;
-            transform: translateY(-50%);
-            pointer-events: none;
-            z-index: 20;
-        }
-
-        .catalog-arrow {
-            pointer-events: all;
-            background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 18px;
-            border: 2px solid var(--accent);
-        }
-
-        .catalog-arrow:hover {
-            background: rgba(0, 0, 0, 0.8);
-            transform: scale(1.1);
-        }
-
-        .catalog-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .catalog-indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .catalog-indicator.active {
-            background: var(--accent);
-            transform: scale(1.3);
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: var(--card-bg);
-            color: var(--text);
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s;
-            border: 1px solid var(--card-border);
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-
-        .back-btn:hover {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        /* Página individual do produto */
-        .product-page {
-            display: none;
-            max-width: 700px;
-            margin: 20px auto;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .product-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .product-gallery {
-            position: relative;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            overflow: hidden;
-            height: 220px;
-        }
-
-        .gallery-container {
-            display: flex;
-            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            height: 100%;
-        }
-
-        .gallery-image {
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .gallery-image img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .gallery-controls {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            transform: translateY(-50%);
-            pointer-events: none;
-            z-index: 20;
-        }
-
-        .gallery-arrow {
-            pointer-events: all;
-            background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-size: 18px;
-            border: 2px solid var(--accent);
-        }
-
-        .gallery-arrow:hover {
-            background: rgba(0, 0, 0, 0.8);
-            transform: scale(1.1);
-        }
-
-        .gallery-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .gallery-indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .gallery-indicator.active {
-            background: var(--accent);
-            transform: scale(1.2);
-        }
-
-        .product-details {
-            margin-bottom: 15px;
-        }
-
-        .product-title {
-            font-size: 1.6rem;
-            color: var(--accent);
-            margin-bottom: 12px;
-        }
-
-        .product-description {
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .product-features {
-            margin-bottom: 15px;
-        }
-
-        .features-title {
-            font-size: 1.1rem;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-
-        .features-list {
-            list-style: none;
-        }
-
-        .features-list li {
-            margin-bottom: 6px;
-            padding-left: 25px;
-            position: relative;
-            color: var(--text);
-            font-size: 0.9rem;
-        }
-
-        .features-list li:before {
-            content: "✓";
-            color: var(--accent);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        .product-actions-detailed {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-        }
-
-        .whatsapp-btn {
-            background: #25D366;
-            color: white;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-            padding: 16px 40px;
-            font-size: 1.1rem;
-            text-decoration: none;
-            border-radius: 50px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            transition: all 0.3s;
-            min-width: 220px;
-            justify-content: center;
-        }
-
-        .whatsapp-btn:hover {
-            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.6);
-            transform: translateY(-2px);
-        }
-
-        .product-benefits {
-            background: rgba(13, 27, 61, 0.7);
-            border-radius: 8px;
-            padding: 15px;
-            margin: 20px 0;
-            border: 1px solid var(--card-border);
-        }
-
-        .benefits-title {
-            font-size: 1.1rem;
-            color: var(--accent);
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .benefit-icon {
-            color: var(--accent);
-            font-size: 1.2rem;
-        }
-
-        .benefit-text {
-            font-size: 0.85rem;
-            color: var(--text);
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 8px;
-                font-size: 14px;
-            }
-            
-            .container {
-                max-width: 100%;
-            }
-            
-            .catalog-header h1 {
-                font-size: 1.7rem;
-            }
-            
-            .catalog-header p {
-                font-size: 0.9rem;
-            }
-            
-            .scooter-catalog {
-                padding: 12px;
-                max-width: 100%;
-            }
-            
-            .model-name {
-                font-size: 1.3rem;
-            }
-            
-            .model-price {
-                font-size: 1.2rem;
-            }
-            
-            .price-details {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            
-            .model-specs {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-            
-            .catalog-arrow {
-                width: 35px;
-                height: 35px;
-                font-size: 16px;
-            }
-            
-            .view-details-btn {
-                padding: 14px 40px;
-                font-size: 1rem;
-                min-width: 220px;
-            }
-            
-            .product-gallery {
-                height: 180px;
-            }
-            
-            .product-actions-detailed {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .whatsapp-btn {
-                padding: 14px 35px;
-                font-size: 1rem;
-                min-width: 200px;
-            }
-            
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <a href="index.html" class="back-btn">
-            <i class="fas fa-arrow-left"></i> Voltar para o site
-        </a>
-
-        <div class="catalog-header">
-            <h1>Catálogo EloBike</h1>
-            <p>Descubra nossa linha completa de scooters elétricas - Mobilidade sustentável com performance e estilo</p>
-        </div>
-
-        <!-- Catálogo de Scooters -->
-        <div class="scooter-catalog">
-            <div class="catalog-container">
-                <!-- Modelo R13 -->
-                <div class="scooter-model">
-                    <div class="model-image">
-                        <img src="R13-01.png" alt="Modelo R13">
-                    </div>
-                    <div class="view-details-container">
-                        <button class="view-details-btn" data-product="r13">
-                            <i class="fas fa-eye"></i> Ver Detalhes
-                        </button>
-                    </div>
-                    <div class="model-info">
-                        <h2 class="model-name">Modelo R13</h2>
-                        <div class="model-price">R$ 11.000,00</div>
-                        <div class="price-subtitle">Performance e tecnologia avançada</div>
-                        
-                        <div class="price-details">
-                            <div class="price-card">
-                                <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 11.000,00</div>
-                                <div class="price-description">PIX/Transferência</div>
-                            </div>
-                            <div class="price-card">
-                                <div class="price-title">Parcelado</div>
-                                <div class="price-value">18x R$ 696,42</div>
-                                <div class="price-description">Cartão de Crédito</div>
-                            </div>
-                        </div>
-                        
-                        <div class="model-specs">
-                            <div class="spec-card">
-                                <div class="spec-value">45 KM</div>
-                                <div class="spec-label">Autonomia</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">45 KM/H</div>
-                                <div class="spec-label">Velocidade</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">1000W</div>
-                                <div class="spec-label">Motor</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Modelo A3 -->
-                <div class="scooter-model">
-                    <div class="model-image">
-                        <img src="A3-01.png" alt="Modelo A3">
-                    </div>
-                    <div class="view-details-container">
-                        <button class="view-details-btn" data-product="a3">
-                            <i class="fas fa-eye"></i> Ver Detalhes
-                        </button>
-                    </div>
-                    <div class="model-info">
-                        <h2 class="model-name">Modelo A3</h2>
-                        <div class="model-price">R$ 10.800,00</div>
-                        <div class="price-subtitle">Design moderno e eficiente</div>
-                        
-                        <div class="price-details">
-                            <div class="price-card">
-                                <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 10.800,00</div>
-                                <div class="price-description">PIX/Transferência</div>
-                            </div>
-                            <div class="price-card">
-                                <div class="price-title">Parcelado</div>
-                                <div class="price-value">18x R$ 683,76</div>
-                                <div class="price-description">Cartão de Crédito</div>
-                            </div>
-                        </div>
-                        
-                        <div class="model-specs">
-                            <div class="spec-card">
-                                <div class="spec-value">45 KM</div>
-                                <div class="spec-label">Autonomia</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">32 KM/H</div>
-                                <div class="spec-label">Velocidade</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">1000W</div>
-                                <div class="spec-label">Motor</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Modelo S2 -->
-                <div class="scooter-model">
-                    <div class="model-image">
-                        <img src="S2-01.png" alt="Modelo S2">
-                    </div>
-                    <div class="view-details-container">
-                        <button class="view-details-btn" data-product="s2">
-                            <i class="fas fa-eye"></i> Ver Detalhes
-                        </button>
-                    </div>
-                    <div class="model-info">
-                        <h2 class="model-name">Modelo S2</h2>
-                        <div class="model-price">R$ 11.490,00</div>
-                        <div class="price-subtitle">Elegância e desempenho</div>
-                        
-                        <div class="price-details">
-                            <div class="price-card">
-                                <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 11.490,00</div>
-                                <div class="price-description">PIX/Transferência</div>
-                            </div>
-                            <div class="price-card">
-                                <div class="price-title">Parcelado</div>
-                                <div class="price-value">18x R$ 759,10</div>
-                                <div class="price-description">Cartão de Crédito</div>
-                            </div>
-                        </div>
-                        
-                        <div class="model-specs">
-                            <div class="spec-card">
-                                <div class="spec-value">45 KM</div>
-                                <div class="spec-label">Autonomia</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">40 KM/H</div>
-                                <div class="spec-label">Velocidade</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">1000W</div>
-                                <div class="spec-label">Motor</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Modelo R11 -->
-                <div class="scooter-model">
-                    <div class="model-image">
-                        <img src="R11-01.jpg" alt="Modelo R11">
-                    </div>
-                    <div class="view-details-container">
-                        <button class="view-details-btn" data-product="r11">
-                            <i class="fas fa-eye"></i> Ver Detalhes
-                        </button>
-                    </div>
-                    <div class="model-info">
-                        <h2 class="model-name">Modelo R11</h2>
-                        <div class="model-price">R$ 12.000,00</div>
-                        <div class="price-subtitle">Alta performance</div>
-                        
-                        <div class="price-details">
-                            <div class="price-card">
-                                <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 12.000,00</div>
-                                <div class="price-description">PIX/Transferência</div>
-                            </div>
-                            <div class="price-card">
-                                <div class="price-title">Parcelado</div>
-                                <div class="price-value">18x R$ 667,45</div>
-                                <div class="price-description">Cartão de Crédito</div>
-                            </div>
-                        </div>
-                        
-                        <div class="model-specs">
-                            <div class="spec-card">
-                                <div class="spec-value">45 KM</div>
-                                <div class="spec-label">Autonomia</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">70 KM/H</div>
-                                <div class="spec-label">Velocidade</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">3000W</div>
-                                <div class="spec-label">Motor</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Modelo V8 -->
-                <div class="scooter-model">
-                    <div class="model-image">
-                        <img src="V8-01.png" alt="Modelo V8">
-                    </div>
-                    <div class="view-details-container">
-                        <button class="view-details-btn" data-product="v8">
-                            <i class="fas fa-eye"></i> Ver Detalhes
-                        </button>
-                    </div>
-                    <div class="model-info">
-                        <h2 class="model-name">Modelo V8</h2>
-                        <div class="model-price">R$ 8.490,00</div>
-                        <div class="price-subtitle">Compacto e eficiente</div>
-                        
-                        <div class="price-details">
-                            <div class="price-card">
-                                <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 8.490,00</div>
-                                <div class="price-description">PIX/Transferência</div>
-                            </div>
-                            <div class="price-card">
-                                <div class="price-title">Parcelado</div>
-                                <div class="price-value">18x R$ 537,51</div>
-                                <div class="price-description">Cartão de Crédito</div>
-                            </div>
-                        </div>
-                        
-                        <div class="model-specs">
-                            <div class="spec-card">
-                                <div class="spec-value">45 KM</div>
-                                <div class="spec-label">Autonomia</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">50 KM/H</div>
-                                <div class="spec-label">Velocidade</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">1000W</div>
-                                <div class="spec-label">Motor</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Modelo Chopper -->
-                <div class="scooter-model">
-                    <div class="model-image">
-                        <img src="Chooper-01.png" alt="Modelo Chopper">
-                    </div>
-                    <div class="view-details-container">
-                        <button class="view-details-btn" data-product="chopper">
-                            <i class="fas fa-eye"></i> Ver Detalhes
-                        </button>
-                    </div>
-                    <div class="model-info">
-                        <h2 class="model-name">Modelo Chopper</h2>
-                        <div class="model-price">R$ 14.490,00</div>
-                        <div class="price-subtitle">Estilo único e potência máxima</div>
-                        
-                        <div class="price-details">
-                            <div class="price-card">
-                                <div class="price-title">À Vista</div>
-                                <div class="price-value">R$ 14.490,00</div>
-                                <div class="price-description">PIX/Transferência</div>
-                            </div>
-                            <div class="price-card">
-                                <div class="price-title">Parcelado</div>
-                                <div class="price-value">18x R$ 949,90</div>
-                                <div class="price-description">Cartão de Crédito</div>
-                            </div>
-                        </div>
-                        
-                        <div class="model-specs">
-                            <div class="spec-card">
-                                <div class="spec-value">45 KM</div>
-                                <div class="spec-label">Autonomia</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">80 KM/H</div>
-                                <div class="spec-label">Velocidade</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">3000W</div>
-                                <div class="spec-label">Motor</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Controles de navegação -->
-            <div class="catalog-controls">
-                <div class="catalog-arrow prev">
-                    <i class="fas fa-chevron-left"></i>
-                </div>
-                <div class="catalog-arrow next">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div>
-            
-            <!-- Indicadores -->
-            <div class="catalog-indicators">
-                <div class="catalog-indicator active" data-index="0"></div>
-                <div class="catalog-indicator" data-index="1"></div>
-                <div class="catalog-indicator" data-index="2"></div>
-                <div class="catalog-indicator" data-index="3"></div>
-                <div class="catalog-indicator" data-index="4"></div>
-                <div class="catalog-indicator" data-index="5"></div>
-            </div>
-        </div>
-
-        <!-- Páginas individuais dos produtos -->
-        <!-- Modelo R13 -->
-        <div id="product-r13" class="product-page">
-            <div class="product-header">
-                <h2 class="product-title">Modelo R13</h2>
-                <button class="back-btn back-to-catalog">
-                    <i class="fas fa-arrow-left"></i> Voltar
-                </button>
-            </div>
-            
-            <div class="product-gallery">
-                <div class="gallery-container">
-                    <div class="gallery-image">
-                        <img src="R13-01.png" alt="Modelo R13">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="R13-02.png" alt="Modelo R13 - Vista 2">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="R13-03.png" alt="Modelo R13 - Vista 3">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="R13-04.png" alt="Modelo R13 - Vista 4">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="R13-05.png" alt="Modelo R13 - Vista 5">
-                    </div>
-                </div>
-                
-                <div class="gallery-controls">
-                    <div class="gallery-arrow gallery-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="gallery-arrow gallery-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-                
-                <div class="gallery-indicators">
-                    <div class="gallery-indicator active" data-index="0"></div>
-                    <div class="gallery-indicator" data-index="1"></div>
-                    <div class="gallery-indicator" data-index="2"></div>
-                    <div class="gallery-indicator" data-index="3"></div>
-                    <div class="gallery-indicator" data-index="4"></div>
-                </div>
-            </div>
-            
-            <!-- Botão de compra abaixo das fotos -->
-            <div class="product-actions-detailed">
-                <a href="https://wa.me/553499269707?text=Olá! vim pelo site, Tenho interesse no Modelo R13 
-                    " class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Saiba Mais
-                </a>
-            </div>
-            
-            <div class="product-details">
-                <div class="price-details">
-                    <div class="price-card">
-                        <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 11.000,00</div>
-                        <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
-                    </div>
-                    <div class="price-card">
-                        <div class="price-title">Parcelado</div>
-                        <div class="price-value">18x R$ 696,42</div>
-                        <div class="price-description">NO CARTÃO</div>
-                    </div>
-                </div>
-                
-                <div class="model-specs">
-                    <div class="spec-card">
-                        <div class="spec-value">45 KM</div>
-                        <div class="spec-label">Autonomia</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">45 KM/H</div>
-                        <div class="spec-label">Velocidade Máxima</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">1000W</div>
-                        <div class="spec-label">Motor</div>
-                    </div>
-                </div>
-                
-                <div class="product-description">
-                    <p>O Modelo R13 combina design moderno com alta tecnologia. Com motor de 1000W e velocidade de até 45km/h, é ideal para quem busca desempenho e estilo no dia a dia.</p>
-                </div>
-                
-                <div class="product-benefits">
-                    <h3 class="benefits-title">Vantagens da Scooter Elétrica</h3>
-                    <div class="benefits-grid">
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
-                            <div class="benefit-text">Economia de até 90% com combustível</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
-                            <div class="benefit-text">Zero emissões de poluentes</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
-                            <div class="benefit-text">Isenção de licenciamento e IPVA</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
-                            <div class="benefit-text">Não precisa de tempo de aquecimento</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-features">
-                    <h3 class="features-title">Características</h3>
-                    <ul class="features-list">
-                        <li>Motor brushless de 1000W de potência</li>
-                        <li>Bateria de lítio de 48V/20Ah</li>
-                        <li>Autonomia de até 45km por carga</li>
-                        <li>Velocidade máxima de 45km/h</li>
-                        <li>Pneus tubeless de 10 polegadas</li>
-                        <li>Sistema de iluminação LED completa</li>
-                        <li>Display LCD digital com diversas funções</li>
-                        <li>Freio a disco dianteiro e traseiro</li>
-                        <li>Suspensão ajustável</li>
-                        <li>Tempo de carga: 4-6 horas</li>
-                        <li>Capacidade de carga: 150kg</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        const { error } = await adicionarMoto(modelo, marca, parseInt(ano), parseFloat(preco))
         
-        <!-- Adicione páginas semelhantes para os outros modelos seguindo o mesmo padrão -->
-        <!-- Modelo A3 -->
-        <div id="product-a3" class="product-page">
-            <div class="product-header">
-                <h2 class="product-title">Modelo A3</h2>
-                <button class="back-btn back-to-catalog">
-                    <i class="fas fa-arrow-left"></i> Voltar
-                </button>
-            </div>
-            
-            <div class="product-gallery">
-                <div class="gallery-container">
-                    <div class="gallery-image">
-                        <img src="A3-01.png" alt="Modelo A3">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="A3-02.png" alt="Modelo A3 - Vista 2">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="A3-03.png" alt="Modelo A3 - Vista 3">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="A3-04.png" alt="Modelo A3 - Vista 4">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="A3-05.png" alt="Modelo A3 - Vista 5">
-                    </div>
-                </div>
-                
-                <div class="gallery-controls">
-                    <div class="gallery-arrow gallery-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="gallery-arrow gallery-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-                
-                <div class="gallery-indicators">
-                    <div class="gallery-indicator active" data-index="0"></div>
-                    <div class="gallery-indicator" data-index="1"></div>
-                    <div class="gallery-indicator" data-index="2"></div>
-                    <div class="gallery-indicator" data-index="3"></div>
-                    <div class="gallery-indicator" data-index="4"></div>
-                </div>
-            </div>
-            
-            <!-- Botão de compra abaixo das fotos -->
-            <div class="product-actions-detailed">
-                <a href="https://wa.me/553499269707?text=Olá! vim pelo site, Tenho interesse no Modelo A3 " class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Saiba Mais
-                </a>
-            </div>
-            
-            <div class="product-details">
-                <div class="price-details">
-                    <div class="price-card">
-                        <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 10.800,00</div>
-                        <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
-                    </div>
-                    <div class="price-card">
-                        <div class="price-title">Parcelado</div>
-                        <div class="price-value">18x R$ 683,76</div>
-                        <div class="price-description">NO CARTÃO</div>
-                    </div>
-                </div>
-                
-                <div class="model-specs">
-                    <div class="spec-card">
-                        <div class="spec-value">45 KM</div>
-                        <div class="spec-label">Autonomia</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">32 KM/H</div>
-                        <div class="spec-label">Velocidade Máxima</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">1000W</div>
-                        <div class="spec-label">Motor</div>
-                    </div>
-                </div>
-                
-                <div class="product-description">
-                    <p>O Modelo A3 é perfeito para o dia a dia urbano. Com design moderno e desempenho eficiente, oferece a combinação ideal entre estilo e praticidade para seus deslocamentos.</p>
-                </div>
-                
-                <div class="product-benefits">
-                    <h3 class="benefits-title">Vantagens da Scooter Elétrica</h3>
-                    <div class="benefits-grid">
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
-                            <div class="benefit-text">Economia de até 90% com combustível</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
-                            <div class="benefit-text">Zero emissões de poluentes</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
-                            <div class="benefit-text">Isenção de licenciamento e IPVA</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
-                            <div class="benefit-text">Não precisa de tempo de aquecimento</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-features">
-                    <h3 class="features-title">Características</h3>
-                    <ul class="features-list">
-                        <li>Motor brushless de 1000W de potência</li>
-                        <li>Bateria de lítio de 48V/20Ah</li>
-                        <li>Autonomia de até 45km por carga</li>
-                        <li>Velocidade máxima de 32km/h</li>
-                        <li>Pneus de 10 polegadas</li>
-                        <li>Farol LED e luzes de freio</li>
-                        <li>Painel digital com velocímetro</li>
-                        <li>Freio a disco dianteiro</li>
-                        <li>Suspensão traseira</li>
-                        <li>Tempo de carga: 4-6 horas</li>
-                        <li>Capacidade de carga: 120kg</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Modelo S2 -->
-        <div id="product-s2" class="product-page">
-            <div class="product-header">
-                <h2 class="product-title">Modelo S2</h2>
-                <button class="back-btn back-to-catalog">
-                    <i class="fas fa-arrow-left"></i> Voltar
-                </button>
-            </div>
-            
-            <div class="product-gallery">
-                <div class="gallery-container">
-                    <div class="gallery-image">
-                        <img src="S2-01.png" alt="Modelo S2">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="S2-02.png" alt="Modelo S2 - Vista 2">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="S2-03.png" alt="Modelo S2 - Vista 3">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="S2-04.png" alt="Modelo S2 - Vista 4">
-                    </div>
-                </div>
-                
-                <div class="gallery-controls">
-                    <div class="gallery-arrow gallery-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="gallery-arrow gallery-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-                
-                <div class="gallery-indicators">
-                    <div class="gallery-indicator active" data-index="0"></div>
-                    <div class="gallery-indicator" data-index="1"></div>
-                    <div class="gallery-indicator" data-index="2"></div>
-                    <div class="gallery-indicator" data-index="3"></div>
-                </div>
-            </div>
-            
-            <!-- Botão de compra abaixo das fotos -->
-            <div class="product-actions-detailed">
-                <a href="https://wa.me/553499269707?text=Olá! vim pelo site, Tenho interesse no Modelo S2 " class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Saiba Mais
-                </a>
-            </div>
-            
-            <div class="product-details">
-                <div class="price-details">
-                    <div class="price-card">
-                        <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 11.490,00</div>
-                        <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
-                    </div>
-                    <div class="price-card">
-                        <div class="price-title">Parcelado</div>
-                        <div class="price-value">18x R$ 759,10</div>
-                        <div class="price-description">NO CARTÃO</div>
-                    </div>
-                </div>
-                
-                <div class="model-specs">
-                    <div class="spec-card">
-                        <div class="spec-value">45 KM</div>
-                        <div class="spec-label">Autonomia</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">40 KM/H</div>
-                        <div class="spec-label">Velocidade Máxima</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">1000W</div>
-                        <div class="spec-label">Motor</div>
-                    </div>
-                </div>
-                
-                <div class="product-description">
-                    <p>O Modelo S2 combina elegância e desempenho em um design sofisticado. Com velocidade de até 40km/h, é a escolha perfeita para quem busca estilo и eficiência no trânsito urbano.</p>
-                </div>
-                
-                <div class="product-benefits">
-                    <h3 class="benefits-title">Vantagens da Scooter Elétrica</h3>
-                    <div class="benefits-grid">
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
-                            <div class="benefit-text">Economia de até 90% com combustível</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
-                            <div class="benefit-text">Zero emissões de poluentes</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
-                            <div class="benefit-text">Isenção de licenciamento e IPVA</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
-                            <div class="benefit-text">Não precisa de tempo de aquecimento</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-features">
-                    <h3 class="features-title">Características</h3>
-                    <ul class="features-list">
-                        <li>Motor brushless de 1000W de potência</li>
-                        <li>Bateria de lítio de 48V/20Ah</li>
-                        <li>Autonomia de até 45km por carga</li>
-                        <li>Velocidade máxima de 40km/h</li>
-                        <li>Pneus de 10 polegadas</li>
-                        <li>Sistema de iluminação LED</li>
-                        <li>Painel digital com indicador de velocidade</li>
-                        <li>Freio a disco dianteiro e traseiro</li>
-                        <li>Suspensão dianteira e traseira</li>
-                        <li>Tempo de carga: 4-6 horas</li>
-                        <li>Capacidade de carga: 120kg</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Modelo R11 -->
-        <div id="product-r11" class="product-page">
-            <div class="product-header">
-                <h2 class="product-title">Modelo R11</h2>
-                <button class="back-btn back-to-catalog">
-                    <i class="fas fa-arrow-left"></i> Voltar
-                </button>
-            </div>
-            
-            <div class="product-gallery">
-                <div class="gallery-container">
-                    <div class="gallery-image">
-                        <img src="R11-01.jpg" alt="Modelo R11">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="R11-02.png" alt="Modelo R11 - Vista 2">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="R11-03.png" alt="Modelo R11 - Vista 3">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="R11-04.png" alt="Modelo R11 - Vista 4">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="R11-05.png" alt="Modelo R11 - Vista 5">
-                    </div>
-                </div>
-                
-                <div class="gallery-controls">
-                    <div class="gallery-arrow gallery-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="gallery-arrow gallery-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-                
-                <div class="gallery-indicators">
-                    <div class="gallery-indicator active" data-index="0"></div>
-                    <div class="gallery-indicator" data-index="1"></div>
-                    <div class="gallery-indicator" data-index="2"></div>
-                    <div class="gallery-indicator" data-index="3"></div>
-                    <div class="gallery-indicator" data-index="4"></div>
-                </div>
-            </div>
-            
-            <!-- Botão de compra abaixo das fotos -->
-            <div class="product-actions-detailed">
-                <a href="https://wa.me/553499269707?text=Olá! vim pelo site, Tenho interesse no Modelo R11 " class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Saiba mais
-                </a>
-            </div>
-            
-            <div class="product-details">
-                <div class="price-details">
-                    <div class="price-card">
-                        <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 12.000,00</div>
-                        <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
-                    </div>
-                    <div class="price-card">
-                        <div class="price-title">Parcelado</div>
-                        <div class="price-value">18x R$ 759,73</div>
-                        <div class="price-description">NO CARTÃO</div>
-                    </div>
-                </div>
-                
-                <div class="model-specs">
-                    <div class="spec-card">
-                        <div class="spec-value">45 KM</div>
-                        <div class="spec-label">Autonomia</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">70 KM/H</div>
-                        <div class="spec-label">Velocidade Máxima</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">3000W</div>
-                        <div class="spec-label">Motor</div>
-                    </div>
-                </div>
-                
-                <div class="product-description">
-                    <p>O Modelo R11 é a scooter elétrica de alta performance. Com motor de 3000W и velocidade de até 70km/h, é ideal para quem busca potência e desempenho superior em seus deslocamentos.</p>
-                </div>
-                
-                <div class="product-benefits">
-                    <h3 class="benefits-title">Vantagens da Scooter Elétrica</h3>
-                    <div class="benefits-grid">
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
-                            <div class="benefit-text">Economia de até 90% com combustível</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
-                            <div class="benefit-text">Zero emissões de poluentes</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
-                            <div class="benefit-text">Isenção de licenciamento e IPVA</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
-                            <div class="benefit-text">Não precisa de tempo de aquecimento</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-features">
-                    <h3 class="features-title">Características</h3>
-                    <ul class="features-list">
-                        <li>Motor brushless de 3000W de potência</li>
-                        <li>Bateria de lítio de 60V/20Ah</li>
-                        <li>Autonomia de até 45km por carga</li>
-                        <li>Velocidade máxima de 70km/h</li>
-                        <li>Pneus tubeless de 10 polegadas</li>
-                        <li>Sistema de iluminação LED completa</li>
-                        <li>Display LCD digital com diversas funções</li>
-                        <li>Freio a disco hidráulico dianteiro e traseiro</li>
-                        <li>Suspensão ajustável</li>
-                        <li>Tempo de carga: 5-7 horas</li>
-                        <li>Capacidade de carga: 150kg</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Modelo V8 -->
-        <div id="product-v8" class="product-page">
-            <div class="product-header">
-                <h2 class="product-title">Modelo V8</h2>
-                <button class="back-btn back-to-catalog">
-                    <i class="fas fa-arrow-left"></i> Voltar
-                </button>
-            </div>
-            
-            <div class="product-gallery">
-                <div class="gallery-container">
-                    <div class="gallery-image">
-                        <img src="V8-01.png" alt="Modelo V8">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="V8-02.png" alt="Modelo V8 - Vista 2">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="V8-03.png" alt="Modelo V8 - Vista 3">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="V8-04.png" alt="Modelo V8 - Vista 4">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="V8-05.png" alt="Modelo V8 - Vista 5">
-                    </div>
-                </div>
-                
-                <div class="gallery-controls">
-                    <div class="gallery-arrow gallery-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="gallery-arrow gallery-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-                
-                <div class="gallery-indicators">
-                    <div class="gallery-indicator active" data-index="0"></div>
-                    <div class="gallery-indicator" data-index="1"></div>
-                    <div class="gallery-indicator" data-index="2"></div>
-                    <div class="gallery-indicator" data-index="3"></div>
-                    <div class="gallery-indicator" data-index="4"></div>
-                </div>
-            </div>
-            
-            <!-- Botão de compra abaixo das fotos -->
-            <div class="product-actions-detailed">
-                <a href="https://wa.me/553499269707?text=Olá! vim pelo site, Tenho interesse no Modelo V8 " class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Saiba Mais
-                </a>
-            </div>
-            
-            <div class="product-details">
-                <div class="price-details">
-                    <div class="price-card">
-                        <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 8.490,00</div>
-                        <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
-                    </div>
-                    <div class="price-card">
-                        <div class="price-title">Parcelado</div>
-                        <div class="price-value">18x R$ 537,51</div>
-                        <div class="price-description">NO CARTÃO</div>
-                    </div>
-                </div>
-                
-                <div class="model-specs">
-                    <div class="spec-card">
-                        <div class="spec-value">45 KM</div>
-                        <div class="spec-label">Autonomia</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">50 KM/H</div>
-                        <div class="spec-label">Velocidade Máxima</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">1000W</div>
-                        <div class="spec-label">Motor</div>
-                    </div>
-                </div>
-                
-                <div class="product-description">
-                    <p>O Modelo V8 é compacto, ágil e perfeito para navegar pela cidade. Com design ergonômico e desempenho confiável, é a escolha ideal para o dia a dia com o melhor custo-benefício.</p>
-                </div>
-                
-                <div class="product-benefits">
-                    <h3 class="benefits-title">Vantagens da Scooter Elétrica</h3>
-                    <div class="benefits-grid">
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
-                            <div class="benefit-text">Economia de até 90% com combustível</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
-                            <div class="benefit-text">Zero emissões de poluentes</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
-                            <div class="benefit-text">Isenção de licenciamento e IPVA</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
-                            <div class="benefit-text">Não precisa de tempo de aquecimento</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-features">
-                    <h3 class="features-title">Características</h3>
-                    <ul class="features-list">
-                        <li>Motor brushless de 1000W de potência</li>
-                        <li>Bateria de lítio de 48V/20Ah</li>
-                        <li>Autonomia de até 45km por carga</li>
-                        <li>Velocidade máxima de 50km/h</li>
-                        <li>Pneus de 10 polegadas</li>
-                        <li>Sistema de iluminação LED</li>
-                        <li>Painel digital com indicador de velocidade</li>
-                        <li>Freio a disco dianteiro e traseiro</li>
-                        <li>Suspensão dianteira e traseira</li>
-                        <li>Tempo de carga: 4-6 horas</li>
-                        <li>Capacidade de carga: 120kg</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Modelo Chopper -->
-        <div id="product-chopper" class="product-page">
-            <div class="product-header">
-                <h2 class="product-title">Modelo Chopper</h2>
-                <button class="back-btn back-to-catalog">
-                    <i class="fas fa-arrow-left"></i> Voltar
-                </button>
-            </div>
-            
-            <div class="product-gallery">
-                <div class="gallery-container">
-                    <div class="gallery-image">
-                        <img src="Chooper-01.png" alt="Modelo Chopper">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="Chooper-02.png" alt="Modelo Chopper - Vista 2">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="Chooper-03.png" alt="Modelo Chopper - Vista 3">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="Choper-04.png" alt="Modelo Chopper - Vista 4">
-                    </div>
-                    <div class="gallery-image">
-                        <img src="Choper-05.png" alt="Modelo Chopper - Vista 5">
-                    </div>
-                </div>
-                
-                <div class="gallery-controls">
-                    <div class="gallery-arrow gallery-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="gallery-arrow gallery-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-                
-                <div class="gallery-indicators">
-                    <div class="gallery-indicator active" data-index="0"></div>
-                    <div class="gallery-indicator" data-index="1"></div>
-                    <div class="gallery-indicator" data-index="2"></div>
-                    <div class="gallery-indicator" data-index="3"></div>
-                    <div class="gallery-indicator" data-index="4"></div>
-                </div>
-            </div>
-            
-            <!-- Botão de compra abaixo das fotos -->
-            <div class="product-actions-detailed">
-                <a href="https://wa.me/553499269707?text=Olá! vim pelo site, Tenho interesse no Modelo Chopper " class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Saiba Mais
-                </a>
-            </div>
-            
-            <div class="product-details">
-                <div class="price-details">
-                    <div class="price-card">
-                        <div class="price-title">Preço À Vista</div>
-                        <div class="price-value">R$ 14.490,00</div>
-                        <div class="price-description">VIA PIX OU TRANSFERÊNCIA</div>
-                    </div>
-                    <div class="price-card">
-                        <div class="price-title">Parcelado</div>
-                        <div class="price-value">18x R$ 949,90</div>
-                        <div class="price-description">NO CARTÃO</div>
-                    </div>
-                </div>
-                
-                <div class="model-specs">
-                    <div class="spec-card">
-                        <div class="spec-value">45 KM</div>
-                        <div class="spec-label">Autonomia</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">80 KM/H</div>
-                        <div class="spec-label">Velocidade Máxima</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-value">3000W</div>
-                        <div class="spec-label">Motor</div>
-                    </div>
-                </div>
-                
-                <div class="product-description">
-                    <p>O Modelo Chopper combina o estilo clássico das motos custom com a tecnologia moderna das scooters elétricas. Com motor de 3000W e velocidade de até 80km/h, é a escolha perfeita para quem busca potência máxima e design marcante.</p>
-                </div>
-                
-                <div class="product-benefits">
-                    <h3 class="benefits-title">Vantagens da Scooter Elétrica</h3>
-                    <div class="benefits-grid">
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
-                            <div class="benefit-text">Economia de até 90% com combustível</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
-                            <div class="benefit-text">Zero emissões de poluentes</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
-                            <div class="benefit-text">Isenção de licenciamento e IPVA</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
-                            <div class="benefit-text">Não precisa de tempo de aquecimento</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-features">
-                    <h3 class="features-title">Características</h3>
-                    <ul class="features-list">
-                        <li>Motor brushless de 3000W de potência</li>
-                        <li>Bateria de lítio de 60V/20Ah</li>
-                        <li>Autonomia de até 45km por carga</li>
-                        <li>Velocidade máxima de 80km/h</li>
-                        <li>Pneus de 12 polegadas</li>
-                        <li>Farol redondo estilo retro com LED</li>
-                        <li>Painel digital analógico</li>
-                        <li>Freio a disco dianteiro e traseiro</li>
-                        <li>Suspensão traseira com amortecedores</li>
-                        <li>Banco alongado estilo chopper</li>
-                        <li>Tempo de carga: 6-8 horas</li>
-                        <li>Capacidade de carga: 150kg</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-    </div>
+        if (error) {
+            alert('Erro ao salvar: ' + error.message)
+        } else {
+            alert('Moto salva com sucesso!')
+            abrirPainelAdmin()
+        }
+    }
+}
 
-    <script>
-        // Inicializar catálogo de scooters
-        document.addEventListener('DOMContentLoaded', function() {
-            const catalogContainer = document.querySelector('.catalog-container');
-            const models = document.querySelectorAll('.scooter-model');
-            const indicators = document.querySelectorAll('.catalog-indicator');
-            const prevBtn = document.querySelector('.catalog-arrow.prev');
-            const nextBtn = document.querySelector('.catalog-arrow.next');
-            const catalogElement = document.querySelector('.scooter-catalog');
-            const productPages = document.querySelectorAll('.product-page');
-            const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
-            const backToCatalogButtons = document.querySelectorAll('.back-to-catalog');
-            
-            let currentIndex = 0;
-            const modelCount = models.length;
-            let startX = 0;
-            let isDragging = false;
-            let autoSlide;
-            
-            // Atualizar catálogo
-            function updateCatalog() {
-                catalogContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-                
-                // Atualizar indicadores
-                indicators.forEach((indicator, index) => {
-                    if (index === currentIndex) {
-                        indicator.classList.add('active');
-                    } else {
-                        indicator.classList.remove('active');
-                    }
-                });
+// Funções globais para os botões de editar/apagar
+window.editarMotoUI = async function(id) {
+    const novaMarca = prompt('Nova marca:')
+    const novoModelo = prompt('Novo modelo:')
+    const novoAno = prompt('Novo ano:')
+    const novoPreco = prompt('Novo preço:')
+    
+    if (novaMarca && novoModelo && novoAno && novoPreco) {
+        const { error } = await editarMoto(id, novoModelo, novaMarca, parseInt(novoAno), parseFloat(novoPreco))
+        if (error) {
+            alert('Erro ao editar: ' + error.message)
+        } else {
+            alert('Moto editada com sucesso!')
+            document.querySelector('#btnAtualizarLista')?.click()
+        }
+    }
+}
+
+window.apagarMotoUI = async function(id) {
+    if (confirm('Tem certeza que deseja apagar esta moto?')) {
+        const { error } = await apagarMoto(id)
+        if (error) {
+            alert('Erro ao apagar: ' + error.message)
+        } else {
+            alert('Moto apagada com sucesso!')
+            document.querySelector('#btnAtualizarLista')?.click()
+        }
+    }
+}
+
+// =========================================
+// INICIALIZAR SISTEMA
+// =========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Registrar visita
+    registrarVisita()
+    
+    // Criar área do proprietário
+    criarAreaProprietario()
+    
+    // Adicionar tracking nos botões de ver detalhes
+    document.querySelectorAll('.view-details-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const product = this.getAttribute('data-product')
+            const motoNome = this.closest('.scooter-model').querySelector('.model-name').textContent
+            verMoto(product, motoNome, 'EloBike')
+        })
+    })
+    
+    // Adicionar tracking nos botões do WhatsApp
+    document.querySelectorAll('.whatsapp-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const productPage = this.closest('.product-page')
+            if (productPage) {
+                const motoNome = productPage.querySelector('.product-title').textContent
+                verMoto('whatsapp_' + Date.now(), motoNome, 'EloBike')
             }
-            
-            // Próximo modelo
-            function nextModel() {
-                currentIndex = (currentIndex + 1) % modelCount;
-                updateCatalog();
-            }
-            
-            // Modelo anterior
-            function prevModel() {
-                currentIndex = (currentIndex - 1 + modelCount) % modelCount;
-                updateCatalog();
-            }
-            
-            // Iniciar slideshow automático
-            function startAutoSlide() {
-                autoSlide = setInterval(nextModel, 5000);
-            }
-            
-            // Parar slideshow automático
-            function stopAutoSlide() {
-                clearInterval(autoSlide);
-            }
-            
-            // Event listeners para botões
-            nextBtn.addEventListener('click', function() {
-                stopAutoSlide();
-                nextModel();
-                startAutoSlide();
-            });
-            
-            prevBtn.addEventListener('click', function() {
-                stopAutoSlide();
-                prevModel();
-                startAutoSlide();
-            });
-            
-            // Event listeners para indicadores
-            indicators.forEach(indicator => {
-                indicator.addEventListener('click', function() {
-                    stopAutoSlide();
-                    currentIndex = parseInt(this.getAttribute('data-index'));
-                    updateCatalog();
-                    startAutoSlide();
-                });
-            });
-            
-            // Navegação por teclado
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowRight') {
-                    stopAutoSlide();
-                    nextModel();
-                    startAutoSlide();
-                } else if (e.key === 'ArrowLeft') {
-                    stopAutoSlide();
-                    prevModel();
-                    startAutoSlide();
-                }
-            });
-            
-            // Funcionalidade de arrastar para o catálogo - SIMPLIFICADA
-            catalogContainer.addEventListener('mousedown', function(e) {
-                isDragging = true;
-                startX = e.clientX;
-                stopAutoSlide();
-            });
-            
-            catalogContainer.addEventListener('mousemove', function(e) {
-                if (!isDragging) return;
-                
-                const currentX = e.clientX;
-                const diffX = startX - currentX;
-                
-                // Mover o container junto com o mouse
-                const offset = (-currentIndex * 100) + (diffX / catalogContainer.offsetWidth * 100);
-                catalogContainer.style.transform = `translateX(${offset}%)`;
-            });
-            
-            catalogContainer.addEventListener('mouseup', function(e) {
-                if (!isDragging) return;
-                
-                isDragging = false;
-                const currentX = e.clientX;
-                const diffX = startX - currentX;
-                
-                // Determinar se deve mudar de slide
-                if (Math.abs(diffX) > 100) { // Sensibilidade ajustada
-                    if (diffX > 0) {
-                        nextModel();
-                    } else {
-                        prevModel();
-                    }
-                } else {
-                    // Voltar para o slide atual
-                    updateCatalog();
-                }
-                
-                startAutoSlide();
-            });
-            
-            catalogContainer.addEventListener('mouseleave', function() {
-                if (isDragging) {
-                    isDragging = false;
-                    updateCatalog();
-                    startAutoSlide();
-                }
-            });
-            
-            // Para dispositivos touch
-            catalogContainer.addEventListener('touchstart', function(e) {
-                isDragging = true;
-                startX = e.touches[0].clientX;
-                stopAutoSlide();
-            }, { passive: true });
-            
-            catalogContainer.addEventListener('touchmove', function(e) {
-                if (!isDragging) return;
-                
-                const currentX = e.touches[0].clientX;
-                const diffX = startX - currentX;
-                
-                // Mover o container junto com o toque
-                const offset = (-currentIndex * 100) + (diffX / catalogContainer.offsetWidth * 100);
-                catalogContainer.style.transform = `translateX(${offset}%)`;
-            }, { passive: true });
-            
-            catalogContainer.addEventListener('touchend', function(e) {
-                if (!isDragging) return;
-                
-                isDragging = false;
-                const currentX = e.changedTouches[0].clientX;
-                const diffX = startX - currentX;
-                
-                // Determinar se deve mudar de slide
-                if (Math.abs(diffX) > 100) { // Sensibilidade ajustada
-                    if (diffX > 0) {
-                        nextModel();
-                    } else {
-                        prevModel();
-                    }
-                } else {
-                    // Voltar para o slide atual
-                    updateCatalog();
-                }
-                
-                startAutoSlide();
-            }, { passive: true });
-            
-            // Pausar slideshow quando o mouse estiver sobre o catálogo
-            catalogElement.addEventListener('mouseenter', stopAutoSlide);
-            catalogElement.addEventListener('mouseleave', startAutoSlide);
-            
-            // Mostrar página do produto
-            viewDetailsButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const productId = this.getAttribute('data-product');
-                    
-                    // Esconder todos os elementos de produto primeiro
-                    productPages.forEach(page => {
-                        page.style.display = 'none';
-                    });
-                    
-                    // Mostrar o produto específico
-                    const productPage = document.getElementById(`product-${productId}`);
-                    if (productPage) {
-                        productPage.style.display = 'block';
-                        catalogElement.style.display = 'none';
-                        
-                        // Inicializar a galeria do produto
-                        initProductGallery(productId);
-                    }
-                });
-            });
-            
-            // Voltar para o catálogo
-            backToCatalogButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    productPages.forEach(page => {
-                        page.style.display = 'none';
-                    });
-                    catalogElement.style.display = 'block';
-                });
-            });
-            
-            // Inicializar galerias dos produtos
-            function initProductGallery(productId) {
-                const galleryContainer = document.querySelector(`#product-${productId} .gallery-container`);
-                const galleryImages = document.querySelectorAll(`#product-${productId} .gallery-image`);
-                const galleryIndicators = document.querySelectorAll(`#product-${productId} .gallery-indicator`);
-                const galleryPrev = document.querySelector(`#product-${productId} .gallery-prev`);
-                const galleryNext = document.querySelector(`#product-${productId} .gallery-next`);
-                
-                let galleryIndex = 0;
-                const galleryCount = galleryImages.length;
-                let galleryStartX = 0;
-                let isGalleryDragging = false;
-                
-                // Atualizar galeria
-                function updateGallery() {
-                    if (galleryContainer) {
-                        galleryContainer.style.transform = `translateX(-${galleryIndex * 100}%)`;
-                        
-                        // Atualizar indicadores
-                        galleryIndicators.forEach((indicator, index) => {
-                            if (index === galleryIndex) {
-                                indicator.classList.add('active');
-                            } else {
-                                indicator.classList.remove('active');
-                            }
-                        });
-                    }
-                }
-                
-                // Próxima imagem
-                function nextImage() {
-                    galleryIndex = (galleryIndex + 1) % galleryCount;
-                    updateGallery();
-                }
-                
-                // Imagem anterior
-                function prevImage() {
-                    galleryIndex = (galleryIndex - 1 + galleryCount) % galleryCount;
-                    updateGallery();
-                }
-                
-                // Event listeners para botões
-                if (galleryNext) galleryNext.addEventListener('click', nextImage);
-                if (galleryPrev) galleryPrev.addEventListener('click', prevImage);
-                
-                // Event listeners para indicadores
-                galleryIndicators.forEach(indicator => {
-                    indicator.addEventListener('click', function() {
-                        galleryIndex = parseInt(this.getAttribute('data-index'));
-                        updateGallery();
-                    });
-                });
-                
-                // Funcionalidade de arrasto para a galeria - SIMPLIFICADA
-                galleryContainer.addEventListener('mousedown', function(e) {
-                    isGalleryDragging = true;
-                    galleryStartX = e.clientX;
-                });
-                
-                galleryContainer.addEventListener('mousemove', function(e) {
-                    if (!isGalleryDragging) return;
-                    
-                    const currentX = e.clientX;
-                    const diffX = galleryStartX - currentX;
-                    
-                    // Mover o container junto com o mouse
-                    const offset = (-galleryIndex * 100) + (diffX / galleryContainer.offsetWidth * 100);
-                    galleryContainer.style.transform = `translateX(${offset}%)`;
-                });
-                
-                galleryContainer.addEventListener('mouseup', function(e) {
-                    if (!isGalleryDragging) return;
-                    
-                    isGalleryDragging = false;
-                    const currentX = e.clientX;
-                    const diffX = galleryStartX - currentX;
-                    
-                    // Determinar se deve mudar de imagem
-                    if (Math.abs(diffX) > 100) { // Sensibilidade ajustada
-                        if (diffX > 0) {
-                            nextImage();
-                        } else {
-                            prevImage();
-                        }
-                    } else {
-                        // Voltar para a imagem atual
-                        updateGallery();
-                    }
-                });
-                
-                galleryContainer.addEventListener('mouseleave', function() {
-                    if (isGalleryDragging) {
-                        isGalleryDragging = false;
-                        updateGallery();
-                    }
-                });
-                
-                // Para dispositivos touch
-                galleryContainer.addEventListener('touchstart', function(e) {
-                    isGalleryDragging = true;
-                    galleryStartX = e.touches[0].clientX;
-                }, { passive: true });
-                
-                galleryContainer.addEventListener('touchmove', function(e) {
-                    if (!isGalleryDragging) return;
-                    
-                    const currentX = e.touches[0].clientX;
-                    const diffX = galleryStartX - currentX;
-                    
-                    // Mover o container junto com o toque
-                    const offset = (-galleryIndex * 100) + (diffX / galleryContainer.offsetWidth * 100);
-                    galleryContainer.style.transform = `translateX(${offset}%)`;
-                }, { passive: true });
-                
-                galleryContainer.addEventListener('touchend', function(e) {
-                    if (!isGalleryDragging) return;
-                    
-                    isGalleryDragging = false;
-                    const currentX = e.changedTouches[0].clientX;
-                    const diffX = galleryStartX - currentX;
-                    
-                    // Determinar se deve mudar de imagem
-                    if (Math.abs(diffX) > 100) { // Sensibilidade ajustada
-                        if (diffX > 0) {
-                            nextImage();
-                        } else {
-                            prevImage();
-                        }
-                    } else {
-                        // Voltar para a imagem atual
-                        updateGallery();
-                    }
-                }, { passive: true });
-            }
-            
-            // Iniciar o slideshow automático
-            startAutoSlide();
-        });
-    </script>
-</body>
-</html>
+        })
+    })
+})
+</script>
+
+<style>
+/* Estilos para a área do proprietário */
+#adminPanel input, #adminPanel button {
+    font-size: 14px;
+}
+
+#adminPanel {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    button[style*="top: 80px; right: 20px;"] {
+        top: 60px !important;
+        right: 10px !important;
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+    }
+    
+    div[style*="top: 120px; right: 20px;"] {
+        top: 100px !important;
+        right: 10px !important;
+        max-width: 95vw !important;
+    }
+}
+</style>
