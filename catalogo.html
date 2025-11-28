@@ -958,6 +958,67 @@
             font-size: 0.9rem;
         }
 
+        /* NOVOS ESTILOS PARA PARCELAMENTO */
+        .parcelamento-container {
+            background: rgba(13, 27, 61, 0.7);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .parcelamento-title {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .parcelamento-opcoes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .parcela-opcao {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .parcela-opcao:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .parcela-opcao.destaque {
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: bold;
+            transform: scale(1.05);
+        }
+
+        .parcela-vezes {
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .parcela-valor {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .parcela-juros {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
         @media (max-width: 768px) {
             .admin-button {
                 top: 10px;
@@ -989,11 +1050,14 @@
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            
+            .parcelamento-opcoes {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Verificar se estamos na página de catálogo, login ou admin -->
     <div id="app">
         <!-- Conteúdo será carregado dinamicamente -->
     </div>
@@ -1031,6 +1095,9 @@
             18: 13.96
         };
         
+        // Configuração de sincronização
+        const CHAVE_SINCRONIZACAO = 'eloBike-ultima-atualizacao';
+        
         let slideAtual = 0;
         let totalSlides = 0;
         let motos = [];
@@ -1052,6 +1119,9 @@
             // Carregar dados salvos
             carregarDados();
             
+            // Verificar sincronização
+            verificarSincronizacao();
+            
             // Determinar qual página mostrar
             const urlParams = new URLSearchParams(window.location.search);
             const pagina = urlParams.get('pagina') || PAGINAS.CATALOGO;
@@ -1065,6 +1135,25 @@
             }
         });
 
+        // Função para verificar se há dados mais recentes
+        function verificarSincronizacao() {
+            const ultimaAtualizacaoLocal = localStorage.getItem(CHAVE_SINCRONIZACAO);
+            const ultimaAtualizacaoGlobal = sessionStorage.getItem(CHAVE_SINCRONIZACAO);
+            
+            // Se não há timestamp local ou o global é mais recente, recarregar os dados
+            if (!ultimaAtualizacaoLocal || (ultimaAtualizacaoGlobal && ultimaAtualizacaoGlobal > ultimaAtualizacaoLocal)) {
+                console.log('Dados desatualizados. Recarregando...');
+                carregarDados();
+            }
+        }
+
+        // Função para marcar que os dados foram atualizados
+        function marcarAtualizacao() {
+            const timestamp = Date.now().toString();
+            localStorage.setItem(CHAVE_SINCRONIZACAO, timestamp);
+            sessionStorage.setItem(CHAVE_SINCRONIZACAO, timestamp);
+        }
+
         function carregarDados() {
             // Carregar motos do localStorage
             const motosSalvas = localStorage.getItem('motos-eloBike');
@@ -1072,38 +1161,7 @@
                 motos = JSON.parse(motosSalvas);
             } else {
                 // Dados padrão se não houver nada salvo
-                motos = [
-                    {
-                        id: 'r13',
-                        nome: 'Modelo R13',
-                        preco: 'R$ 11.000,00',
-                        autonomia: '45 KM',
-                        velocidade: '45 KM/H',
-                        motor: '1000W',
-                        descricao: 'A scooter elétrica R13 combina design moderno com alta performance. Ideal para deslocamentos urbanos, oferece conforto e eficiência energética.',
-                        imagens: ['R13-01.png']
-                    },
-                    {
-                        id: 'r15',
-                        nome: 'Modelo R15',
-                        preco: 'R$ 13.500,00',
-                        autonomia: '60 KM',
-                        velocidade: '55 KM/H',
-                        motor: '1200W',
-                        descricao: 'Com maior autonomia e velocidade, a R15 é perfeita para quem precisa de mais desempenho no dia a dia sem abrir mão do estilo.',
-                        imagens: ['R15-01.png']
-                    },
-                    {
-                        id: 'r18',
-                        nome: 'Modelo R18',
-                        preco: 'R$ 15.800,00',
-                        autonomia: '75 KM',
-                        velocidade: '60 KM/H',
-                        motor: '1500W',
-                        descricao: 'A scooter premium da linha, com design sofisticado e recursos avançados para uma experiência de pilotagem incomparável.',
-                        imagens: ['R18-01.png']
-                    }
-                ];
+                motos = [];
                 salvarMotos();
             }
             
@@ -1122,6 +1180,7 @@
 
         function salvarMotos() {
             localStorage.setItem('motos-eloBike', JSON.stringify(motos));
+            marcarAtualizacao();
         }
 
         function salvarEstatisticas() {
@@ -1131,6 +1190,7 @@
                 dispositivosUnicos: Array.from(estatisticas.dispositivosUnicos)
             };
             localStorage.setItem('estatisticas-eloBike', JSON.stringify(statsParaSalvar));
+            marcarAtualizacao();
         }
 
         // =========================================
@@ -1215,6 +1275,9 @@
             
             // Adicionar cada moto ao catálogo
             motos.forEach((moto, index) => {
+                // Calcular opções de parcelamento
+                const opcoesParcelamento = calcularOpcoesParcelamento(moto.preco);
+                
                 // Criar slide do catálogo
                 const slide = document.createElement('div');
                 slide.className = 'scooter-model';
@@ -1230,6 +1293,22 @@
                     <div class="model-info">
                         <h2 class="model-name">${moto.nome}</h2>
                         <div class="model-price">${moto.preco}</div>
+                        <div class="price-subtitle">À vista no PIX</div>
+                        
+                        <!-- Seção de parcelamento -->
+                        <div class="parcelamento-container">
+                            <div class="parcelamento-title">Ou parcele em:</div>
+                            <div class="parcelamento-opcoes">
+                                ${opcoesParcelamento.map(opcao => `
+                                    <div class="parcela-opcao ${opcao.destaque ? 'destaque' : ''}">
+                                        <div class="parcela-vezes">${opcao.vezes}x</div>
+                                        <div class="parcela-valor">${opcao.valor}</div>
+                                        <div class="parcela-juros">${opcao.juros}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
                         <div class="model-specs">
                             <div class="spec-card">
                                 <div class="spec-value">${moto.autonomia}</div>
@@ -1288,6 +1367,9 @@
                     `;
                 }
                 
+                // Calcular opções de parcelamento para a página de detalhes
+                const opcoesDetalhes = calcularOpcoesParcelamento(moto.preco);
+                
                 productPage.innerHTML = `
                     <div class="product-header">
                         <h2 class="product-title">${moto.nome}</h2>
@@ -1298,7 +1380,23 @@
                     ${galleryHTML}
                     <div class="product-details">
                         <div class="model-price">${moto.preco}</div>
+                        <div class="price-subtitle">À vista no PIX</div>
                         <p class="product-description">${moto.descricao}</p>
+                        
+                        <!-- Seção de parcelamento na página de detalhes -->
+                        <div class="parcelamento-container">
+                            <div class="parcelamento-title">Opções de Parcelamento</div>
+                            <div class="parcelamento-opcoes">
+                                ${opcoesDetalhes.map(opcao => `
+                                    <div class="parcela-opcao ${opcao.destaque ? 'destaque' : ''}">
+                                        <div class="parcela-vezes">${opcao.vezes}x</div>
+                                        <div class="parcela-valor">${opcao.valor}</div>
+                                        <div class="parcela-juros">${opcao.juros}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
                         <div class="model-specs">
                             <div class="spec-card">
                                 <div class="spec-value">${moto.autonomia}</div>
@@ -1327,6 +1425,37 @@
             
             // Iniciar carrossel automático
             setInterval(() => moverSlide(1), 5000);
+        }
+
+        // Função para calcular opções de parcelamento
+        function calcularOpcoesParcelamento(precoFormatado) {
+            const precoNum = converterPrecoParaNumero(precoFormatado);
+            const opcoes = [];
+            
+            // Opções de parcelamento: 3, 6, 9, 12, 18 vezes
+            const parcelas = [3, 6, 9, 12, 18];
+            
+            parcelas.forEach(vezes => {
+                const taxa = TAXAS_PARCELAMENTO[vezes];
+                const valorTotalComTaxa = precoNum * (1 + taxa/100);
+                const valorParcela = valorTotalComTaxa / vezes;
+                
+                opcoes.push({
+                    vezes: vezes,
+                    valor: valorParcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+                    juros: vezes <= 6 ? 'sem juros' : `com juros`,
+                    destaque: vezes === 12 // Destacar 12x
+                });
+            });
+            
+            return opcoes;
+        }
+
+        // Função para converter preço formatado para número
+        function converterPrecoParaNumero(precoFormatado) {
+            // Remove "R$", pontos e troca vírgula por ponto
+            let numero = precoFormatado.replace('R$', '').replace(/\./g, '').replace(',', '.').trim();
+            return parseFloat(numero);
         }
 
         function moverSlide(direcao) {
@@ -1517,6 +1646,7 @@
                         
                         <div class="admin-section">
                             <h3 class="admin-section-title">🚀 Ações Rápidas</h3>
+                            <button class="admin-btn" onclick="limparTodasMotos()">🗑️ Limpar Todas as Motos</button>
                             <button class="admin-btn" onclick="abrirTab('tab-motos')">🏍️ Gerenciar Motos</button>
                             <button class="admin-btn" onclick="abrirTab('tab-adicionar')">➕ Adicionar Moto</button>
                             <button class="admin-btn" onclick="abrirTab('tab-simulacao')">🧮 Simulação Moto</button>
@@ -1540,10 +1670,10 @@
                             <h3 class="admin-section-title" id="titulo-form-moto">➕ Adicionar Nova Moto</h3>
                             <input type="hidden" id="moto-id-editar" value="">
                             <input type="text" id="moto-nome" placeholder="Nome do Modelo" class="admin-input" required>
-                            <input type="number" id="moto-preco" placeholder="Preço (R$)" class="admin-input" required>
-                            <input type="text" id="moto-autonomia" placeholder="Autonomia (KM)" class="admin-input" required>
-                            <input type="text" id="moto-velocidade" placeholder="Velocidade Máxima (KM/H)" class="admin-input" required>
-                            <input type="text" id="moto-motor" placeholder="Potência do Motor (W)" class="admin-input" required>
+                            <input type="text" id="moto-preco" placeholder="Preço (ex: R$ 12.500,00)" class="admin-input" required>
+                            <input type="text" id="moto-autonomia" placeholder="Autonomia (ex: 45 KM)" class="admin-input" required>
+                            <input type="text" id="moto-velocidade" placeholder="Velocidade Máxima (ex: 45 KM/H)" class="admin-input" required>
+                            <input type="text" id="moto-motor" placeholder="Potência do Motor (ex: 1000W)" class="admin-input" required>
                             <textarea id="moto-descricao" placeholder="Descrição do Produto" class="admin-textarea"></textarea>
                             
                             <div class="image-upload-container">
@@ -1792,7 +1922,7 @@
 
         function converterMoedaParaNumero(valorFormatado) {
             // Remover símbolos e converter para número
-            return parseFloat(valorFormatado.replace('R$', '').replace('.', '').replace(',', '.').trim());
+            return parseFloat(valorFormatado.replace('R$', '').replace(/\./g, '').replace(',', '.').trim());
         }
 
         function calcularSimulacao() {
@@ -1828,17 +1958,19 @@
             
             // Realizar cálculos
             const valorFinanciado = valorTotal - entrada;
-            const valorParcela = valorFinanciado / parcelas;
+            const valorTotalComTaxa = valorFinanciado * (1 + taxa/100);
+            const valorParcela = valorTotalComTaxa / parcelas;
             
             // Exibir resultados
-            exibirResultadoSimulacao(parcelas, valorParcela);
+            exibirResultadoSimulacao(parcelas, valorParcela, valorTotalComTaxa);
         }
 
-        function exibirResultadoSimulacao(parcelas, valorParcela) {
+        function exibirResultadoSimulacao(parcelas, valorParcela, valorTotalComTaxa) {
             const container = document.getElementById('resultado-simulacao');
             
             container.innerHTML = `
-                <div class="resultado-parcela">${parcelas}x de ${valorParcela.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</div>
+                <div class="resultado-parcela">${parcelas}x de ${valorParcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</div>
+                <p>Total financiado: ${valorTotalComTaxa.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
             `;
         }
 
@@ -1873,10 +2005,10 @@
             // Preencher formulário com dados da moto
             document.getElementById('moto-id-editar').value = moto.id;
             document.getElementById('moto-nome').value = moto.nome;
-            document.getElementById('moto-preco').value = moto.preco.replace('R$ ', '').replace('.', '').replace(',', '.');
-            document.getElementById('moto-autonomia').value = moto.autonomia.replace(' KM', '');
-            document.getElementById('moto-velocidade').value = moto.velocidade.replace(' KM/H', '');
-            document.getElementById('moto-motor').value = moto.motor.replace('W', '');
+            document.getElementById('moto-preco').value = moto.preco;
+            document.getElementById('moto-autonomia').value = moto.autonomia;
+            document.getElementById('moto-velocidade').value = moto.velocidade;
+            document.getElementById('moto-motor').value = moto.motor;
             document.getElementById('moto-descricao').value = moto.descricao;
             
             // Exibir imagens existentes
@@ -1932,23 +2064,17 @@
         function salvarMoto() {
             const idEditar = document.getElementById('moto-id-editar').value;
             const nome = document.getElementById('moto-nome').value.trim();
-            const preco = parseFloat(document.getElementById('moto-preco').value);
+            const preco = document.getElementById('moto-preco').value.trim();
             const autonomia = document.getElementById('moto-autonomia').value.trim();
             const velocidade = document.getElementById('moto-velocidade').value.trim();
             const motor = document.getElementById('moto-motor').value.trim();
             const descricao = document.getElementById('moto-descricao').value.trim();
             
             // Validação básica
-            if (!nome || isNaN(preco) || !autonomia || !velocidade || !motor) {
+            if (!nome || !preco || !autonomia || !velocidade || !motor) {
                 alert('Por favor, preencha todos os campos obrigatórios!');
                 return;
             }
-            
-            // Formatar valores
-            const precoFormatado = `R$ ${preco.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            const autonomiaFormatada = `${autonomia} KM`;
-            const velocidadeFormatada = `${velocidade} KM/H`;
-            const motorFormatado = `${motor}W`;
             
             if (idEditar) {
                 // Editar moto existente
@@ -1957,10 +2083,10 @@
                     motos[index] = {
                         ...motos[index],
                         nome,
-                        preco: precoFormatado,
-                        autonomia: autonomiaFormatada,
-                        velocidade: velocidadeFormatada,
-                        motor: motorFormatado,
+                        preco,
+                        autonomia,
+                        velocidade,
+                        motor,
                         descricao: descricao || motos[index].descricao,
                         imagens: imagensParaUpload.length > 0 ? imagensParaUpload : motos[index].imagens
                     };
@@ -1971,10 +2097,10 @@
                 motos.push({
                     id: novoId,
                     nome,
-                    preco: precoFormatado,
-                    autonomia: autonomiaFormatada,
-                    velocidade: velocidadeFormatada,
-                    motor: motorFormatado,
+                    preco,
+                    autonomia,
+                    velocidade,
+                    motor,
                     descricao: descricao || 'Descrição do produto.',
                     imagens: imagensParaUpload.length > 0 ? imagensParaUpload : ['placeholder.png']
                 });
@@ -1996,6 +2122,16 @@
             carregarListaMotos();
             
             alert('Moto excluída com sucesso!');
+        }
+
+        function limparTodasMotos() {
+            if (!confirm('Tem certeza que deseja excluir TODAS as motos? Esta ação não pode ser desfeita.')) return;
+            
+            motos = [];
+            salvarMotos();
+            carregarListaMotos();
+            
+            alert('Todas as motos foram removidas!');
         }
 
         function gerarIdUnico() {
