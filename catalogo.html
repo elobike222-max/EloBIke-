@@ -628,6 +628,7 @@
             display: flex;
             margin-bottom: 20px;
             border-bottom: 1px solid var(--accent);
+            flex-wrap: wrap;
         }
 
         .admin-tab {
@@ -780,6 +781,79 @@
             font-weight: bold;
         }
 
+        /* SIMULAÇÃO DE MOTO */
+        .simulacao-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .parcelas-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .parcela-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--card-border);
+            color: var(--text);
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .parcela-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .parcela-btn.active {
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .calcular-btn {
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .calcular-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .resultado-simulacao {
+            background: rgba(13, 27, 61, 0.7);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid var(--card-border);
+        }
+
+        .resultado-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .resultado-valor {
+            font-weight: bold;
+            color: var(--accent);
+        }
+
         @media (max-width: 768px) {
             .admin-button {
                 top: 10px;
@@ -799,6 +873,14 @@
                 width: 100%;
                 justify-content: flex-end;
             }
+            
+            .simulacao-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .parcelas-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
     </style>
 </head>
@@ -817,6 +899,28 @@
             CATALOGO: 'catalogo',
             LOGIN: 'login',
             ADMIN: 'admin'
+        };
+        
+        // Tabela de taxas conforme especificado
+        const TAXAS_PARCELAMENTO = {
+            1: 2.92,
+            2: 4.33,
+            3: 4.91,
+            4: 5.49,
+            5: 6.07,
+            6: 6.65,
+            7: 7.61,
+            8: 8.18,
+            9: 8.76,
+            10: 9.34,
+            11: 9.92,
+            12: 10.49,
+            13: 11.07,
+            14: 11.65,
+            15: 12.23,
+            16: 12.80,
+            17: 13.38,
+            18: 13.96
         };
         
         let slideAtual = 0;
@@ -1237,6 +1341,7 @@
                         <button class="admin-tab active" onclick="abrirTab('tab-estatisticas')">📊 Estatísticas</button>
                         <button class="admin-tab" onclick="abrirTab('tab-motos')">🏍️ Gerenciar Motos</button>
                         <button class="admin-tab" onclick="abrirTab('tab-adicionar')">➕ Adicionar Moto</button>
+                        <button class="admin-tab" onclick="abrirTab('tab-simulacao')">🧮 Simulação Moto</button>
                     </div>
                     
                     <!-- ABA DE ESTATÍSTICAS -->
@@ -1252,6 +1357,7 @@
                             <h3 class="admin-section-title">🚀 Ações Rápidas</h3>
                             <button class="admin-btn" onclick="abrirTab('tab-motos')">🏍️ Gerenciar Motos</button>
                             <button class="admin-btn" onclick="abrirTab('tab-adicionar')">➕ Adicionar Moto</button>
+                            <button class="admin-btn" onclick="abrirTab('tab-simulacao')">🧮 Simulação Moto</button>
                             <button class="admin-btn" onclick="carregarEstatisticas()">🔄 Atualizar Estatísticas</button>
                         </div>
                     </div>
@@ -1297,6 +1403,43 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- ABA DE SIMULAÇÃO DE MOTO -->
+                    <div id="tab-simulacao" class="admin-tab-content">
+                        <div class="simulacao-grid">
+                            <div class="admin-section">
+                                <h3 class="admin-section-title">🧮 Simulação de Financiamento</h3>
+                                
+                                <div>
+                                    <label for="entrada">Entrada (opcional):</label>
+                                    <input type="text" id="entrada" class="admin-input" placeholder="R$ 0,00" oninput="formatarMoeda(this)">
+                                </div>
+                                
+                                <div>
+                                    <label for="valor-total">Valor total da moto:</label>
+                                    <input type="text" id="valor-total" class="admin-input" placeholder="R$ 0,00" required oninput="formatarMoeda(this)">
+                                </div>
+                                
+                                <div>
+                                    <label>Quantidade de parcelas:</label>
+                                    <div class="parcelas-container" id="parcelas-container">
+                                        <!-- Botões de parcelas serão gerados dinamicamente -->
+                                    </div>
+                                </div>
+                                
+                                <button class="calcular-btn" onclick="calcularSimulacao()">
+                                    <i class="fas fa-calculator"></i> CALCULAR
+                                </button>
+                            </div>
+                            
+                            <div class="admin-section">
+                                <h3 class="admin-section-title">Resultado da Simulação</h3>
+                                <div id="resultado-simulacao" class="resultado-simulacao">
+                                    <p>Preencha os dados e clique em CALCULAR</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `;
         }
@@ -1304,6 +1447,7 @@
         function inicializarAdmin() {
             carregarEstatisticas();
             carregarListaMotos();
+            inicializarSimulacao();
         }
 
         function abrirTab(tabId) {
@@ -1366,6 +1510,144 @@
                 `;
                 listaMotos.appendChild(item);
             });
+        }
+
+        // =========================================
+        // FUNÇÕES PARA SIMULAÇÃO DE MOTO
+        // =========================================
+        function inicializarSimulacao() {
+            const container = document.getElementById('parcelas-container');
+            if (!container) return;
+            
+            // Limpar container
+            container.innerHTML = '';
+            
+            // Criar botões de 1 a 18 parcelas
+            for (let i = 1; i <= 18; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'parcela-btn';
+                btn.textContent = `${i}x`;
+                btn.onclick = () => selecionarParcela(i);
+                container.appendChild(btn);
+            }
+        }
+
+        function selecionarParcela(numero) {
+            // Remover classe active de todos os botões
+            document.querySelectorAll('.parcela-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Adicionar classe active ao botão clicado
+            document.querySelector(`.parcela-btn:nth-child(${numero})`).classList.add('active');
+            
+            // Armazenar a parcela selecionada
+            window.parcelaSelecionada = numero;
+        }
+
+        function formatarMoeda(input) {
+            // Remover tudo que não é número
+            let valor = input.value.replace(/\D/g, '');
+            
+            // Se estiver vazio, definir como 0
+            if (valor === '') valor = '0';
+            
+            // Converter para número
+            const numero = parseInt(valor);
+            
+            // Formatar como moeda brasileira
+            input.value = numero.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+        }
+
+        function converterMoedaParaNumero(valorFormatado) {
+            // Remover símbolos e converter para número
+            return parseFloat(valorFormatado.replace('R$', '').replace('.', '').replace(',', '.').trim());
+        }
+
+        function calcularSimulacao() {
+            // Verificar se a parcela foi selecionada
+            if (!window.parcelaSelecionada) {
+                alert('Selecione a quantidade de parcelas!');
+                return;
+            }
+            
+            // Obter valores dos campos
+            const entradaInput = document.getElementById('entrada');
+            const valorTotalInput = document.getElementById('valor-total');
+            
+            // Converter valores para números
+            const entrada = entradaInput.value ? converterMoedaParaNumero(entradaInput.value) : 0;
+            const valorTotal = converterMoedaParaNumero(valorTotalInput.value);
+            
+            // Verificar se o valor total é válido
+            if (isNaN(valorTotal) || valorTotal <= 0) {
+                alert('Digite um valor total válido!');
+                return;
+            }
+            
+            // Obter a parcela selecionada e a taxa correspondente
+            const parcelas = window.parcelaSelecionada;
+            const taxa = TAXAS_PARCELAMENTO[parcelas];
+            
+            // Realizar cálculos
+            const valorFinanciado = valorTotal - entrada;
+            const descontoTotal = valorFinanciado * (taxa / 100);
+            const valorLiquido = valorFinanciado - descontoTotal;
+            const valorParcela = valorFinanciado / parcelas;
+            
+            // Exibir resultados
+            exibirResultadoSimulacao({
+                valorTotal,
+                entrada,
+                valorFinanciado,
+                parcelas,
+                taxa,
+                descontoTotal,
+                valorLiquido,
+                valorParcela
+            });
+        }
+
+        function exibirResultadoSimulacao(dados) {
+            const container = document.getElementById('resultado-simulacao');
+            
+            container.innerHTML = `
+                <div class="resultado-item">
+                    <span>Valor total da moto:</span>
+                    <span class="resultado-valor">${dados.valorTotal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
+                </div>
+                <div class="resultado-item">
+                    <span>Entrada:</span>
+                    <span class="resultado-valor">${dados.entrada.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
+                </div>
+                <div class="resultado-item">
+                    <span>Valor financiado:</span>
+                    <span class="resultado-valor">${dados.valorFinanciado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
+                </div>
+                <div class="resultado-item">
+                    <span>Número de parcelas:</span>
+                    <span class="resultado-valor">${dados.parcelas}x</span>
+                </div>
+                <div class="resultado-item">
+                    <span>Percentual de desconto da maquininha:</span>
+                    <span class="resultado-valor">${dados.taxa.toFixed(2)}%</span>
+                </div>
+                <div class="resultado-item">
+                    <span>Valor do desconto:</span>
+                    <span class="resultado-valor">${dados.descontoTotal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
+                </div>
+                <div class="resultado-item">
+                    <span>Valor líquido que recebo:</span>
+                    <span class="resultado-valor">${dados.valorLiquido.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
+                </div>
+                <div class="resultado-item">
+                    <span>Valor da parcela para o cliente:</span>
+                    <span class="resultado-valor">${dados.valorParcela.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
+                </div>
+            `;
         }
 
         function previewImages(input) {
