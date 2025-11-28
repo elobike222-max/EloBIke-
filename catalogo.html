@@ -153,47 +153,13 @@
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--accent);
-            margin-bottom: 5px;
+            margin-bottom: 15px;
         }
 
         .price-subtitle {
             font-size: 0.9rem;
             color: var(--text-muted);
             margin-bottom: 15px;
-        }
-
-        .price-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .price-card {
-            background: rgba(13, 27, 61, 0.7);
-            border-radius: 8px;
-            padding: 10px;
-            text-align: center;
-            border: 1px solid var(--card-border);
-        }
-
-        .price-title {
-            font-size: 0.85rem;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .price-value {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 5px;
-        }
-
-        .price-description {
-            font-size: 0.75rem;
-            color: var(--text-muted);
         }
 
         .model-specs {
@@ -420,36 +386,6 @@
             text-align: center;
         }
 
-        .product-features {
-            margin-bottom: 15px;
-        }
-
-        .features-title {
-            font-size: 1.1rem;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-
-        .features-list {
-            list-style: none;
-        }
-
-        .features-list li {
-            margin-bottom: 6px;
-            padding-left: 25px;
-            position: relative;
-            color: var(--text);
-            font-size: 0.9rem;
-        }
-
-        .features-list li:before {
-            content: "✓";
-            color: var(--accent);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
         .product-actions-detailed {
             display: flex;
             justify-content: center;
@@ -476,43 +412,6 @@
         .whatsapp-btn:hover {
             box-shadow: 0 6px 15px rgba(37, 211, 102, 0.6);
             transform: translateY(-2px);
-        }
-
-        .product-benefits {
-            background: rgba(13, 27, 61, 0.7);
-            border-radius: 8px;
-            padding: 15px;
-            margin: 20px 0;
-            border: 1px solid var(--card-border);
-        }
-
-        .benefits-title {
-            font-size: 1.1rem;
-            color: var(--accent);
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .benefit-icon {
-            color: var(--accent);
-            font-size: 1.2rem;
-        }
-
-        .benefit-text {
-            font-size: 0.85rem;
-            color: var(--text);
         }
 
         /* ÁREA DO PROPRIETÁRIO - BOTÃO NO CATÁLOGO */
@@ -781,6 +680,55 @@
             font-weight: bold;
         }
 
+        /* ESTILOS PARA O SISTEMA DE UPLOAD */
+        .upload-status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--card-border);
+        }
+        
+        .status-success {
+            background: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+            border-color: #28a745;
+        }
+        
+        .status-error {
+            background: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+            border-color: #dc3545;
+        }
+        
+        .status-loading {
+            background: rgba(255, 193, 7, 0.2);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        .imgbb-setup {
+            background: rgba(40, 167, 69, 0.1);
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .imgbb-setup h4 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+        
+        .api-status {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #28a745;
+            color: white;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
         /* SIMULAÇÃO DE MOTO */
         .simulacao-grid {
             display: grid;
@@ -888,137 +836,6 @@
             font-size: 0.9rem;
         }
 
-        .stat-trend {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-top: 5px;
-        }
-
-        .trend-up {
-            background: rgba(40, 167, 69, 0.2);
-            color: #28a745;
-        }
-
-        .trend-down {
-            background: rgba(220, 53, 69, 0.2);
-            color: #dc3545;
-        }
-
-        .stats-chart {
-            background: rgba(13, 27, 61, 0.7);
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-            border: 1px solid var(--card-border);
-        }
-
-        .chart-container {
-            height: 200px;
-            display: flex;
-            align-items: flex-end;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .chart-bar {
-            flex: 1;
-            background: var(--accent);
-            border-radius: 5px 5px 0 0;
-            position: relative;
-            transition: height 0.5s;
-        }
-
-        .chart-label {
-            position: absolute;
-            bottom: -25px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .chart-value {
-            position: absolute;
-            top: -25px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        .stats-date {
-            text-align: center;
-            color: var(--text-muted);
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-
-        /* NOVOS ESTILOS PARA PARCELAMENTO */
-        .parcelamento-container {
-            background: rgba(13, 27, 61, 0.7);
-            border-radius: 8px;
-            padding: 15px;
-            margin: 15px 0;
-            border: 1px solid var(--card-border);
-        }
-
-        .parcelamento-title {
-            font-size: 1.1rem;
-            color: var(--accent);
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .parcelamento-opcoes {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .parcela-opcao {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            padding: 10px;
-            text-align: center;
-            border: 1px solid var(--card-border);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .parcela-opcao:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .parcela-opcao.destaque {
-            background: var(--accent);
-            color: var(--primary);
-            font-weight: bold;
-            transform: scale(1.05);
-        }
-
-        .parcela-vezes {
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .parcela-valor {
-            font-size: 1rem;
-            font-weight: bold;
-        }
-
-        .parcela-juros {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-top: 3px;
-        }
-
         @media (max-width: 768px) {
             .admin-button {
                 top: 10px;
@@ -1050,10 +867,6 @@
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            
-            .parcelamento-opcoes {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
     </style>
 </head>
@@ -1064,8 +877,11 @@
 
     <script>
         // =========================================
-        // CONFIGURAÇÕES E VARIÁVEIS GLOBAIS
+        // CONFIGURAÇÕES - IMGBB API
         // =========================================
+        const IMGBB_API_KEY = 'b1fdb037dcb345ca989d0eb27f5e326f'; // SUA API KEY INTEGRADA
+        const IMGBB_UPLOAD_URL = 'https://api.imgbb.com/1/upload';
+        
         const SENHA_ADMIN = "EloBike2024";
         const PAGINAS = {
             CATALOGO: 'catalogo',
@@ -1075,24 +891,9 @@
         
         // Tabela de taxas conforme especificado
         const TAXAS_PARCELAMENTO = {
-            1: 2.92,
-            2: 4.33,
-            3: 4.91,
-            4: 5.49,
-            5: 6.07,
-            6: 6.65,
-            7: 7.61,
-            8: 8.18,
-            9: 8.76,
-            10: 9.34,
-            11: 9.92,
-            12: 10.49,
-            13: 11.07,
-            14: 11.65,
-            15: 12.23,
-            16: 12.80,
-            17: 13.38,
-            18: 13.96
+            1: 2.92, 2: 4.33, 3: 4.91, 4: 5.49, 5: 6.07, 6: 6.65,
+            7: 7.61, 8: 8.18, 9: 8.76, 10: 9.34, 11: 9.92, 12: 10.49,
+            13: 11.07, 14: 11.65, 15: 12.23, 16: 12.80, 17: 13.38, 18: 13.96
         };
         
         // Configuração de sincronização
@@ -1102,12 +903,8 @@
         let totalSlides = 0;
         let motos = [];
         let estatisticas = {
-            visitantes: 0,
-            visualizacoes: 0,
-            ultimaVisita: null,
-            visitasPorDia: {},
-            visualizacoesPorDia: {},
-            dispositivosUnicos: new Set()
+            visitantes: 0, visualizacoes: 0, ultimaVisita: null,
+            visitasPorDia: {}, visualizacoesPorDia: {}, dispositivosUnicos: new Set()
         };
         let imagensParaUpload = [];
         let parcelaSelecionada = null;
@@ -1116,38 +913,257 @@
         // FUNÇÕES DE INICIALIZAÇÃO
         // =========================================
         document.addEventListener('DOMContentLoaded', function() {
-            // Carregar dados salvos
             carregarDados();
-            
-            // Verificar sincronização
             verificarSincronizacao();
             
-            // Determinar qual página mostrar
             const urlParams = new URLSearchParams(window.location.search);
             const pagina = urlParams.get('pagina') || PAGINAS.CATALOGO;
             
-            // Mostrar a página apropriada
             mostrarPagina(pagina);
             
-            // Registrar visita se for a página do catálogo
             if (pagina === PAGINAS.CATALOGO) {
                 registrarVisita();
             }
         });
 
-        // Função para verificar se há dados mais recentes
+        // =========================================
+        // SISTEMA DE UPLOAD DE IMAGENS AUTOMÁTICO
+        // =========================================
+        
+        async function fazerUploadImagem(imagemBase64, nomeArquivo) {
+            try {
+                // Mostrar status de carregamento
+                const statusElement = mostrarStatusUpload(`Enviando "${nomeArquivo}" para a nuvem...`, 'loading');
+                
+                const formData = new FormData();
+                formData.append('image', imagemBase64.split(',')[1]); // Remove o prefixo data:image/...
+                formData.append('name', nomeArquivo);
+                
+                const response = await fetch(`${IMGBB_UPLOAD_URL}?key=${IMGBB_API_KEY}`, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    statusElement.innerHTML = `<i class="fas fa-check"></i> Imagem "${nomeArquivo}" enviada com sucesso!`;
+                    statusElement.className = 'upload-status status-success';
+                    return data.data.url; // URL da imagem no ImgBB
+                } else {
+                    throw new Error(data.error?.message || 'Erro no upload');
+                }
+            } catch (error) {
+                console.error('Erro no upload:', error);
+                const statusElement = mostrarStatusUpload(`Erro ao enviar "${nomeArquivo}": ${error.message}`, 'error');
+                // Em caso de erro, retorna null para usar placeholder
+                return null;
+            }
+        }
+
+        function mostrarStatusUpload(mensagem, tipo) {
+            // Encontrar ou criar container de status
+            let statusContainer = document.getElementById('upload-status-container');
+            if (!statusContainer) {
+                statusContainer = document.createElement('div');
+                statusContainer.id = 'upload-status-container';
+                const formMoto = document.querySelector('#tab-adicionar .admin-section');
+                if (formMoto) {
+                    formMoto.appendChild(statusContainer);
+                }
+            }
+            
+            const statusElement = document.createElement('div');
+            statusElement.className = `upload-status status-${tipo}`;
+            statusElement.innerHTML = `
+                <i class="fas fa-${tipo === 'success' ? 'check' : tipo === 'error' ? 'exclamation-triangle' : 'spinner fa-spin'}"></i>
+                ${mensagem}
+            `;
+            
+            statusContainer.appendChild(statusElement);
+            
+            // Remover após 5 segundos (exceto loading)
+            if (tipo !== 'loading') {
+                setTimeout(() => {
+                    statusElement.remove();
+                }, 5000);
+            }
+            
+            return statusElement;
+        }
+
+        async function processarUploadImagens(arquivos) {
+            const urls = [];
+            
+            for (const file of arquivos) {
+                const base64 = await lerArquivoComoBase64(file);
+                const url = await fazerUploadImagem(base64, file.name);
+                if (url) {
+                    urls.push(url);
+                }
+            }
+            
+            return urls;
+        }
+
+        function lerArquivoComoBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = e => resolve(e.target.result);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // =========================================
+        // STATUS DA API NA ÁREA ADMIN
+        // =========================================
+        
+        function mostrarStatusAPI() {
+            return `
+                <div class="imgbb-setup">
+                    <h4>
+                        <i class="fas fa-cloud-upload-alt"></i> 
+                        Sistema de Imagens Configurado
+                        <span class="api-status">API ATIVA</span>
+                    </h4>
+                    <p><strong>✅ Suas imagens serão sincronizadas automaticamente em todos os dispositivos!</strong></p>
+                    <p><i class="fas fa-info-circle"></i> Agora quando você adicionar, editar ou remover imagens, as mudanças aparecerão instantaneamente em todos os celulares, tablets e computadores.</p>
+                </div>
+            `;
+        }
+
+        // =========================================
+        // FUNÇÕES MODIFICADAS PARA UPLOAD AUTOMÁTICO
+        // =========================================
+
+        function previewImages(input) {
+            const preview = document.getElementById('image-preview');
+            preview.innerHTML = '';
+            imagensParaUpload = [];
+            
+            if (input.files) {
+                Array.from(input.files).forEach(file => {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'preview-image';
+                        
+                        const container = document.createElement('div');
+                        container.style.position = 'relative';
+                        container.style.display = 'inline-block';
+                        container.appendChild(img);
+                        
+                        // Adicionar badge de status
+                        const badge = document.createElement('div');
+                        badge.innerHTML = '<i class="fas fa-clock"></i> Aguardando upload';
+                        badge.style.position = 'absolute';
+                        badge.style.top = '5px';
+                        badge.style.right = '5px';
+                        badge.style.background = 'rgba(0,0,0,0.7)';
+                        badge.style.color = 'white';
+                        badge.style.padding = '2px 5px';
+                        badge.style.borderRadius = '3px';
+                        badge.style.fontSize = '10px';
+                        container.appendChild(badge);
+                        
+                        preview.appendChild(container);
+                        
+                        // Armazenar o arquivo original para upload
+                        imagensParaUpload.push(file);
+                    }
+                    
+                    reader.readAsDataURL(file);
+                });
+            }
+        }
+
+        async function salvarMoto() {
+            const idEditar = document.getElementById('moto-id-editar').value;
+            const nome = document.getElementById('moto-nome').value.trim();
+            const preco = document.getElementById('moto-preco').value.trim();
+            const autonomia = document.getElementById('moto-autonomia').value.trim();
+            const velocidade = document.getElementById('moto-velocidade').value.trim();
+            const motor = document.getElementById('moto-motor').value.trim();
+            const descricao = document.getElementById('moto-descricao').value.trim();
+            
+            // Validação básica
+            if (!nome || !preco || !autonomia || !velocidade || !motor) {
+                alert('Por favor, preencha todos os campos obrigatórios!');
+                return;
+            }
+            
+            // Mostrar status de processamento
+            const statusGeral = mostrarStatusUpload('Processando imagens e salvando moto...', 'loading');
+            
+            // Fazer upload das imagens se houver
+            let urlsImagens = [];
+            if (imagensParaUpload.length > 0) {
+                urlsImagens = await processarUploadImagens(imagensParaUpload);
+            }
+            
+            if (idEditar) {
+                // Editar moto existente
+                const index = motos.findIndex(m => m.id === idEditar);
+                if (index !== -1) {
+                    // Se não há novas imagens, manter as existentes
+                    const imagensFinais = urlsImagens.length > 0 ? urlsImagens : motos[index].imagens;
+                    
+                    motos[index] = {
+                        ...motos[index],
+                        nome,
+                        preco,
+                        autonomia,
+                        velocidade,
+                        motor,
+                        descricao: descricao || motos[index].descricao,
+                        imagens: imagensFinais
+                    };
+                }
+            } else {
+                // Adicionar nova moto
+                const novoId = gerarIdUnico();
+                motos.push({
+                    id: novoId,
+                    nome,
+                    preco,
+                    autonomia,
+                    velocidade,
+                    motor,
+                    descricao: descricao || 'Descrição do produto.',
+                    imagens: urlsImagens.length > 0 ? urlsImagens : ['https://via.placeholder.com/300x200?text=Adicione+Imagens']
+                });
+            }
+            
+            // Salvar e atualizar
+            salvarMotos();
+            cancelarEdicao();
+            carregarListaMotos();
+            
+            statusGeral.innerHTML = '<i class="fas fa-check"></i> Moto salva com sucesso! As imagens foram sincronizadas na nuvem.';
+            statusGeral.className = 'upload-status status-success';
+            
+            setTimeout(() => {
+                statusGeral.remove();
+            }, 5000);
+        }
+
+        // =========================================
+        // FUNÇÕES DE SINCRONIZAÇÃO ENTRE DISPOSITIVOS
+        // =========================================
+        
         function verificarSincronizacao() {
             const ultimaAtualizacaoLocal = localStorage.getItem(CHAVE_SINCRONIZACAO);
             const ultimaAtualizacaoGlobal = sessionStorage.getItem(CHAVE_SINCRONIZACAO);
             
-            // Se não há timestamp local ou o global é mais recente, recarregar os dados
             if (!ultimaAtualizacaoLocal || (ultimaAtualizacaoGlobal && ultimaAtualizacaoGlobal > ultimaAtualizacaoLocal)) {
                 console.log('Dados desatualizados. Recarregando...');
                 carregarDados();
             }
         }
 
-        // Função para marcar que os dados foram atualizados
         function marcarAtualizacao() {
             const timestamp = Date.now().toString();
             localStorage.setItem(CHAVE_SINCRONIZACAO, timestamp);
@@ -1155,24 +1171,20 @@
         }
 
         function carregarDados() {
-            // Carregar motos do localStorage
             const motosSalvas = localStorage.getItem('motos-eloBike');
             if (motosSalvas) {
                 motos = JSON.parse(motosSalvas);
             } else {
-                // Dados padrão se não houver nada salvo
                 motos = [];
                 salvarMotos();
             }
             
-            // Carregar estatísticas
             const statsSalvas = localStorage.getItem('estatisticas-eloBike');
             if (statsSalvas) {
                 const stats = JSON.parse(statsSalvas);
                 estatisticas = {
                     ...estatisticas,
                     ...stats,
-                    // Garantir que dispositivosUnicos seja um Set
                     dispositivosUnicos: new Set(stats.dispositivosUnicos || [])
                 };
             }
@@ -1184,7 +1196,6 @@
         }
 
         function salvarEstatisticas() {
-            // Converter Set para Array para salvar no localStorage
             const statsParaSalvar = {
                 ...estatisticas,
                 dispositivosUnicos: Array.from(estatisticas.dispositivosUnicos)
@@ -1275,15 +1286,12 @@
             
             // Adicionar cada moto ao catálogo
             motos.forEach((moto, index) => {
-                // Calcular opções de parcelamento
-                const opcoesParcelamento = calcularOpcoesParcelamento(moto.preco);
-                
-                // Criar slide do catálogo
+                // Criar slide do catálogo (SEM PARCELAMENTO - APENAS PREÇO)
                 const slide = document.createElement('div');
                 slide.className = 'scooter-model';
                 slide.innerHTML = `
                     <div class="model-image">
-                        <img src="${moto.imagens && moto.imagens.length > 0 ? moto.imagens[0] : 'placeholder.png'}" alt="${moto.nome}">
+                        <img src="${moto.imagens && moto.imagens.length > 0 ? moto.imagens[0] : 'https://via.placeholder.com/300x200?text=Imagem+Indispon%C3%ADvel'}" alt="${moto.nome}">
                     </div>
                     <div class="view-details-container">
                         <button class="view-details-btn" onclick="abrirProduto('${moto.id}')">
@@ -1293,22 +1301,6 @@
                     <div class="model-info">
                         <h2 class="model-name">${moto.nome}</h2>
                         <div class="model-price">${moto.preco}</div>
-                        <div class="price-subtitle">À vista no PIX</div>
-                        
-                        <!-- Seção de parcelamento -->
-                        <div class="parcelamento-container">
-                            <div class="parcelamento-title">Ou parcele em:</div>
-                            <div class="parcelamento-opcoes">
-                                ${opcoesParcelamento.map(opcao => `
-                                    <div class="parcela-opcao ${opcao.destaque ? 'destaque' : ''}">
-                                        <div class="parcela-vezes">${opcao.vezes}x</div>
-                                        <div class="parcela-valor">${opcao.valor}</div>
-                                        <div class="parcela-juros">${opcao.juros}</div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                        
                         <div class="model-specs">
                             <div class="spec-card">
                                 <div class="spec-value">${moto.autonomia}</div>
@@ -1367,9 +1359,6 @@
                     `;
                 }
                 
-                // Calcular opções de parcelamento para a página de detalhes
-                const opcoesDetalhes = calcularOpcoesParcelamento(moto.preco);
-                
                 productPage.innerHTML = `
                     <div class="product-header">
                         <h2 class="product-title">${moto.nome}</h2>
@@ -1380,23 +1369,7 @@
                     ${galleryHTML}
                     <div class="product-details">
                         <div class="model-price">${moto.preco}</div>
-                        <div class="price-subtitle">À vista no PIX</div>
                         <p class="product-description">${moto.descricao}</p>
-                        
-                        <!-- Seção de parcelamento na página de detalhes -->
-                        <div class="parcelamento-container">
-                            <div class="parcelamento-title">Opções de Parcelamento</div>
-                            <div class="parcelamento-opcoes">
-                                ${opcoesDetalhes.map(opcao => `
-                                    <div class="parcela-opcao ${opcao.destaque ? 'destaque' : ''}">
-                                        <div class="parcela-vezes">${opcao.vezes}x</div>
-                                        <div class="parcela-valor">${opcao.valor}</div>
-                                        <div class="parcela-juros">${opcao.juros}</div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                        
                         <div class="model-specs">
                             <div class="spec-card">
                                 <div class="spec-value">${moto.autonomia}</div>
@@ -1425,37 +1398,6 @@
             
             // Iniciar carrossel automático
             setInterval(() => moverSlide(1), 5000);
-        }
-
-        // Função para calcular opções de parcelamento
-        function calcularOpcoesParcelamento(precoFormatado) {
-            const precoNum = converterPrecoParaNumero(precoFormatado);
-            const opcoes = [];
-            
-            // Opções de parcelamento: 3, 6, 9, 12, 18 vezes
-            const parcelas = [3, 6, 9, 12, 18];
-            
-            parcelas.forEach(vezes => {
-                const taxa = TAXAS_PARCELAMENTO[vezes];
-                const valorTotalComTaxa = precoNum * (1 + taxa/100);
-                const valorParcela = valorTotalComTaxa / vezes;
-                
-                opcoes.push({
-                    vezes: vezes,
-                    valor: valorParcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-                    juros: vezes <= 6 ? 'sem juros' : `com juros`,
-                    destaque: vezes === 12 // Destacar 12x
-                });
-            });
-            
-            return opcoes;
-        }
-
-        // Função para converter preço formatado para número
-        function converterPrecoParaNumero(precoFormatado) {
-            // Remove "R$", pontos e troca vírgula por ponto
-            let numero = precoFormatado.replace('R$', '').replace(/\./g, '').replace(',', '.').trim();
-            return parseFloat(numero);
         }
 
         function moverSlide(direcao) {
@@ -1589,6 +1531,9 @@
                         </a>
                     </div>
                     
+                    <!-- STATUS DA API IMGBB -->
+                    ${mostrarStatusAPI()}
+                    
                     <div class="admin-tabs">
                         <button class="admin-tab active" onclick="abrirTab('tab-estatisticas')">📊 Estatísticas</button>
                         <button class="admin-tab" onclick="abrirTab('tab-motos')">🏍️ Gerenciar Motos</button>
@@ -1605,7 +1550,6 @@
                                 </div>
                                 <div class="stat-value" id="total-visitantes">0</div>
                                 <div class="stat-label">Visitantes Únicos</div>
-                                <div class="stat-trend trend-up" id="trend-visitantes">+12%</div>
                             </div>
                             
                             <div class="stat-card">
@@ -1614,16 +1558,6 @@
                                 </div>
                                 <div class="stat-value" id="total-visualizacoes">0</div>
                                 <div class="stat-label">Visualizações de Produtos</div>
-                                <div class="stat-trend trend-up" id="trend-visualizacoes">+8%</div>
-                            </div>
-                            
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <i class="fas fa-calendar-day"></i>
-                                </div>
-                                <div class="stat-value" id="visitantes-hoje">0</div>
-                                <div class="stat-label">Visitantes Hoje</div>
-                                <div class="stat-trend trend-up" id="trend-hoje">+5%</div>
                             </div>
                             
                             <div class="stat-card">
@@ -1632,25 +1566,7 @@
                                 </div>
                                 <div class="stat-value" id="total-motos">${motos.length}</div>
                                 <div class="stat-label">Motos no Catálogo</div>
-                                <div class="stat-trend trend-up">+${motos.length}%</div>
                             </div>
-                        </div>
-                        
-                        <div class="stats-chart">
-                            <h3 class="admin-section-title">📈 Visitantes Únicos - Últimos 7 Dias</h3>
-                            <div class="chart-container" id="visitas-chart">
-                                <!-- Gráfico será gerado dinamicamente -->
-                            </div>
-                            <div class="stats-date" id="data-atualizacao">Última atualização: Carregando...</div>
-                        </div>
-                        
-                        <div class="admin-section">
-                            <h3 class="admin-section-title">🚀 Ações Rápidas</h3>
-                            <button class="admin-btn" onclick="limparTodasMotos()">🗑️ Limpar Todas as Motos</button>
-                            <button class="admin-btn" onclick="abrirTab('tab-motos')">🏍️ Gerenciar Motos</button>
-                            <button class="admin-btn" onclick="abrirTab('tab-adicionar')">➕ Adicionar Moto</button>
-                            <button class="admin-btn" onclick="abrirTab('tab-simulacao')">🧮 Simulação Moto</button>
-                            <button class="admin-btn" onclick="carregarEstatisticas()">🔄 Atualizar Estatísticas</button>
                         </div>
                     </div>
                     
@@ -1678,6 +1594,7 @@
                             
                             <div class="image-upload-container">
                                 <h4>Imagens da Moto</h4>
+                                <p><small><i class="fas fa-sync-alt"></i> As imagens serão automaticamente enviadas para a nuvem e sincronizadas em todos os dispositivos</small></p>
                                 <div class="file-input-container">
                                     <label class="file-input-label">
                                         <i class="fas fa-upload"></i> Selecionar Imagens
@@ -1689,9 +1606,17 @@
                                 </div>
                             </div>
                             
+                            <div id="upload-status-container">
+                                <!-- Status dos uploads aparecerá aqui -->
+                            </div>
+                            
                             <div style="display: flex; gap: 10px;">
-                                <button class="admin-btn" id="btn-salvar-moto" onclick="salvarMoto()">💾 Salvar Moto</button>
-                                <button class="admin-btn admin-btn-danger" id="btn-cancelar-edicao" onclick="cancelarEdicao()" style="display: none;">❌ Cancelar</button>
+                                <button class="admin-btn" id="btn-salvar-moto" onclick="salvarMoto()">
+                                    <i class="fas fa-save"></i> Salvar Moto
+                                </button>
+                                <button class="admin-btn admin-btn-danger" id="btn-cancelar-edicao" onclick="cancelarEdicao()" style="display: none;">
+                                    <i class="fas fa-times"></i> Cancelar
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1704,12 +1629,12 @@
                                 
                                 <div>
                                     <label for="entrada">Entrada (opcional):</label>
-                                    <input type="text" id="entrada" class="admin-input" placeholder="R$ 0,00" inputmode="numeric" oninput="formatarMoeda(this)">
+                                    <input type="text" id="entrada" class="admin-input" placeholder="R$ 0,00" oninput="formatarMoeda(this)">
                                 </div>
                                 
                                 <div>
                                     <label for="valor-total">Valor total da moto:</label>
-                                    <input type="text" id="valor-total" class="admin-input" placeholder="R$ 0,00" required inputmode="numeric" oninput="formatarMoeda(this)">
+                                    <input type="text" id="valor-total" class="admin-input" placeholder="R$ 0,00" required oninput="formatarMoeda(this)">
                                 </div>
                                 
                                 <div>
@@ -1774,67 +1699,7 @@
             // Atualizar estatísticas na interface
             document.getElementById('total-visitantes').textContent = estatisticas.dispositivosUnicos.size;
             document.getElementById('total-visualizacoes').textContent = estatisticas.visualizacoes;
-            
-            // Calcular visitantes do dia atual
-            const hoje = new Date().toDateString();
-            const visitantesHoje = estatisticas.visitasPorDia[hoje] || 0;
-            document.getElementById('visitantes-hoje').textContent = visitantesHoje;
-            
-            // Atualizar data de atualização
-            const agora = new Date();
-            document.getElementById('data-atualizacao').textContent = `Última atualização: ${agora.toLocaleString('pt-BR')}`;
-            
-            // Gerar gráfico de visitas dos últimos 7 dias
-            gerarGraficoVisitas();
-        }
-
-        function gerarGraficoVisitas() {
-            const container = document.getElementById('visitas-chart');
-            if (!container) return;
-            
-            container.innerHTML = '';
-            
-            const hoje = new Date();
-            const dados = [];
-            
-            // Gerar dados dos últimos 7 dias
-            for (let i = 6; i >= 0; i--) {
-                const data = new Date(hoje);
-                data.setDate(hoje.getDate() - i);
-                const dataStr = data.toDateString();
-                const visitas = estatisticas.visitasPorDia[dataStr] || 0;
-                dados.push({
-                    data: data,
-                    visitas: visitas
-                });
-            }
-            
-            // Encontrar o valor máximo para escala
-            const maxVisitas = Math.max(...dados.map(d => d.visitas), 1);
-            
-            // Criar barras do gráfico
-            dados.forEach(dado => {
-                const bar = document.createElement('div');
-                bar.className = 'chart-bar';
-                
-                // Calcular altura baseada no valor máximo
-                const altura = (dado.visitas / maxVisitas) * 100;
-                bar.style.height = `${altura}%`;
-                
-                // Adicionar valor
-                const valor = document.createElement('div');
-                valor.className = 'chart-value';
-                valor.textContent = dado.visitas;
-                bar.appendChild(valor);
-                
-                // Adicionar label (data)
-                const label = document.createElement('div');
-                label.className = 'chart-label';
-                label.textContent = dado.data.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
-                bar.appendChild(label);
-                
-                container.appendChild(bar);
-            });
+            document.getElementById('total-motos').textContent = motos.length;
         }
 
         function carregarListaMotos() {
@@ -1867,6 +1732,80 @@
                 `;
                 listaMotos.appendChild(item);
             });
+        }
+
+        function editarMoto(id) {
+            const moto = motos.find(m => m.id === id);
+            if (!moto) return;
+            
+            // Preencher formulário com dados da moto
+            document.getElementById('moto-id-editar').value = moto.id;
+            document.getElementById('moto-nome').value = moto.nome;
+            document.getElementById('moto-preco').value = moto.preco;
+            document.getElementById('moto-autonomia').value = moto.autonomia;
+            document.getElementById('moto-velocidade').value = moto.velocidade;
+            document.getElementById('moto-motor').value = moto.motor;
+            document.getElementById('moto-descricao').value = moto.descricao;
+            
+            // Exibir imagens existentes
+            const preview = document.getElementById('image-preview');
+            preview.innerHTML = '';
+            imagensParaUpload = [];
+            
+            if (moto.imagens && moto.imagens.length > 0) {
+                moto.imagens.forEach(img => {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = img;
+                    imgElement.className = 'preview-image';
+                    preview.appendChild(imgElement);
+                });
+            }
+            
+            // Alterar título do formulário
+            document.getElementById('titulo-form-moto').textContent = '✏️ Editar Moto';
+            
+            // Mostrar botão de cancelar
+            document.getElementById('btn-cancelar-edicao').style.display = 'block';
+            
+            // Ir para a aba de adicionar/editar
+            abrirTab('tab-adicionar');
+        }
+
+        function cancelarEdicao() {
+            // Limpar formulário
+            document.getElementById('moto-id-editar').value = '';
+            document.getElementById('moto-nome').value = '';
+            document.getElementById('moto-preco').value = '';
+            document.getElementById('moto-autonomia').value = '';
+            document.getElementById('moto-velocidade').value = '';
+            document.getElementById('moto-motor').value = '';
+            document.getElementById('moto-descricao').value = '';
+            
+            // Limpar imagens
+            const preview = document.getElementById('image-preview');
+            preview.innerHTML = '';
+            imagensParaUpload = [];
+            document.getElementById('moto-imagens').value = '';
+            
+            // Restaurar título
+            document.getElementById('titulo-form-moto').textContent = '➕ Adicionar Nova Moto';
+            
+            // Esconder botão de cancelar
+            document.getElementById('btn-cancelar-edicao').style.display = 'none';
+        }
+
+        function excluirMoto(id) {
+            if (!confirm('Tem certeza que deseja excluir esta moto?')) return;
+            
+            motos = motos.filter(m => m.id !== id);
+            salvarMotos();
+            carregarListaMotos();
+            
+            alert('Moto excluída com sucesso!');
+        }
+
+        function gerarIdUnico() {
+            return 'moto-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
         }
 
         // =========================================
@@ -1972,170 +1911,6 @@
                 <div class="resultado-parcela">${parcelas}x de ${valorParcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</div>
                 <p>Total financiado: ${valorTotalComTaxa.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
             `;
-        }
-
-        function previewImages(input) {
-            const preview = document.getElementById('image-preview');
-            preview.innerHTML = '';
-            imagensParaUpload = [];
-            
-            if (input.files) {
-                Array.from(input.files).forEach(file => {
-                    const reader = new FileReader();
-                    
-                    reader.onload = function(e) {
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.className = 'preview-image';
-                        preview.appendChild(img);
-                        
-                        // Armazenar a imagem para upload
-                        imagensParaUpload.push(e.target.result);
-                    }
-                    
-                    reader.readAsDataURL(file);
-                });
-            }
-        }
-
-        function editarMoto(id) {
-            const moto = motos.find(m => m.id === id);
-            if (!moto) return;
-            
-            // Preencher formulário com dados da moto
-            document.getElementById('moto-id-editar').value = moto.id;
-            document.getElementById('moto-nome').value = moto.nome;
-            document.getElementById('moto-preco').value = moto.preco;
-            document.getElementById('moto-autonomia').value = moto.autonomia;
-            document.getElementById('moto-velocidade').value = moto.velocidade;
-            document.getElementById('moto-motor').value = moto.motor;
-            document.getElementById('moto-descricao').value = moto.descricao;
-            
-            // Exibir imagens existentes
-            const preview = document.getElementById('image-preview');
-            preview.innerHTML = '';
-            imagensParaUpload = [];
-            
-            if (moto.imagens && moto.imagens.length > 0) {
-                moto.imagens.forEach(img => {
-                    const imgElement = document.createElement('img');
-                    imgElement.src = img;
-                    imgElement.className = 'preview-image';
-                    preview.appendChild(imgElement);
-                    
-                    // Armazenar as imagens existentes
-                    imagensParaUpload.push(img);
-                });
-            }
-            
-            // Alterar título do formulário
-            document.getElementById('titulo-form-moto').textContent = '✏️ Editar Moto';
-            
-            // Mostrar botão de cancelar
-            document.getElementById('btn-cancelar-edicao').style.display = 'block';
-            
-            // Ir para a aba de adicionar/editar
-            abrirTab('tab-adicionar');
-        }
-
-        function cancelarEdicao() {
-            // Limpar formulário
-            document.getElementById('moto-id-editar').value = '';
-            document.getElementById('moto-nome').value = '';
-            document.getElementById('moto-preco').value = '';
-            document.getElementById('moto-autonomia').value = '';
-            document.getElementById('moto-velocidade').value = '';
-            document.getElementById('moto-motor').value = '';
-            document.getElementById('moto-descricao').value = '';
-            
-            // Limpar imagens
-            const preview = document.getElementById('image-preview');
-            preview.innerHTML = '';
-            imagensParaUpload = [];
-            document.getElementById('moto-imagens').value = '';
-            
-            // Restaurar título
-            document.getElementById('titulo-form-moto').textContent = '➕ Adicionar Nova Moto';
-            
-            // Esconder botão de cancelar
-            document.getElementById('btn-cancelar-edicao').style.display = 'none';
-        }
-
-        function salvarMoto() {
-            const idEditar = document.getElementById('moto-id-editar').value;
-            const nome = document.getElementById('moto-nome').value.trim();
-            const preco = document.getElementById('moto-preco').value.trim();
-            const autonomia = document.getElementById('moto-autonomia').value.trim();
-            const velocidade = document.getElementById('moto-velocidade').value.trim();
-            const motor = document.getElementById('moto-motor').value.trim();
-            const descricao = document.getElementById('moto-descricao').value.trim();
-            
-            // Validação básica
-            if (!nome || !preco || !autonomia || !velocidade || !motor) {
-                alert('Por favor, preencha todos os campos obrigatórios!');
-                return;
-            }
-            
-            if (idEditar) {
-                // Editar moto existente
-                const index = motos.findIndex(m => m.id === idEditar);
-                if (index !== -1) {
-                    motos[index] = {
-                        ...motos[index],
-                        nome,
-                        preco,
-                        autonomia,
-                        velocidade,
-                        motor,
-                        descricao: descricao || motos[index].descricao,
-                        imagens: imagensParaUpload.length > 0 ? imagensParaUpload : motos[index].imagens
-                    };
-                }
-            } else {
-                // Adicionar nova moto
-                const novoId = gerarIdUnico();
-                motos.push({
-                    id: novoId,
-                    nome,
-                    preco,
-                    autonomia,
-                    velocidade,
-                    motor,
-                    descricao: descricao || 'Descrição do produto.',
-                    imagens: imagensParaUpload.length > 0 ? imagensParaUpload : ['placeholder.png']
-                });
-            }
-            
-            // Salvar e atualizar
-            salvarMotos();
-            cancelarEdicao();
-            carregarListaMotos();
-            
-            alert(idEditar ? 'Moto atualizada com sucesso!' : 'Moto adicionada com sucesso!');
-        }
-
-        function excluirMoto(id) {
-            if (!confirm('Tem certeza que deseja excluir esta moto?')) return;
-            
-            motos = motos.filter(m => m.id !== id);
-            salvarMotos();
-            carregarListaMotos();
-            
-            alert('Moto excluída com sucesso!');
-        }
-
-        function limparTodasMotos() {
-            if (!confirm('Tem certeza que deseja excluir TODAS as motos? Esta ação não pode ser desfeita.')) return;
-            
-            motos = [];
-            salvarMotos();
-            carregarListaMotos();
-            
-            alert('Todas as motos foram removidas!');
-        }
-
-        function gerarIdUnico() {
-            return 'moto-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
         }
 
         // =========================================
