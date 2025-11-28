@@ -417,6 +417,7 @@
             margin-bottom: 15px;
             line-height: 1.6;
             font-size: 0.95rem;
+            text-align: center;
         }
 
         .product-features {
@@ -514,7 +515,7 @@
             color: var(--text);
         }
 
-        /* ÁREA DO PROPRIETÁRIO - COMPLETA */
+        /* ÁREA DO PROPRIETÁRIO - BOTÃO NO CATÁLOGO */
         .admin-button {
             position: fixed;
             top: 20px;
@@ -540,41 +541,136 @@
             transform: scale(1.1);
         }
 
-        .admin-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            display: none;
+        /* PÁGINA DE LOGIN */
+        .login-page {
+            display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 10001;
+            min-height: 100vh;
+            padding: 20px;
         }
 
-        .admin-panel {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            background: var(--secondary);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            z-index: 10000;
-            max-width: 500px;
-            width: 90vw;
-            max-height: 80vh;
-            overflow-y: auto;
+        .login-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .login-container h2 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .password-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .login-btn {
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .login-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .login-error {
+            color: #ff4444;
+            margin-top: 10px;
             display: none;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            border: 2px solid var(--accent);
+        }
+
+        /* PÁGINA ADMINISTRATIVA */
+        .admin-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .admin-tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .admin-tab.active {
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .admin-tab-content {
+            display: none;
+        }
+
+        .admin-tab-content.active {
+            display: block;
+        }
+
+        .admin-section {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--card-border);
+        }
+
+        .admin-section-title {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
 
         .admin-input {
             width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border: none;
             border-radius: 5px;
             background: #f8f9fa;
@@ -584,7 +680,7 @@
         .admin-textarea {
             width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border: none;
             border-radius: 5px;
             background: #f8f9fa;
@@ -597,12 +693,11 @@
             background: var(--accent);
             color: var(--primary);
             border: none;
-            padding: 10px;
+            padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
-            margin: 5px 0;
-            width: 100%;
+            margin: 5px;
             transition: all 0.3s;
         }
 
@@ -619,24 +714,11 @@
             background: #c82333;
         }
 
-        .admin-section {
-            background: #0d1b3d;
+        .moto-item {
+            background: rgba(255,255,255,0.1);
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 15px;
-        }
-
-        .admin-section-title {
-            color: var(--accent);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .moto-item {
-            background: rgba(255,255,255,0.1);
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -648,49 +730,54 @@
 
         .moto-actions {
             display: flex;
-            gap: 5px;
+            gap: 10px;
         }
 
-        .moto-action-btn {
+        .image-upload-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .image-preview {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .preview-image {
+            width: 100px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid var(--card-border);
+        }
+
+        .file-input-container {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-input-label {
+            display: inline-block;
+            padding: 8px 15px;
             background: var(--accent);
             color: var(--primary);
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 0.8rem;
-        }
-
-        .moto-action-btn:hover {
-            background: var(--accent-hover);
-        }
-
-        .admin-tabs {
-            display: flex;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--accent);
-        }
-
-        .admin-tab {
-            padding: 10px 15px;
-            cursor: pointer;
-            background: transparent;
-            border: none;
-            color: var(--text);
-            border-bottom: 2px solid transparent;
-        }
-
-        .admin-tab.active {
-            border-bottom: 2px solid var(--accent);
-            color: var(--accent);
-        }
-
-        .admin-tab-content {
-            display: none;
-        }
-
-        .admin-tab-content.active {
-            display: block;
+            font-weight: bold;
         }
 
         @media (max-width: 768px) {
@@ -701,122 +788,24 @@
                 height: 40px;
                 font-size: 16px;
             }
-            .admin-panel {
-                top: 60px;
-                right: 10px;
-                max-width: calc(100vw - 20px);
+            
+            .moto-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .moto-actions {
+                width: 100%;
+                justify-content: flex-end;
             }
         }
     </style>
 </head>
 <body>
-    <!-- BOTÃO ADMIN -->
-    <button class="admin-button" onclick="abrirLogin()">
-        <i class="fas fa-cog"></i>
-    </button>
-
-    <div class="container">
-        <!-- SEU CONTEÚDO ORIGINAL AQUI -->
-        <a href="index.html" class="back-btn">
-            <i class="fas fa-arrow-left"></i> Voltar para o site
-        </a>
-
-        <div class="catalog-header">
-            <h1>Catálogo EloBike</h1>
-            <p>Descubra nossa linha completa de scooters elétricas</p>
-        </div>
-
-        <!-- CATÁLOGO ORIGINAL -->
-        <div class="scooter-catalog">
-            <div class="catalog-container" id="catalogContainer">
-                <!-- As motos serão carregadas dinamicamente aqui -->
-            </div>
-            
-            <div class="catalog-controls">
-                <div class="catalog-arrow prev" onclick="moverSlide(-1)">
-                    <i class="fas fa-chevron-left"></i>
-                </div>
-                <div class="catalog-arrow next" onclick="moverSlide(1)">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div>
-            
-            <div class="catalog-indicators" id="catalogIndicators">
-                <!-- Os indicadores serão gerados dinamicamente -->
-            </div>
-        </div>
-
-        <!-- PÁGINAS DE PRODUTO -->
-        <div id="product-pages">
-            <!-- As páginas de produto serão geradas dinamicamente -->
-        </div>
-    </div>
-
-    <!-- MODAL LOGIN -->
-    <div class="admin-modal" id="adminModal">
-        <div style="background: #1e3a8a; padding: 30px; border-radius: 10px; text-align: center; color: white; max-width: 300px; width: 90%;">
-            <h3 style="margin-bottom: 20px; color: #E4BB13;">Área do Proprietário</h3>
-            <input type="password" id="adminPassword" placeholder="Digite a senha" class="admin-input">
-            <button class="admin-btn" onclick="fazerLogin()">Entrar</button>
-            <p id="loginError" style="color: #ff4444; margin-top: 10px; display: none;">Senha incorreta!</p>
-        </div>
-    </div>
-
-    <!-- PAINEL ADMIN -->
-    <div class="admin-panel" id="adminPanel">
-        <div class="admin-tabs">
-            <button class="admin-tab active" onclick="abrirTab('tab-estatisticas')">📊 Estatísticas</button>
-            <button class="admin-tab" onclick="abrirTab('tab-motos')">🏍️ Gerenciar Motos</button>
-            <button class="admin-tab" onclick="abrirTab('tab-adicionar')">➕ Adicionar Moto</button>
-        </div>
-        
-        <!-- ABA DE ESTATÍSTICAS -->
-        <div id="tab-estatisticas" class="admin-tab-content active">
-            <div class="admin-section">
-                <h3 class="admin-section-title">📊 Estatísticas do Site</h3>
-                <p>👥 Total de Visitantes: <span id="visitantesCount">0</span></p>
-                <p>👀 Visualizações de Produtos: <span id="visualizacoesCount">0</span></p>
-                <p>📅 Visitantes Hoje: <span id="visitantesHoje">0</span></p>
-            </div>
-            
-            <div class="admin-section">
-                <h3 class="admin-section-title">🚀 Ações Rápidas</h3>
-                <button class="admin-btn" onclick="abrirTab('tab-motos')">🏍️ Gerenciar Motos</button>
-                <button class="admin-btn" onclick="abrirTab('tab-adicionar')">➕ Adicionar Moto</button>
-                <button class="admin-btn" onclick="carregarEstatisticas()">🔄 Atualizar Estatísticas</button>
-            </div>
-        </div>
-        
-        <!-- ABA DE GERENCIAR MOTOS -->
-        <div id="tab-motos" class="admin-tab-content">
-            <div class="admin-section">
-                <h3 class="admin-section-title">🏍️ Motos Cadastradas</h3>
-                <div id="lista-motos">
-                    <!-- As motos serão listadas aqui -->
-                </div>
-            </div>
-        </div>
-        
-        <!-- ABA DE ADICIONAR MOTO -->
-        <div id="tab-adicionar" class="admin-tab-content">
-            <div class="admin-section">
-                <h3 class="admin-section-title" id="titulo-form-moto">➕ Adicionar Nova Moto</h3>
-                <input type="hidden" id="moto-id-editar" value="">
-                <input type="text" id="moto-nome" placeholder="Nome do Modelo" class="admin-input" required>
-                <input type="number" id="moto-preco" placeholder="Preço (R$)" class="admin-input" required>
-                <input type="text" id="moto-autonomia" placeholder="Autonomia (KM)" class="admin-input" required>
-                <input type="text" id="moto-velocidade" placeholder="Velocidade Máxima (KM/H)" class="admin-input" required>
-                <input type="text" id="moto-motor" placeholder="Potência do Motor (W)" class="admin-input" required>
-                <textarea id="moto-descricao" placeholder="Descrição do Produto" class="admin-textarea"></textarea>
-                <input type="text" id="moto-imagem" placeholder="URL da Imagem" class="admin-input">
-                <div style="display: flex; gap: 10px;">
-                    <button class="admin-btn" id="btn-salvar-moto" onclick="salvarMoto()">💾 Salvar Moto</button>
-                    <button class="admin-btn admin-btn-danger" id="btn-cancelar-edicao" onclick="cancelarEdicao()" style="display: none;">❌ Cancelar</button>
-                </div>
-            </div>
-        </div>
-        
-        <button class="admin-btn admin-btn-danger" onclick="fecharPainel()">❌ Fechar Painel</button>
+    <!-- Verificar se estamos na página de catálogo, login ou admin -->
+    <div id="app">
+        <!-- Conteúdo será carregado dinamicamente -->
     </div>
 
     <script>
@@ -824,6 +813,12 @@
         // CONFIGURAÇÕES E VARIÁVEIS GLOBAIS
         // =========================================
         const SENHA_ADMIN = "EloBike2024";
+        const PAGINAS = {
+            CATALOGO: 'catalogo',
+            LOGIN: 'login',
+            ADMIN: 'admin'
+        };
+        
         let slideAtual = 0;
         let totalSlides = 0;
         let motos = [];
@@ -832,6 +827,7 @@
             visualizacoes: 0,
             ultimaVisita: null
         };
+        let imagensParaUpload = [];
 
         // =========================================
         // FUNÇÕES DE INICIALIZAÇÃO
@@ -840,21 +836,17 @@
             // Carregar dados salvos
             carregarDados();
             
-            // Inicializar catálogo
-            inicializarCatalogo();
+            // Determinar qual página mostrar
+            const urlParams = new URLSearchParams(window.location.search);
+            const pagina = urlParams.get('pagina') || PAGINAS.CATALOGO;
             
-            // Registrar visita
-            registrarVisita();
+            // Mostrar a página apropriada
+            mostrarPagina(pagina);
             
-            // Iniciar carrossel automático
-            setInterval(() => moverSlide(1), 5000);
-            
-            // Fechar modal ao clicar fora
-            document.getElementById('adminModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.style.display = 'none';
-                }
-            });
+            // Registrar visita se for a página do catálogo
+            if (pagina === PAGINAS.CATALOGO) {
+                registrarVisita();
+            }
         });
 
         function carregarDados() {
@@ -873,7 +865,7 @@
                         velocidade: '45 KM/H',
                         motor: '1000W',
                         descricao: 'A scooter elétrica R13 combina design moderno com alta performance. Ideal para deslocamentos urbanos, oferece conforto e eficiência energética.',
-                        imagem: 'R13-01.png'
+                        imagens: ['R13-01.png']
                     },
                     {
                         id: 'r15',
@@ -883,7 +875,7 @@
                         velocidade: '55 KM/H',
                         motor: '1200W',
                         descricao: 'Com maior autonomia e velocidade, a R15 é perfeita para quem precisa de mais desempenho no dia a dia sem abrir mão do estilo.',
-                        imagem: 'R15-01.png'
+                        imagens: ['R15-01.png']
                     },
                     {
                         id: 'r18',
@@ -893,7 +885,7 @@
                         velocidade: '60 KM/H',
                         motor: '1500W',
                         descricao: 'A scooter premium da linha, com design sofisticado e recursos avançados para uma experiência de pilotagem incomparável.',
-                        imagem: 'R18-01.png'
+                        imagens: ['R18-01.png']
                     }
                 ];
                 salvarMotos();
@@ -915,8 +907,75 @@
         }
 
         // =========================================
-        // FUNÇÕES DO CATÁLOGO
+        // FUNÇÕES DE NAVEGAÇÃO
         // =========================================
+        function mostrarPagina(pagina) {
+            const app = document.getElementById('app');
+            
+            switch(pagina) {
+                case PAGINAS.CATALOGO:
+                    app.innerHTML = gerarPaginaCatalogo();
+                    inicializarCatalogo();
+                    break;
+                case PAGINAS.LOGIN:
+                    app.innerHTML = gerarPaginaLogin();
+                    break;
+                case PAGINAS.ADMIN:
+                    app.innerHTML = gerarPaginaAdmin();
+                    inicializarAdmin();
+                    break;
+            }
+        }
+
+        function navegarPara(pagina) {
+            window.location.href = `?pagina=${pagina}`;
+        }
+
+        // =========================================
+        // PÁGINA DO CATÁLOGO
+        // =========================================
+        function gerarPaginaCatalogo() {
+            return `
+                <button class="admin-button" onclick="navegarPara('${PAGINAS.LOGIN}')">
+                    <i class="fas fa-cog"></i>
+                </button>
+
+                <div class="container">
+                    <a href="index.html" class="back-btn">
+                        <i class="fas fa-arrow-left"></i> Voltar para o site
+                    </a>
+
+                    <div class="catalog-header">
+                        <h1>Catálogo EloBike</h1>
+                        <p>Descubra nossa linha completa de scooters elétricas</p>
+                    </div>
+
+                    <div class="scooter-catalog">
+                        <div class="catalog-container" id="catalogContainer">
+                            <!-- As motos serão carregadas dinamicamente aqui -->
+                        </div>
+                        
+                        <div class="catalog-controls">
+                            <div class="catalog-arrow prev" onclick="moverSlide(-1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="catalog-arrow next" onclick="moverSlide(1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="catalog-indicators" id="catalogIndicators">
+                            <!-- Os indicadores serão gerados dinamicamente -->
+                        </div>
+                    </div>
+
+                    <div id="product-pages">
+                        <!-- As páginas de produto serão geradas dinamicamente -->
+                    </div>
+                </div>
+            `;
+        }
+
         function inicializarCatalogo() {
             const container = document.getElementById('catalogContainer');
             const indicadores = document.getElementById('catalogIndicators');
@@ -934,7 +993,7 @@
                 slide.className = 'scooter-model';
                 slide.innerHTML = `
                     <div class="model-image">
-                        <img src="${moto.imagem || 'placeholder.png'}" alt="${moto.nome}">
+                        <img src="${moto.imagens && moto.imagens.length > 0 ? moto.imagens[0] : 'placeholder.png'}" alt="${moto.nome}">
                     </div>
                     <div class="view-details-container">
                         <button class="view-details-btn" onclick="abrirProduto('${moto.id}')">
@@ -972,6 +1031,36 @@
                 const productPage = document.createElement('div');
                 productPage.id = `product-${moto.id}`;
                 productPage.className = 'product-page';
+                
+                // Gerar galeria de imagens
+                let galleryHTML = '';
+                if (moto.imagens && moto.imagens.length > 0) {
+                    galleryHTML = `
+                        <div class="product-gallery">
+                            <div class="gallery-container" id="gallery-${moto.id}">
+                                ${moto.imagens.map((img, idx) => `
+                                    <div class="gallery-image">
+                                        <img src="${img}" alt="${moto.nome}">
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="gallery-controls">
+                                <div class="gallery-arrow prev" onclick="moverGaleria('${moto.id}', -1)">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="gallery-arrow next" onclick="moverGaleria('${moto.id}', 1)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="gallery-indicators" id="gallery-indicators-${moto.id}">
+                                ${moto.imagens.map((img, idx) => `
+                                    <div class="gallery-indicator ${idx === 0 ? 'active' : ''}" onclick="irParaImagem('${moto.id}', ${idx})"></div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+                
                 productPage.innerHTML = `
                     <div class="product-header">
                         <h2 class="product-title">${moto.nome}</h2>
@@ -979,13 +1068,7 @@
                             <i class="fas fa-arrow-left"></i> Voltar
                         </button>
                     </div>
-                    <div class="product-gallery">
-                        <div class="gallery-container">
-                            <div class="gallery-image">
-                                <img src="${moto.imagem || 'placeholder.png'}" alt="${moto.nome}">
-                            </div>
-                        </div>
-                    </div>
+                    ${galleryHTML}
                     <div class="product-details">
                         <div class="model-price">${moto.preco}</div>
                         <p class="product-description">${moto.descricao}</p>
@@ -1014,6 +1097,9 @@
             });
             
             totalSlides = motos.length;
+            
+            // Iniciar carrossel automático
+            setInterval(() => moverSlide(1), 5000);
         }
 
         function moverSlide(direcao) {
@@ -1055,12 +1141,72 @@
             document.querySelector('.scooter-catalog').style.display = 'block';
         }
 
+        // Funções para a galeria de imagens
+        function moverGaleria(produtoId, direcao) {
+            const galeria = document.getElementById(`gallery-${produtoId}`);
+            const indicadores = document.getElementById(`gallery-indicators-${produtoId}`);
+            const totalImagens = indicadores.children.length;
+            let slideAtual = Array.from(indicadores.children).findIndex(ind => ind.classList.contains('active'));
+            
+            slideAtual += direcao;
+            if (slideAtual >= totalImagens) slideAtual = 0;
+            if (slideAtual < 0) slideAtual = totalImagens - 1;
+            
+            galeria.style.transform = `translateX(-${slideAtual * 100}%)`;
+            
+            // Atualizar indicadores
+            Array.from(indicadores.children).forEach((ind, index) => {
+                ind.classList.toggle('active', index === slideAtual);
+            });
+        }
+
+        function irParaImagem(produtoId, index) {
+            const galeria = document.getElementById(`gallery-${produtoId}`);
+            const indicadores = document.getElementById(`gallery-indicators-${produtoId}`);
+            
+            galeria.style.transform = `translateX(-${index * 100}%)`;
+            
+            // Atualizar indicadores
+            Array.from(indicadores.children).forEach((ind, i) => {
+                ind.classList.toggle('active', i === index);
+            });
+        }
+
         // =========================================
-        // SISTEMA ADMIN - COMPLETO
+        // PÁGINA DE LOGIN
         // =========================================
-        function abrirLogin() {
-            document.getElementById('adminModal').style.display = 'flex';
-            document.getElementById('adminPassword').focus();
+        function gerarPaginaLogin() {
+            return `
+                <div class="login-page">
+                    <div class="login-container">
+                        <h2>Área do Proprietário</h2>
+                        <div class="password-container">
+                            <input type="password" id="adminPassword" placeholder="Digite a senha" class="admin-input">
+                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility()">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <button class="login-btn" onclick="fazerLogin()">Entrar</button>
+                        <a href="?pagina=${PAGINAS.CATALOGO}" class="back-btn" style="display: inline-block; margin-top: 15px;">
+                            <i class="fas fa-arrow-left"></i> Voltar ao Catálogo
+                        </a>
+                        <p id="loginError" class="login-error">Senha incorreta!</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('adminPassword');
+            const toggleButton = document.querySelector('.password-toggle i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleButton.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                toggleButton.className = 'fas fa-eye';
+            }
         }
 
         function fazerLogin() {
@@ -1068,23 +1214,96 @@
             const erro = document.getElementById('loginError');
             
             if (senha === SENHA_ADMIN) {
-                document.getElementById('adminModal').style.display = 'none';
-                abrirPainelAdmin();
-                document.getElementById('adminPassword').value = '';
-                erro.style.display = 'none';
+                navegarPara(PAGINAS.ADMIN);
             } else {
                 erro.style.display = 'block';
             }
         }
 
-        function abrirPainelAdmin() {
-            document.getElementById('adminPanel').style.display = 'block';
-            carregarEstatisticas();
-            carregarListaMotos();
+        // =========================================
+        // PÁGINA ADMINISTRATIVA
+        // =========================================
+        function gerarPaginaAdmin() {
+            return `
+                <div class="admin-page">
+                    <div class="admin-header">
+                        <h1>Painel Administrativo - EloBike</h1>
+                        <a href="?pagina=${PAGINAS.CATALOGO}" class="back-btn">
+                            <i class="fas fa-arrow-left"></i> Voltar ao Catálogo
+                        </a>
+                    </div>
+                    
+                    <div class="admin-tabs">
+                        <button class="admin-tab active" onclick="abrirTab('tab-estatisticas')">📊 Estatísticas</button>
+                        <button class="admin-tab" onclick="abrirTab('tab-motos')">🏍️ Gerenciar Motos</button>
+                        <button class="admin-tab" onclick="abrirTab('tab-adicionar')">➕ Adicionar Moto</button>
+                    </div>
+                    
+                    <!-- ABA DE ESTATÍSTICAS -->
+                    <div id="tab-estatisticas" class="admin-tab-content active">
+                        <div class="admin-section">
+                            <h3 class="admin-section-title">📊 Estatísticas do Site</h3>
+                            <p>👥 Total de Visitantes: <span id="visitantesCount">0</span></p>
+                            <p>👀 Visualizações de Produtos: <span id="visualizacoesCount">0</span></p>
+                            <p>📅 Visitantes Hoje: <span id="visitantesHoje">0</span></p>
+                        </div>
+                        
+                        <div class="admin-section">
+                            <h3 class="admin-section-title">🚀 Ações Rápidas</h3>
+                            <button class="admin-btn" onclick="abrirTab('tab-motos')">🏍️ Gerenciar Motos</button>
+                            <button class="admin-btn" onclick="abrirTab('tab-adicionar')">➕ Adicionar Moto</button>
+                            <button class="admin-btn" onclick="carregarEstatisticas()">🔄 Atualizar Estatísticas</button>
+                        </div>
+                    </div>
+                    
+                    <!-- ABA DE GERENCIAR MOTOS -->
+                    <div id="tab-motos" class="admin-tab-content">
+                        <div class="admin-section">
+                            <h3 class="admin-section-title">🏍️ Motos Cadastradas</h3>
+                            <div id="lista-motos">
+                                <!-- As motos serão listadas aqui -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ABA DE ADICIONAR MOTO -->
+                    <div id="tab-adicionar" class="admin-tab-content">
+                        <div class="admin-section">
+                            <h3 class="admin-section-title" id="titulo-form-moto">➕ Adicionar Nova Moto</h3>
+                            <input type="hidden" id="moto-id-editar" value="">
+                            <input type="text" id="moto-nome" placeholder="Nome do Modelo" class="admin-input" required>
+                            <input type="number" id="moto-preco" placeholder="Preço (R$)" class="admin-input" required>
+                            <input type="text" id="moto-autonomia" placeholder="Autonomia (KM)" class="admin-input" required>
+                            <input type="text" id="moto-velocidade" placeholder="Velocidade Máxima (KM/H)" class="admin-input" required>
+                            <input type="text" id="moto-motor" placeholder="Potência do Motor (W)" class="admin-input" required>
+                            <textarea id="moto-descricao" placeholder="Descrição do Produto" class="admin-textarea"></textarea>
+                            
+                            <div class="image-upload-container">
+                                <h4>Imagens da Moto</h4>
+                                <div class="file-input-container">
+                                    <label class="file-input-label">
+                                        <i class="fas fa-upload"></i> Selecionar Imagens
+                                        <input type="file" class="file-input" id="moto-imagens" accept="image/*" multiple onchange="previewImages(this)">
+                                    </label>
+                                </div>
+                                <div class="image-preview" id="image-preview">
+                                    <!-- Pré-visualização das imagens selecionadas -->
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 10px;">
+                                <button class="admin-btn" id="btn-salvar-moto" onclick="salvarMoto()">💾 Salvar Moto</button>
+                                <button class="admin-btn admin-btn-danger" id="btn-cancelar-edicao" onclick="cancelarEdicao()" style="display: none;">❌ Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
-        function fecharPainel() {
-            document.getElementById('adminPanel').style.display = 'none';
+        function inicializarAdmin() {
+            carregarEstatisticas();
+            carregarListaMotos();
         }
 
         function abrirTab(tabId) {
@@ -1119,6 +1338,8 @@
 
         function carregarListaMotos() {
             const listaMotos = document.getElementById('lista-motos');
+            if (!listaMotos) return;
+            
             listaMotos.innerHTML = '';
             
             if (motos.length === 0) {
@@ -1135,16 +1356,40 @@
                         <small>${moto.preco} | ${moto.autonomia} | ${moto.velocidade}</small>
                     </div>
                     <div class="moto-actions">
-                        <button class="moto-action-btn" onclick="editarMoto('${moto.id}')">
-                            <i class="fas fa-edit"></i>
+                        <button class="admin-btn" onclick="editarMoto('${moto.id}')">
+                            <i class="fas fa-edit"></i> Editar
                         </button>
-                        <button class="moto-action-btn admin-btn-danger" onclick="excluirMoto('${moto.id}')">
-                            <i class="fas fa-trash"></i>
+                        <button class="admin-btn admin-btn-danger" onclick="excluirMoto('${moto.id}')">
+                            <i class="fas fa-trash"></i> Excluir
                         </button>
                     </div>
                 `;
                 listaMotos.appendChild(item);
             });
+        }
+
+        function previewImages(input) {
+            const preview = document.getElementById('image-preview');
+            preview.innerHTML = '';
+            imagensParaUpload = [];
+            
+            if (input.files) {
+                Array.from(input.files).forEach(file => {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'preview-image';
+                        preview.appendChild(img);
+                        
+                        // Armazenar a imagem para upload
+                        imagensParaUpload.push(e.target.result);
+                    }
+                    
+                    reader.readAsDataURL(file);
+                });
+            }
         }
 
         function editarMoto(id) {
@@ -1159,7 +1404,23 @@
             document.getElementById('moto-velocidade').value = moto.velocidade.replace(' KM/H', '');
             document.getElementById('moto-motor').value = moto.motor.replace('W', '');
             document.getElementById('moto-descricao').value = moto.descricao;
-            document.getElementById('moto-imagem').value = moto.imagem || '';
+            
+            // Exibir imagens existentes
+            const preview = document.getElementById('image-preview');
+            preview.innerHTML = '';
+            imagensParaUpload = [];
+            
+            if (moto.imagens && moto.imagens.length > 0) {
+                moto.imagens.forEach(img => {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = img;
+                    imgElement.className = 'preview-image';
+                    preview.appendChild(imgElement);
+                    
+                    // Armazenar as imagens existentes
+                    imagensParaUpload.push(img);
+                });
+            }
             
             // Alterar título do formulário
             document.getElementById('titulo-form-moto').textContent = '✏️ Editar Moto';
@@ -1180,7 +1441,12 @@
             document.getElementById('moto-velocidade').value = '';
             document.getElementById('moto-motor').value = '';
             document.getElementById('moto-descricao').value = '';
-            document.getElementById('moto-imagem').value = '';
+            
+            // Limpar imagens
+            const preview = document.getElementById('image-preview');
+            preview.innerHTML = '';
+            imagensParaUpload = [];
+            document.getElementById('moto-imagens').value = '';
             
             // Restaurar título
             document.getElementById('titulo-form-moto').textContent = '➕ Adicionar Nova Moto';
@@ -1197,7 +1463,6 @@
             const velocidade = document.getElementById('moto-velocidade').value.trim();
             const motor = document.getElementById('moto-motor').value.trim();
             const descricao = document.getElementById('moto-descricao').value.trim();
-            const imagem = document.getElementById('moto-imagem').value.trim();
             
             // Validação básica
             if (!nome || isNaN(preco) || !autonomia || !velocidade || !motor) {
@@ -1223,7 +1488,7 @@
                         velocidade: velocidadeFormatada,
                         motor: motorFormatado,
                         descricao: descricao || motos[index].descricao,
-                        imagem: imagem || motos[index].imagem
+                        imagens: imagensParaUpload.length > 0 ? imagensParaUpload : motos[index].imagens
                     };
                 }
             } else {
@@ -1237,15 +1502,14 @@
                     velocidade: velocidadeFormatada,
                     motor: motorFormatado,
                     descricao: descricao || 'Descrição do produto.',
-                    imagem: imagem || 'placeholder.png'
+                    imagens: imagensParaUpload.length > 0 ? imagensParaUpload : ['placeholder.png']
                 });
             }
             
             // Salvar e atualizar
             salvarMotos();
-            inicializarCatalogo();
-            carregarListaMotos();
             cancelarEdicao();
+            carregarListaMotos();
             
             alert(idEditar ? 'Moto atualizada com sucesso!' : 'Moto adicionada com sucesso!');
         }
@@ -1255,7 +1519,6 @@
             
             motos = motos.filter(m => m.id !== id);
             salvarMotos();
-            inicializarCatalogo();
             carregarListaMotos();
             
             alert('Moto excluída com sucesso!');
@@ -1286,7 +1549,7 @@
             salvarEstatisticas();
             
             // Atualizar estatísticas no painel se estiver aberto
-            if (document.getElementById('adminPanel').style.display === 'block') {
+            if (document.getElementById('adminPanel')) {
                 carregarEstatisticas();
             }
         }
