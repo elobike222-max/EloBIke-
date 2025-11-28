@@ -839,19 +839,14 @@
             padding: 20px;
             margin-top: 20px;
             border: 1px solid var(--card-border);
+            text-align: center;
         }
 
-        .resultado-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .resultado-valor {
+        .resultado-parcela {
+            font-size: 1.5rem;
             font-weight: bold;
             color: var(--accent);
+            margin: 15px 0;
         }
 
         @media (max-width: 768px) {
@@ -932,6 +927,7 @@
             ultimaVisita: null
         };
         let imagensParaUpload = [];
+        let parcelaSelecionada = null;
 
         // =========================================
         // FUNÇÕES DE INICIALIZAÇÃO
@@ -1411,13 +1407,8 @@
                                 <h3 class="admin-section-title">🧮 Simulação de Financiamento</h3>
                                 
                                 <div>
-                                    <label for="entrada">Entrada (opcional):</label>
-                                    <input type="text" id="entrada" class="admin-input" placeholder="R$ 0,00" oninput="formatarMoeda(this)">
-                                </div>
-                                
-                                <div>
                                     <label for="valor-total">Valor total da moto:</label>
-                                    <input type="text" id="valor-total" class="admin-input" placeholder="R$ 0,00" required oninput="formatarMoeda(this)">
+                                    <input type="text" id="valor-total" class="admin-input" placeholder="R$ 0,00" required inputmode="numeric" oninput="formatarMoeda(this)">
                                 </div>
                                 
                                 <div>
@@ -1466,6 +1457,16 @@
             
             // Ativar a tab correspondente
             document.querySelector(`.admin-tab[onclick="abrirTab('${tabId}')"]`).classList.add('active');
+            
+            // Se for a aba de simulação, focar no campo de valor total
+            if (tabId === 'tab-simulacao') {
+                setTimeout(() => {
+                    const valorTotalInput = document.getElementById('valor-total');
+                    if (valorTotalInput) {
+                        valorTotalInput.focus();
+                    }
+                }, 100);
+            }
         }
 
         function carregarEstatisticas() {
@@ -1525,24 +1526,25 @@
             // Criar botões de 1 a 18 parcelas
             for (let i = 1; i <= 18; i++) {
                 const btn = document.createElement('button');
+                btn.type = 'button';
                 btn.className = 'parcela-btn';
                 btn.textContent = `${i}x`;
-                btn.onclick = () => selecionarParcela(i);
+                btn.onclick = () => selecionarParcela(i, btn);
                 container.appendChild(btn);
             }
         }
 
-        function selecionarParcela(numero) {
+        function selecionarParcela(numero, elemento) {
             // Remover classe active de todos os botões
             document.querySelectorAll('.parcela-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             
             // Adicionar classe active ao botão clicado
-            document.querySelector(`.parcela-btn:nth-child(${numero})`).classList.add('active');
+            elemento.classList.add('active');
             
             // Armazenar a parcela selecionada
-            window.parcelaSelecionada = numero;
+            parcelaSelecionada = numero;
         }
 
         function formatarMoeda(input) {
@@ -1553,7 +1555,7 @@
             if (valor === '') valor = '0';
             
             // Converter para número
-            const numero = parseInt(valor);
+            const numero = parseInt(valor) / 100;
             
             // Formatar como moeda brasileira
             input.value = numero.toLocaleString('pt-BR', {
@@ -1569,17 +1571,15 @@
 
         function calcularSimulacao() {
             // Verificar se a parcela foi selecionada
-            if (!window.parcelaSelecionada) {
+            if (!parcelaSelecionada) {
                 alert('Selecione a quantidade de parcelas!');
                 return;
             }
             
             // Obter valores dos campos
-            const entradaInput = document.getElementById('entrada');
             const valorTotalInput = document.getElementById('valor-total');
             
             // Converter valores para números
-            const entrada = entradaInput.value ? converterMoedaParaNumero(entradaInput.value) : 0;
             const valorTotal = converterMoedaParaNumero(valorTotalInput.value);
             
             // Verificar se o valor total é válido
@@ -1589,64 +1589,22 @@
             }
             
             // Obter a parcela selecionada e a taxa correspondente
-            const parcelas = window.parcelaSelecionada;
+            const parcelas = parcelaSelecionada;
             const taxa = TAXAS_PARCELAMENTO[parcelas];
             
             // Realizar cálculos
-            const valorFinanciado = valorTotal - entrada;
-            const descontoTotal = valorFinanciado * (taxa / 100);
-            const valorLiquido = valorFinanciado - descontoTotal;
+            const valorFinanciado = valorTotal;
             const valorParcela = valorFinanciado / parcelas;
             
             // Exibir resultados
-            exibirResultadoSimulacao({
-                valorTotal,
-                entrada,
-                valorFinanciado,
-                parcelas,
-                taxa,
-                descontoTotal,
-                valorLiquido,
-                valorParcela
-            });
+            exibirResultadoSimulacao(parcelas, valorParcela);
         }
 
-        function exibirResultadoSimulacao(dados) {
+        function exibirResultadoSimulacao(parcelas, valorParcela) {
             const container = document.getElementById('resultado-simulacao');
             
             container.innerHTML = `
-                <div class="resultado-item">
-                    <span>Valor total da moto:</span>
-                    <span class="resultado-valor">${dados.valorTotal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
-                </div>
-                <div class="resultado-item">
-                    <span>Entrada:</span>
-                    <span class="resultado-valor">${dados.entrada.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
-                </div>
-                <div class="resultado-item">
-                    <span>Valor financiado:</span>
-                    <span class="resultado-valor">${dados.valorFinanciado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
-                </div>
-                <div class="resultado-item">
-                    <span>Número de parcelas:</span>
-                    <span class="resultado-valor">${dados.parcelas}x</span>
-                </div>
-                <div class="resultado-item">
-                    <span>Percentual de desconto da maquininha:</span>
-                    <span class="resultado-valor">${dados.taxa.toFixed(2)}%</span>
-                </div>
-                <div class="resultado-item">
-                    <span>Valor do desconto:</span>
-                    <span class="resultado-valor">${dados.descontoTotal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
-                </div>
-                <div class="resultado-item">
-                    <span>Valor líquido que recebo:</span>
-                    <span class="resultado-valor">${dados.valorLiquido.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
-                </div>
-                <div class="resultado-item">
-                    <span>Valor da parcela para o cliente:</span>
-                    <span class="resultado-valor">${dados.valorParcela.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
-                </div>
+                <div class="resultado-parcela">${parcelas}x de ${valorParcela.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</div>
             `;
         }
 
