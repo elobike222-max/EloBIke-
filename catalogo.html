@@ -153,13 +153,14 @@
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--accent);
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
 
-        .price-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+        .parcelamento-vitrine {
+            font-size: 1rem;
+            color: var(--text);
             margin-bottom: 15px;
+            font-weight: 500;
         }
 
         .model-specs {
@@ -1079,6 +1080,15 @@
             }
         }
 
+        // Função para calcular parcela em 18x
+        function calcularParcela18x(preco) {
+            const precoNumerico = converterPrecoParaNumero(preco);
+            const taxa = TAXAS_PARCELAMENTO[18];
+            const valorTotalComTaxa = precoNumerico * (1 + taxa/100);
+            const valorParcela = valorTotalComTaxa / 18;
+            return valorParcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
         async function salvarMoto() {
             const idEditar = document.getElementById('moto-id-editar').value;
             const nome = document.getElementById('moto-nome').value.trim();
@@ -1103,6 +1113,12 @@
                 urlsImagens = await processarUploadImagens(imagensParaUpload);
             }
             
+            // Formatar os valores
+            const precoFormatado = formatarPrecoParaExibicao(preco);
+            const autonomiaFormatada = `${autonomia} KM`;
+            const velocidadeFormatada = `${velocidade} KM/H`;
+            const motorFormatado = `${motor} W`;
+            
             if (idEditar) {
                 // Editar moto existente
                 const index = motos.findIndex(m => m.id === idEditar);
@@ -1113,10 +1129,10 @@
                     motos[index] = {
                         ...motos[index],
                         nome,
-                        preco,
-                        autonomia,
-                        velocidade,
-                        motor,
+                        preco: precoFormatado,
+                        autonomia: autonomiaFormatada,
+                        velocidade: velocidadeFormatada,
+                        motor: motorFormatado,
                         descricao: descricao || motos[index].descricao,
                         imagens: imagensFinais
                     };
@@ -1127,10 +1143,10 @@
                 motos.push({
                     id: novoId,
                     nome,
-                    preco,
-                    autonomia,
-                    velocidade,
-                    motor,
+                    preco: precoFormatado,
+                    autonomia: autonomiaFormatada,
+                    velocidade: velocidadeFormatada,
+                    motor: motorFormatado,
                     descricao: descricao || 'Descrição do produto.',
                     imagens: urlsImagens.length > 0 ? urlsImagens : ['https://via.placeholder.com/300x200?text=Adicione+Imagens']
                 });
@@ -1285,7 +1301,10 @@
             
             // Adicionar cada moto ao catálogo
             motos.forEach((moto, index) => {
-                // Criar slide do catálogo (SEM PARCELAMENTO - APENAS PREÇO)
+                // Calcular parcela em 18x
+                const parcela18x = calcularParcela18x(moto.preco);
+                
+                // Criar slide do catálogo (COM PARCELAMENTO AUTOMÁTICO)
                 const slide = document.createElement('div');
                 slide.className = 'scooter-model';
                 slide.innerHTML = `
@@ -1300,6 +1319,7 @@
                     <div class="model-info">
                         <h2 class="model-name">${moto.nome}</h2>
                         <div class="model-price">${moto.preco}</div>
+                        <div class="parcelamento-vitrine">ou em 18x de ${parcela18x}</div>
                         <div class="model-specs">
                             <div class="spec-card">
                                 <div class="spec-value">${moto.autonomia}</div>
@@ -1358,6 +1378,9 @@
                     `;
                 }
                 
+                // Calcular parcelas para página de detalhes
+                const parcela18xDetalhes = calcularParcela18x(moto.preco);
+                
                 productPage.innerHTML = `
                     <div class="product-header">
                         <h2 class="product-title">${moto.nome}</h2>
@@ -1368,6 +1391,7 @@
                     ${galleryHTML}
                     <div class="product-details">
                         <div class="model-price">${moto.preco}</div>
+                        <div class="parcelamento-vitrine">ou em 18x de ${parcela18xDetalhes}</div>
                         <p class="product-description">${moto.descricao}</p>
                         <div class="model-specs">
                             <div class="spec-card">
@@ -1585,7 +1609,7 @@
                             <h3 class="admin-section-title" id="titulo-form-moto">➕ Adicionar Nova Moto</h3>
                             <input type="hidden" id="moto-id-editar" value="">
                             <input type="text" id="moto-nome" placeholder="Nome do Modelo" class="admin-input" required>
-                            <input type="text" id="moto-preco" placeholder="Preço (ex: 12500.00)" class="admin-input" required inputmode="decimal" oninput="formatarPreco(this)">
+                            <input type="text" id="moto-preco" placeholder="Preço (ex: 10800.00)" class="admin-input" required inputmode="decimal" oninput="formatarPreco(this)">
                             <input type="text" id="moto-autonomia" placeholder="Autonomia (ex: 45)" class="admin-input" required inputmode="numeric">
                             <input type="text" id="moto-velocidade" placeholder="Velocidade Máxima (ex: 45)" class="admin-input" required inputmode="numeric">
                             <input type="text" id="moto-motor" placeholder="Potência do Motor (ex: 1000)" class="admin-input" required inputmode="numeric">
@@ -1718,7 +1742,7 @@
                 item.innerHTML = `
                     <div class="moto-info">
                         <strong>${moto.nome}</strong><br>
-                        <small>${moto.preco} | ${moto.autonomia} | ${moto.velocidade}</small>
+                        <small>${moto.preco} | ${moto.autonomia} | ${moto.velocidade} | ${moto.motor}</small>
                     </div>
                     <div class="moto-actions">
                         <button class="admin-btn" onclick="editarMoto('${moto.id}')">
@@ -1815,6 +1839,33 @@
         // =========================================
         // FUNÇÕES PARA FORMATAÇÃO DE NÚMEROS
         // =========================================
+
+        // Função para converter preço para número
+        function converterPrecoParaNumero(preco) {
+            return parseFloat(preco.replace('R$', '').replace(/\./g, '').replace(',', '.').trim());
+        }
+
+        // Função para formatar preço para exibição
+        function formatarPrecoParaExibicao(preco) {
+            let valor = preco.replace(/\D/g, '');
+            
+            // Se estiver vazio, definir como 0
+            if (valor === '') valor = '0';
+            
+            // Adicionar zeros para centavos se necessário
+            while (valor.length < 3) {
+                valor = '0' + valor;
+            }
+            
+            // Separar reais e centavos
+            const reais = valor.slice(0, -2) || '0';
+            const centavos = valor.slice(-2);
+            
+            // Formatar com separador de milhar e vírgula para centavos
+            const numeroFormatado = parseFloat(reais).toLocaleString('pt-BR') + ',' + centavos;
+            
+            return 'R$ ' + numeroFormatado;
+        }
 
         // Função para formatar preço durante a digitação
         function formatarPreco(input) {
