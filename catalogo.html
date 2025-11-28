@@ -987,7 +987,7 @@
             }
             
             .stats-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
@@ -1040,7 +1040,7 @@
             ultimaVisita: null,
             visitasPorDia: {},
             visualizacoesPorDia: {},
-            dadosMensais: {}
+            dispositivosUnicos: new Set()
         };
         let imagensParaUpload = [];
         let parcelaSelecionada = null;
@@ -1110,12 +1110,13 @@
             // Carregar estatísticas
             const statsSalvas = localStorage.getItem('estatisticas-eloBike');
             if (statsSalvas) {
-                estatisticas = JSON.parse(statsSalvas);
-                
-                // Inicializar estruturas se não existirem
-                if (!estatisticas.visitasPorDia) estatisticas.visitasPorDia = {};
-                if (!estatisticas.visualizacoesPorDia) estatisticas.visualizacoesPorDia = {};
-                if (!estatisticas.dadosMensais) estatisticas.dadosMensais = {};
+                const stats = JSON.parse(statsSalvas);
+                estatisticas = {
+                    ...estatisticas,
+                    ...stats,
+                    // Garantir que dispositivosUnicos seja um Set
+                    dispositivosUnicos: new Set(stats.dispositivosUnicos || [])
+                };
             }
         }
 
@@ -1124,7 +1125,12 @@
         }
 
         function salvarEstatisticas() {
-            localStorage.setItem('estatisticas-eloBike', JSON.stringify(estatisticas));
+            // Converter Set para Array para salvar no localStorage
+            const statsParaSalvar = {
+                ...estatisticas,
+                dispositivosUnicos: Array.from(estatisticas.dispositivosUnicos)
+            };
+            localStorage.setItem('estatisticas-eloBike', JSON.stringify(statsParaSalvar));
         }
 
         // =========================================
@@ -1469,7 +1475,7 @@
                                     <i class="fas fa-users"></i>
                                 </div>
                                 <div class="stat-value" id="total-visitantes">0</div>
-                                <div class="stat-label">Total de Visitantes</div>
+                                <div class="stat-label">Visitantes Únicos</div>
                                 <div class="stat-trend trend-up" id="trend-visitantes">+12%</div>
                             </div>
                             
@@ -1493,16 +1499,16 @@
                             
                             <div class="stat-card">
                                 <div class="stat-icon">
-                                    <i class="fas fa-chart-line"></i>
+                                    <i class="fas fa-motorcycle"></i>
                                 </div>
-                                <div class="stat-value" id="taxa-conversao">0%</div>
-                                <div class="stat-label">Taxa de Conversão</div>
-                                <div class="stat-trend trend-up" id="trend-conversao">+2%</div>
+                                <div class="stat-value" id="total-motos">${motos.length}</div>
+                                <div class="stat-label">Motos no Catálogo</div>
+                                <div class="stat-trend trend-up">+${motos.length}%</div>
                             </div>
                         </div>
                         
                         <div class="stats-chart">
-                            <h3 class="admin-section-title">📈 Visitas nos Últimos 7 Dias</h3>
+                            <h3 class="admin-section-title">📈 Visitantes Únicos - Últimos 7 Dias</h3>
                             <div class="chart-container" id="visitas-chart">
                                 <!-- Gráfico será gerado dinamicamente -->
                             </div>
@@ -1636,17 +1642,13 @@
 
         function carregarEstatisticas() {
             // Atualizar estatísticas na interface
-            document.getElementById('total-visitantes').textContent = estatisticas.visitantes;
+            document.getElementById('total-visitantes').textContent = estatisticas.dispositivosUnicos.size;
             document.getElementById('total-visualizacoes').textContent = estatisticas.visualizacoes;
             
             // Calcular visitantes do dia atual
             const hoje = new Date().toDateString();
             const visitantesHoje = estatisticas.visitasPorDia[hoje] || 0;
             document.getElementById('visitantes-hoje').textContent = visitantesHoje;
-            
-            // Calcular taxa de conversão (simulada)
-            const taxaConversao = Math.min(100, Math.round((estatisticas.visualizacoes / Math.max(estatisticas.visitantes, 1)) * 10));
-            document.getElementById('taxa-conversao').textContent = `${taxaConversao}%`;
             
             // Atualizar data de atualização
             const agora = new Date();
@@ -2006,19 +2008,38 @@
         function registrarVisita() {
             const hoje = new Date().toDateString();
             
-            if (!estatisticas.visitasPorDia) {
-                estatisticas.visitasPorDia = {};
+            // Gerar um ID único para o dispositivo (baseado em userAgent + data)
+            const dispositivoId = gerarIdDispositivo();
+            
+            // Verificar se este dispositivo já visitou hoje
+            const chaveVisitaHoje = `visita-${hoje}-${dispositivoId}`;
+            const jaVisitouHoje = localStorage.getItem(chaveVisitaHoje);
+            
+            if (!jaVisitouHoje) {
+                // Marcar que este dispositivo já visitou hoje
+                localStorage.setItem(chaveVisitaHoje, 'true');
+                
+                // Adicionar dispositivo aos únicos
+                estatisticas.dispositivosUnicos.add(dispositivoId);
+                
+                // Registrar visita do dia
+                if (!estatisticas.visitasPorDia[hoje]) {
+                    estatisticas.visitasPorDia[hoje] = 0;
+                }
+                estatisticas.visitasPorDia[hoje]++;
+                
+                // Atualizar estatísticas
+                salvarEstatisticas();
             }
             
-            // Se é a primeira visita do dia, contar como novo visitante
-            if (!estatisticas.visitasPorDia[hoje]) {
-                estatisticas.visitasPorDia[hoje] = 0;
-            }
-            
-            estatisticas.visitasPorDia[hoje]++;
-            estatisticas.visitantes++;
             estatisticas.ultimaVisita = new Date().toISOString();
-            salvarEstatisticas();
+        }
+
+        function gerarIdDispositivo() {
+            // Gerar um ID único baseado no userAgent e data
+            const userAgent = navigator.userAgent;
+            const data = new Date().toDateString();
+            return btoa(userAgent + data).substring(0, 16);
         }
 
         function registrarVisualizacao(produtoId) {
