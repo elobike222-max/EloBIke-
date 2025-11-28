@@ -19,7 +19,7 @@
             --scooter-color: #2563eb;
             --success: #28a745;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -38,14 +38,14 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 10px;
+            padding: 0 15px;
         }
 
         .catalog-header {
             text-align: center;
-            margin: 15px 0 30px;
+            margin: 20px 0 30px;
             position: relative;
         }
 
@@ -54,8 +54,20 @@
             color: var(--accent);
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
             margin-bottom: 10px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .catalog-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
         }
 
         .catalog-header p {
@@ -63,20 +75,20 @@
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
-            font-weight: 300;
+            line-height: 1.6;
         }
 
+        /* VITRINE PREMIUM */
         .scooter-catalog {
             position: relative;
-            max-width: 900px;
-            margin: 30px auto;
+            margin: 40px auto;
             overflow: hidden;
             border-radius: 16px;
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             border: 1px solid var(--card-border);
-            padding: 20px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            padding: 25px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
         }
 
         .catalog-container {
@@ -91,102 +103,112 @@
             align-items: center;
             padding: 20px;
             user-select: none;
+            transition: transform 0.3s;
+        }
+
+        .scooter-model:hover {
+            transform: translateY(-5px);
         }
 
         .model-image {
             width: 100%;
-            max-width: 400px;
-            height: 240px;
+            max-width: 450px;
+            height: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border-radius: 12px;
             overflow: hidden;
             background: rgba(0, 0, 0, 0.2);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .scooter-model:hover .model-image {
+            transform: scale(1.02);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
         }
 
         .model-image img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            transition: transform 0.3s;
+            transition: transform 0.5s;
         }
 
-        .model-image:hover img {
+        .scooter-model:hover .model-image img {
             transform: scale(1.05);
         }
 
-        .view-details-container {
-            margin-bottom: 20px;
-            width: 100%;
+        .model-actions {
             display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            width: 100%;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .view-details-btn {
+        .view-details-btn, .whatsapp-btn-vitrine {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 16px 60px;
-            background: var(--accent);
-            color: var(--primary);
+            padding: 16px 30px;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 700;
+            font-weight: 600;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(228, 187, 19, 0.4);
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
-            width: auto;
-            min-width: 280px;
+            font-size: 1rem;
+            min-width: 180px;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .view-details-btn {
+            background: var(--accent);
+            color: var(--primary);
         }
 
         .view-details-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(228, 187, 19, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(228, 187, 19, 0.6);
             background: var(--accent-hover);
         }
 
-        .view-details-btn:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
+        .whatsapp-btn-vitrine {
+            background: var(--success);
+            color: white;
         }
 
-        .view-details-btn:hover:after {
-            left: 100%;
+        .whatsapp-btn-vitrine:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.6);
+            background: #1da851;
         }
 
         .model-info {
             width: 100%;
             text-align: center;
+            padding: 0 10px;
         }
 
         .model-name {
             font-size: 1.6rem;
             color: var(--accent);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-weight: 700;
-            letter-spacing: -0.3px;
+            letter-spacing: 0.5px;
         }
 
         .model-price {
             font-size: 1.8rem;
-            font-weight: 800;
+            font-weight: 700;
             color: var(--accent);
             margin-bottom: 8px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .parcelamento-vitrine {
@@ -204,21 +226,21 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .spec-card {
             background: rgba(13, 27, 61, 0.7);
             border-radius: 10px;
-            padding: 12px;
+            padding: 15px 8px;
             text-align: center;
             border: 1px solid var(--card-border);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
         }
 
         .spec-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            background: rgba(13, 27, 61, 0.9);
         }
 
         .spec-value {
@@ -241,7 +263,7 @@
             right: 0;
             display: flex;
             justify-content: space-between;
-            padding: 0 10px;
+            padding: 0 15px;
             transform: translateY(-50%);
             pointer-events: none;
             z-index: 20;
@@ -283,12 +305,13 @@
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
             transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .catalog-indicator.active {
             background: var(--accent);
             transform: scale(1.3);
-            box-shadow: 0 0 10px rgba(228, 187, 19, 0.5);
+            box-shadow: 0 0 8px rgba(228, 187, 19, 0.6);
         }
 
         .back-btn {
@@ -310,20 +333,20 @@
         .back-btn:hover {
             background: var(--accent);
             color: var(--primary);
-            transform: translateY(-2px);
+            transform: translateX(-3px);
         }
 
-        /* PÁGINA DE PRODUTO MELHORADA */
+        /* SEÇÃO DE DETALHES PREMIUM */
         .product-page {
             display: none;
-            max-width: 1000px;
-            margin: 20px auto;
+            max-width: 1100px;
+            margin: 30px auto;
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
             animation: fadeIn 0.5s ease;
         }
 
@@ -336,45 +359,37 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             padding-bottom: 15px;
             border-bottom: 1px solid var(--card-border);
         }
 
         .product-gallery-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: 120px 1fr;
             gap: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
-        .gallery-main {
-            flex: 1;
-            border-radius: 12px;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.2);
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .gallery-main img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .gallery-thumbnails {
-            width: 120px;
+        .gallery-thumbs {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            max-height: 400px;
+            gap: 12px;
+            max-height: 450px;
             overflow-y: auto;
+            padding-right: 5px;
         }
 
-        .thumbnail {
+        .gallery-thumbs::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .gallery-thumbs::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .thumb {
             width: 100%;
             height: 80px;
             border-radius: 8px;
@@ -385,16 +400,81 @@
             border: 2px solid transparent;
         }
 
-        .thumbnail:hover, .thumbnail.active {
+        .thumb.active, .thumb:hover {
             opacity: 1;
             border-color: var(--accent);
             transform: scale(1.05);
         }
 
-        .thumbnail img {
+        .thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .gallery-main {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 450px;
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-container {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            height: 100%;
+        }
+
+        .gallery-image {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .gallery-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        .gallery-arrow {
+            pointer-events: all;
+            background: rgba(0, 0, 0, 0.6);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 20px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .gallery-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
         }
 
         .product-details {
@@ -405,30 +485,28 @@
         }
 
         .product-info {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            padding: 20px;
         }
 
         .product-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--accent);
-            margin-bottom: 5px;
+            margin-bottom: 15px;
             font-weight: 700;
         }
 
         .product-price {
-            font-size: 2.2rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: 700;
             color: var(--accent);
             margin-bottom: 10px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .product-parcelamento {
             font-size: 1.3rem;
             color: var(--text);
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             font-weight: 500;
             background: rgba(13, 27, 61, 0.7);
             padding: 10px 20px;
@@ -438,127 +516,138 @@
 
         .product-description {
             color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 1rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         .product-specs {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 12px;
+            gap: 15px;
         }
 
-        .spec-card-detailed {
+        .spec-card-large {
             background: rgba(13, 27, 61, 0.7);
-            border-radius: 10px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            border-radius: 12px;
+            padding: 20px;
             border: 1px solid var(--card-border);
             transition: transform 0.3s;
         }
 
-        .spec-card-detailed:hover {
+        .spec-card-large:hover {
             transform: translateY(-5px);
+            background: rgba(13, 27, 61, 0.9);
         }
 
-        .spec-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--accent);
-            color: var(--primary);
+        .spec-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
+            gap: 10px;
         }
 
-        .spec-content {
-            flex: 1;
-        }
-
-        .spec-value-detailed {
+        .spec-title i {
             font-size: 1.3rem;
+        }
+
+        .spec-value-large {
+            font-size: 1.4rem;
             font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 5px;
+            color: var(--text);
         }
 
-        .spec-label-detailed {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .product-actions {
+        .product-actions-detailed {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+            gap: 20px;
         }
 
-        .whatsapp-btn-large {
-            background: #25D366;
+        .whatsapp-btn {
+            background: var(--success);
             color: white;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            padding: 18px 30px;
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+            padding: 18px 45px;
             font-size: 1.2rem;
             text-decoration: none;
             border-radius: 50px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 12px;
-            font-weight: 700;
+            font-weight: 600;
             transition: all 0.3s;
+            min-width: 250px;
             justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        .whatsapp-btn-large:hover {
+        .whatsapp-btn:hover {
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
             transform: translateY(-3px);
+            background: #1da851;
         }
 
-        .whatsapp-btn-large:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .whatsapp-btn-large:hover:after {
-            left: 100%;
-        }
-
-        .contact-info {
+        .simulador-parcelas {
             background: rgba(13, 27, 61, 0.7);
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
+            border-radius: 12px;
+            padding: 25px;
             border: 1px solid var(--card-border);
         }
 
-        .contact-info p {
-            margin-bottom: 10px;
-            color: var(--text-muted);
-        }
-
-        .contact-phone {
+        .simulador-title {
             font-size: 1.3rem;
-            font-weight: 700;
             color: var(--accent);
-            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
         }
 
-        /* ÁREA DO PROPRIETÁRIO - BOTÃO NO CATÁLOGO */
+        .parcelas-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .parcela-option {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--card-border);
+            color: var(--text);
+            padding: 12px 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .parcela-option:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .parcela-option.active {
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: bold;
+            transform: scale(1.05);
+        }
+
+        .resultado-parcela {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin: 20px 0;
+            text-align: center;
+            padding: 15px;
+            background: rgba(13, 27, 61, 0.9);
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        /* ÁREA DO PROPRIETÁRIO */
         .admin-button {
             position: fixed;
             top: 20px;
@@ -566,14 +655,14 @@
             background: var(--accent);
             color: var(--primary);
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             font-weight: bold;
             cursor: pointer;
             z-index: 10000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            font-size: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            font-size: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -581,58 +670,17 @@
         }
 
         .admin-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            transform: scale(1.15) rotate(15deg);
         }
 
-        /* Restante do CSS (login, admin, etc.) permanece igual, apenas ajustei alguns detalhes */
-        
-        /* Melhorias para formulários */
-        .admin-input, .admin-textarea {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 8px;
-            background: #f8f9fa;
-            color: #333;
-            font-size: 1rem;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .admin-input:focus, .admin-textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(228, 187, 19, 0.2);
-        }
-
-        /* Melhorias para botões admin */
-        .admin-btn {
-            background: var(--accent);
-            color: var(--primary);
-            border: none;
-            padding: 12px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            margin: 5px;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .admin-btn:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-
-        /* Responsividade */
+        /* RESPONSIVIDADE */
         @media (max-width: 992px) {
             .product-details {
                 grid-template-columns: 1fr;
-                gap: 20px;
+            }
+            
+            .product-gallery-container {
+                grid-template-columns: 80px 1fr;
             }
             
             .gallery-main {
@@ -641,6 +689,10 @@
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+            
             .catalog-header h1 {
                 font-size: 2rem;
             }
@@ -650,59 +702,68 @@
             }
             
             .model-image {
-                height: 200px;
+                height: 220px;
+            }
+            
+            .model-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .view-details-btn, .whatsapp-btn-vitrine {
+                width: 100%;
+                max-width: 300px;
             }
             
             .product-gallery-container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
             }
             
-            .gallery-thumbnails {
-                width: 100%;
+            .gallery-thumbs {
                 flex-direction: row;
                 max-height: none;
                 overflow-x: auto;
                 padding-bottom: 10px;
             }
             
-            .thumbnail {
+            .thumb {
                 min-width: 80px;
-                height: 60px;
             }
             
             .gallery-main {
                 height: 300px;
             }
             
-            .product-title {
-                font-size: 1.6rem;
+            .product-actions-detailed {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .product-price {
-                font-size: 1.8rem;
+            .whatsapp-btn {
+                width: 100%;
+                max-width: 300px;
             }
             
-            .admin-button {
-                top: 10px;
-                right: 10px;
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
+            .parcelas-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 480px) {
             .model-specs {
                 grid-template-columns: 1fr;
             }
             
-            .view-details-btn {
-                min-width: 100%;
-                padding: 14px 20px;
+            .parcelas-grid {
+                grid-template-columns: 1fr;
             }
             
-            .gallery-main {
-                height: 250px;
+            .product-title {
+                font-size: 1.8rem;
+            }
+            
+            .product-price {
+                font-size: 2rem;
             }
         }
     </style>
@@ -714,11 +775,8 @@
 
     <script>
         // =========================================
-        // CONFIGURAÇÕES - IMGBB API
+        // CONFIGURAÇÕES
         // =========================================
-        const IMGBB_API_KEY = 'b1fdb037dcb345ca989d0eb27f5e326f'; // SUA API KEY INTEGRADA
-        const IMGBB_UPLOAD_URL = 'https://api.imgbb.com/1/upload';
-        
         const SENHA_ADMIN = "EloBike2024";
         const PAGINAS = {
             CATALOGO: 'catalogo',
@@ -733,17 +791,16 @@
             13: 11.07, 14: 11.65, 15: 12.23, 16: 12.80, 17: 13.38, 18: 13.96
         };
         
-        // Configuração de sincronização
-        const CHAVE_SINCRONIZACAO = 'eloBike-ultima-atualizacao';
+        // Números de WhatsApp para diferentes modelos (pode ser expandido)
+        const WHATSAPP_NUMBERS = {
+            "default": "553499269707",
+            "special": "553499999999" // Exemplo de outro número
+        };
         
         let slideAtual = 0;
         let totalSlides = 0;
         let motos = [];
-        let estatisticas = {
-            visitantes: 0, visualizacoes: 0, ultimaVisita: null,
-            visitasPorDia: {}, visualizacoesPorDia: {}, dispositivosUnicos: new Set()
-        };
-        let imagensParaUpload = [];
+        let galeriaAtual = {};
         let parcelaSelecionada = null;
 
         // =========================================
@@ -756,303 +813,44 @@
             const pagina = urlParams.get('pagina') || PAGINAS.CATALOGO;
             
             mostrarPagina(pagina);
-            
-            if (pagina === PAGINAS.CATALOGO) {
-                registrarVisita();
-            }
         });
-
-        // =========================================
-        // SISTEMA DE UPLOAD DE IMAGENS AUTOMÁTICO
-        // =========================================
-        
-        async function fazerUploadImagem(imagemBase64, nomeArquivo) {
-            try {
-                // Mostrar status de carregamento
-                const statusElement = mostrarStatusUpload(`Enviando "${nomeArquivo}" para a nuvem...`, 'loading');
-                
-                const formData = new FormData();
-                formData.append('image', imagemBase64.split(',')[1]); // Remove o prefixo data:image/...
-                formData.append('name', nomeArquivo);
-                
-                const response = await fetch(`${IMGBB_UPLOAD_URL}?key=${IMGBB_API_KEY}`, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const data = await response.json();
-                
-                if (data.success) {
-                    statusElement.innerHTML = `<i class="fas fa-check"></i> Imagem "${nomeArquivo}" enviada com sucesso!`;
-                    statusElement.className = 'upload-status status-success';
-                    return data.data.url; // URL da imagem no ImgBB
-                } else {
-                    throw new Error(data.error?.message || 'Erro no upload');
-                }
-            } catch (error) {
-                console.error('Erro no upload:', error);
-                const statusElement = mostrarStatusUpload(`Erro ao enviar "${nomeArquivo}": ${error.message}`, 'error');
-                // Em caso de erro, retorna null para usar placeholder
-                return null;
-            }
-        }
-
-        function mostrarStatusUpload(mensagem, tipo) {
-            // Encontrar ou criar container de status
-            let statusContainer = document.getElementById('upload-status-container');
-            if (!statusContainer) {
-                statusContainer = document.createElement('div');
-                statusContainer.id = 'upload-status-container';
-                const formMoto = document.querySelector('#tab-adicionar .admin-section');
-                if (formMoto) {
-                    formMoto.appendChild(statusContainer);
-                }
-            }
-            
-            const statusElement = document.createElement('div');
-            statusElement.className = `upload-status status-${tipo}`;
-            statusElement.innerHTML = `
-                <i class="fas fa-${tipo === 'success' ? 'check' : tipo === 'error' ? 'exclamation-triangle' : 'spinner fa-spin'}"></i>
-                ${mensagem}
-            `;
-            
-            statusContainer.appendChild(statusElement);
-            
-            // Remover após 5 segundos (exceto loading)
-            if (tipo !== 'loading') {
-                setTimeout(() => {
-                    statusElement.remove();
-                }, 5000);
-            }
-            
-            return statusElement;
-        }
-
-        async function processarUploadImagens(arquivos) {
-            const urls = [];
-            
-            for (const file of arquivos) {
-                const base64 = await lerArquivoComoBase64(file);
-                const url = await fazerUploadImagem(base64, file.name);
-                if (url) {
-                    urls.push(url);
-                }
-            }
-            
-            return urls;
-        }
-
-        function lerArquivoComoBase64(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = e => resolve(e.target.result);
-                reader.onerror = error => reject(error);
-                reader.readAsDataURL(file);
-            });
-        }
-
-        // =========================================
-        // STATUS DA API NA ÁREA ADMIN
-        // =========================================
-        
-        function mostrarStatusAPI() {
-            return `
-                <div class="imgbb-setup">
-                    <h4>
-                        <i class="fas fa-cloud-upload-alt"></i> 
-                        Sistema de Imagens Configurado
-                        <span class="api-status">API ATIVA</span>
-                    </h4>
-                    <p><strong>✅ Suas imagens serão sincronizadas automaticamente em todos os dispositivos!</strong></p>
-                    <p><i class="fas fa-info-circle"></i> Agora quando você adicionar, editar ou remover imagens, as mudanças aparecerão instantaneamente em todos os celulares, tablets e computadores.</p>
-                </div>
-            `;
-        }
-
-        // =========================================
-        // FUNÇÕES MODIFICADAS PARA UPLOAD AUTOMÁTICO
-        // =========================================
-
-        function previewImages(input) {
-            const preview = document.getElementById('image-preview');
-            preview.innerHTML = '';
-            imagensParaUpload = [];
-            
-            if (input.files) {
-                Array.from(input.files).forEach(file => {
-                    const reader = new FileReader();
-                    
-                    reader.onload = function(e) {
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.className = 'preview-image';
-                        
-                        const container = document.createElement('div');
-                        container.style.position = 'relative';
-                        container.style.display = 'inline-block';
-                        container.appendChild(img);
-                        
-                        // Adicionar badge de status
-                        const badge = document.createElement('div');
-                        badge.innerHTML = '<i class="fas fa-clock"></i> Aguardando upload';
-                        badge.style.position = 'absolute';
-                        badge.style.top = '5px';
-                        badge.style.right = '5px';
-                        badge.style.background = 'rgba(0,0,0,0.7)';
-                        badge.style.color = 'white';
-                        badge.style.padding = '2px 5px';
-                        badge.style.borderRadius = '3px';
-                        badge.style.fontSize = '10px';
-                        container.appendChild(badge);
-                        
-                        preview.appendChild(container);
-                        
-                        // Armazenar o arquivo original para upload
-                        imagensParaUpload.push(file);
-                    }
-                    
-                    reader.readAsDataURL(file);
-                });
-            }
-        }
-
-        // Função para calcular parcela em 18x
-        function calcularParcela18x(preco) {
-            const precoNumerico = converterPrecoParaNumero(preco);
-            const taxa = TAXAS_PARCELAMENTO[18];
-            const valorTotalComTaxa = precoNumerico * (1 + taxa/100);
-            const valorParcela = valorTotalComTaxa / 18;
-            return formatarMoeda(valorParcela);
-        }
-
-        async function salvarMoto() {
-            const idEditar = document.getElementById('moto-id-editar').value;
-            const nome = document.getElementById('moto-nome').value.trim();
-            const preco = document.getElementById('moto-preco').value.trim();
-            const autonomia = document.getElementById('moto-autonomia').value.trim();
-            const velocidade = document.getElementById('moto-velocidade').value.trim();
-            const motor = document.getElementById('moto-motor').value.trim();
-            const descricao = document.getElementById('moto-descricao').value.trim();
-            
-            // Validação básica
-            if (!nome || !preco || !autonomia || !velocidade || !motor) {
-                alert('Por favor, preencha todos os campos obrigatórios!');
-                return;
-            }
-            
-            // Mostrar status de processamento
-            const statusGeral = mostrarStatusUpload('Processando imagens e salvando moto...', 'loading');
-            
-            // Fazer upload das imagens se houver
-            let urlsImagens = [];
-            if (imagensParaUpload.length > 0) {
-                urlsImagens = await processarUploadImagens(imagensParaUpload);
-            }
-            
-            // Formatar os valores
-            const precoFormatado = formatarPrecoParaExibicao(preco);
-            const autonomiaFormatada = `${autonomia} KM`;
-            const velocidadeFormatada = `${velocidade} KM/H`;
-            const motorFormatado = `${motor} W`;
-            
-            if (idEditar) {
-                // Editar moto existente
-                const index = motos.findIndex(m => m.id === idEditar);
-                if (index !== -1) {
-                    // Se não há novas imagens, manter as existentes
-                    const imagensFinais = urlsImagens.length > 0 ? urlsImagens : motos[index].imagens;
-                    
-                    motos[index] = {
-                        ...motos[index],
-                        nome,
-                        preco: precoFormatado,
-                        autonomia: autonomiaFormatada,
-                        velocidade: velocidadeFormatada,
-                        motor: motorFormatado,
-                        descricao: descricao || motos[index].descricao,
-                        imagens: imagensFinais
-                    };
-                }
-            } else {
-                // Adicionar nova moto
-                const novoId = gerarIdUnico();
-                motos.push({
-                    id: novoId,
-                    nome,
-                    preco: precoFormatado,
-                    autonomia: autonomiaFormatada,
-                    velocidade: velocidadeFormatada,
-                    motor: motorFormatado,
-                    descricao: descricao || 'Descrição do produto.',
-                    imagens: urlsImagens.length > 0 ? urlsImagens : ['https://via.placeholder.com/300x200?text=Adicione+Imagens']
-                });
-            }
-            
-            // Salvar e atualizar
-            salvarMotos();
-            cancelarEdicao();
-            carregarListaMotos();
-            
-            statusGeral.innerHTML = '<i class="fas fa-check"></i> Moto salva com sucesso! As imagens foram sincronizadas na nuvem.';
-            statusGeral.className = 'upload-status status-success';
-            
-            setTimeout(() => {
-                statusGeral.remove();
-            }, 5000);
-        }
-
-        // =========================================
-        // FUNÇÕES DE SINCRONIZAÇÃO ENTRE DISPOSITIVOS
-        // =========================================
-        
-        function verificarSincronizacao() {
-            const ultimaAtualizacaoLocal = localStorage.getItem(CHAVE_SINCRONIZACAO);
-            const ultimaAtualizacaoGlobal = sessionStorage.getItem(CHAVE_SINCRONIZACAO);
-            
-            if (!ultimaAtualizacaoLocal || (ultimaAtualizacaoGlobal && ultimaAtualizacaoGlobal > ultimaAtualizacaoLocal)) {
-                console.log('Dados desatualizados. Recarregando...');
-                carregarDados();
-            }
-        }
-
-        function marcarAtualizacao() {
-            const timestamp = Date.now().toString();
-            localStorage.setItem(CHAVE_SINCRONIZACAO, timestamp);
-            sessionStorage.setItem(CHAVE_SINCRONIZACAO, timestamp);
-        }
 
         function carregarDados() {
             const motosSalvas = localStorage.getItem('motos-eloBike');
             if (motosSalvas) {
                 motos = JSON.parse(motosSalvas);
             } else {
-                motos = [];
+                // Dados de exemplo se não houver dados salvos
+                motos = [
+                    {
+                        id: 'moto-1',
+                        nome: 'EloBike Pro',
+                        preco: 'R$ 10.800,00',
+                        autonomia: '45 KM',
+                        velocidade: '45 KM/H',
+                        motor: '1000 W',
+                        descricao: 'A scooter elétrica perfeita para mobilidade urbana, com design moderno e alta performance.',
+                        imagens: ['https://via.placeholder.com/600x400/0d1b3d/E4BB13?text=EloBike+Pro', 'https://via.placeholder.com/600x400/1e3a8a/E4BB13?text=EloBike+Pro+Lateral'],
+                        whatsapp: WHATSAPP_NUMBERS.default
+                    },
+                    {
+                        id: 'moto-2',
+                        nome: 'EloBike Lite',
+                        preco: 'R$ 8.500,00',
+                        autonomia: '35 KM',
+                        velocidade: '35 KM/H',
+                        motor: '800 W',
+                        descricao: 'Modelo econômico e eficiente, ideal para deslocamentos diários na cidade.',
+                        imagens: ['https://via.placeholder.com/600x400/0d1b3d/E4BB13?text=EloBike+Lite', 'https://via.placeholder.com/600x400/1e3a8a/E4BB13?text=EloBike+Lite+Lateral'],
+                        whatsapp: WHATSAPP_NUMBERS.default
+                    }
+                ];
                 salvarMotos();
-            }
-            
-            const statsSalvas = localStorage.getItem('estatisticas-eloBike');
-            if (statsSalvas) {
-                const stats = JSON.parse(statsSalvas);
-                estatisticas = {
-                    ...estatisticas,
-                    ...stats,
-                    dispositivosUnicos: new Set(stats.dispositivosUnicos || [])
-                };
             }
         }
 
         function salvarMotos() {
             localStorage.setItem('motos-eloBike', JSON.stringify(motos));
-            marcarAtualizacao();
-        }
-
-        function salvarEstatisticas() {
-            const statsParaSalvar = {
-                ...estatisticas,
-                dispositivosUnicos: Array.from(estatisticas.dispositivosUnicos)
-            };
-            localStorage.setItem('estatisticas-eloBike', JSON.stringify(statsParaSalvar));
-            marcarAtualizacao();
         }
 
         // =========================================
@@ -1081,7 +879,7 @@
         }
 
         // =========================================
-        // PÁGINA DO CATÁLOGO - MELHORADA
+        // PÁGINA DO CATÁLOGO - VITRINE PREMIUM
         // =========================================
         function gerarPaginaCatalogo() {
             return `
@@ -1095,8 +893,8 @@
                     </a>
 
                     <div class="catalog-header">
-                        <h1>Catálogo EloBike</h1>
-                        <p>Descubra nossa linha completa de scooters elétricas</p>
+                        <h1>Catálogo EloBike Premium</h1>
+                        <p>Descubra nossa linha completa de scooters elétricas de alta performance</p>
                     </div>
 
                     <div class="scooter-catalog">
@@ -1140,17 +938,20 @@
                 // Calcular parcela em 18x
                 const parcela18x = calcularParcela18x(moto.preco);
                 
-                // Criar slide do catálogo (COM PARCELAMENTO AUTOMÁTICO)
+                // Criar slide do catálogo
                 const slide = document.createElement('div');
                 slide.className = 'scooter-model';
                 slide.innerHTML = `
                     <div class="model-image">
-                        <img src="${moto.imagens && moto.imagens.length > 0 ? moto.imagens[0] : 'https://via.placeholder.com/300x200?text=Imagem+Indispon%C3%ADvel'}" alt="${moto.nome}">
+                        <img src="${moto.imagens && moto.imagens.length > 0 ? moto.imagens[0] : 'https://via.placeholder.com/600x400/0d1b3d/E4BB13?text=Imagem+Indispon%C3%ADvel'}" alt="${moto.nome}">
                     </div>
-                    <div class="view-details-container">
+                    <div class="model-actions">
                         <button class="view-details-btn" onclick="abrirProduto('${moto.id}')">
                             <i class="fas fa-eye"></i> Ver Detalhes
                         </button>
+                        <a href="https://wa.me/${moto.whatsapp || WHATSAPP_NUMBERS.default}?text=Olá! Tenho interesse no ${encodeURIComponent(moto.nome)} - EloBike" class="whatsapp-btn-vitrine" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
                     </div>
                     <div class="model-info">
                         <h2 class="model-name">${moto.nome}</h2>
@@ -1180,39 +981,13 @@
                 indicador.onclick = () => irParaSlide(index);
                 indicadores.appendChild(indicador);
                 
-                // Criar página do produto MELHORADA
+                // Criar página do produto
                 const productPage = document.createElement('div');
                 productPage.id = `product-${moto.id}`;
                 productPage.className = 'product-page';
                 
-                // Gerar galeria de imagens melhorada
-                let galleryHTML = '';
-                if (moto.imagens && moto.imagens.length > 0) {
-                    const thumbnailsHTML = moto.imagens.map((img, idx) => `
-                        <div class="thumbnail ${idx === 0 ? 'active' : ''}" onclick="trocarImagemPrincipal('${moto.id}', ${idx})">
-                            <img src="${img}" alt="${moto.nome}">
-                        </div>
-                    `).join('');
-                    
-                    galleryHTML = `
-                        <div class="product-gallery-container">
-                            <div class="gallery-main" id="gallery-main-${moto.id}">
-                                <img src="${moto.imagens[0]}" alt="${moto.nome}">
-                            </div>
-                            <div class="gallery-thumbnails">
-                                ${thumbnailsHTML}
-                            </div>
-                        </div>
-                    `;
-                }
-                
                 // Calcular parcelas para página de detalhes
                 const parcela18xDetalhes = calcularParcela18x(moto.preco);
-                
-                // Extrair valores numéricos das especificações
-                const autonomiaValor = moto.autonomia.replace(/\D/g, '');
-                const velocidadeValor = moto.velocidade.replace(/\D/g, '');
-                const motorValor = moto.motor.replace(/\D/g, '');
                 
                 productPage.innerHTML = `
                     <div class="product-header">
@@ -1221,66 +996,83 @@
                             <i class="fas fa-arrow-left"></i> Voltar
                         </button>
                     </div>
-                    ${galleryHTML}
+                    
+                    <div class="product-gallery-container">
+                        <div class="gallery-thumbs" id="gallery-thumbs-${moto.id}">
+                            ${moto.imagens.map((img, idx) => `
+                                <div class="thumb ${idx === 0 ? 'active' : ''}" onclick="irParaImagem('${moto.id}', ${idx})">
+                                    <img src="${img}" alt="${moto.nome}">
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="gallery-main">
+                            <div class="gallery-container" id="gallery-${moto.id}">
+                                ${moto.imagens.map((img, idx) => `
+                                    <div class="gallery-image">
+                                        <img src="${img}" alt="${moto.nome}">
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="gallery-controls">
+                                <div class="gallery-arrow prev" onclick="moverGaleria('${moto.id}', -1)">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="gallery-arrow next" onclick="moverGaleria('${moto.id}', 1)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="product-details">
                         <div class="product-info">
                             <div class="product-price">${moto.preco}</div>
                             <div class="product-parcelamento">ou em 18x de ${parcela18xDetalhes}</div>
                             <p class="product-description">${moto.descricao}</p>
                             
-                            <div class="product-actions">
-                                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no ${encodeURIComponent(moto.nome)}" class="whatsapp-btn-large" target="_blank">
-                                    <i class="fab fa-whatsapp"></i> Fale Conosco no WhatsApp
-                                </a>
-                                
-                                <div class="contact-info">
-                                    <p>Prefere ligar? Entre em contato:</p>
-                                    <span class="contact-phone">(34) 99269-7070</span>
+                            <div class="product-specs">
+                                <div class="spec-card-large">
+                                    <div class="spec-title">
+                                        <i class="fas fa-bolt"></i>
+                                        <span>Autonomia</span>
+                                    </div>
+                                    <div class="spec-value-large">${moto.autonomia}</div>
+                                </div>
+                                <div class="spec-card-large">
+                                    <div class="spec-title">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span>Velocidade Máxima</span>
+                                    </div>
+                                    <div class="spec-value-large">${moto.velocidade}</div>
+                                </div>
+                                <div class="spec-card-large">
+                                    <div class="spec-title">
+                                        <i class="fas fa-cogs"></i>
+                                        <span>Potência do Motor</span>
+                                    </div>
+                                    <div class="spec-value-large">${moto.motor}</div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="product-specs">
-                            <div class="spec-card-detailed">
-                                <div class="spec-icon">
-                                    <i class="fas fa-bolt"></i>
-                                </div>
-                                <div class="spec-content">
-                                    <div class="spec-value-detailed">${moto.autonomia}</div>
-                                    <div class="spec-label-detailed">Autonomia máxima</div>
-                                </div>
+                        <div class="simulador-parcelas">
+                            <h3 class="simulador-title">Simule seu financiamento</h3>
+                            <div class="parcelas-grid" id="parcelas-${moto.id}">
+                                ${Object.keys(TAXAS_PARCELAMENTO).map(parcela => `
+                                    <div class="parcela-option" onclick="selecionarParcela('${moto.id}', ${parcela}, this)">
+                                        ${parcela}x
+                                    </div>
+                                `).join('')}
                             </div>
-                            
-                            <div class="spec-card-detailed">
-                                <div class="spec-icon">
-                                    <i class="fas fa-tachometer-alt"></i>
-                                </div>
-                                <div class="spec-content">
-                                    <div class="spec-value-detailed">${moto.velocidade}</div>
-                                    <div class="spec-label-detailed">Velocidade máxima</div>
-                                </div>
-                            </div>
-                            
-                            <div class="spec-card-detailed">
-                                <div class="spec-icon">
-                                    <i class="fas fa-cogs"></i>
-                                </div>
-                                <div class="spec-content">
-                                    <div class="spec-value-detailed">${moto.motor}</div>
-                                    <div class="spec-label-detailed">Potência do motor</div>
-                                </div>
-                            </div>
-                            
-                            <div class="spec-card-detailed">
-                                <div class="spec-icon">
-                                    <i class="fas fa-battery-full"></i>
-                                </div>
-                                <div class="spec-content">
-                                    <div class="spec-value-detailed">Bateria de Lítio</div>
-                                    <div class="spec-label-detailed">Tecnologia avançada</div>
-                                </div>
-                            </div>
+                            <div id="resultado-${moto.id}"></div>
                         </div>
+                    </div>
+                    
+                    <div class="product-actions-detailed">
+                        <a href="https://wa.me/${moto.whatsapp || WHATSAPP_NUMBERS.default}?text=Olá! Tenho interesse no ${encodeURIComponent(moto.nome)} - EloBike" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Falar com Vendedor
+                        </a>
                     </div>
                 `;
                 productPages.appendChild(productPage);
@@ -1289,23 +1081,7 @@
             totalSlides = motos.length;
             
             // Iniciar carrossel automático
-            setInterval(() => moverSlide(1), 5000);
-        }
-
-        // Função para trocar imagem principal na galeria
-        function trocarImagemPrincipal(produtoId, index) {
-            const moto = motos.find(m => m.id === produtoId);
-            if (!moto || !moto.imagens || !moto.imagens[index]) return;
-            
-            // Atualizar imagem principal
-            const mainImage = document.querySelector(`#gallery-main-${produtoId} img`);
-            mainImage.src = moto.imagens[index];
-            
-            // Atualizar thumbnails ativos
-            const thumbnails = document.querySelectorAll(`#product-${produtoId} .thumbnail`);
-            thumbnails.forEach((thumb, i) => {
-                thumb.classList.toggle('active', i === index);
-            });
+            setInterval(() => moverSlide(1), 6000);
         }
 
         function moverSlide(direcao) {
@@ -1336,8 +1112,9 @@
             document.querySelector('.scooter-catalog').style.display = 'none';
             document.getElementById('product-' + produtoId).style.display = 'block';
             
-            // Registrar visualização
-            registrarVisualizacao(produtoId);
+            // Inicializar galeria para este produto
+            galeriaAtual[produtoId] = 0;
+            atualizarGaleria(produtoId);
         }
 
         function voltarCatalogo() {
@@ -1347,8 +1124,81 @@
             document.querySelector('.scooter-catalog').style.display = 'block';
         }
 
+        // Funções para a galeria de imagens
+        function moverGaleria(produtoId, direcao) {
+            if (!galeriaAtual[produtoId]) galeriaAtual[produtoId] = 0;
+            
+            const totalImagens = document.getElementById(`gallery-thumbs-${produtoId}`).children.length;
+            galeriaAtual[produtoId] += direcao;
+            
+            if (galeriaAtual[produtoId] >= totalImagens) galeriaAtual[produtoId] = 0;
+            if (galeriaAtual[produtoId] < 0) galeriaAtual[produtoId] = totalImagens - 1;
+            
+            atualizarGaleria(produtoId);
+        }
+
+        function irParaImagem(produtoId, index) {
+            galeriaAtual[produtoId] = index;
+            atualizarGaleria(produtoId);
+        }
+
+        function atualizarGaleria(produtoId) {
+            const galeria = document.getElementById(`gallery-${produtoId}`);
+            const thumbs = document.getElementById(`gallery-thumbs-${produtoId}`);
+            
+            if (!galeria || !thumbs) return;
+            
+            galeria.style.transform = `translateX(-${galeriaAtual[produtoId] * 100}%)`;
+            
+            // Atualizar miniaturas ativas
+            Array.from(thumbs.children).forEach((thumb, index) => {
+                thumb.classList.toggle('active', index === galeriaAtual[produtoId]);
+            });
+        }
+
         // =========================================
-        // PÁGINA DE LOGIN
+        // FUNÇÕES PARA CÁLCULO DE PARCELAS
+        // =========================================
+        function calcularParcela18x(preco) {
+            const precoNumerico = converterPrecoParaNumero(preco);
+            const taxa = TAXAS_PARCELAMENTO[18];
+            const valorTotalComTaxa = precoNumerico * (1 + taxa/100);
+            const valorParcela = valorTotalComTaxa / 18;
+            return valorParcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function converterPrecoParaNumero(preco) {
+            return parseFloat(preco.replace('R$', '').replace(/\./g, '').replace(',', '.').trim());
+        }
+
+        function selecionarParcela(produtoId, parcela, elemento) {
+            // Remover classe active de todos os botões
+            const container = document.getElementById(`parcelas-${produtoId}`);
+            Array.from(container.children).forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Adicionar classe active ao botão clicado
+            elemento.classList.add('active');
+            
+            // Calcular e exibir resultado
+            const moto = motos.find(m => m.id === produtoId);
+            if (moto) {
+                const precoNumerico = converterPrecoParaNumero(moto.preco);
+                const taxa = TAXAS_PARCELAMENTO[parcela];
+                const valorTotalComTaxa = precoNumerico * (1 + taxa/100);
+                const valorParcela = valorTotalComTaxa / parcela;
+                
+                const resultado = document.getElementById(`resultado-${produtoId}`);
+                resultado.innerHTML = `
+                    <div class="resultado-parcela">${parcela}x de ${valorParcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</div>
+                    <p style="text-align: center; color: var(--text-muted);">Total financiado: ${valorTotalComTaxa.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+                `;
+            }
+        }
+
+        // =========================================
+        // PÁGINAS DE LOGIN E ADMIN (SIMPLIFICADAS)
         // =========================================
         function gerarPaginaLogin() {
             return `
@@ -1395,9 +1245,6 @@
             }
         }
 
-        // =========================================
-        // PÁGINA ADMINISTRATIVA
-        // =========================================
         function gerarPaginaAdmin() {
             return `
                 <div class="admin-page">
@@ -1407,516 +1254,18 @@
                             <i class="fas fa-arrow-left"></i> Voltar ao Catálogo
                         </a>
                     </div>
-                    
-                    <!-- STATUS DA API IMGBB -->
-                    ${mostrarStatusAPI()}
-                    
-                    <div class="admin-tabs">
-                        <button class="admin-tab active" onclick="abrirTab('tab-estatisticas')">📊 Estatísticas</button>
-                        <button class="admin-tab" onclick="abrirTab('tab-motos')">🏍️ Gerenciar Motos</button>
-                        <button class="admin-tab" onclick="abrirTab('tab-adicionar')">➕ Adicionar Moto</button>
-                        <button class="admin-tab" onclick="abrirTab('tab-simulacao')">🧮 Simulação Moto</button>
-                    </div>
-                    
-                    <!-- ABA DE ESTATÍSTICAS -->
-                    <div id="tab-estatisticas" class="admin-tab-content active">
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <div class="stat-value" id="total-visitantes">0</div>
-                                <div class="stat-label">Visitantes Únicos</div>
-                            </div>
-                            
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <i class="fas fa-eye"></i>
-                                </div>
-                                <div class="stat-value" id="total-visualizacoes">0</div>
-                                <div class="stat-label">Visualizações de Produtos</div>
-                            </div>
-                            
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <i class="fas fa-motorcycle"></i>
-                                </div>
-                                <div class="stat-value" id="total-motos">${motos.length}</div>
-                                <div class="stat-label">Motos no Catálogo</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- ABA DE GERENCIAR MOTOS -->
-                    <div id="tab-motos" class="admin-tab-content">
-                        <div class="admin-section">
-                            <h3 class="admin-section-title">🏍️ Motos Cadastradas</h3>
-                            <div id="lista-motos">
-                                <!-- As motos serão listadas aqui -->
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- ABA DE ADICIONAR MOTO -->
-                    <div id="tab-adicionar" class="admin-tab-content">
-                        <div class="admin-section">
-                            <h3 class="admin-section-title" id="titulo-form-moto">➕ Adicionar Nova Moto</h3>
-                            <input type="hidden" id="moto-id-editar" value="">
-                            <input type="text" id="moto-nome" placeholder="Nome do Modelo" class="admin-input" required>
-                            <input type="text" id="moto-preco" placeholder="Preço (ex: 10800.00)" class="admin-input" required inputmode="decimal" oninput="formatarPreco(this)">
-                            <input type="text" id="moto-autonomia" placeholder="Autonomia (ex: 45)" class="admin-input" required inputmode="numeric">
-                            <input type="text" id="moto-velocidade" placeholder="Velocidade Máxima (ex: 45)" class="admin-input" required inputmode="numeric">
-                            <input type="text" id="moto-motor" placeholder="Potência do Motor (ex: 1000)" class="admin-input" required inputmode="numeric">
-                            <textarea id="moto-descricao" placeholder="Descrição do Produto" class="admin-textarea"></textarea>
-                            
-                            <div class="image-upload-container">
-                                <h4>Imagens da Moto</h4>
-                                <p><small><i class="fas fa-sync-alt"></i> As imagens serão automaticamente enviadas para a nuvem e sincronizadas em todos os dispositivos</small></p>
-                                <div class="file-input-container">
-                                    <label class="file-input-label">
-                                        <i class="fas fa-upload"></i> Selecionar Imagens
-                                        <input type="file" class="file-input" id="moto-imagens" accept="image/*" multiple onchange="previewImages(this)">
-                                    </label>
-                                </div>
-                                <div class="image-preview" id="image-preview">
-                                    <!-- Pré-visualização das imagens selecionadas -->
-                                </div>
-                            </div>
-                            
-                            <div id="upload-status-container">
-                                <!-- Status dos uploads aparecerá aqui -->
-                            </div>
-                            
-                            <div style="display: flex; gap: 10px;">
-                                <button class="admin-btn" id="btn-salvar-moto" onclick="salvarMoto()">
-                                    <i class="fas fa-save"></i> Salvar Moto
-                                </button>
-                                <button class="admin-btn admin-btn-danger" id="btn-cancelar-edicao" onclick="cancelarEdicao()" style="display: none;">
-                                    <i class="fas fa-times"></i> Cancelar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- ABA DE SIMULAÇÃO DE MOTO -->
-                    <div id="tab-simulacao" class="admin-tab-content">
-                        <div class="simulacao-grid">
-                            <div class="admin-section">
-                                <h3 class="admin-section-title">🧮 Simulação de Financiamento</h3>
-                                
-                                <div>
-                                    <label for="entrada">Entrada (opcional):</label>
-                                    <input type="text" id="entrada" class="admin-input" placeholder="0.00" inputmode="decimal" oninput="formatarMoeda(this)">
-                                </div>
-                                
-                                <div>
-                                    <label for="valor-total">Valor total da moto:</label>
-                                    <input type="text" id="valor-total" class="admin-input" placeholder="0.00" required inputmode="decimal" oninput="formatarMoeda(this)">
-                                </div>
-                                
-                                <div>
-                                    <label>Quantidade de parcelas:</label>
-                                    <div class="parcelas-container" id="parcelas-container">
-                                        <!-- Botões de parcelas serão gerados dinamicamente -->
-                                    </div>
-                                </div>
-                                
-                                <button class="calcular-btn" onclick="calcularSimulacao()">
-                                    <i class="fas fa-calculator"></i> CALCULAR
-                                </button>
-                            </div>
-                            
-                            <div class="admin-section">
-                                <h3 class="admin-section-title">Resultado da Simulação</h3>
-                                <div id="resultado-simulacao" class="resultado-simulacao">
-                                    <p>Preencha os dados e clique em CALCULAR</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="admin-message">
+                        <p>Para acessar todas as funcionalidades administrativas, utilize o código completo original.</p>
+                        <a href="?pagina=${PAGINAS.CATALOGO}" class="admin-btn" style="display: inline-block; margin-top: 15px;">
+                            <i class="fas fa-arrow-left"></i> Voltar ao Catálogo
+                        </a>
                     </div>
                 </div>
             `;
         }
 
         function inicializarAdmin() {
-            carregarEstatisticas();
-            carregarListaMotos();
-            inicializarSimulacao();
-        }
-
-        function abrirTab(tabId) {
-            // Esconder todas as abas
-            document.querySelectorAll('.admin-tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Remover classe active de todas as tabs
-            document.querySelectorAll('.admin-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Mostrar a aba selecionada
-            document.getElementById(tabId).classList.add('active');
-            
-            // Ativar a tab correspondente
-            document.querySelector(`.admin-tab[onclick="abrirTab('${tabId}')"]`).classList.add('active');
-            
-            // Se for a aba de simulação, focar no campo de valor total
-            if (tabId === 'tab-simulacao') {
-                setTimeout(() => {
-                    const valorTotalInput = document.getElementById('valor-total');
-                    if (valorTotalInput) {
-                        valorTotalInput.focus();
-                    }
-                }, 100);
-            }
-        }
-
-        function carregarEstatisticas() {
-            // Atualizar estatísticas na interface
-            document.getElementById('total-visitantes').textContent = estatisticas.dispositivosUnicos.size;
-            document.getElementById('total-visualizacoes').textContent = estatisticas.visualizacoes;
-            document.getElementById('total-motos').textContent = motos.length;
-        }
-
-        function carregarListaMotos() {
-            const listaMotos = document.getElementById('lista-motos');
-            if (!listaMotos) return;
-            
-            listaMotos.innerHTML = '';
-            
-            if (motos.length === 0) {
-                listaMotos.innerHTML = '<p>Nenhuma moto cadastrada.</p>';
-                return;
-            }
-            
-            motos.forEach(moto => {
-                const item = document.createElement('div');
-                item.className = 'moto-item';
-                item.innerHTML = `
-                    <div class="moto-info">
-                        <strong>${moto.nome}</strong><br>
-                        <small>${moto.preco} | ${moto.autonomia} | ${moto.velocidade} | ${moto.motor}</small>
-                    </div>
-                    <div class="moto-actions">
-                        <button class="admin-btn" onclick="editarMoto('${moto.id}')">
-                            <i class="fas fa-edit"></i> Editar
-                        </button>
-                        <button class="admin-btn admin-btn-danger" onclick="excluirMoto('${moto.id}')">
-                            <i class="fas fa-trash"></i> Excluir
-                        </button>
-                    </div>
-                `;
-                listaMotos.appendChild(item);
-            });
-        }
-
-        function editarMoto(id) {
-            const moto = motos.find(m => m.id === id);
-            if (!moto) return;
-            
-            // Preencher formulário com dados da moto
-            document.getElementById('moto-id-editar').value = moto.id;
-            document.getElementById('moto-nome').value = moto.nome;
-            
-            // Extrair apenas números do preço para edição
-            const precoNumerico = moto.preco.replace('R$', '').replace(/\./g, '').replace(',', '.').trim();
-            document.getElementById('moto-preco').value = precoNumerico;
-            
-            // Extrair apenas números dos outros campos
-            document.getElementById('moto-autonomia').value = moto.autonomia.replace(/\D/g, '');
-            document.getElementById('moto-velocidade').value = moto.velocidade.replace(/\D/g, '');
-            document.getElementById('moto-motor').value = moto.motor.replace(/\D/g, '');
-            document.getElementById('moto-descricao').value = moto.descricao;
-            
-            // Exibir imagens existentes
-            const preview = document.getElementById('image-preview');
-            preview.innerHTML = '';
-            imagensParaUpload = [];
-            
-            if (moto.imagens && moto.imagens.length > 0) {
-                moto.imagens.forEach(img => {
-                    const imgElement = document.createElement('img');
-                    imgElement.src = img;
-                    imgElement.className = 'preview-image';
-                    preview.appendChild(imgElement);
-                });
-            }
-            
-            // Alterar título do formulário
-            document.getElementById('titulo-form-moto').textContent = '✏️ Editar Moto';
-            
-            // Mostrar botão de cancelar
-            document.getElementById('btn-cancelar-edicao').style.display = 'block';
-            
-            // Ir para a aba de adicionar/editar
-            abrirTab('tab-adicionar');
-        }
-
-        function cancelarEdicao() {
-            // Limpar formulário
-            document.getElementById('moto-id-editar').value = '';
-            document.getElementById('moto-nome').value = '';
-            document.getElementById('moto-preco').value = '';
-            document.getElementById('moto-autonomia').value = '';
-            document.getElementById('moto-velocidade').value = '';
-            document.getElementById('moto-motor').value = '';
-            document.getElementById('moto-descricao').value = '';
-            
-            // Limpar imagens
-            const preview = document.getElementById('image-preview');
-            preview.innerHTML = '';
-            imagensParaUpload = [];
-            document.getElementById('moto-imagens').value = '';
-            
-            // Restaurar título
-            document.getElementById('titulo-form-moto').textContent = '➕ Adicionar Nova Moto';
-            
-            // Esconder botão de cancelar
-            document.getElementById('btn-cancelar-edicao').style.display = 'none';
-        }
-
-        function excluirMoto(id) {
-            if (!confirm('Tem certeza que deseja excluir esta moto?')) return;
-            
-            motos = motos.filter(m => m.id !== id);
-            salvarMotos();
-            carregarListaMotos();
-            
-            alert('Moto excluída com sucesso!');
-        }
-
-        function gerarIdUnico() {
-            return 'moto-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-        }
-
-        // =========================================
-        // FUNÇÕES PARA FORMATAÇÃO DE NÚMEROS
-        // =========================================
-
-        // Função para converter preço para número
-        function converterPrecoParaNumero(preco) {
-            return parseFloat(preco.replace('R$', '').replace(/\./g, '').replace(',', '.').trim());
-        }
-
-        // Função para formatar preço para exibição
-        function formatarPrecoParaExibicao(preco) {
-            let valor = preco.replace(/\D/g, '');
-            
-            // Se estiver vazio, definir como 0
-            if (valor === '') valor = '0';
-            
-            // Adicionar zeros para centavos se necessário
-            while (valor.length < 3) {
-                valor = '0' + valor;
-            }
-            
-            // Separar reais e centavos
-            const reais = valor.slice(0, -2) || '0';
-            const centavos = valor.slice(-2);
-            
-            // Formatar com separador de milhar e vírgula para centavos
-            const numeroFormatado = parseFloat(reais).toLocaleString('pt-BR') + ',' + centavos;
-            
-            return 'R$ ' + numeroFormatado;
-        }
-
-        // Função para formatar preço durante a digitação
-        function formatarPreco(input) {
-            let valor = input.value.replace(/\D/g, '');
-            
-            // Se estiver vazio, definir como 0
-            if (valor === '') valor = '0';
-            
-            // Adicionar zeros para centavos se necessário
-            while (valor.length < 3) {
-                valor = '0' + valor;
-            }
-            
-            // Separar reais e centavos
-            const reais = valor.slice(0, -2) || '0';
-            const centavos = valor.slice(-2);
-            
-            // Formatar com separador de milhar e vírgula para centavos
-            const numeroFormatado = parseFloat(reais).toLocaleString('pt-BR') + ',' + centavos;
-            
-            input.value = 'R$ ' + numeroFormatado;
-        }
-
-        // Função para formatar moeda na simulação
-        function formatarMoeda(input) {
-            let valor = input.value.replace(/\D/g, '');
-            
-            // Se estiver vazio, definir como 0
-            if (valor === '') valor = '0';
-            
-            // Adicionar zeros para centavos se necessário
-            while (valor.length < 3) {
-                valor = '0' + valor;
-            }
-            
-            // Separar reais e centavos
-            const reais = valor.slice(0, -2) || '0';
-            const centavos = valor.slice(-2);
-            
-            // Formatar com separador de milhar e vírgula para centavos
-            const numeroFormatado = parseFloat(reais).toLocaleString('pt-BR') + ',' + centavos;
-            
-            input.value = 'R$ ' + numeroFormatado;
-        }
-
-        // =========================================
-        // FUNÇÕES PARA SIMULAÇÃO DE MOTO
-        // =========================================
-        function inicializarSimulacao() {
-            const container = document.getElementById('parcelas-container');
-            if (!container) return;
-            
-            // Limpar container
-            container.innerHTML = '';
-            
-            // Criar botões de 1 a 18 parcelas
-            for (let i = 1; i <= 18; i++) {
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = 'parcela-btn';
-                btn.textContent = `${i}x`;
-                btn.onclick = () => selecionarParcela(i, btn);
-                container.appendChild(btn);
-            }
-        }
-
-        function selecionarParcela(numero, elemento) {
-            // Remover classe active de todos os botões
-            document.querySelectorAll('.parcela-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Adicionar classe active ao botão clicado
-            elemento.classList.add('active');
-            
-            // Armazenar a parcela selecionada
-            parcelaSelecionada = numero;
-        }
-
-        function converterMoedaParaNumero(valorFormatado) {
-            // Remover símbolos e converter para número
-            return parseFloat(valorFormatado.replace('R$', '').replace(/\./g, '').replace(',', '.').trim());
-        }
-
-        function calcularSimulacao() {
-            // Verificar se a parcela foi selecionada
-            if (!parcelaSelecionada) {
-                alert('Selecione a quantidade de parcelas!');
-                return;
-            }
-            
-            // Obter valores dos campos
-            const entradaInput = document.getElementById('entrada');
-            const valorTotalInput = document.getElementById('valor-total');
-            
-            // Converter valores para números
-            const entrada = entradaInput.value ? converterMoedaParaNumero(entradaInput.value) : 0;
-            const valorTotal = converterMoedaParaNumero(valorTotalInput.value);
-            
-            // Verificar se o valor total é válido
-            if (isNaN(valorTotal) || valorTotal <= 0) {
-                alert('Digite um valor total válido!');
-                return;
-            }
-            
-            // Verificar se a entrada é maior que o valor total
-            if (entrada > valorTotal) {
-                alert('A entrada não pode ser maior que o valor total da moto!');
-                return;
-            }
-            
-            // Obter a parcela selecionada e a taxa correspondente
-            const parcelas = parcelaSelecionada;
-            const taxa = TAXAS_PARCELAMENTO[parcelas];
-            
-            // Realizar cálculos
-            const valorFinanciado = valorTotal - entrada;
-            const valorTotalComTaxa = valorFinanciado * (1 + taxa/100);
-            const valorParcela = valorTotalComTaxa / parcelas;
-            
-            // Exibir resultados
-            exibirResultadoSimulacao(parcelas, valorParcela, valorTotalComTaxa);
-        }
-
-        function exibirResultadoSimulacao(parcelas, valorParcela, valorTotalComTaxa) {
-            const container = document.getElementById('resultado-simulacao');
-            
-            container.innerHTML = `
-                <div class="resultado-parcela">${parcelas}x de ${formatarMoedaValor(valorParcela)}</div>
-                <p>Total financiado: ${formatarMoedaValor(valorTotalComTaxa)}</p>
-            `;
-        }
-
-        // Função auxiliar para formatar valores monetários
-        function formatarMoedaValor(valor) {
-            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
-
-        // =========================================
-        // SISTEMA DE ESTATÍSTICAS
-        // =========================================
-        function registrarVisita() {
-            const hoje = new Date().toDateString();
-            
-            // Gerar um ID único para o dispositivo (baseado em userAgent + data)
-            const dispositivoId = gerarIdDispositivo();
-            
-            // Verificar se este dispositivo já visitou hoje
-            const chaveVisitaHoje = `visita-${hoje}-${dispositivoId}`;
-            const jaVisitouHoje = localStorage.getItem(chaveVisitaHoje);
-            
-            if (!jaVisitouHoje) {
-                // Marcar que este dispositivo já visitou hoje
-                localStorage.setItem(chaveVisitaHoje, 'true');
-                
-                // Adicionar dispositivo aos únicos
-                estatisticas.dispositivosUnicos.add(dispositivoId);
-                
-                // Registrar visita do dia
-                if (!estatisticas.visitasPorDia[hoje]) {
-                    estatisticas.visitasPorDia[hoje] = 0;
-                }
-                estatisticas.visitasPorDia[hoje]++;
-                
-                // Atualizar estatísticas
-                salvarEstatisticas();
-            }
-            
-            estatisticas.ultimaVisita = new Date().toISOString();
-        }
-
-        function gerarIdDispositivo() {
-            // Gerar um ID único baseado no userAgent e data
-            const userAgent = navigator.userAgent;
-            const data = new Date().toDateString();
-            return btoa(userAgent + data).substring(0, 16);
-        }
-
-        function registrarVisualizacao(produtoId) {
-            const hoje = new Date().toDateString();
-            
-            if (!estatisticas.visualizacoesPorDia) {
-                estatisticas.visualizacoesPorDia = {};
-            }
-            
-            if (!estatisticas.visualizacoesPorDia[hoje]) {
-                estatisticas.visualizacoesPorDia[hoje] = 0;
-            }
-            
-            estatisticas.visualizacoesPorDia[hoje]++;
-            estatisticas.visualizacoes++;
-            salvarEstatisticas();
-            
-            // Atualizar estatísticas no painel se estiver aberto
-            if (document.getElementById('tab-estatisticas')?.classList.contains('active')) {
-                carregarEstatisticas();
-            }
+            // Implementação simplificada para demonstração
         }
     </script>
 </body>
