@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* SEU CSS ORIGINAL COMPLETO AQUI - MANTIDO IGUAL */
         :root {
             --primary: #0d1b3d;
             --secondary: #1e3a8a;
@@ -515,7 +514,7 @@
             color: var(--text);
         }
 
-        /* ÁREA DO PROPRIETÁRIO - SIMPLIFICADA */
+        /* ÁREA DO PROPRIETÁRIO - COMPLETA */
         .admin-button {
             position: fixed;
             top: 20px;
@@ -534,6 +533,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .admin-button:hover {
+            transform: scale(1.1);
         }
 
         .admin-modal {
@@ -558,7 +562,7 @@
             padding: 20px;
             border-radius: 10px;
             z-index: 10000;
-            max-width: 400px;
+            max-width: 500px;
             width: 90vw;
             max-height: 80vh;
             overflow-y: auto;
@@ -573,6 +577,20 @@
             margin-bottom: 10px;
             border: none;
             border-radius: 5px;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .admin-textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #f8f9fa;
+            color: #333;
+            min-height: 100px;
+            resize: vertical;
         }
 
         .admin-btn {
@@ -585,6 +603,94 @@
             font-weight: bold;
             margin: 5px 0;
             width: 100%;
+            transition: all 0.3s;
+        }
+
+        .admin-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .admin-btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .admin-btn-danger:hover {
+            background: #c82333;
+        }
+
+        .admin-section {
+            background: #0d1b3d;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .admin-section-title {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .moto-item {
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .moto-info {
+            flex-grow: 1;
+        }
+
+        .moto-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .moto-action-btn {
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .moto-action-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .admin-tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            border-bottom: 2px solid transparent;
+        }
+
+        .admin-tab.active {
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .admin-tab-content {
+            display: none;
+        }
+
+        .admin-tab-content.active {
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -598,6 +704,7 @@
             .admin-panel {
                 top: 60px;
                 right: 10px;
+                max-width: calc(100vw - 20px);
             }
         }
     </style>
@@ -621,38 +728,8 @@
 
         <!-- CATÁLOGO ORIGINAL -->
         <div class="scooter-catalog">
-            <div class="catalog-container">
-                <!-- Modelo R13 -->
-                <div class="scooter-model">
-                    <div class="model-image">
-                        <img src="R13-01.png" alt="Modelo R13">
-                    </div>
-                    <div class="view-details-container">
-                        <button class="view-details-btn" onclick="abrirProduto('r13')">
-                            <i class="fas fa-eye"></i> Ver Detalhes
-                        </button>
-                    </div>
-                    <div class="model-info">
-                        <h2 class="model-name">Modelo R13</h2>
-                        <div class="model-price">R$ 11.000,00</div>
-                        <div class="model-specs">
-                            <div class="spec-card">
-                                <div class="spec-value">45 KM</div>
-                                <div class="spec-label">Autonomia</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">45 KM/H</div>
-                                <div class="spec-label">Velocidade</div>
-                            </div>
-                            <div class="spec-card">
-                                <div class="spec-value">1000W</div>
-                                <div class="spec-label">Motor</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Outros modelos... -->
+            <div class="catalog-container" id="catalogContainer">
+                <!-- As motos serão carregadas dinamicamente aqui -->
             </div>
             
             <div class="catalog-controls">
@@ -663,24 +740,16 @@
                     <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
+            
+            <div class="catalog-indicators" id="catalogIndicators">
+                <!-- Os indicadores serão gerados dinamicamente -->
+            </div>
         </div>
 
         <!-- PÁGINAS DE PRODUTO -->
-        <div id="product-r13" class="product-page">
-            <div class="product-header">
-                <h2 class="product-title">Modelo R13</h2>
-                <button class="back-btn" onclick="voltarCatalogo()">
-                    <i class="fas fa-arrow-left"></i> Voltar
-                </button>
-            </div>
-            <div class="product-actions-detailed">
-                <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no Modelo R13" class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Saiba Mais
-                </a>
-            </div>
+        <div id="product-pages">
+            <!-- As páginas de produto serão geradas dinamicamente -->
         </div>
-        
-        <!-- Outras páginas de produto... -->
     </div>
 
     <!-- MODAL LOGIN -->
@@ -695,142 +764,88 @@
 
     <!-- PAINEL ADMIN -->
     <div class="admin-panel" id="adminPanel">
-        <div style="margin-bottom: 20px;">
-            <h3 style="color: #E4BB13; margin-bottom: 15px;">🏍️ Painel EloBike</h3>
-            
-            <div style="background: #0d1b3d; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                <h4 style="color: #E4BB13; margin-bottom: 10px;">📊 Estatísticas</h4>
-                <p>👥 Visitantes: <span id="visitantesCount">0</span></p>
-                <p>👀 Visualizações: <span id="visualizacoesCount">0</span></p>
-            </div>
-            
-            <div style="background: #0d1b3d; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                <h4 style="color: #E4BB13; margin-bottom: 10px;">🚀 Ações Rápidas</h4>
-                <button class="admin-btn" onclick="mostrarFormMoto()">➕ Nova Moto</button>
-                <button class="admin-btn" onclick="carregarEstatisticas()">🔄 Atualizar</button>
-            </div>
-            
-            <button class="admin-btn" style="background: #ff4444;" onclick="fecharPainel()">❌ Fechar</button>
+        <div class="admin-tabs">
+            <button class="admin-tab active" onclick="abrirTab('tab-estatisticas')">📊 Estatísticas</button>
+            <button class="admin-tab" onclick="abrirTab('tab-motos')">🏍️ Gerenciar Motos</button>
+            <button class="admin-tab" onclick="abrirTab('tab-adicionar')">➕ Adicionar Moto</button>
         </div>
+        
+        <!-- ABA DE ESTATÍSTICAS -->
+        <div id="tab-estatisticas" class="admin-tab-content active">
+            <div class="admin-section">
+                <h3 class="admin-section-title">📊 Estatísticas do Site</h3>
+                <p>👥 Total de Visitantes: <span id="visitantesCount">0</span></p>
+                <p>👀 Visualizações de Produtos: <span id="visualizacoesCount">0</span></p>
+                <p>📅 Visitantes Hoje: <span id="visitantesHoje">0</span></p>
+            </div>
+            
+            <div class="admin-section">
+                <h3 class="admin-section-title">🚀 Ações Rápidas</h3>
+                <button class="admin-btn" onclick="abrirTab('tab-motos')">🏍️ Gerenciar Motos</button>
+                <button class="admin-btn" onclick="abrirTab('tab-adicionar')">➕ Adicionar Moto</button>
+                <button class="admin-btn" onclick="carregarEstatisticas()">🔄 Atualizar Estatísticas</button>
+            </div>
+        </div>
+        
+        <!-- ABA DE GERENCIAR MOTOS -->
+        <div id="tab-motos" class="admin-tab-content">
+            <div class="admin-section">
+                <h3 class="admin-section-title">🏍️ Motos Cadastradas</h3>
+                <div id="lista-motos">
+                    <!-- As motos serão listadas aqui -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- ABA DE ADICIONAR MOTO -->
+        <div id="tab-adicionar" class="admin-tab-content">
+            <div class="admin-section">
+                <h3 class="admin-section-title" id="titulo-form-moto">➕ Adicionar Nova Moto</h3>
+                <input type="hidden" id="moto-id-editar" value="">
+                <input type="text" id="moto-nome" placeholder="Nome do Modelo" class="admin-input" required>
+                <input type="number" id="moto-preco" placeholder="Preço (R$)" class="admin-input" required>
+                <input type="text" id="moto-autonomia" placeholder="Autonomia (KM)" class="admin-input" required>
+                <input type="text" id="moto-velocidade" placeholder="Velocidade Máxima (KM/H)" class="admin-input" required>
+                <input type="text" id="moto-motor" placeholder="Potência do Motor (W)" class="admin-input" required>
+                <textarea id="moto-descricao" placeholder="Descrição do Produto" class="admin-textarea"></textarea>
+                <input type="text" id="moto-imagem" placeholder="URL da Imagem" class="admin-input">
+                <div style="display: flex; gap: 10px;">
+                    <button class="admin-btn" id="btn-salvar-moto" onclick="salvarMoto()">💾 Salvar Moto</button>
+                    <button class="admin-btn admin-btn-danger" id="btn-cancelar-edicao" onclick="cancelarEdicao()" style="display: none;">❌ Cancelar</button>
+                </div>
+            </div>
+        </div>
+        
+        <button class="admin-btn admin-btn-danger" onclick="fecharPainel()">❌ Fechar Painel</button>
     </div>
 
-    <!-- SCRIPT SIMPLIFICADO -->
     <script>
         // =========================================
-        // CONFIGURAÇÕES
+        // CONFIGURAÇÕES E VARIÁVEIS GLOBAIS
         // =========================================
         const SENHA_ADMIN = "EloBike2024";
         let slideAtual = 0;
+        let totalSlides = 0;
+        let motos = [];
+        let estatisticas = {
+            visitantes: 0,
+            visualizacoes: 0,
+            ultimaVisita: null
+        };
 
         // =========================================
-        // FUNÇÕES DO CATÁLOGO
-        // =========================================
-        function moverSlide(direcao) {
-            const slides = document.querySelectorAll('.scooter-model');
-            const totalSlides = slides.length;
-            
-            slideAtual += direcao;
-            if (slideAtual >= totalSlides) slideAtual = 0;
-            if (slideAtual < 0) slideAtual = totalSlides - 1;
-            
-            document.querySelector('.catalog-container').style.transform = `translateX(-${slideAtual * 100}%)`;
-            atualizarIndicadores();
-        }
-
-        function atualizarIndicadores() {
-            document.querySelectorAll('.catalog-indicator').forEach((ind, index) => {
-                ind.classList.toggle('active', index === slideAtual);
-            });
-        }
-
-        function abrirProduto(produto) {
-            document.querySelector('.scooter-catalog').style.display = 'none';
-            document.getElementById('product-' + produto).style.display = 'block';
-            
-            // Registrar visualização
-            registrarVisualizacao(produto);
-        }
-
-        function voltarCatalogo() {
-            document.querySelectorAll('.product-page').forEach(page => {
-                page.style.display = 'none';
-            });
-            document.querySelector('.scooter-catalog').style.display = 'block';
-        }
-
-        // =========================================
-        // SISTEMA ADMIN - SIMPLIFICADO
-        // =========================================
-        function abrirLogin() {
-            document.getElementById('adminModal').style.display = 'flex';
-        }
-
-        function fazerLogin() {
-            const senha = document.getElementById('adminPassword').value;
-            const erro = document.getElementById('loginError');
-            
-            if (senha === SENHA_ADMIN) {
-                document.getElementById('adminModal').style.display = 'none';
-                abrirPainelAdmin();
-            } else {
-                erro.style.display = 'block';
-            }
-        }
-
-        function abrirPainelAdmin() {
-            document.getElementById('adminPanel').style.display = 'block';
-            carregarEstatisticas();
-        }
-
-        function fecharPainel() {
-            document.getElementById('adminPanel').style.display = 'none';
-        }
-
-        function mostrarFormMoto() {
-            document.getElementById('adminPanel').innerHTML = `
-                <div style="margin-bottom: 20px;">
-                    <h3 style="color: #E4BB13; margin-bottom: 15px;">➕ Nova Moto</h3>
-                    <input type="text" id="novaMarca" placeholder="Marca" class="admin-input">
-                    <input type="text" id="novoModelo" placeholder="Modelo" class="admin-input">
-                    <input type="number" id="novoPreco" placeholder="Preço" class="admin-input">
-                    <button class="admin-btn" onclick="salvarMoto()">💾 Salvar</button>
-                    <button class="admin-btn" style="background: #666;" onclick="abrirPainelAdmin()">↩️ Voltar</button>
-                </div>
-            `;
-        }
-
-        async function salvarMoto() {
-            const marca = document.getElementById('novaMarca').value;
-            const modelo = document.getElementById('novoModelo').value;
-            const preco = document.getElementById('novoPreco').value;
-            
-            if (!marca || !modelo || !preco) {
-                alert('Preencha todos os campos!');
-                return;
-            }
-            
-            alert('Moto salva com sucesso!');
-            abrirPainelAdmin();
-        }
-
-        // =========================================
-        // SISTEMA DE DADOS (SIMULADO)
-        // =========================================
-        function registrarVisualizacao(produto) {
-            // Simular registro
-            console.log('Produto visualizado:', produto);
-        }
-
-        function carregarEstatisticas() {
-            // Simular estatísticas
-            document.getElementById('visitantesCount').textContent = Math.floor(Math.random() * 100);
-            document.getElementById('visualizacoesCount').textContent = Math.floor(Math.random() * 500);
-        }
-
-        // =========================================
-        // INICIALIZAÇÃO
+        // FUNÇÕES DE INICIALIZAÇÃO
         // =========================================
         document.addEventListener('DOMContentLoaded', function() {
+            // Carregar dados salvos
+            carregarDados();
+            
+            // Inicializar catálogo
+            inicializarCatalogo();
+            
+            // Registrar visita
+            registrarVisita();
+            
             // Iniciar carrossel automático
             setInterval(() => moverSlide(1), 5000);
             
@@ -841,6 +856,440 @@
                 }
             });
         });
+
+        function carregarDados() {
+            // Carregar motos do localStorage
+            const motosSalvas = localStorage.getItem('motos-eloBike');
+            if (motosSalvas) {
+                motos = JSON.parse(motosSalvas);
+            } else {
+                // Dados padrão se não houver nada salvo
+                motos = [
+                    {
+                        id: 'r13',
+                        nome: 'Modelo R13',
+                        preco: 'R$ 11.000,00',
+                        autonomia: '45 KM',
+                        velocidade: '45 KM/H',
+                        motor: '1000W',
+                        descricao: 'A scooter elétrica R13 combina design moderno com alta performance. Ideal para deslocamentos urbanos, oferece conforto e eficiência energética.',
+                        imagem: 'R13-01.png'
+                    },
+                    {
+                        id: 'r15',
+                        nome: 'Modelo R15',
+                        preco: 'R$ 13.500,00',
+                        autonomia: '60 KM',
+                        velocidade: '55 KM/H',
+                        motor: '1200W',
+                        descricao: 'Com maior autonomia e velocidade, a R15 é perfeita para quem precisa de mais desempenho no dia a dia sem abrir mão do estilo.',
+                        imagem: 'R15-01.png'
+                    },
+                    {
+                        id: 'r18',
+                        nome: 'Modelo R18',
+                        preco: 'R$ 15.800,00',
+                        autonomia: '75 KM',
+                        velocidade: '60 KM/H',
+                        motor: '1500W',
+                        descricao: 'A scooter premium da linha, com design sofisticado e recursos avançados para uma experiência de pilotagem incomparável.',
+                        imagem: 'R18-01.png'
+                    }
+                ];
+                salvarMotos();
+            }
+            
+            // Carregar estatísticas
+            const statsSalvas = localStorage.getItem('estatisticas-eloBike');
+            if (statsSalvas) {
+                estatisticas = JSON.parse(statsSalvas);
+            }
+        }
+
+        function salvarMotos() {
+            localStorage.setItem('motos-eloBike', JSON.stringify(motos));
+        }
+
+        function salvarEstatisticas() {
+            localStorage.setItem('estatisticas-eloBike', JSON.stringify(estatisticas));
+        }
+
+        // =========================================
+        // FUNÇÕES DO CATÁLOGO
+        // =========================================
+        function inicializarCatalogo() {
+            const container = document.getElementById('catalogContainer');
+            const indicadores = document.getElementById('catalogIndicators');
+            const productPages = document.getElementById('product-pages');
+            
+            // Limpar conteúdo existente
+            container.innerHTML = '';
+            indicadores.innerHTML = '';
+            productPages.innerHTML = '';
+            
+            // Adicionar cada moto ao catálogo
+            motos.forEach((moto, index) => {
+                // Criar slide do catálogo
+                const slide = document.createElement('div');
+                slide.className = 'scooter-model';
+                slide.innerHTML = `
+                    <div class="model-image">
+                        <img src="${moto.imagem || 'placeholder.png'}" alt="${moto.nome}">
+                    </div>
+                    <div class="view-details-container">
+                        <button class="view-details-btn" onclick="abrirProduto('${moto.id}')">
+                            <i class="fas fa-eye"></i> Ver Detalhes
+                        </button>
+                    </div>
+                    <div class="model-info">
+                        <h2 class="model-name">${moto.nome}</h2>
+                        <div class="model-price">${moto.preco}</div>
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">${moto.autonomia}</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">${moto.velocidade}</div>
+                                <div class="spec-label">Velocidade</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">${moto.motor}</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(slide);
+                
+                // Criar indicador
+                const indicador = document.createElement('div');
+                indicador.className = `catalog-indicator ${index === 0 ? 'active' : ''}`;
+                indicador.onclick = () => irParaSlide(index);
+                indicadores.appendChild(indicador);
+                
+                // Criar página do produto
+                const productPage = document.createElement('div');
+                productPage.id = `product-${moto.id}`;
+                productPage.className = 'product-page';
+                productPage.innerHTML = `
+                    <div class="product-header">
+                        <h2 class="product-title">${moto.nome}</h2>
+                        <button class="back-btn" onclick="voltarCatalogo()">
+                            <i class="fas fa-arrow-left"></i> Voltar
+                        </button>
+                    </div>
+                    <div class="product-gallery">
+                        <div class="gallery-container">
+                            <div class="gallery-image">
+                                <img src="${moto.imagem || 'placeholder.png'}" alt="${moto.nome}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <div class="model-price">${moto.preco}</div>
+                        <p class="product-description">${moto.descricao}</p>
+                        <div class="model-specs">
+                            <div class="spec-card">
+                                <div class="spec-value">${moto.autonomia}</div>
+                                <div class="spec-label">Autonomia</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">${moto.velocidade}</div>
+                                <div class="spec-label">Velocidade</div>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-value">${moto.motor}</div>
+                                <div class="spec-label">Motor</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions-detailed">
+                        <a href="https://wa.me/553499269707?text=Olá! Tenho interesse no ${moto.nome}" class="whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i> Saiba Mais
+                        </a>
+                    </div>
+                `;
+                productPages.appendChild(productPage);
+            });
+            
+            totalSlides = motos.length;
+        }
+
+        function moverSlide(direcao) {
+            slideAtual += direcao;
+            if (slideAtual >= totalSlides) slideAtual = 0;
+            if (slideAtual < 0) slideAtual = totalSlides - 1;
+            
+            atualizarSlide();
+        }
+
+        function irParaSlide(index) {
+            slideAtual = index;
+            atualizarSlide();
+        }
+
+        function atualizarSlide() {
+            document.querySelector('.catalog-container').style.transform = `translateX(-${slideAtual * 100}%)`;
+            atualizarIndicadores();
+        }
+
+        function atualizarIndicadores() {
+            document.querySelectorAll('.catalog-indicator').forEach((ind, index) => {
+                ind.classList.toggle('active', index === slideAtual);
+            });
+        }
+
+        function abrirProduto(produtoId) {
+            document.querySelector('.scooter-catalog').style.display = 'none';
+            document.getElementById('product-' + produtoId).style.display = 'block';
+            
+            // Registrar visualização
+            registrarVisualizacao(produtoId);
+        }
+
+        function voltarCatalogo() {
+            document.querySelectorAll('.product-page').forEach(page => {
+                page.style.display = 'none';
+            });
+            document.querySelector('.scooter-catalog').style.display = 'block';
+        }
+
+        // =========================================
+        // SISTEMA ADMIN - COMPLETO
+        // =========================================
+        function abrirLogin() {
+            document.getElementById('adminModal').style.display = 'flex';
+            document.getElementById('adminPassword').focus();
+        }
+
+        function fazerLogin() {
+            const senha = document.getElementById('adminPassword').value;
+            const erro = document.getElementById('loginError');
+            
+            if (senha === SENHA_ADMIN) {
+                document.getElementById('adminModal').style.display = 'none';
+                abrirPainelAdmin();
+                document.getElementById('adminPassword').value = '';
+                erro.style.display = 'none';
+            } else {
+                erro.style.display = 'block';
+            }
+        }
+
+        function abrirPainelAdmin() {
+            document.getElementById('adminPanel').style.display = 'block';
+            carregarEstatisticas();
+            carregarListaMotos();
+        }
+
+        function fecharPainel() {
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        function abrirTab(tabId) {
+            // Esconder todas as abas
+            document.querySelectorAll('.admin-tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remover classe active de todas as tabs
+            document.querySelectorAll('.admin-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Mostrar a aba selecionada
+            document.getElementById(tabId).classList.add('active');
+            
+            // Ativar a tab correspondente
+            document.querySelector(`.admin-tab[onclick="abrirTab('${tabId}')"]`).classList.add('active');
+        }
+
+        function carregarEstatisticas() {
+            // Atualizar estatísticas na interface
+            document.getElementById('visitantesCount').textContent = estatisticas.visitantes;
+            document.getElementById('visualizacoesCount').textContent = estatisticas.visualizacoes;
+            
+            // Calcular visitantes do dia atual
+            const hoje = new Date().toDateString();
+            const ultimaVisita = estatisticas.ultimaVisita ? new Date(estatisticas.ultimaVisita).toDateString() : null;
+            const visitantesHoje = hoje === ultimaVisita ? 1 : 0;
+            document.getElementById('visitantesHoje').textContent = visitantesHoje;
+        }
+
+        function carregarListaMotos() {
+            const listaMotos = document.getElementById('lista-motos');
+            listaMotos.innerHTML = '';
+            
+            if (motos.length === 0) {
+                listaMotos.innerHTML = '<p>Nenhuma moto cadastrada.</p>';
+                return;
+            }
+            
+            motos.forEach(moto => {
+                const item = document.createElement('div');
+                item.className = 'moto-item';
+                item.innerHTML = `
+                    <div class="moto-info">
+                        <strong>${moto.nome}</strong><br>
+                        <small>${moto.preco} | ${moto.autonomia} | ${moto.velocidade}</small>
+                    </div>
+                    <div class="moto-actions">
+                        <button class="moto-action-btn" onclick="editarMoto('${moto.id}')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="moto-action-btn admin-btn-danger" onclick="excluirMoto('${moto.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                listaMotos.appendChild(item);
+            });
+        }
+
+        function editarMoto(id) {
+            const moto = motos.find(m => m.id === id);
+            if (!moto) return;
+            
+            // Preencher formulário com dados da moto
+            document.getElementById('moto-id-editar').value = moto.id;
+            document.getElementById('moto-nome').value = moto.nome;
+            document.getElementById('moto-preco').value = moto.preco.replace('R$ ', '').replace('.', '').replace(',', '.');
+            document.getElementById('moto-autonomia').value = moto.autonomia.replace(' KM', '');
+            document.getElementById('moto-velocidade').value = moto.velocidade.replace(' KM/H', '');
+            document.getElementById('moto-motor').value = moto.motor.replace('W', '');
+            document.getElementById('moto-descricao').value = moto.descricao;
+            document.getElementById('moto-imagem').value = moto.imagem || '';
+            
+            // Alterar título do formulário
+            document.getElementById('titulo-form-moto').textContent = '✏️ Editar Moto';
+            
+            // Mostrar botão de cancelar
+            document.getElementById('btn-cancelar-edicao').style.display = 'block';
+            
+            // Ir para a aba de adicionar/editar
+            abrirTab('tab-adicionar');
+        }
+
+        function cancelarEdicao() {
+            // Limpar formulário
+            document.getElementById('moto-id-editar').value = '';
+            document.getElementById('moto-nome').value = '';
+            document.getElementById('moto-preco').value = '';
+            document.getElementById('moto-autonomia').value = '';
+            document.getElementById('moto-velocidade').value = '';
+            document.getElementById('moto-motor').value = '';
+            document.getElementById('moto-descricao').value = '';
+            document.getElementById('moto-imagem').value = '';
+            
+            // Restaurar título
+            document.getElementById('titulo-form-moto').textContent = '➕ Adicionar Nova Moto';
+            
+            // Esconder botão de cancelar
+            document.getElementById('btn-cancelar-edicao').style.display = 'none';
+        }
+
+        function salvarMoto() {
+            const idEditar = document.getElementById('moto-id-editar').value;
+            const nome = document.getElementById('moto-nome').value.trim();
+            const preco = parseFloat(document.getElementById('moto-preco').value);
+            const autonomia = document.getElementById('moto-autonomia').value.trim();
+            const velocidade = document.getElementById('moto-velocidade').value.trim();
+            const motor = document.getElementById('moto-motor').value.trim();
+            const descricao = document.getElementById('moto-descricao').value.trim();
+            const imagem = document.getElementById('moto-imagem').value.trim();
+            
+            // Validação básica
+            if (!nome || isNaN(preco) || !autonomia || !velocidade || !motor) {
+                alert('Por favor, preencha todos os campos obrigatórios!');
+                return;
+            }
+            
+            // Formatar valores
+            const precoFormatado = `R$ ${preco.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            const autonomiaFormatada = `${autonomia} KM`;
+            const velocidadeFormatada = `${velocidade} KM/H`;
+            const motorFormatado = `${motor}W`;
+            
+            if (idEditar) {
+                // Editar moto existente
+                const index = motos.findIndex(m => m.id === idEditar);
+                if (index !== -1) {
+                    motos[index] = {
+                        ...motos[index],
+                        nome,
+                        preco: precoFormatado,
+                        autonomia: autonomiaFormatada,
+                        velocidade: velocidadeFormatada,
+                        motor: motorFormatado,
+                        descricao: descricao || motos[index].descricao,
+                        imagem: imagem || motos[index].imagem
+                    };
+                }
+            } else {
+                // Adicionar nova moto
+                const novoId = gerarIdUnico();
+                motos.push({
+                    id: novoId,
+                    nome,
+                    preco: precoFormatado,
+                    autonomia: autonomiaFormatada,
+                    velocidade: velocidadeFormatada,
+                    motor: motorFormatado,
+                    descricao: descricao || 'Descrição do produto.',
+                    imagem: imagem || 'placeholder.png'
+                });
+            }
+            
+            // Salvar e atualizar
+            salvarMotos();
+            inicializarCatalogo();
+            carregarListaMotos();
+            cancelarEdicao();
+            
+            alert(idEditar ? 'Moto atualizada com sucesso!' : 'Moto adicionada com sucesso!');
+        }
+
+        function excluirMoto(id) {
+            if (!confirm('Tem certeza que deseja excluir esta moto?')) return;
+            
+            motos = motos.filter(m => m.id !== id);
+            salvarMotos();
+            inicializarCatalogo();
+            carregarListaMotos();
+            
+            alert('Moto excluída com sucesso!');
+        }
+
+        function gerarIdUnico() {
+            return 'moto-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        }
+
+        // =========================================
+        // SISTEMA DE ESTATÍSTICAS
+        // =========================================
+        function registrarVisita() {
+            const hoje = new Date().toDateString();
+            const ultimaVisita = estatisticas.ultimaVisita ? new Date(estatisticas.ultimaVisita).toDateString() : null;
+            
+            // Se é a primeira visita do dia, contar como novo visitante
+            if (hoje !== ultimaVisita) {
+                estatisticas.visitantes++;
+            }
+            
+            estatisticas.ultimaVisita = new Date().toISOString();
+            salvarEstatisticas();
+        }
+
+        function registrarVisualizacao(produtoId) {
+            estatisticas.visualizacoes++;
+            salvarEstatisticas();
+            
+            // Atualizar estatísticas no painel se estiver aberto
+            if (document.getElementById('adminPanel').style.display === 'block') {
+                carregarEstatisticas();
+            }
+        }
     </script>
 </body>
 </html>
