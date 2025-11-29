@@ -102,6 +102,11 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .model-image img:hover {
+            transform: scale(1.05);
         }
 
         .view-details-container {
@@ -156,44 +161,11 @@
             margin-bottom: 5px;
         }
 
-        .price-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        .price-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .price-card {
-            background: rgba(13, 27, 61, 0.7);
-            border-radius: 8px;
-            padding: 10px;
-            text-align: center;
-            border: 1px solid var(--card-border);
-        }
-
-        .price-title {
-            font-size: 0.85rem;
-            color: var(--accent);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .price-value {
-            font-size: 1.1rem;
-            font-weight: 700;
+        .model-parcelado {
+            font-size: 1rem;
             color: var(--text);
-            margin-bottom: 5px;
-        }
-
-        .price-description {
-            font-size: 0.75rem;
-            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: 500;
         }
 
         .model-specs {
@@ -209,6 +181,12 @@
             padding: 8px;
             text-align: center;
             border: 1px solid var(--card-border);
+            transition: all 0.3s;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .spec-value {
@@ -993,7 +971,6 @@
     </style>
 </head>
 <body>
-    <!-- Verificar se estamos na página de catálogo, login ou admin -->
     <div id="app">
         <!-- Conteúdo será carregado dinamicamente -->
     </div>
@@ -1002,7 +979,7 @@
         // =========================================
         // CONFIGURAÇÕES E VARIÁVEIS GLOBAIS
         // =========================================
-        const SENHA_ADMIN = "EloBike2024";
+        const SENHA_ADMIN = "Elobike2024";
         const PAGINAS = {
             CATALOGO: 'catalogo',
             LOGIN: 'login',
@@ -1077,6 +1054,7 @@
                         id: 'r13',
                         nome: 'Modelo R13',
                         preco: 'R$ 11.000,00',
+                        precoNumerico: 11000.00,
                         autonomia: '45 KM',
                         velocidade: '45 KM/H',
                         motor: '1000W',
@@ -1087,6 +1065,7 @@
                         id: 'r15',
                         nome: 'Modelo R15',
                         preco: 'R$ 13.500,00',
+                        precoNumerico: 13500.00,
                         autonomia: '60 KM',
                         velocidade: '55 KM/H',
                         motor: '1200W',
@@ -1097,6 +1076,7 @@
                         id: 'r18',
                         nome: 'Modelo R18',
                         preco: 'R$ 15.800,00',
+                        precoNumerico: 15800.00,
                         autonomia: '75 KM',
                         velocidade: '60 KM/H',
                         motor: '1500W',
@@ -1215,6 +1195,10 @@
             
             // Adicionar cada moto ao catálogo
             motos.forEach((moto, index) => {
+                // Calcular valor da parcela em 18x
+                const valorParcela = calcularParcela(moto.precoNumerico, 18, TAXAS_PARCELAMENTO[18]);
+                const valorParcelaFormatado = valorParcela.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+                
                 // Criar slide do catálogo
                 const slide = document.createElement('div');
                 slide.className = 'scooter-model';
@@ -1230,6 +1214,7 @@
                     <div class="model-info">
                         <h2 class="model-name">${moto.nome}</h2>
                         <div class="model-price">${moto.preco}</div>
+                        <div class="model-parcelado">ou em 18x de ${valorParcelaFormatado}</div>
                         <div class="model-specs">
                             <div class="spec-card">
                                 <div class="spec-value">${moto.autonomia}</div>
@@ -1298,6 +1283,7 @@
                     ${galleryHTML}
                     <div class="product-details">
                         <div class="model-price">${moto.preco}</div>
+                        <div class="model-parcelado">ou em 18x de ${valorParcelaFormatado}</div>
                         <p class="product-description">${moto.descricao}</p>
                         <div class="model-specs">
                             <div class="spec-card">
@@ -1540,7 +1526,7 @@
                             <h3 class="admin-section-title" id="titulo-form-moto">➕ Adicionar Nova Moto</h3>
                             <input type="hidden" id="moto-id-editar" value="">
                             <input type="text" id="moto-nome" placeholder="Nome do Modelo" class="admin-input" required>
-                            <input type="number" id="moto-preco" placeholder="Preço (R$)" class="admin-input" required>
+                            <input type="number" id="moto-preco" placeholder="Preço (R$)" class="admin-input" required step="0.01">
                             <input type="text" id="moto-autonomia" placeholder="Autonomia (KM)" class="admin-input" required>
                             <input type="text" id="moto-velocidade" placeholder="Velocidade Máxima (KM/H)" class="admin-input" required>
                             <input type="text" id="moto-motor" placeholder="Potência do Motor (W)" class="admin-input" required>
@@ -1792,7 +1778,14 @@
 
         function converterMoedaParaNumero(valorFormatado) {
             // Remover símbolos e converter para número
-            return parseFloat(valorFormatado.replace('R$', '').replace('.', '').replace(',', '.').trim());
+            return parseFloat(valorFormatado.replace('R$', '').replace(/\./g, '').replace(',', '.').trim());
+        }
+
+        function calcularParcela(valorTotal, parcelas, taxa) {
+            // Calcular valor com juros
+            const valorComJuros = valorTotal * (1 + taxa / 100);
+            // Retornar valor da parcela
+            return valorComJuros / parcelas;
         }
 
         function calcularSimulacao() {
@@ -1828,17 +1821,21 @@
             
             // Realizar cálculos
             const valorFinanciado = valorTotal - entrada;
-            const valorParcela = valorFinanciado / parcelas;
+            const valorParcela = calcularParcela(valorFinanciado, parcelas, taxa);
             
             // Exibir resultados
-            exibirResultadoSimulacao(parcelas, valorParcela);
+            exibirResultadoSimulacao(parcelas, valorParcela, valorFinanciado, taxa);
         }
 
-        function exibirResultadoSimulacao(parcelas, valorParcela) {
+        function exibirResultadoSimulacao(parcelas, valorParcela, valorFinanciado, taxa) {
             const container = document.getElementById('resultado-simulacao');
             
             container.innerHTML = `
+                <h4>Resultado da Simulação</h4>
                 <div class="resultado-parcela">${parcelas}x de ${valorParcela.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</div>
+                <p>Valor financiado: ${valorFinanciado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</p>
+                <p>Taxa de juros: ${taxa}%</p>
+                <p>Total pago: ${(valorParcela * parcelas).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</p>
             `;
         }
 
@@ -1873,7 +1870,7 @@
             // Preencher formulário com dados da moto
             document.getElementById('moto-id-editar').value = moto.id;
             document.getElementById('moto-nome').value = moto.nome;
-            document.getElementById('moto-preco').value = moto.preco.replace('R$ ', '').replace('.', '').replace(',', '.');
+            document.getElementById('moto-preco').value = moto.precoNumerico;
             document.getElementById('moto-autonomia').value = moto.autonomia.replace(' KM', '');
             document.getElementById('moto-velocidade').value = moto.velocidade.replace(' KM/H', '');
             document.getElementById('moto-motor').value = moto.motor.replace('W', '');
@@ -1958,6 +1955,7 @@
                         ...motos[index],
                         nome,
                         preco: precoFormatado,
+                        precoNumerico: preco,
                         autonomia: autonomiaFormatada,
                         velocidade: velocidadeFormatada,
                         motor: motorFormatado,
@@ -1972,6 +1970,7 @@
                     id: novoId,
                     nome,
                     preco: precoFormatado,
+                    precoNumerico: preco,
                     autonomia: autonomiaFormatada,
                     velocidade: velocidadeFormatada,
                     motor: motorFormatado,
